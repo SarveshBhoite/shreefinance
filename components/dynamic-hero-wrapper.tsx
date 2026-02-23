@@ -11,20 +11,29 @@ interface Banner {
     link?: string;
 }
 
-export function HeroBannerCarousel() {
+interface DynamicHeroWrapperProps {
+    page: string;
+    children: React.ReactNode;
+}
+
+/**
+ * Wraps any page's hero section. If banners exist for this page,
+ * shows a full-width fade-in slider. Otherwise, renders the original hero children.
+ */
+export function DynamicHeroWrapper({ page, children }: DynamicHeroWrapperProps) {
     const [banners, setBanners] = useState<Banner[]>([]);
     const [loading, setLoading] = useState(true);
     const [currentIndex, setCurrentIndex] = useState(0);
 
     useEffect(() => {
-        fetch("/api/banners?page=home")
+        fetch(`/api/banners?page=${encodeURIComponent(page)}`)
             .then((res) => res.json())
             .then((data) => {
                 setBanners(data.banners || []);
                 setLoading(false);
             })
             .catch(() => setLoading(false));
-    }, []);
+    }, [page]);
 
     // Auto-advance every 4 seconds
     useEffect(() => {
@@ -35,37 +44,21 @@ export function HeroBannerCarousel() {
         return () => clearInterval(interval);
     }, [banners.length]);
 
-    const goTo = useCallback(
-        (index: number) => setCurrentIndex(index),
-        []
-    );
+    const goTo = useCallback((index: number) => setCurrentIndex(index), []);
 
-    if (loading) {
-        return (
-            <div className="w-full aspect-[4/3] rounded-2xl bg-gradient-to-br from-blue-100 to-indigo-100 dark:from-blue-950 dark:to-indigo-950 animate-pulse flex items-center justify-center">
-                <div className="h-10 w-10 border-4 border-blue-500 border-t-transparent rounded-full animate-spin" />
-            </div>
-        );
-    }
+    // Still loading — show original hero to avoid flash
+    if (loading) return <>{children}</>;
 
-    if (banners.length === 0) {
-        return (
-            <div className="w-full aspect-[4/3] rounded-2xl bg-gradient-to-br from-blue-600 via-indigo-600 to-purple-700 flex items-center justify-center text-white p-8 text-center">
-                <div className="space-y-4">
-                    <div className="text-6xl">🎉</div>
-                    <h3 className="text-2xl font-bold">Special Offers Coming Soon!</h3>
-                    <p className="text-blue-100 text-sm">Stay tuned for exciting festive deals and exclusive offers.</p>
-                </div>
-            </div>
-        );
-    }
+    // No banners for this page — show original hero
+    if (banners.length === 0) return <>{children}</>;
 
+    // Banners exist — show full-width slider
     const current = banners[currentIndex];
 
     return (
-        <div className="w-full relative">
-            {/* Image container */}
-            <div className="relative aspect-[4/3] w-full rounded-2xl shadow-2xl overflow-hidden bg-slate-200 dark:bg-slate-800">
+        <section className="relative w-full overflow-hidden bg-slate-950">
+            {/* Full-width banner slider */}
+            <div className="relative w-full aspect-[21/9] md:aspect-[3/1] lg:aspect-[3.5/1]">
                 <AnimatePresence mode="wait">
                     <motion.div
                         key={current._id}
@@ -82,7 +75,7 @@ export function HeroBannerCarousel() {
                                     alt={current.title}
                                     fill
                                     className="object-cover"
-                                    sizes="(max-width: 768px) 100vw, 50vw"
+                                    sizes="100vw"
                                     priority
                                 />
                             </a>
@@ -92,13 +85,15 @@ export function HeroBannerCarousel() {
                                 alt={current.title}
                                 fill
                                 className="object-cover"
-                                sizes="(max-width: 768px) 100vw, 50vw"
+                                sizes="100vw"
                                 priority
                             />
                         )}
                         {/* Title overlay */}
-                        <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-4">
-                            <p className="text-white font-semibold text-sm md:text-base">{current.title}</p>
+                        <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/60 to-transparent p-6 md:p-8">
+                            <div className="container mx-auto px-4">
+                                <p className="text-white font-bold text-lg md:text-2xl drop-shadow-lg">{current.title}</p>
+                            </div>
                         </div>
                     </motion.div>
                 </AnimatePresence>
@@ -106,19 +101,19 @@ export function HeroBannerCarousel() {
 
             {/* Dot indicators */}
             {banners.length > 1 && (
-                <div className="flex justify-center gap-2 mt-4">
+                <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 z-10">
                     {banners.map((_, index) => (
                         <button
                             key={index}
                             className={`h-2.5 rounded-full transition-all duration-300 ${index === currentIndex
-                                ? "w-8 bg-blue-600"
-                                : "w-2.5 bg-slate-300 dark:bg-slate-600 hover:bg-slate-400"
+                                    ? "w-8 bg-white"
+                                    : "w-2.5 bg-white/50 hover:bg-white/70"
                                 }`}
                             onClick={() => goTo(index)}
                         />
                     ))}
                 </div>
             )}
-        </div>
+        </section>
     );
 }

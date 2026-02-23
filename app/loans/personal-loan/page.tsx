@@ -10,6 +10,7 @@ import { useEmailForm } from "@/hooks/use-email-form";
 import { cn } from "@/lib/utils";
 import { ContentSection } from "@/components/ui/content-section";
 import { SimpleAccordion } from "@/components/ui/simple-accordion";
+import { DynamicHeroWrapper } from "@/components/dynamic-hero-wrapper";
 
 export default function PersonalLoanPage() {
     const { sendEmail, isSubmitting, isSuccess, error, resetForm } = useEmailForm();
@@ -34,50 +35,52 @@ export default function PersonalLoanPage() {
 
     return (
         <div className="pb-20 bg-slate-50 dark:bg-black selection:bg-purple-500/30 font-sans">
-            {/* Unique Hero Section - Instant Speed Theme */}
-            <section className="relative pt-40 pb-20 overflow-hidden bg-slate-900 text-white">
-                {/* Dynamic Background */}
-                <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/stardust.png')] opacity-20"></div>
-                <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-purple-600/20 rounded-full blur-[120px] mix-blend-screen animate-pulse"></div>
+            <DynamicHeroWrapper page="personal-loan">
+                {/* Unique Hero Section - Instant Speed Theme */}
+                <section className="relative pt-40 pb-20 overflow-hidden bg-slate-900 text-white">
+                    {/* Dynamic Background */}
+                    <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/stardust.png')] opacity-20"></div>
+                    <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-purple-600/20 rounded-full blur-[120px] mix-blend-screen animate-pulse"></div>
 
-                <div className="container px-4 md:px-6 grid lg:grid-cols-2 gap-12 items-center relative z-10">
-                    <div className="space-y-8">
-                        <div className="inline-flex items-center gap-2 rounded-full border border-purple-400/30 bg-purple-500/10 px-4 py-1.5 text-sm font-bold text-purple-300">
-                            <Zap className="h-4 w-4 fill-purple-300" />
-                            <span>Approvals in 5 Minutes</span>
-                        </div>
-
-                        <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight leading-tight">
-                            Need Funds? <br />
-                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400">Consider it Done.</span>
-                        </h1>
-
-                        <p className="text-xl text-slate-300 max-w-lg leading-relaxed">
-                            Experience the speed of digital lending. No paperwork, no collateral, just instant funds directly to your bank account.
-                        </p>
-
-                        <div className="flex flex-wrap gap-4">
-                            <Button size="lg" className="h-14 px-8 text-lg rounded-full shadow-lg shadow-purple-500/30 bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white font-bold" onClick={scrollToForm}>
-                                Get Instant Cash
-                            </Button>
-                        </div>
-                    </div>
-
-                    {/* Visual Hero Element - Rocket/Wallet */}
-                    <div className="relative hidden lg:flex justify-center items-center h-[500px]">
-                        <div className="relative w-80 h-80 bg-gradient-to-br from-purple-500 to-pink-600 rounded-[3rem] rotate-12 flex items-center justify-center shadow-2xl shadow-purple-900/50">
-                            <Rocket className="text-white h-40 w-40 drop-shadow-lg" />
-                            {/* Floating Elements */}
-                            <div className="absolute -top-6 -right-6 h-20 w-20 bg-white rounded-2xl flex items-center justify-center shadow-lg animate-bounce delay-100">
-                                <IndianRupee className="h-10 w-10 text-green-600" />
+                    <div className="container px-4 md:px-6 grid lg:grid-cols-2 gap-12 items-center relative z-10">
+                        <div className="space-y-8">
+                            <div className="inline-flex items-center gap-2 rounded-full border border-purple-400/30 bg-purple-500/10 px-4 py-1.5 text-sm font-bold text-purple-300">
+                                <Zap className="h-4 w-4 fill-purple-300" />
+                                <span>Approvals in 5 Minutes</span>
                             </div>
-                            <div className="absolute -bottom-6 -left-6 h-20 w-20 bg-white rounded-2xl flex items-center justify-center shadow-lg animate-bounce delay-300">
-                                <Timer className="h-10 w-10 text-orange-600" />
+
+                            <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight leading-tight">
+                                Need Funds? <br />
+                                <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400">Consider it Done.</span>
+                            </h1>
+
+                            <p className="text-xl text-slate-300 max-w-lg leading-relaxed">
+                                Experience the speed of digital lending. No paperwork, no collateral, just instant funds directly to your bank account.
+                            </p>
+
+                            <div className="flex flex-wrap gap-4">
+                                <Button size="lg" className="h-14 px-8 text-lg rounded-full shadow-lg shadow-purple-500/30 bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white font-bold" onClick={scrollToForm}>
+                                    Get Instant Cash
+                                </Button>
                             </div>
                         </div>
+
+                        {/* Visual Hero Element - Rocket/Wallet */}
+                        <div className="relative hidden lg:flex justify-center items-center h-[500px]">
+                            <div className="relative w-80 h-80 bg-gradient-to-br from-purple-500 to-pink-600 rounded-[3rem] rotate-12 flex items-center justify-center shadow-2xl shadow-purple-900/50">
+                                <Rocket className="text-white h-40 w-40 drop-shadow-lg" />
+                                {/* Floating Elements */}
+                                <div className="absolute -top-6 -right-6 h-20 w-20 bg-white rounded-2xl flex items-center justify-center shadow-lg animate-bounce delay-100">
+                                    <IndianRupee className="h-10 w-10 text-green-600" />
+                                </div>
+                                <div className="absolute -bottom-6 -left-6 h-20 w-20 bg-white rounded-2xl flex items-center justify-center shadow-lg animate-bounce delay-300">
+                                    <Timer className="h-10 w-10 text-orange-600" />
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </section>
+                </section>
+            </DynamicHeroWrapper>
 
             {/* Fast Track Process - Unique Grid */}
             <section className="py-20 -mt-10 relative z-20">

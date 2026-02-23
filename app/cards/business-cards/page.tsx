@@ -9,6 +9,7 @@ import { useEmailForm } from "@/hooks/use-email-form";
 import { cn } from "@/lib/utils";
 import { ContentSection } from "@/components/ui/content-section";
 import { motion } from "framer-motion";
+import { DynamicHeroWrapper } from "@/components/dynamic-hero-wrapper";
 
 export default function BusinessCardsPage() {
     const { sendEmail, isSubmitting, isSuccess, error, resetForm } = useEmailForm();
@@ -33,76 +34,78 @@ export default function BusinessCardsPage() {
 
     return (
         <div className="pb-20 bg-slate-50 dark:bg-black selection:bg-slate-500/30 font-sans">
-            {/* Unique Hero Section - Corporate Power Theme */}
-            <section className="relative pt-32 pb-32 overflow-hidden bg-slate-900 text-white">
-                {/* Dark Metallic Background */}
-                <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-10"></div>
-                <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-slate-800 to-black opacity-90"></div>
+            <DynamicHeroWrapper page="business-cards">
+                {/* Unique Hero Section - Corporate Power Theme */}
+                <section className="relative pt-32 pb-32 overflow-hidden bg-slate-900 text-white">
+                    {/* Dark Metallic Background */}
+                    <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-10"></div>
+                    <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-slate-800 to-black opacity-90"></div>
 
-                {/* Accent Glow */}
-                <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-sky-500/10 rounded-full blur-[120px] mix-blend-screen animate-pulse"></div>
+                    {/* Accent Glow */}
+                    <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-sky-500/10 rounded-full blur-[120px] mix-blend-screen animate-pulse"></div>
 
-                <div className="container relative z-10 px-4 md:px-6 text-center">
-                    <div className="inline-flex items-center gap-2 rounded-full border border-slate-600/50 bg-slate-800/50 px-4 py-1.5 text-sm font-bold text-slate-300 mb-8 backdrop-blur-md">
-                        <Building2 className="h-4 w-4 text-sky-400" />
-                        <span>Executive Corporate Solutions</span>
-                    </div>
+                    <div className="container relative z-10 px-4 md:px-6 text-center">
+                        <div className="inline-flex items-center gap-2 rounded-full border border-slate-600/50 bg-slate-800/50 px-4 py-1.5 text-sm font-bold text-slate-300 mb-8 backdrop-blur-md">
+                            <Building2 className="h-4 w-4 text-sky-400" />
+                            <span>Executive Corporate Solutions</span>
+                        </div>
 
-                    <h1 className="text-5xl md:text-8xl font-extrabold tracking-tight leading-tight mb-6">
-                        Power Up <br />
-                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-sky-400 via-slate-200 to-sky-400">Your Business.</span>
-                    </h1>
+                        <h1 className="text-5xl md:text-8xl font-extrabold tracking-tight leading-tight mb-6">
+                            Power Up <br />
+                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-sky-400 via-slate-200 to-sky-400">Your Business.</span>
+                        </h1>
 
-                    <p className="text-xl text-slate-400 max-w-2xl mx-auto leading-relaxed mb-10">
-                        Streamline expenses, maximize cash flow, and unlock premium corporate privileges with our metal business cards.
-                    </p>
+                        <p className="text-xl text-slate-400 max-w-2xl mx-auto leading-relaxed mb-10">
+                            Streamline expenses, maximize cash flow, and unlock premium corporate privileges with our metal business cards.
+                        </p>
 
-                    <div className="flex justify-center flex-wrap gap-4 mb-20">
-                        <Button size="lg" className="h-14 px-10 text-lg rounded-full shadow-2xl shadow-sky-900/20 bg-gradient-to-r from-slate-700 to-slate-800 hover:from-slate-600 hover:to-slate-700 border border-slate-600 text-white font-bold hover:scale-105 transition-transform" onClick={scrollToForm}>
-                            Request Corporate Card
-                        </Button>
-                    </div>
+                        <div className="flex justify-center flex-wrap gap-4 mb-20">
+                            <Button size="lg" className="h-14 px-10 text-lg rounded-full shadow-2xl shadow-sky-900/20 bg-gradient-to-r from-slate-700 to-slate-800 hover:from-slate-600 hover:to-slate-700 border border-slate-600 text-white font-bold hover:scale-105 transition-transform" onClick={scrollToForm}>
+                                Request Corporate Card
+                            </Button>
+                        </div>
 
-                    {/* Floating Metal Card Animation */}
-                    <div className="relative mx-auto w-full max-w-md perspective-1000 group">
-                        {/* Glow effect */}
-                        <div className="absolute inset-0 bg-sky-500/20 rounded-xl blur-3xl opacity-30 group-hover:opacity-50 transition-opacity duration-500"></div>
+                        {/* Floating Metal Card Animation */}
+                        <div className="relative mx-auto w-full max-w-md perspective-1000 group">
+                            {/* Glow effect */}
+                            <div className="absolute inset-0 bg-sky-500/20 rounded-xl blur-3xl opacity-30 group-hover:opacity-50 transition-opacity duration-500"></div>
 
-                        <motion.div
-                            initial={{ y: 0, rotateX: 0, rotateY: 0 }}
-                            animate={{ y: [0, -10, 0], rotateX: [0, 5, 0], rotateY: [0, -5, 0] }}
-                            transition={{ repeat: Infinity, duration: 8, ease: "easeInOut" }}
-                            className="relative aspect-[1.586/1] rounded-xl bg-gradient-to-br from-gray-900 via-gray-800 to-black shadow-2xl border border-gray-700 overflow-hidden transform-style-3d"
-                        >
-                            {/* Metal Texture */}
-                            <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/brushed-alum.png')] opacity-30 mix-blend-overlay"></div>
+                            <motion.div
+                                initial={{ y: 0, rotateX: 0, rotateY: 0 }}
+                                animate={{ y: [0, -10, 0], rotateX: [0, 5, 0], rotateY: [0, -5, 0] }}
+                                transition={{ repeat: Infinity, duration: 8, ease: "easeInOut" }}
+                                className="relative aspect-[1.586/1] rounded-xl bg-gradient-to-br from-gray-900 via-gray-800 to-black shadow-2xl border border-gray-700 overflow-hidden transform-style-3d"
+                            >
+                                {/* Metal Texture */}
+                                <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/brushed-alum.png')] opacity-30 mix-blend-overlay"></div>
 
-                            {/* Card Shine */}
-                            <div className="absolute inset-0 bg-gradient-to-tr from-white/0 via-white/5 to-white/0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 bg-[length:200%_200%] animate-shine"></div>
+                                {/* Card Shine */}
+                                <div className="absolute inset-0 bg-gradient-to-tr from-white/0 via-white/5 to-white/0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 bg-[length:200%_200%] animate-shine"></div>
 
-                            {/* Card Elements */}
-                            <div className="absolute top-6 right-6">
-                                <span className="text-gray-300 font-bold italic text-xl tracking-widest opacity-80">Mastercard</span>
-                                <span className="block text-[8px] text-sky-400 text-right tracking-widest uppercase mt-1">World Elite</span>
-                            </div>
-
-                            <div className="absolute top-6 left-6">
-                                <div className="h-8 w-11 rounded bg-gradient-to-br from-yellow-400 to-yellow-600 shadow-inner"></div>
-                            </div>
-
-                            <div className="absolute bottom-6 left-6 text-left z-10 w-full pr-12">
-                                <div className="flex justify-between items-end">
-                                    <div className="space-y-1">
-                                        <p className="text-gray-500 text-[10px] uppercase tracking-[0.2em] mb-1">Business Platinum</p>
-                                        <p className="text-gray-200 text-lg font-mono tracking-[0.15em] drop-shadow-md">5520 8812 3456 7890</p>
-                                    </div>
-                                    <Briefcase className="text-gray-600 h-8 w-8" />
+                                {/* Card Elements */}
+                                <div className="absolute top-6 right-6">
+                                    <span className="text-gray-300 font-bold italic text-xl tracking-widest opacity-80">Mastercard</span>
+                                    <span className="block text-[8px] text-sky-400 text-right tracking-widest uppercase mt-1">World Elite</span>
                                 </div>
-                            </div>
-                        </motion.div>
+
+                                <div className="absolute top-6 left-6">
+                                    <div className="h-8 w-11 rounded bg-gradient-to-br from-yellow-400 to-yellow-600 shadow-inner"></div>
+                                </div>
+
+                                <div className="absolute bottom-6 left-6 text-left z-10 w-full pr-12">
+                                    <div className="flex justify-between items-end">
+                                        <div className="space-y-1">
+                                            <p className="text-gray-500 text-[10px] uppercase tracking-[0.2em] mb-1">Business Platinum</p>
+                                            <p className="text-gray-200 text-lg font-mono tracking-[0.15em] drop-shadow-md">5520 8812 3456 7890</p>
+                                        </div>
+                                        <Briefcase className="text-gray-600 h-8 w-8" />
+                                    </div>
+                                </div>
+                            </motion.div>
+                        </div>
                     </div>
-                </div>
-            </section>
+                </section>
+            </DynamicHeroWrapper>
 
             {/* Expense Management Feature Strip */}
             <div className="bg-slate-900 border-y border-slate-800 py-10">

@@ -22,8 +22,28 @@ interface Banner {
     publicId: string;
     title: string;
     link?: string;
+    page: string;
     createdAt: string;
 }
+
+const PAGE_OPTIONS = [
+    { value: "home", label: "Home Page" },
+    { value: "personal-loan", label: "Personal Loan" },
+    { value: "home-loan", label: "Home Loan" },
+    { value: "business-loan", label: "Business Loan" },
+    { value: "car-loan", label: "Car Loan" },
+    { value: "education-loan", label: "Education Loan" },
+    { value: "mudra-loan", label: "Mudra Loan" },
+    { value: "pmay", label: "PMAY" },
+    { value: "government-schemes", label: "Government Schemes" },
+    { value: "credit-cards", label: "Credit Cards" },
+    { value: "business-cards", label: "Business Cards" },
+    { value: "health-insurance", label: "Health Insurance" },
+    { value: "life-insurance", label: "Life Insurance" },
+    { value: "vehicle-insurance", label: "Vehicle Insurance" },
+    { value: "mutual-funds", label: "Mutual Funds" },
+    { value: "stocks", label: "Stocks" },
+];
 
 export default function AdminDashboardPage() {
     const router = useRouter();
@@ -38,6 +58,7 @@ export default function AdminDashboardPage() {
     // Form state
     const [title, setTitle] = useState("");
     const [link, setLink] = useState("");
+    const [page, setPage] = useState("home");
     const [preview, setPreview] = useState<string | null>(null);
     const [selectedFile, setSelectedFile] = useState<File | null>(null);
 
@@ -99,6 +120,7 @@ export default function AdminDashboardPage() {
             formData.append("image", selectedFile);
             formData.append("title", title.trim());
             formData.append("link", link.trim());
+            formData.append("page", page);
 
             const res = await fetch("/api/banners", {
                 method: "POST",
@@ -110,6 +132,7 @@ export default function AdminDashboardPage() {
             showToast("success", "Banner uploaded successfully!");
             setTitle("");
             setLink("");
+            setPage("home");
             setPreview(null);
             setSelectedFile(null);
             if (fileInputRef.current) fileInputRef.current.value = "";
@@ -153,8 +176,8 @@ export default function AdminDashboardPage() {
                         animate={{ opacity: 1, y: 0 }}
                         exit={{ opacity: 0, y: -40 }}
                         className={`fixed top-6 right-6 z-50 flex items-center gap-3 px-5 py-3 rounded-xl shadow-2xl border ${toast.type === "success"
-                                ? "bg-green-900/80 border-green-700 text-green-200"
-                                : "bg-red-900/80 border-red-700 text-red-200"
+                            ? "bg-green-900/80 border-green-700 text-green-200"
+                            : "bg-red-900/80 border-red-700 text-red-200"
                             } backdrop-blur-lg`}
                     >
                         {toast.type === "success" ? <CheckCircle2 className="h-5 w-5" /> : <AlertCircle className="h-5 w-5" />}
@@ -255,6 +278,18 @@ export default function AdminDashboardPage() {
                                     />
                                 </div>
                                 <div className="space-y-2">
+                                    <label className="text-sm font-medium text-slate-300">Target Page *</label>
+                                    <select
+                                        value={page}
+                                        onChange={(e) => setPage(e.target.value)}
+                                        className="w-full h-11 px-4 bg-slate-800/60 border border-slate-700 rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all"
+                                    >
+                                        {PAGE_OPTIONS.map((opt) => (
+                                            <option key={opt.value} value={opt.value}>{opt.label}</option>
+                                        ))}
+                                    </select>
+                                </div>
+                                <div className="space-y-2">
                                     <label className="text-sm font-medium text-slate-300">Link (optional)</label>
                                     <input
                                         type="url"
@@ -340,6 +375,11 @@ export default function AdminDashboardPage() {
                                         </div>
                                         <div className="p-4">
                                             <p className="font-semibold text-sm truncate">{banner.title}</p>
+                                            <div className="flex items-center gap-2 mt-1">
+                                                <span className="text-[10px] uppercase tracking-wider font-bold px-2 py-0.5 rounded-full bg-blue-900/50 text-blue-300 border border-blue-800">
+                                                    {PAGE_OPTIONS.find(p => p.value === banner.page)?.label || banner.page}
+                                                </span>
+                                            </div>
                                             <p className="text-xs text-slate-500 mt-1">
                                                 {new Date(banner.createdAt).toLocaleDateString("en-IN", {
                                                     day: "numeric",

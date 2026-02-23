@@ -10,6 +10,7 @@ import { cn } from "@/lib/utils";
 import { ContentSection } from "@/components/ui/content-section";
 import { SimpleAccordion } from "@/components/ui/simple-accordion";
 import { motion } from "framer-motion";
+import { DynamicHeroWrapper } from "@/components/dynamic-hero-wrapper";
 
 export default function StocksPage() {
     const { sendEmail, isSubmitting, isSuccess, error, resetForm } = useEmailForm();
@@ -34,106 +35,108 @@ export default function StocksPage() {
 
     return (
         <div className="pb-20 bg-slate-50 dark:bg-black selection:bg-indigo-500/30 font-sans">
-            {/* Unique Hero Section - Bull Run Theme */}
-            <section className="relative pt-32 pb-32 overflow-hidden bg-slate-900 text-white">
-                {/* Grid Background */}
-                <div className="absolute inset-0 bg-[linear-gradient(to_right,#6366f11a_1px,transparent_1px),linear-gradient(to_bottom,#6366f11a_1px,transparent_1px)] bg-[size:40px_40px]"></div>
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent"></div>
+            <DynamicHeroWrapper page="stocks">
+                {/* Unique Hero Section - Bull Run Theme */}
+                <section className="relative pt-32 pb-32 overflow-hidden bg-slate-900 text-white">
+                    {/* Grid Background */}
+                    <div className="absolute inset-0 bg-[linear-gradient(to_right,#6366f11a_1px,transparent_1px),linear-gradient(to_bottom,#6366f11a_1px,transparent_1px)] bg-[size:40px_40px]"></div>
+                    <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent"></div>
 
-                {/* Glowing Orbs */}
-                <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-indigo-500/20 rounded-full blur-[100px] mix-blend-screen animate-pulse"></div>
-                <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-purple-500/20 rounded-full blur-[100px] mix-blend-screen animate-pulse delay-1000"></div>
+                    {/* Glowing Orbs */}
+                    <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-indigo-500/20 rounded-full blur-[100px] mix-blend-screen animate-pulse"></div>
+                    <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-purple-500/20 rounded-full blur-[100px] mix-blend-screen animate-pulse delay-1000"></div>
 
-                <div className="container relative z-10 px-4 md:px-6 grid lg:grid-cols-2 gap-12 items-center">
-                    <div className="space-y-8">
-                        <div className="inline-flex items-center gap-2 rounded-full border border-indigo-500/30 bg-indigo-900/20 px-4 py-1.5 text-sm font-bold text-indigo-400">
-                            <ArrowUpRight className="h-4 w-4" />
-                            <span>Zero Brokerage on Delivery</span>
+                    <div className="container relative z-10 px-4 md:px-6 grid lg:grid-cols-2 gap-12 items-center">
+                        <div className="space-y-8">
+                            <div className="inline-flex items-center gap-2 rounded-full border border-indigo-500/30 bg-indigo-900/20 px-4 py-1.5 text-sm font-bold text-indigo-400">
+                                <ArrowUpRight className="h-4 w-4" />
+                                <span>Zero Brokerage on Delivery</span>
+                            </div>
+
+                            <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight leading-tight">
+                                Master the <br />
+                                <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-purple-500">Bull Market.</span>
+                            </h1>
+
+                            <p className="text-xl text-slate-400 max-w-lg leading-relaxed">
+                                Open a FREE Demat account in 5 minutes. Real-time charts, advanced technical indicators, and lightning-fast execution.
+                            </p>
+
+                            <div className="flex flex-wrap gap-4">
+                                <Button size="lg" className="h-14 px-8 text-lg rounded-full shadow-lg shadow-indigo-900/40 bg-indigo-600 hover:bg-indigo-700 text-white font-bold" onClick={scrollToForm}>
+                                    Open Free Account
+                                </Button>
+                            </div>
+
+                            <div className="flex items-center gap-8 pt-4 border-t border-slate-800">
+                                <div>
+                                    <p className="text-3xl font-bold text-white flex items-center gap-1">₹0</p>
+                                    <p className="text-xs text-slate-500 uppercase tracking-wider">Brokerage</p>
+                                </div>
+                                <div className="w-px h-10 bg-slate-800"></div>
+                                <div>
+                                    <p className="text-3xl font-bold text-white flex items-center gap-1">₹20</p>
+                                    <p className="text-xs text-slate-500 uppercase tracking-wider">Intraday</p>
+                                </div>
+                                <div className="w-px h-10 bg-slate-800"></div>
+                                <div>
+                                    <p className="text-3xl font-bold text-white flex items-center gap-1">5m</p>
+                                    <p className="text-xs text-slate-500 uppercase tracking-wider">Onboarding</p>
+                                </div>
+                            </div>
                         </div>
 
-                        <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight leading-tight">
-                            Master the <br />
-                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-purple-500">Bull Market.</span>
-                        </h1>
-
-                        <p className="text-xl text-slate-400 max-w-lg leading-relaxed">
-                            Open a FREE Demat account in 5 minutes. Real-time charts, advanced technical indicators, and lightning-fast execution.
-                        </p>
-
-                        <div className="flex flex-wrap gap-4">
-                            <Button size="lg" className="h-14 px-8 text-lg rounded-full shadow-lg shadow-indigo-900/40 bg-indigo-600 hover:bg-indigo-700 text-white font-bold" onClick={scrollToForm}>
-                                Open Free Account
-                            </Button>
-                        </div>
-
-                        <div className="flex items-center gap-8 pt-4 border-t border-slate-800">
-                            <div>
-                                <p className="text-3xl font-bold text-white flex items-center gap-1">₹0</p>
-                                <p className="text-xs text-slate-500 uppercase tracking-wider">Brokerage</p>
-                            </div>
-                            <div className="w-px h-10 bg-slate-800"></div>
-                            <div>
-                                <p className="text-3xl font-bold text-white flex items-center gap-1">₹20</p>
-                                <p className="text-xs text-slate-500 uppercase tracking-wider">Intraday</p>
-                            </div>
-                            <div className="w-px h-10 bg-slate-800"></div>
-                            <div>
-                                <p className="text-3xl font-bold text-white flex items-center gap-1">5m</p>
-                                <p className="text-xs text-slate-500 uppercase tracking-wider">Onboarding</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    {/* Visual Hero Element - Candlestick Chart */}
-                    <div className="relative hidden lg:block h-[500px]">
-                        <div className="absolute inset-0 flex items-center justify-center">
-                            {/* Chart Container */}
-                            <div className="relative w-full max-w-md bg-slate-800/50 backdrop-blur-md rounded-2xl border border-slate-700 p-6 shadow-2xl">
-                                {/* Header */}
-                                <div className="flex justify-between items-center mb-6">
-                                    <div className="flex items-center gap-3">
-                                        <div className="h-10 w-10 rounded-full bg-indigo-600 flex items-center justify-center font-bold text-white">N</div>
-                                        <div>
-                                            <p className="text-white font-bold">NIFTY 50</p>
-                                            <p className="text-xs text-slate-400">NSE</p>
+                        {/* Visual Hero Element - Candlestick Chart */}
+                        <div className="relative hidden lg:block h-[500px]">
+                            <div className="absolute inset-0 flex items-center justify-center">
+                                {/* Chart Container */}
+                                <div className="relative w-full max-w-md bg-slate-800/50 backdrop-blur-md rounded-2xl border border-slate-700 p-6 shadow-2xl">
+                                    {/* Header */}
+                                    <div className="flex justify-between items-center mb-6">
+                                        <div className="flex items-center gap-3">
+                                            <div className="h-10 w-10 rounded-full bg-indigo-600 flex items-center justify-center font-bold text-white">N</div>
+                                            <div>
+                                                <p className="text-white font-bold">NIFTY 50</p>
+                                                <p className="text-xs text-slate-400">NSE</p>
+                                            </div>
+                                        </div>
+                                        <div className="text-right">
+                                            <p className="text-green-400 font-bold text-xl flex items-center gap-1"><ArrowUpRight className="h-5 w-5" /> 22,450.00</p>
+                                            <p className="text-green-500 text-xs">+1.25%</p>
                                         </div>
                                     </div>
-                                    <div className="text-right">
-                                        <p className="text-green-400 font-bold text-xl flex items-center gap-1"><ArrowUpRight className="h-5 w-5" /> 22,450.00</p>
-                                        <p className="text-green-500 text-xs">+1.25%</p>
+
+                                    {/* Animated Candles */}
+                                    <div className="h-48 flex items-end justify-between gap-1 px-2 relative">
+                                        <div className="absolute top-10 left-0 right-0 h-px bg-slate-700 border-t border-dashed border-slate-600"></div>
+                                        <div className="absolute bottom-10 left-0 right-0 h-px bg-slate-700 border-t border-dashed border-slate-600"></div>
+
+                                        {[40, 60, 45, 70, 55, 80, 65, 90, 75, 100].map((h, i) => (
+                                            <motion.div
+                                                key={i}
+                                                className={cn("w-full rounded-sm relative group", i > 5 ? "bg-green-500" : "bg-red-500")}
+                                                style={{ height: `${h}%` }}
+                                                initial={{ scaleY: 0 }}
+                                                animate={{ scaleY: 1 }}
+                                                transition={{ delay: i * 0.1, duration: 0.5 }}
+                                            >
+                                                {/* Wick */}
+                                                <div className={cn("absolute -top-2 left-1/2 w-px h-full -translate-x-1/2 opacity-50", i > 5 ? "bg-green-500" : "bg-red-500")}></div>
+                                            </motion.div>
+                                        ))}
                                     </div>
-                                </div>
 
-                                {/* Animated Candles */}
-                                <div className="h-48 flex items-end justify-between gap-1 px-2 relative">
-                                    <div className="absolute top-10 left-0 right-0 h-px bg-slate-700 border-t border-dashed border-slate-600"></div>
-                                    <div className="absolute bottom-10 left-0 right-0 h-px bg-slate-700 border-t border-dashed border-slate-600"></div>
-
-                                    {[40, 60, 45, 70, 55, 80, 65, 90, 75, 100].map((h, i) => (
-                                        <motion.div
-                                            key={i}
-                                            className={cn("w-full rounded-sm relative group", i > 5 ? "bg-green-500" : "bg-red-500")}
-                                            style={{ height: `${h}%` }}
-                                            initial={{ scaleY: 0 }}
-                                            animate={{ scaleY: 1 }}
-                                            transition={{ delay: i * 0.1, duration: 0.5 }}
-                                        >
-                                            {/* Wick */}
-                                            <div className={cn("absolute -top-2 left-1/2 w-px h-full -translate-x-1/2 opacity-50", i > 5 ? "bg-green-500" : "bg-red-500")}></div>
-                                        </motion.div>
-                                    ))}
-                                </div>
-
-                                {/* Buy/Sell Buttons */}
-                                <div className="grid grid-cols-2 gap-4 mt-6">
-                                    <div className="h-10 rounded-lg bg-green-500/20 border border-green-500/50 flex items-center justify-center text-green-400 font-bold text-sm cursor-pointer hover:bg-green-500/30">BUY</div>
-                                    <div className="h-10 rounded-lg bg-red-500/20 border border-red-500/50 flex items-center justify-center text-red-400 font-bold text-sm cursor-pointer hover:bg-red-500/30">SELL</div>
+                                    {/* Buy/Sell Buttons */}
+                                    <div className="grid grid-cols-2 gap-4 mt-6">
+                                        <div className="h-10 rounded-lg bg-green-500/20 border border-green-500/50 flex items-center justify-center text-green-400 font-bold text-sm cursor-pointer hover:bg-green-500/30">BUY</div>
+                                        <div className="h-10 rounded-lg bg-red-500/20 border border-red-500/50 flex items-center justify-center text-red-400 font-bold text-sm cursor-pointer hover:bg-red-500/30">SELL</div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            </section>
+                </section>
+            </DynamicHeroWrapper>
 
             {/* Tech Strip */}
             <div className="bg-slate-900 border-y border-slate-800 py-6">

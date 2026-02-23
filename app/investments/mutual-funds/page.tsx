@@ -10,6 +10,7 @@ import { useEmailForm } from "@/hooks/use-email-form";
 import { cn } from "@/lib/utils";
 import { ContentSection } from "@/components/ui/content-section";
 import { SimpleAccordion } from "@/components/ui/simple-accordion";
+import { DynamicHeroWrapper } from "@/components/dynamic-hero-wrapper";
 
 export default function MutualFundsPage() {
     const { sendEmail, isSubmitting, isSuccess, error, resetForm } = useEmailForm();
@@ -34,62 +35,64 @@ export default function MutualFundsPage() {
 
     return (
         <div className="pb-20 bg-slate-50 dark:bg-black selection:bg-green-500/30 font-sans">
-            {/* Unique Hero Section - Market Growth Theme */}
-            <section className="relative pt-40 pb-20 overflow-hidden bg-slate-900 text-white">
-                {/* Tech Grid Background */}
-                <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]"></div>
+            <DynamicHeroWrapper page="mutual-funds">
+                {/* Unique Hero Section - Market Growth Theme */}
+                <section className="relative pt-40 pb-20 overflow-hidden bg-slate-900 text-white">
+                    {/* Tech Grid Background */}
+                    <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]"></div>
 
-                <div className="container px-4 md:px-6 grid lg:grid-cols-2 gap-12 items-center relative z-10">
-                    <div className="space-y-8">
-                        <div className="inline-flex items-center gap-2 rounded-full border border-green-500/30 bg-green-900/20 px-4 py-1.5 text-sm font-bold text-green-400">
-                            <TrendingUp className="h-4 w-4" />
-                            <span>Systematic Investment Plan (SIP)</span>
-                        </div>
-
-                        <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight leading-tight">
-                            Beat Inflation. <br />
-                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-400 via-emerald-400 to-teal-400">Build Real Wealth.</span>
-                        </h1>
-
-                        <p className="text-xl text-slate-400 max-w-lg leading-relaxed">
-                            Start creating your future corpus today. Expertly curated funds for every goal—Retirement, Education, or Wealth Creation.
-                        </p>
-
-                        <div className="flex flex-wrap gap-4">
-                            <Button size="lg" className="h-14 px-8 text-lg rounded-full shadow-lg shadow-green-900/20 bg-green-600 hover:bg-green-700 text-white font-bold" onClick={scrollToForm}>
-                                Start SIP @ ₹500
-                            </Button>
-                        </div>
-                    </div>
-
-                    {/* Visual Hero Element - Growing Graph */}
-                    <div className="relative hidden lg:block h-[400px]">
-                        <div className="absolute inset-0 flex items-end justify-center px-10 pb-10">
-                            {/* Animated Bars */}
-                            <div className="flex items-end gap-4 h-full w-full">
-                                <div className="w-1/5 bg-green-500/20 rounded-t-xl h-[40%] animate-pulse"></div>
-                                <div className="w-1/5 bg-green-500/40 rounded-t-xl h-[60%] animate-pulse delay-100"></div>
-                                <div className="w-1/5 bg-green-500/60 rounded-t-xl h-[50%] animate-pulse delay-200"></div>
-                                <div className="w-1/5 bg-green-500/80 rounded-t-xl h-[80%] animate-pulse delay-300"></div>
-                                <div className="w-1/5 bg-green-500 rounded-t-xl h-[100%] shadow-[0_0_30px_rgba(34,197,94,0.5)] flex items-start justify-center p-4">
-                                    <ArrowUpRight className="text-white h-8 w-8" />
-                                </div>
+                    <div className="container px-4 md:px-6 grid lg:grid-cols-2 gap-12 items-center relative z-10">
+                        <div className="space-y-8">
+                            <div className="inline-flex items-center gap-2 rounded-full border border-green-500/30 bg-green-900/20 px-4 py-1.5 text-sm font-bold text-green-400">
+                                <TrendingUp className="h-4 w-4" />
+                                <span>Systematic Investment Plan (SIP)</span>
                             </div>
 
-                            {/* Floating Card */}
-                            <div className="absolute top-10 left-0 bg-slate-800/90 backdrop-blur-md p-4 rounded-xl border border-slate-700 shadow-xl flex items-center gap-3 animate-bounce delay-700">
-                                <div className="h-10 w-10 bg-green-500/20 rounded-full flex items-center justify-center text-green-400">
-                                    <TrendingUp className="h-6 w-6" />
+                            <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight leading-tight">
+                                Beat Inflation. <br />
+                                <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-400 via-emerald-400 to-teal-400">Build Real Wealth.</span>
+                            </h1>
+
+                            <p className="text-xl text-slate-400 max-w-lg leading-relaxed">
+                                Start creating your future corpus today. Expertly curated funds for every goal—Retirement, Education, or Wealth Creation.
+                            </p>
+
+                            <div className="flex flex-wrap gap-4">
+                                <Button size="lg" className="h-14 px-8 text-lg rounded-full shadow-lg shadow-green-900/20 bg-green-600 hover:bg-green-700 text-white font-bold" onClick={scrollToForm}>
+                                    Start SIP @ ₹500
+                                </Button>
+                            </div>
+                        </div>
+
+                        {/* Visual Hero Element - Growing Graph */}
+                        <div className="relative hidden lg:block h-[400px]">
+                            <div className="absolute inset-0 flex items-end justify-center px-10 pb-10">
+                                {/* Animated Bars */}
+                                <div className="flex items-end gap-4 h-full w-full">
+                                    <div className="w-1/5 bg-green-500/20 rounded-t-xl h-[40%] animate-pulse"></div>
+                                    <div className="w-1/5 bg-green-500/40 rounded-t-xl h-[60%] animate-pulse delay-100"></div>
+                                    <div className="w-1/5 bg-green-500/60 rounded-t-xl h-[50%] animate-pulse delay-200"></div>
+                                    <div className="w-1/5 bg-green-500/80 rounded-t-xl h-[80%] animate-pulse delay-300"></div>
+                                    <div className="w-1/5 bg-green-500 rounded-t-xl h-[100%] shadow-[0_0_30px_rgba(34,197,94,0.5)] flex items-start justify-center p-4">
+                                        <ArrowUpRight className="text-white h-8 w-8" />
+                                    </div>
                                 </div>
-                                <div>
-                                    <p className="text-xs text-slate-400 uppercase font-bold">Returns</p>
-                                    <p className="text-lg font-bold text-white">+15.4% p.a.</p>
+
+                                {/* Floating Card */}
+                                <div className="absolute top-10 left-0 bg-slate-800/90 backdrop-blur-md p-4 rounded-xl border border-slate-700 shadow-xl flex items-center gap-3 animate-bounce delay-700">
+                                    <div className="h-10 w-10 bg-green-500/20 rounded-full flex items-center justify-center text-green-400">
+                                        <TrendingUp className="h-6 w-6" />
+                                    </div>
+                                    <div>
+                                        <p className="text-xs text-slate-400 uppercase font-bold">Returns</p>
+                                        <p className="text-lg font-bold text-white">+15.4% p.a.</p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            </section>
+                </section>
+            </DynamicHeroWrapper>
 
             {/* Ticker Simulation */}
             <div className="bg-slate-950 border-y border-slate-800 py-3 overflow-hidden whitespace-nowrap">

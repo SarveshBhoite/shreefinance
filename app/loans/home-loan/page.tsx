@@ -10,6 +10,7 @@ import { useEmailForm } from "@/hooks/use-email-form";
 import { cn } from "@/lib/utils";
 import { ContentSection } from "@/components/ui/content-section";
 import { SimpleAccordion } from "@/components/ui/simple-accordion";
+import { DynamicHeroWrapper } from "@/components/dynamic-hero-wrapper";
 
 export default function HomeLoanPage() {
     const { sendEmail, isSubmitting, isSuccess, error, resetForm } = useEmailForm();
@@ -41,73 +42,75 @@ export default function HomeLoanPage() {
 
     return (
         <div className="pb-20 bg-slate-50 dark:bg-black selection:bg-blue-500/30 font-sans">
-            {/* Unique Hero Section - Dream Home Theme */}
-            <section className="relative pt-40 pb-32 overflow-hidden bg-white dark:bg-slate-950">
-                {/* Abstract Background Shapes */}
-                <div className="absolute top-0 right-0 w-[60%] h-full bg-blue-50 dark:bg-blue-950/20 rounded-bl-[100px] -z-10"></div>
-                <div className="absolute bottom-10 left-10 w-32 h-32 bg-orange-100 dark:bg-orange-900/20 rounded-full blur-3xl"></div>
+            <DynamicHeroWrapper page="home-loan">
+                {/* Unique Hero Section - Dream Home Theme */}
+                <section className="relative pt-40 pb-32 overflow-hidden bg-white dark:bg-slate-950">
+                    {/* Abstract Background Shapes */}
+                    <div className="absolute top-0 right-0 w-[60%] h-full bg-blue-50 dark:bg-blue-950/20 rounded-bl-[100px] -z-10"></div>
+                    <div className="absolute bottom-10 left-10 w-32 h-32 bg-orange-100 dark:bg-orange-900/20 rounded-full blur-3xl"></div>
 
-                <div className="container px-4 md:px-6 grid lg:grid-cols-2 gap-12 items-center">
-                    <div className="space-y-8">
-                        <div className="inline-flex items-center gap-2 rounded-full border border-blue-200 bg-blue-50 px-4 py-1.5 text-sm font-bold text-blue-700 dark:bg-blue-900/30 dark:border-blue-800 dark:text-blue-300">
-                            <Home className="h-4 w-4" />
-                            <span>Unlock Your Deam Home</span>
+                    <div className="container px-4 md:px-6 grid lg:grid-cols-2 gap-12 items-center">
+                        <div className="space-y-8">
+                            <div className="inline-flex items-center gap-2 rounded-full border border-blue-200 bg-blue-50 px-4 py-1.5 text-sm font-bold text-blue-700 dark:bg-blue-900/30 dark:border-blue-800 dark:text-blue-300">
+                                <Home className="h-4 w-4" />
+                                <span>Unlock Your Deam Home</span>
+                            </div>
+
+                            <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight leading-[1.1] text-slate-900 dark:text-white">
+                                The Key to <br />
+                                <span className="text-blue-600">Happiness.</span>
+                            </h1>
+
+                            <p className="text-xl text-slate-600 dark:text-slate-300 max-w-lg leading-relaxed">
+                                Stop renting, start owning. With interest rates starting at just <strong>8.40% p.a.</strong>, your dream home is closer than you think.
+                            </p>
+
+                            <div className="flex flex-wrap gap-4">
+                                <Button size="lg" className="h-14 px-8 text-lg rounded-full shadow-xl bg-blue-600 hover:bg-blue-700 text-white font-bold transition-all hover:-translate-y-1" onClick={scrollToForm}>
+                                    Apply for Home Loan
+                                </Button>
+                            </div>
+
+                            {/* Stats Row */}
+                            <div className="flex gap-8 pt-4 border-t border-slate-200 dark:border-slate-800">
+                                <div>
+                                    <p className="text-3xl font-bold text-slate-900 dark:text-white">30Y</p>
+                                    <p className="text-sm text-slate-500 font-medium uppercase tracking-wider">Max Tenure</p>
+                                </div>
+                                <div>
+                                    <p className="text-3xl font-bold text-slate-900 dark:text-white">90%</p>
+                                    <p className="text-sm text-slate-500 font-medium uppercase tracking-wider">Funding</p>
+                                </div>
+                                <div>
+                                    <p className="text-3xl font-bold text-slate-900 dark:text-white">0%</p>
+                                    <p className="text-sm text-slate-500 font-medium uppercase tracking-wider">Hidden Charges</p>
+                                </div>
+                            </div>
                         </div>
 
-                        <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight leading-[1.1] text-slate-900 dark:text-white">
-                            The Key to <br />
-                            <span className="text-blue-600">Happiness.</span>
-                        </h1>
-
-                        <p className="text-xl text-slate-600 dark:text-slate-300 max-w-lg leading-relaxed">
-                            Stop renting, start owning. With interest rates starting at just <strong>8.40% p.a.</strong>, your dream home is closer than you think.
-                        </p>
-
-                        <div className="flex flex-wrap gap-4">
-                            <Button size="lg" className="h-14 px-8 text-lg rounded-full shadow-xl bg-blue-600 hover:bg-blue-700 text-white font-bold transition-all hover:-translate-y-1" onClick={scrollToForm}>
-                                Apply for Home Loan
-                            </Button>
-                        </div>
-
-                        {/* Stats Row */}
-                        <div className="flex gap-8 pt-4 border-t border-slate-200 dark:border-slate-800">
-                            <div>
-                                <p className="text-3xl font-bold text-slate-900 dark:text-white">30Y</p>
-                                <p className="text-sm text-slate-500 font-medium uppercase tracking-wider">Max Tenure</p>
-                            </div>
-                            <div>
-                                <p className="text-3xl font-bold text-slate-900 dark:text-white">90%</p>
-                                <p className="text-sm text-slate-500 font-medium uppercase tracking-wider">Funding</p>
-                            </div>
-                            <div>
-                                <p className="text-3xl font-bold text-slate-900 dark:text-white">0%</p>
-                                <p className="text-sm text-slate-500 font-medium uppercase tracking-wider">Hidden Charges</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    {/* Visual Hero Element */}
-                    <div className="relative hidden lg:block h-[500px]">
-                        <div className="absolute inset-0 bg-gradient-to-tr from-blue-100 to-indigo-50 dark:from-slate-800 dark:to-slate-900 rounded-[40px] rotate-3 shadow-2xl overflow-hidden">
-                            {/* Mock House Visual */}
-                            <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[80%] h-[70%] bg-blue-600 rounded-t-[40px] shadow-inner flex items-center justify-center">
-                                <Key className="text-white/20 h-48 w-48" />
-                            </div>
-                            <div className="absolute top-10 right-10 p-4 bg-white dark:bg-slate-800 rounded-2xl shadow-lg animate-bounce">
-                                <div className="flex items-center gap-3">
-                                    <div className="h-10 w-10 rounded-full bg-green-100 flex items-center justify-center text-green-600">
-                                        <CheckCircle2 className="h-6 w-6" />
-                                    </div>
-                                    <div>
-                                        <p className="text-xs text-slate-500 font-bold uppercase">Status</p>
-                                        <p className="text-sm font-bold text-slate-900 dark:text-white">Approved</p>
+                        {/* Visual Hero Element */}
+                        <div className="relative hidden lg:block h-[500px]">
+                            <div className="absolute inset-0 bg-gradient-to-tr from-blue-100 to-indigo-50 dark:from-slate-800 dark:to-slate-900 rounded-[40px] rotate-3 shadow-2xl overflow-hidden">
+                                {/* Mock House Visual */}
+                                <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[80%] h-[70%] bg-blue-600 rounded-t-[40px] shadow-inner flex items-center justify-center">
+                                    <Key className="text-white/20 h-48 w-48" />
+                                </div>
+                                <div className="absolute top-10 right-10 p-4 bg-white dark:bg-slate-800 rounded-2xl shadow-lg animate-bounce">
+                                    <div className="flex items-center gap-3">
+                                        <div className="h-10 w-10 rounded-full bg-green-100 flex items-center justify-center text-green-600">
+                                            <CheckCircle2 className="h-6 w-6" />
+                                        </div>
+                                        <div>
+                                            <p className="text-xs text-slate-500 font-bold uppercase">Status</p>
+                                            <p className="text-sm font-bold text-slate-900 dark:text-white">Approved</p>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            </section>
+                </section>
+            </DynamicHeroWrapper>
 
             {/* Timeline Process Section (Unique to Home Loan) */}
             <section className="py-20 bg-slate-50 dark:bg-slate-900">

@@ -10,6 +10,7 @@ import { useEmailForm } from "@/hooks/use-email-form";
 import { cn } from "@/lib/utils";
 import { ContentSection } from "@/components/ui/content-section";
 import { SimpleAccordion } from "@/components/ui/simple-accordion";
+import { DynamicHeroWrapper } from "@/components/dynamic-hero-wrapper";
 
 export default function CarLoanPage() {
     const { sendEmail, isSubmitting, isSuccess, error, resetForm } = useEmailForm();
@@ -34,79 +35,81 @@ export default function CarLoanPage() {
 
     return (
         <div className="pb-20 bg-slate-50 dark:bg-black selection:bg-red-500/30 font-sans">
-            {/* Unique Hero Section - Open Road Theme */}
-            <section className="relative pt-40 pb-20 overflow-hidden bg-slate-900 text-white">
-                {/* Road marking background */}
-                <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff05_1px,transparent_1px),linear-gradient(to_bottom,#ffffff05_1px,transparent_1px)] bg-[size:50px_50px]"></div>
-                <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-red-600/20 rounded-full blur-[120px] mix-blend-screen animate-pulse"></div>
+            <DynamicHeroWrapper page="car-loan">
+                {/* Unique Hero Section - Open Road Theme */}
+                <section className="relative pt-40 pb-20 overflow-hidden bg-slate-900 text-white">
+                    {/* Road marking background */}
+                    <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff05_1px,transparent_1px),linear-gradient(to_bottom,#ffffff05_1px,transparent_1px)] bg-[size:50px_50px]"></div>
+                    <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-red-600/20 rounded-full blur-[120px] mix-blend-screen animate-pulse"></div>
 
-                <div className="container px-4 md:px-6 grid lg:grid-cols-2 gap-12 items-center relative z-10">
-                    <div className="space-y-8">
-                        <div className="inline-flex items-center gap-2 rounded-full border border-red-500/30 bg-red-900/20 px-4 py-1.5 text-sm font-bold text-red-400">
-                            <Car className="h-4 w-4" />
-                            <span>Drive Home Your Dream Car</span>
-                        </div>
-
-                        <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight leading-tight">
-                            The Road is <br />
-                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-orange-500">Calling.</span>
-                        </h1>
-
-                        <p className="text-xl text-slate-300 max-w-lg leading-relaxed">
-                            Get up to 100% On-Road funding with interest rates starting at 8.75% p.a. Fast-track approval for new and used cars.
-                        </p>
-
-                        <div className="flex flex-wrap gap-4">
-                            <Button size="lg" className="h-14 px-8 text-lg rounded-full shadow-lg shadow-red-900/40 bg-red-600 hover:bg-red-700 text-white font-bold" onClick={scrollToForm}>
-                                Check On-Road Price
-                            </Button>
-                        </div>
-
-                        <div className="flex items-center gap-6 pt-4">
-                            <div className="text-center">
-                                <p className="text-2xl font-bold text-white">100%</p>
-                                <p className="text-xs text-slate-400 uppercase tracking-wider">Funding</p>
+                    <div className="container px-4 md:px-6 grid lg:grid-cols-2 gap-12 items-center relative z-10">
+                        <div className="space-y-8">
+                            <div className="inline-flex items-center gap-2 rounded-full border border-red-500/30 bg-red-900/20 px-4 py-1.5 text-sm font-bold text-red-400">
+                                <Car className="h-4 w-4" />
+                                <span>Drive Home Your Dream Car</span>
                             </div>
-                            <div className="w-px h-10 bg-slate-700"></div>
-                            <div className="text-center">
-                                <p className="text-2xl font-bold text-white">7 Yrs</p>
-                                <p className="text-xs text-slate-400 uppercase tracking-wider">Tenure</p>
-                            </div>
-                            <div className="w-px h-10 bg-slate-700"></div>
-                            <div className="text-center">
-                                <p className="text-2xl font-bold text-white">4 Hrs</p>
-                                <p className="text-xs text-slate-400 uppercase tracking-wider">Approval</p>
-                            </div>
-                        </div>
-                    </div>
 
-                    {/* Visual Hero Element - Speedometer/Car */}
-                    <div className="relative hidden lg:block h-[500px]">
-                        <div className="absolute inset-0 flex items-center justify-center">
-                            {/* Speedometer Gauge Visual */}
-                            <div className="relative w-96 h-96 rounded-full border-8 border-slate-800 bg-slate-900 shadow-2xl flex items-center justify-center">
-                                <div className="absolute inset-2 rounded-full border-4 border-slate-800 border-t-red-500 border-r-red-500 border-b-transparent border-l-transparent rotate-[-45deg]"></div>
-                                <div className="text-center z-10">
-                                    <Gauge className="h-20 w-20 text-red-500 mx-auto mb-2 animate-bounce" />
-                                    <p className="text-4xl font-bold text-white">Fast</p>
-                                    <p className="text-sm text-slate-400">Processing</p>
+                            <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight leading-tight">
+                                The Road is <br />
+                                <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-orange-500">Calling.</span>
+                            </h1>
+
+                            <p className="text-xl text-slate-300 max-w-lg leading-relaxed">
+                                Get up to 100% On-Road funding with interest rates starting at 8.75% p.a. Fast-track approval for new and used cars.
+                            </p>
+
+                            <div className="flex flex-wrap gap-4">
+                                <Button size="lg" className="h-14 px-8 text-lg rounded-full shadow-lg shadow-red-900/40 bg-red-600 hover:bg-red-700 text-white font-bold" onClick={scrollToForm}>
+                                    Check On-Road Price
+                                </Button>
+                            </div>
+
+                            <div className="flex items-center gap-6 pt-4">
+                                <div className="text-center">
+                                    <p className="text-2xl font-bold text-white">100%</p>
+                                    <p className="text-xs text-slate-400 uppercase tracking-wider">Funding</p>
                                 </div>
-                                {/* Needle */}
-                                <div className="absolute top-1/2 left-1/2 w-32 h-1 bg-red-500 origin-left -translate-y-1/2 rotate-45 rounded-full shadow-[0_0_20px_rgba(239,68,68,0.8)] animate-pulse"></div>
-                            </div>
-
-                            {/* Floating Elements */}
-                            <div className="absolute top-10 right-0 bg-slate-800 p-4 rounded-xl border border-slate-700 shadow-lg flex items-center gap-3 animate-bounce delay-700">
-                                <div className="p-2 bg-slate-700 rounded-lg"><Fuel className="h-5 w-5 text-yellow-500" /></div>
-                                <div>
-                                    <p className="text-xs text-slate-400 font-bold uppercase">Fuel Your</p>
-                                    <p className="text-sm font-bold text-white">Dreams</p>
+                                <div className="w-px h-10 bg-slate-700"></div>
+                                <div className="text-center">
+                                    <p className="text-2xl font-bold text-white">7 Yrs</p>
+                                    <p className="text-xs text-slate-400 uppercase tracking-wider">Tenure</p>
+                                </div>
+                                <div className="w-px h-10 bg-slate-700"></div>
+                                <div className="text-center">
+                                    <p className="text-2xl font-bold text-white">4 Hrs</p>
+                                    <p className="text-xs text-slate-400 uppercase tracking-wider">Approval</p>
                                 </div>
                             </div>
                         </div>
+
+                        {/* Visual Hero Element - Speedometer/Car */}
+                        <div className="relative hidden lg:block h-[500px]">
+                            <div className="absolute inset-0 flex items-center justify-center">
+                                {/* Speedometer Gauge Visual */}
+                                <div className="relative w-96 h-96 rounded-full border-8 border-slate-800 bg-slate-900 shadow-2xl flex items-center justify-center">
+                                    <div className="absolute inset-2 rounded-full border-4 border-slate-800 border-t-red-500 border-r-red-500 border-b-transparent border-l-transparent rotate-[-45deg]"></div>
+                                    <div className="text-center z-10">
+                                        <Gauge className="h-20 w-20 text-red-500 mx-auto mb-2 animate-bounce" />
+                                        <p className="text-4xl font-bold text-white">Fast</p>
+                                        <p className="text-sm text-slate-400">Processing</p>
+                                    </div>
+                                    {/* Needle */}
+                                    <div className="absolute top-1/2 left-1/2 w-32 h-1 bg-red-500 origin-left -translate-y-1/2 rotate-45 rounded-full shadow-[0_0_20px_rgba(239,68,68,0.8)] animate-pulse"></div>
+                                </div>
+
+                                {/* Floating Elements */}
+                                <div className="absolute top-10 right-0 bg-slate-800 p-4 rounded-xl border border-slate-700 shadow-lg flex items-center gap-3 animate-bounce delay-700">
+                                    <div className="p-2 bg-slate-700 rounded-lg"><Fuel className="h-5 w-5 text-yellow-500" /></div>
+                                    <div>
+                                        <p className="text-xs text-slate-400 font-bold uppercase">Fuel Your</p>
+                                        <p className="text-sm font-bold text-white">Dreams</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </section>
+                </section>
+            </DynamicHeroWrapper>
 
             {/* Car Stats Strip */}
             <div className="bg-red-600 dark:bg-red-900 text-white py-10 relative overflow-hidden">

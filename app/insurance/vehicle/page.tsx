@@ -10,6 +10,7 @@ import { cn } from "@/lib/utils";
 import { ContentSection } from "@/components/ui/content-section";
 import { SimpleAccordion } from "@/components/ui/simple-accordion";
 import { motion } from "framer-motion";
+import { DynamicHeroWrapper } from "@/components/dynamic-hero-wrapper";
 
 export default function VehicleInsurancePage() {
     const { sendEmail, isSubmitting, isSuccess, error, resetForm } = useEmailForm();
@@ -34,82 +35,84 @@ export default function VehicleInsurancePage() {
 
     return (
         <div className="pb-20 bg-slate-50 dark:bg-black selection:bg-emerald-500/30 font-sans">
-            {/* Unique Hero Section - Road Safety Theme */}
-            <section className="relative pt-32 pb-32 overflow-hidden bg-slate-900 text-white">
-                {/* Safety Grid Background */}
-                <div className="absolute inset-0 bg-[linear-gradient(to_right,#10b9811a_1px,transparent_1px),linear-gradient(to_bottom,#10b9811a_1px,transparent_1px)] bg-[size:40px_40px]"></div>
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent"></div>
+            <DynamicHeroWrapper page="vehicle-insurance">
+                {/* Unique Hero Section - Road Safety Theme */}
+                <section className="relative pt-32 pb-32 overflow-hidden bg-slate-900 text-white">
+                    {/* Safety Grid Background */}
+                    <div className="absolute inset-0 bg-[linear-gradient(to_right,#10b9811a_1px,transparent_1px),linear-gradient(to_bottom,#10b9811a_1px,transparent_1px)] bg-[size:40px_40px]"></div>
+                    <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent"></div>
 
-                {/* Radar Effect */}
-                <div className="absolute top-1/2 left-1/4 w-[600px] h-[600px] border border-emerald-500/20 rounded-full -translate-y-1/2 animate-[spin_10s_linear_infinite]"></div>
-                <div className="absolute top-1/2 left-1/4 w-[400px] h-[400px] border border-emerald-500/10 rounded-full -translate-y-1/2 animate-[spin_5s_linear_infinite_reverse]"></div>
+                    {/* Radar Effect */}
+                    <div className="absolute top-1/2 left-1/4 w-[600px] h-[600px] border border-emerald-500/20 rounded-full -translate-y-1/2 animate-[spin_10s_linear_infinite]"></div>
+                    <div className="absolute top-1/2 left-1/4 w-[400px] h-[400px] border border-emerald-500/10 rounded-full -translate-y-1/2 animate-[spin_5s_linear_infinite_reverse]"></div>
 
-                <div className="container relative z-10 px-4 md:px-6 grid lg:grid-cols-2 gap-12 items-center">
-                    <div className="space-y-8">
-                        <div className="inline-flex items-center gap-2 rounded-full border border-emerald-500/30 bg-emerald-900/20 px-4 py-1.5 text-sm font-bold text-emerald-400">
-                            <ShieldCheck className="h-4 w-4" />
-                            <span>Total Road Protection</span>
-                        </div>
+                    <div className="container relative z-10 px-4 md:px-6 grid lg:grid-cols-2 gap-12 items-center">
+                        <div className="space-y-8">
+                            <div className="inline-flex items-center gap-2 rounded-full border border-emerald-500/30 bg-emerald-900/20 px-4 py-1.5 text-sm font-bold text-emerald-400">
+                                <ShieldCheck className="h-4 w-4" />
+                                <span>Total Road Protection</span>
+                            </div>
 
-                        <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight leading-tight">
-                            Drive with <br />
-                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-green-500">Zero Worries.</span>
-                        </h1>
+                            <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight leading-tight">
+                                Drive with <br />
+                                <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-green-500">Zero Worries.</span>
+                            </h1>
 
-                        <p className="text-xl text-slate-400 max-w-lg leading-relaxed">
-                            Comprehensive coverage for your car and bike with cashless claims at 5000+ garages. 24x7 Roadside Assistance included.
-                        </p>
+                            <p className="text-xl text-slate-400 max-w-lg leading-relaxed">
+                                Comprehensive coverage for your car and bike with cashless claims at 5000+ garages. 24x7 Roadside Assistance included.
+                            </p>
 
-                        <div className="flex flex-wrap gap-4">
-                            <Button size="lg" className="h-14 px-8 text-lg rounded-full shadow-lg shadow-emerald-900/40 bg-emerald-600 hover:bg-emerald-700 text-white font-bold" onClick={scrollToForm}>
-                                Get Quick Quote
-                            </Button>
-                        </div>
+                            <div className="flex flex-wrap gap-4">
+                                <Button size="lg" className="h-14 px-8 text-lg rounded-full shadow-lg shadow-emerald-900/40 bg-emerald-600 hover:bg-emerald-700 text-white font-bold" onClick={scrollToForm}>
+                                    Get Quick Quote
+                                </Button>
+                            </div>
 
-                        <div className="flex items-center gap-6 pt-4 border-t border-slate-800">
-                            <div className="flex items-center gap-2">
-                                <div className="p-2 bg-emerald-900/30 rounded-full"><Zap className="h-4 w-4 text-emerald-400" /></div>
-                                <div>
-                                    <p className="font-bold text-white">Instant</p>
-                                    <p className="text-xs text-slate-500">Policy Issue</p>
+                            <div className="flex items-center gap-6 pt-4 border-t border-slate-800">
+                                <div className="flex items-center gap-2">
+                                    <div className="p-2 bg-emerald-900/30 rounded-full"><Zap className="h-4 w-4 text-emerald-400" /></div>
+                                    <div>
+                                        <p className="font-bold text-white">Instant</p>
+                                        <p className="text-xs text-slate-500">Policy Issue</p>
+                                    </div>
+                                </div>
+                                <div className="flex items-center gap-2">
+                                    <div className="p-2 bg-emerald-900/30 rounded-full"><Wrench className="h-4 w-4 text-emerald-400" /></div>
+                                    <div>
+                                        <p className="font-bold text-white">Cashless</p>
+                                        <p className="text-xs text-slate-500">Repairs</p>
+                                    </div>
                                 </div>
                             </div>
-                            <div className="flex items-center gap-2">
-                                <div className="p-2 bg-emerald-900/30 rounded-full"><Wrench className="h-4 w-4 text-emerald-400" /></div>
-                                <div>
-                                    <p className="font-bold text-white">Cashless</p>
-                                    <p className="text-xs text-slate-500">Repairs</p>
-                                </div>
+                        </div>
+
+                        {/* Visual Hero Element - 3D Shield */}
+                        <div className="relative hidden lg:block h-[500px]">
+                            <div className="absolute inset-0 flex items-center justify-center">
+                                {/* Floating Shield Layer */}
+                                <motion.div
+                                    className="relative w-80 h-96 bg-gradient-to-br from-emerald-500 to-green-700 rounded-[50px] shadow-[0_0_50px_rgba(16,185,129,0.4)] flex items-center justify-center border-4 border-emerald-400/50"
+                                    animate={{ y: [0, -15, 0] }}
+                                    transition={{ repeat: Infinity, duration: 5, ease: "easeInOut" }}
+                                >
+                                    <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-20 mix-blend-overlay"></div>
+                                    <ShieldCheck className="h-40 w-40 text-white drop-shadow-xl" />
+
+                                    {/* Orbiting Elements */}
+                                    <div className="absolute -right-8 top-20 bg-slate-800 p-3 rounded-xl border border-slate-700 shadow-xl flex flex-col items-center gap-1 animate-bounce delay-100">
+                                        <Car className="h-6 w-6 text-blue-400" />
+                                        <span className="text-[10px] font-bold text-slate-300">CAR</span>
+                                    </div>
+                                    <div className="absolute -left-8 bottom-20 bg-slate-800 p-3 rounded-xl border border-slate-700 shadow-xl flex flex-col items-center gap-1 animate-bounce delay-300">
+                                        <Bike className="h-6 w-6 text-orange-400" />
+                                        <span className="text-[10px] font-bold text-slate-300">BIKE</span>
+                                    </div>
+                                </motion.div>
                             </div>
                         </div>
                     </div>
-
-                    {/* Visual Hero Element - 3D Shield */}
-                    <div className="relative hidden lg:block h-[500px]">
-                        <div className="absolute inset-0 flex items-center justify-center">
-                            {/* Floating Shield Layer */}
-                            <motion.div
-                                className="relative w-80 h-96 bg-gradient-to-br from-emerald-500 to-green-700 rounded-[50px] shadow-[0_0_50px_rgba(16,185,129,0.4)] flex items-center justify-center border-4 border-emerald-400/50"
-                                animate={{ y: [0, -15, 0] }}
-                                transition={{ repeat: Infinity, duration: 5, ease: "easeInOut" }}
-                            >
-                                <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-20 mix-blend-overlay"></div>
-                                <ShieldCheck className="h-40 w-40 text-white drop-shadow-xl" />
-
-                                {/* Orbiting Elements */}
-                                <div className="absolute -right-8 top-20 bg-slate-800 p-3 rounded-xl border border-slate-700 shadow-xl flex flex-col items-center gap-1 animate-bounce delay-100">
-                                    <Car className="h-6 w-6 text-blue-400" />
-                                    <span className="text-[10px] font-bold text-slate-300">CAR</span>
-                                </div>
-                                <div className="absolute -left-8 bottom-20 bg-slate-800 p-3 rounded-xl border border-slate-700 shadow-xl flex flex-col items-center gap-1 animate-bounce delay-300">
-                                    <Bike className="h-6 w-6 text-orange-400" />
-                                    <span className="text-[10px] font-bold text-slate-300">BIKE</span>
-                                </div>
-                            </motion.div>
-                        </div>
-                    </div>
-                </div>
-            </section>
+                </section>
+            </DynamicHeroWrapper>
 
             {/* Emergency Strip */}
             <div className="bg-red-900/10 border-y border-red-900/20 py-4">

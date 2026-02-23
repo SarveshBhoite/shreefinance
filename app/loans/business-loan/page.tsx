@@ -10,6 +10,7 @@ import { useEmailForm } from "@/hooks/use-email-form";
 import { cn } from "@/lib/utils";
 import { ContentSection } from "@/components/ui/content-section";
 import { SimpleAccordion } from "@/components/ui/simple-accordion";
+import { DynamicHeroWrapper } from "@/components/dynamic-hero-wrapper";
 
 export default function BusinessLoanPage() {
     const { sendEmail, isSubmitting, isSuccess, error, resetForm } = useEmailForm();
@@ -34,74 +35,76 @@ export default function BusinessLoanPage() {
 
     return (
         <div className="pb-20 bg-slate-50 dark:bg-black selection:bg-blue-500/30 font-sans">
-            {/* Unique Hero Section - Empire Builder Theme */}
-            <section className="relative pt-40 pb-20 overflow-hidden bg-slate-900 text-white">
-                {/* City skyline background */}
-                <div className="absolute bottom-0 left-0 right-0 h-64 bg-[url('https://www.transparenttextures.com/patterns/city-lights.png')] opacity-20 z-0"></div>
-                <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-blue-600/20 rounded-full blur-[120px] mix-blend-screen animate-pulse"></div>
+            <DynamicHeroWrapper page="business-loan">
+                {/* Unique Hero Section - Empire Builder Theme */}
+                <section className="relative pt-40 pb-20 overflow-hidden bg-slate-900 text-white">
+                    {/* City skyline background */}
+                    <div className="absolute bottom-0 left-0 right-0 h-64 bg-[url('https://www.transparenttextures.com/patterns/city-lights.png')] opacity-20 z-0"></div>
+                    <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-blue-600/20 rounded-full blur-[120px] mix-blend-screen animate-pulse"></div>
 
-                <div className="container px-4 md:px-6 grid lg:grid-cols-2 gap-12 items-center relative z-10">
-                    <div className="space-y-8">
-                        <div className="inline-flex items-center gap-2 rounded-full border border-blue-500/30 bg-blue-900/20 px-4 py-1.5 text-sm font-bold text-blue-400">
-                            <Building2 className="h-4 w-4" />
-                            <span>Fuel Your Business Growth</span>
+                    <div className="container px-4 md:px-6 grid lg:grid-cols-2 gap-12 items-center relative z-10">
+                        <div className="space-y-8">
+                            <div className="inline-flex items-center gap-2 rounded-full border border-blue-500/30 bg-blue-900/20 px-4 py-1.5 text-sm font-bold text-blue-400">
+                                <Building2 className="h-4 w-4" />
+                                <span>Fuel Your Business Growth</span>
+                            </div>
+
+                            <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight leading-tight">
+                                Build Your <br />
+                                <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-indigo-400 to-purple-400">Empire.</span>
+                            </h1>
+
+                            <p className="text-xl text-slate-300 max-w-lg leading-relaxed">
+                                Capital solutions for every stage of your business. Unsecured loans up to ₹50 Lakhs with flexible repayment options.
+                            </p>
+
+                            <div className="flex flex-wrap gap-4">
+                                <Button size="lg" className="h-14 px-8 text-lg rounded-full shadow-lg shadow-blue-900/40 bg-blue-600 hover:bg-blue-700 text-white font-bold" onClick={scrollToForm}>
+                                    Check Eligibility
+                                </Button>
+                            </div>
+
+                            <div className="grid grid-cols-3 gap-6 pt-4 border-t border-slate-800">
+                                <div>
+                                    <p className="text-3xl font-bold text-white">₹50L</p>
+                                    <p className="text-xs text-slate-400 uppercase tracking-wider">Max Amount</p>
+                                </div>
+                                <div>
+                                    <p className="text-3xl font-bold text-white">48hr</p>
+                                    <p className="text-xs text-slate-400 uppercase tracking-wider">Disbursal</p>
+                                </div>
+                                <div>
+                                    <p className="text-3xl font-bold text-white">0</p>
+                                    <p className="text-xs text-slate-400 uppercase tracking-wider">Collateral</p>
+                                </div>
+                            </div>
                         </div>
 
-                        <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight leading-tight">
-                            Build Your <br />
-                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-indigo-400 to-purple-400">Empire.</span>
-                        </h1>
+                        {/* Visual Hero Element - Skyscraper/Growth */}
+                        <div className="relative hidden lg:block h-[500px]">
+                            <div className="absolute inset-0 flex items-center justify-center">
+                                {/* Abstract Building Blocks */}
+                                <div className="relative w-64 h-96">
+                                    <div className="absolute bottom-0 left-0 w-20 h-40 bg-blue-900 rounded-t-lg opacity-80 animate-pulse"></div>
+                                    <div className="absolute bottom-0 left-24 w-20 h-64 bg-blue-700 rounded-t-lg opacity-90 animate-pulse delay-100"></div>
+                                    <div className="absolute bottom-0 right-0 w-20 h-80 bg-blue-500 rounded-t-lg shadow-[0_0_30px_rgba(59,130,246,0.5)] animate-pulse delay-200"></div>
 
-                        <p className="text-xl text-slate-300 max-w-lg leading-relaxed">
-                            Capital solutions for every stage of your business. Unsecured loans up to ₹50 Lakhs with flexible repayment options.
-                        </p>
-
-                        <div className="flex flex-wrap gap-4">
-                            <Button size="lg" className="h-14 px-8 text-lg rounded-full shadow-lg shadow-blue-900/40 bg-blue-600 hover:bg-blue-700 text-white font-bold" onClick={scrollToForm}>
-                                Check Eligibility
-                            </Button>
-                        </div>
-
-                        <div className="grid grid-cols-3 gap-6 pt-4 border-t border-slate-800">
-                            <div>
-                                <p className="text-3xl font-bold text-white">₹50L</p>
-                                <p className="text-xs text-slate-400 uppercase tracking-wider">Max Amount</p>
-                            </div>
-                            <div>
-                                <p className="text-3xl font-bold text-white">48hr</p>
-                                <p className="text-xs text-slate-400 uppercase tracking-wider">Disbursal</p>
-                            </div>
-                            <div>
-                                <p className="text-3xl font-bold text-white">0</p>
-                                <p className="text-xs text-slate-400 uppercase tracking-wider">Collateral</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    {/* Visual Hero Element - Skyscraper/Growth */}
-                    <div className="relative hidden lg:block h-[500px]">
-                        <div className="absolute inset-0 flex items-center justify-center">
-                            {/* Abstract Building Blocks */}
-                            <div className="relative w-64 h-96">
-                                <div className="absolute bottom-0 left-0 w-20 h-40 bg-blue-900 rounded-t-lg opacity-80 animate-pulse"></div>
-                                <div className="absolute bottom-0 left-24 w-20 h-64 bg-blue-700 rounded-t-lg opacity-90 animate-pulse delay-100"></div>
-                                <div className="absolute bottom-0 right-0 w-20 h-80 bg-blue-500 rounded-t-lg shadow-[0_0_30px_rgba(59,130,246,0.5)] animate-pulse delay-200"></div>
-
-                                {/* Floating Growth Graph */}
-                                <div className="absolute top-10 -right-16 bg-slate-800/90 backdrop-blur-md p-4 rounded-xl border border-slate-700 shadow-xl w-64 animate-bounce delay-700">
-                                    <div className="flex justify-between items-center mb-2">
-                                        <p className="text-xs text-slate-400 font-bold uppercase">Revenue Growth</p>
-                                        <TrendingUp className="h-4 w-4 text-green-500" />
-                                    </div>
-                                    <div className="h-2 w-full bg-slate-700 rounded-full overflow-hidden">
-                                        <div className="h-full w-[80%] bg-green-500 rounded-full"></div>
+                                    {/* Floating Growth Graph */}
+                                    <div className="absolute top-10 -right-16 bg-slate-800/90 backdrop-blur-md p-4 rounded-xl border border-slate-700 shadow-xl w-64 animate-bounce delay-700">
+                                        <div className="flex justify-between items-center mb-2">
+                                            <p className="text-xs text-slate-400 font-bold uppercase">Revenue Growth</p>
+                                            <TrendingUp className="h-4 w-4 text-green-500" />
+                                        </div>
+                                        <div className="h-2 w-full bg-slate-700 rounded-full overflow-hidden">
+                                            <div className="h-full w-[80%] bg-green-500 rounded-full"></div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            </section>
+                </section>
+            </DynamicHeroWrapper>
 
             {/* Business Solutions Strip */}
             <div className="border-y border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950 py-10">

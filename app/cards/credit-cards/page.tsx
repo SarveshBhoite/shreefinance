@@ -9,6 +9,7 @@ import { useEmailForm } from "@/hooks/use-email-form";
 import { cn } from "@/lib/utils";
 import { ContentSection } from "@/components/ui/content-section";
 import { motion } from "framer-motion";
+import { DynamicHeroWrapper } from "@/components/dynamic-hero-wrapper";
 
 export default function CreditCardsPage() {
     const { sendEmail, isSubmitting, isSuccess, error, resetForm } = useEmailForm();
@@ -33,78 +34,80 @@ export default function CreditCardsPage() {
 
     return (
         <div className="pb-20 bg-slate-50 dark:bg-black selection:bg-rose-500/30 font-sans">
-            {/* Unique Hero Section - Premium Lifestyle Theme */}
-            <section className="relative pt-32 pb-32 overflow-hidden bg-white dark:bg-slate-950">
-                {/* Spotlight Background */}
-                <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[600px] bg-rose-400/20 rounded-full blur-[120px] mix-blend-screen opacity-60 pointer-events-none"></div>
-                <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/diamond-upholstery.png')] opacity-5"></div>
+            <DynamicHeroWrapper page="credit-cards">
+                {/* Unique Hero Section - Premium Lifestyle Theme */}
+                <section className="relative pt-32 pb-32 overflow-hidden bg-white dark:bg-slate-950">
+                    {/* Spotlight Background */}
+                    <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[600px] bg-rose-400/20 rounded-full blur-[120px] mix-blend-screen opacity-60 pointer-events-none"></div>
+                    <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/diamond-upholstery.png')] opacity-5"></div>
 
-                <div className="container relative z-10 px-4 md:px-6 text-center">
-                    <div className="inline-flex items-center gap-2 rounded-full border border-rose-600/20 bg-rose-600/10 px-4 py-1.5 text-sm font-bold text-rose-600 dark:text-rose-300 mb-8 backdrop-blur-md">
-                        <Crown className="h-4 w-4 fill-rose-600/20" />
-                        <span>Experience True Luxury</span>
-                    </div>
+                    <div className="container relative z-10 px-4 md:px-6 text-center">
+                        <div className="inline-flex items-center gap-2 rounded-full border border-rose-600/20 bg-rose-600/10 px-4 py-1.5 text-sm font-bold text-rose-600 dark:text-rose-300 mb-8 backdrop-blur-md">
+                            <Crown className="h-4 w-4 fill-rose-600/20" />
+                            <span>Experience True Luxury</span>
+                        </div>
 
-                    <h1 className="text-5xl md:text-8xl font-extrabold tracking-tight leading-tight text-slate-900 dark:text-white mb-6">
-                        Unlock a World of <br />
-                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-rose-500 via-pink-500 to-amber-500">Privileges.</span>
-                    </h1>
+                        <h1 className="text-5xl md:text-8xl font-extrabold tracking-tight leading-tight text-slate-900 dark:text-white mb-6">
+                            Unlock a World of <br />
+                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-rose-500 via-pink-500 to-amber-500">Privileges.</span>
+                        </h1>
 
-                    <p className="text-xl text-slate-600 dark:text-slate-300 max-w-2xl mx-auto leading-relaxed mb-10">
-                        From exclusive airport lounges to accelerated reward points, our credit cards are designed to complement your premium lifestyle.
-                    </p>
+                        <p className="text-xl text-slate-600 dark:text-slate-300 max-w-2xl mx-auto leading-relaxed mb-10">
+                            From exclusive airport lounges to accelerated reward points, our credit cards are designed to complement your premium lifestyle.
+                        </p>
 
-                    <div className="flex justify-center flex-wrap gap-4 mb-20">
-                        <Button size="lg" className="h-14 px-10 text-lg rounded-full shadow-2xl shadow-rose-900/20 bg-gradient-to-r from-rose-600 to-pink-600 hover:from-rose-700 hover:to-pink-700 text-white font-bold hover:scale-105 transition-transform" onClick={scrollToForm}>
-                            Apply Now
-                        </Button>
-                    </div>
+                        <div className="flex justify-center flex-wrap gap-4 mb-20">
+                            <Button size="lg" className="h-14 px-10 text-lg rounded-full shadow-2xl shadow-rose-900/20 bg-gradient-to-r from-rose-600 to-pink-600 hover:from-rose-700 hover:to-pink-700 text-white font-bold hover:scale-105 transition-transform" onClick={scrollToForm}>
+                                Apply Now
+                            </Button>
+                        </div>
 
-                    {/* Floating 3D Card Animation */}
-                    <div className="relative mx-auto w-full max-w-md perspective-1000 group">
-                        {/* Glow effect */}
-                        <div className="absolute inset-0 bg-gradient-to-r from-rose-500 to-amber-500 rounded-2xl blur-3xl opacity-30 group-hover:opacity-50 transition-opacity duration-500"></div>
+                        {/* Floating 3D Card Animation */}
+                        <div className="relative mx-auto w-full max-w-md perspective-1000 group">
+                            {/* Glow effect */}
+                            <div className="absolute inset-0 bg-gradient-to-r from-rose-500 to-amber-500 rounded-2xl blur-3xl opacity-30 group-hover:opacity-50 transition-opacity duration-500"></div>
 
-                        <motion.div
-                            initial={{ y: 0, rotateX: 0, rotateY: 0 }}
-                            animate={{ y: [0, -15, 0], rotateX: [5, 0, 5], rotateY: [-5, 5, -5] }}
-                            transition={{ repeat: Infinity, duration: 6, ease: "easeInOut" }}
-                            className="relative aspect-[1.586/1] rounded-2xl bg-gradient-to-br from-slate-900 via-slate-800 to-black shadow-2xl border border-white/10 overflow-hidden transform-style-3d"
-                        >
-                            {/* Card Texture */}
-                            <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-20 mix-blend-overlay"></div>
+                            <motion.div
+                                initial={{ y: 0, rotateX: 0, rotateY: 0 }}
+                                animate={{ y: [0, -15, 0], rotateX: [5, 0, 5], rotateY: [-5, 5, -5] }}
+                                transition={{ repeat: Infinity, duration: 6, ease: "easeInOut" }}
+                                className="relative aspect-[1.586/1] rounded-2xl bg-gradient-to-br from-slate-900 via-slate-800 to-black shadow-2xl border border-white/10 overflow-hidden transform-style-3d"
+                            >
+                                {/* Card Texture */}
+                                <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-20 mix-blend-overlay"></div>
 
-                            {/* Card Shine */}
-                            <div className="absolute inset-0 bg-gradient-to-tr from-white/0 via-white/10 to-white/0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 bg-[length:200%_200%] animate-shine"></div>
+                                {/* Card Shine */}
+                                <div className="absolute inset-0 bg-gradient-to-tr from-white/0 via-white/10 to-white/0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 bg-[length:200%_200%] animate-shine"></div>
 
-                            {/* Card Elements */}
-                            <div className="absolute top-8 right-8">
-                                <span className="text-white font-bold italic text-2xl tracking-widest opacity-90">VISA</span>
-                                <span className="block text-[8px] text-white/60 text-right tracking-widest uppercase mt-1">Infinite</span>
-                            </div>
+                                {/* Card Elements */}
+                                <div className="absolute top-8 right-8">
+                                    <span className="text-white font-bold italic text-2xl tracking-widest opacity-90">VISA</span>
+                                    <span className="block text-[8px] text-white/60 text-right tracking-widest uppercase mt-1">Infinite</span>
+                                </div>
 
-                            <div className="absolute top-8 left-8 flex gap-2">
-                                <div className="h-8 w-10 rounded bg-yellow-400/90 shadow-lg shadow-yellow-500/20"></div>
-                                <Sparkles className="text-rose-400 h-6 w-6 mt-1 animate-pulse" />
-                            </div>
+                                <div className="absolute top-8 left-8 flex gap-2">
+                                    <div className="h-8 w-10 rounded bg-yellow-400/90 shadow-lg shadow-yellow-500/20"></div>
+                                    <Sparkles className="text-rose-400 h-6 w-6 mt-1 animate-pulse" />
+                                </div>
 
-                            <div className="absolute bottom-8 left-8 text-left z-10">
-                                <p className="text-white/80 text-lg font-mono tracking-widest mb-2 drop-shadow-md">XXXX XXXX XXXX 4291</p>
-                                <div className="flex gap-4">
-                                    <div>
-                                        <p className="text-[8px] text-white/50 uppercase tracking-wider">Card Holder</p>
-                                        <p className="text-white font-bold tracking-wider text-sm drop-shadow-md">RAJ BHOITE</p>
-                                    </div>
-                                    <div>
-                                        <p className="text-[8px] text-white/50 uppercase tracking-wider">Valid Thru</p>
-                                        <p className="text-white font-bold tracking-wider text-sm drop-shadow-md">12/28</p>
+                                <div className="absolute bottom-8 left-8 text-left z-10">
+                                    <p className="text-white/80 text-lg font-mono tracking-widest mb-2 drop-shadow-md">XXXX XXXX XXXX 4291</p>
+                                    <div className="flex gap-4">
+                                        <div>
+                                            <p className="text-[8px] text-white/50 uppercase tracking-wider">Card Holder</p>
+                                            <p className="text-white font-bold tracking-wider text-sm drop-shadow-md">RAJ BHOITE</p>
+                                        </div>
+                                        <div>
+                                            <p className="text-[8px] text-white/50 uppercase tracking-wider">Valid Thru</p>
+                                            <p className="text-white font-bold tracking-wider text-sm drop-shadow-md">12/28</p>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        </motion.div>
+                            </motion.div>
+                        </div>
                     </div>
-                </div>
-            </section>
+                </section>
+            </DynamicHeroWrapper>
 
             {/* Main Content Layout with Sticky Sidebar */}
             <div className="container px-4 md:px-6 py-12 grid lg:grid-cols-[1fr_400px] gap-12">

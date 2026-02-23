@@ -10,6 +10,7 @@ import { cn } from "@/lib/utils";
 import { ContentSection } from "@/components/ui/content-section";
 import { SimpleAccordion } from "@/components/ui/simple-accordion";
 import { motion } from "framer-motion";
+import { DynamicHeroWrapper } from "@/components/dynamic-hero-wrapper";
 
 export default function LifeInsurancePage() {
     const { sendEmail, isSubmitting, isSuccess, error, resetForm } = useEmailForm();
@@ -34,84 +35,86 @@ export default function LifeInsurancePage() {
 
     return (
         <div className="pb-20 bg-slate-50 dark:bg-black selection:bg-amber-500/30 font-sans">
-            {/* Unique Hero Section - Legacy Protection Theme */}
-            <section className="relative pt-32 pb-32 overflow-hidden bg-white dark:bg-slate-950">
-                {/* Warm Sunset Background */}
-                <div className="absolute inset-0 bg-gradient-to-br from-amber-50 via-orange-50 to-rose-50 dark:from-slate-900 dark:via-slate-800 dark:to-slate-900"></div>
+            <DynamicHeroWrapper page="life-insurance">
+                {/* Unique Hero Section - Legacy Protection Theme */}
+                <section className="relative pt-32 pb-32 overflow-hidden bg-white dark:bg-slate-950">
+                    {/* Warm Sunset Background */}
+                    <div className="absolute inset-0 bg-gradient-to-br from-amber-50 via-orange-50 to-rose-50 dark:from-slate-900 dark:via-slate-800 dark:to-slate-900"></div>
 
-                {/* Sun Glow */}
-                <div className="absolute top-0 right-1/4 w-[600px] h-[600px] bg-amber-400/20 rounded-full blur-[100px] mix-blend-screen animate-pulse"></div>
+                    {/* Sun Glow */}
+                    <div className="absolute top-0 right-1/4 w-[600px] h-[600px] bg-amber-400/20 rounded-full blur-[100px] mix-blend-screen animate-pulse"></div>
 
-                <div className="container relative z-10 px-4 md:px-6 grid lg:grid-cols-2 gap-12 items-center">
-                    <div className="space-y-8">
-                        <div className="inline-flex items-center gap-2 rounded-full border border-amber-600/30 bg-amber-600/10 px-4 py-1.5 text-sm font-bold text-amber-700 dark:text-amber-400">
-                            <Sun className="h-4 w-4 fill-amber-600/20" />
-                            <span>Build Your Legacy</span>
-                        </div>
-
-                        <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight leading-tight text-slate-900 dark:text-white">
-                            A Promise That <br />
-                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-500 to-orange-600">Lasts Forever.</span>
-                        </h1>
-
-                        <p className="text-xl text-slate-600 dark:text-slate-300 max-w-lg leading-relaxed">
-                            Ensure your family's dreams are protected, no matter what. Comprehensive life coverage starting at just ₹490/month.
-                        </p>
-
-                        <div className="flex flex-wrap gap-4">
-                            <Button size="lg" className="h-14 px-8 text-lg rounded-full shadow-lg shadow-amber-900/20 bg-amber-600 hover:bg-amber-700 text-white font-bold" onClick={scrollToForm}>
-                                Check Premium
-                            </Button>
-                        </div>
-
-                        <div className="flex items-center gap-6 pt-4 border-t border-amber-200 dark:border-slate-700">
-                            <div className="text-center">
-                                <p className="text-3xl font-bold text-slate-900 dark:text-white">99.3%</p>
-                                <p className="text-xs text-slate-500 uppercase tracking-wider">Claims Paid</p>
+                    <div className="container relative z-10 px-4 md:px-6 grid lg:grid-cols-2 gap-12 items-center">
+                        <div className="space-y-8">
+                            <div className="inline-flex items-center gap-2 rounded-full border border-amber-600/30 bg-amber-600/10 px-4 py-1.5 text-sm font-bold text-amber-700 dark:text-amber-400">
+                                <Sun className="h-4 w-4 fill-amber-600/20" />
+                                <span>Build Your Legacy</span>
                             </div>
-                            <div className="w-px h-10 bg-amber-200 dark:bg-slate-700"></div>
-                            <div className="text-center">
-                                <p className="text-3xl font-bold text-slate-900 dark:text-white">85 Yrs</p>
-                                <p className="text-xs text-slate-500 uppercase tracking-wider">Max Age</p>
-                            </div>
-                            <div className="w-px h-10 bg-amber-200 dark:bg-slate-700"></div>
-                            <div className="text-center">
-                                <p className="text-3xl font-bold text-slate-900 dark:text-white">Tax</p>
-                                <p className="text-xs text-slate-500 uppercase tracking-wider">Benefits*</p>
-                            </div>
-                        </div>
-                    </div>
 
-                    {/* Visual Hero Element - Silhouette/Family */}
-                    <div className="relative hidden lg:block h-[500px]">
-                        <div className="absolute inset-0 flex items-center justify-center">
-                            {/* Abstract Family Circle */}
-                            <div className="relative w-96 h-96">
-                                <div className="absolute inset-0 bg-amber-500/10 rounded-full blur-3xl animate-pulse"></div>
-                                <div className="absolute inset-10 border border-amber-500/30 rounded-full animate-[spin_20s_linear_infinite]"></div>
+                            <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight leading-tight text-slate-900 dark:text-white">
+                                A Promise That <br />
+                                <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-500 to-orange-600">Lasts Forever.</span>
+                            </h1>
 
-                                {/* Central Heart Icon */}
-                                <div className="absolute inset-0 flex items-center justify-center">
-                                    <Heart className="h-40 w-40 text-rose-500 drop-shadow-[0_0_20px_rgba(244,63,94,0.4)] animate-pulse" fill="currentColor" />
+                            <p className="text-xl text-slate-600 dark:text-slate-300 max-w-lg leading-relaxed">
+                                Ensure your family's dreams are protected, no matter what. Comprehensive life coverage starting at just ₹490/month.
+                            </p>
+
+                            <div className="flex flex-wrap gap-4">
+                                <Button size="lg" className="h-14 px-8 text-lg rounded-full shadow-lg shadow-amber-900/20 bg-amber-600 hover:bg-amber-700 text-white font-bold" onClick={scrollToForm}>
+                                    Check Premium
+                                </Button>
+                            </div>
+
+                            <div className="flex items-center gap-6 pt-4 border-t border-amber-200 dark:border-slate-700">
+                                <div className="text-center">
+                                    <p className="text-3xl font-bold text-slate-900 dark:text-white">99.3%</p>
+                                    <p className="text-xs text-slate-500 uppercase tracking-wider">Claims Paid</p>
                                 </div>
+                                <div className="w-px h-10 bg-amber-200 dark:bg-slate-700"></div>
+                                <div className="text-center">
+                                    <p className="text-3xl font-bold text-slate-900 dark:text-white">85 Yrs</p>
+                                    <p className="text-xs text-slate-500 uppercase tracking-wider">Max Age</p>
+                                </div>
+                                <div className="w-px h-10 bg-amber-200 dark:bg-slate-700"></div>
+                                <div className="text-center">
+                                    <p className="text-3xl font-bold text-slate-900 dark:text-white">Tax</p>
+                                    <p className="text-xs text-slate-500 uppercase tracking-wider">Benefits*</p>
+                                </div>
+                            </div>
+                        </div>
 
-                                {/* Floating Shield */}
-                                <motion.div
-                                    className="absolute -top-4 right-10 bg-white dark:bg-slate-800 p-4 rounded-2xl shadow-xl flex items-center gap-3 border border-slate-100 dark:border-slate-700"
-                                    animate={{ y: [0, -10, 0] }}
-                                    transition={{ repeat: Infinity, duration: 4, ease: "easeInOut" }}
-                                >
-                                    <div className="p-2 bg-green-100 rounded-lg"><ShieldCheck className="h-6 w-6 text-green-600" /></div>
-                                    <div>
-                                        <p className="text-xs text-slate-400 font-bold uppercase">Family</p>
-                                        <p className="text-lg font-bold text-slate-900 dark:text-white">Protected</p>
+                        {/* Visual Hero Element - Silhouette/Family */}
+                        <div className="relative hidden lg:block h-[500px]">
+                            <div className="absolute inset-0 flex items-center justify-center">
+                                {/* Abstract Family Circle */}
+                                <div className="relative w-96 h-96">
+                                    <div className="absolute inset-0 bg-amber-500/10 rounded-full blur-3xl animate-pulse"></div>
+                                    <div className="absolute inset-10 border border-amber-500/30 rounded-full animate-[spin_20s_linear_infinite]"></div>
+
+                                    {/* Central Heart Icon */}
+                                    <div className="absolute inset-0 flex items-center justify-center">
+                                        <Heart className="h-40 w-40 text-rose-500 drop-shadow-[0_0_20px_rgba(244,63,94,0.4)] animate-pulse" fill="currentColor" />
                                     </div>
-                                </motion.div>
+
+                                    {/* Floating Shield */}
+                                    <motion.div
+                                        className="absolute -top-4 right-10 bg-white dark:bg-slate-800 p-4 rounded-2xl shadow-xl flex items-center gap-3 border border-slate-100 dark:border-slate-700"
+                                        animate={{ y: [0, -10, 0] }}
+                                        transition={{ repeat: Infinity, duration: 4, ease: "easeInOut" }}
+                                    >
+                                        <div className="p-2 bg-green-100 rounded-lg"><ShieldCheck className="h-6 w-6 text-green-600" /></div>
+                                        <div>
+                                            <p className="text-xs text-slate-400 font-bold uppercase">Family</p>
+                                            <p className="text-lg font-bold text-slate-900 dark:text-white">Protected</p>
+                                        </div>
+                                    </motion.div>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            </section>
+                </section>
+            </DynamicHeroWrapper>
 
             {/* Protection Strip */}
             <div className="bg-amber-100 dark:bg-slate-900 text-amber-900 dark:text-amber-100 py-6 border-y border-amber-200 dark:border-slate-800">

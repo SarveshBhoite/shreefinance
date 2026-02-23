@@ -9,6 +9,7 @@ import { useEmailForm } from "@/hooks/use-email-form";
 import { cn } from "@/lib/utils";
 import { ContentSection } from "@/components/ui/content-section";
 import { SimpleAccordion } from "@/components/ui/simple-accordion";
+import { DynamicHeroWrapper } from "@/components/dynamic-hero-wrapper";
 
 export default function MudraLoanPage() {
     const { sendEmail, isSubmitting, isSuccess, error, resetForm } = useEmailForm();
@@ -29,36 +30,38 @@ export default function MudraLoanPage() {
 
     return (
         <div className="pb-20 bg-slate-50 dark:bg-black selection:bg-indigo-500/30 font-sans">
-            {/* Mudra Hero - Business & Growth */}
-            <section className="relative pt-32 pb-20 overflow-hidden bg-gradient-to-br from-indigo-50 via-purple-50 to-pink-50 dark:from-indigo-950 dark:via-purple-900 dark:to-pink-950">
-                {/* Abstract Globs */}
-                <div className="absolute top-0 left-0 w-[600px] h-[600px] bg-indigo-400/10 rounded-full blur-[100px] mix-blend-multiply animate-pulse"></div>
-                <div className="absolute bottom-0 right-0 w-[600px] h-[600px] bg-purple-400/10 rounded-full blur-[100px] mix-blend-multiply"></div>
+            <DynamicHeroWrapper page="mudra-loan">
+                {/* Mudra Hero - Business & Growth */}
+                <section className="relative pt-32 pb-20 overflow-hidden bg-gradient-to-br from-indigo-50 via-purple-50 to-pink-50 dark:from-indigo-950 dark:via-purple-900 dark:to-pink-950">
+                    {/* Abstract Globs */}
+                    <div className="absolute top-0 left-0 w-[600px] h-[600px] bg-indigo-400/10 rounded-full blur-[100px] mix-blend-multiply animate-pulse"></div>
+                    <div className="absolute bottom-0 right-0 w-[600px] h-[600px] bg-purple-400/10 rounded-full blur-[100px] mix-blend-multiply"></div>
 
-                <div className="container relative z-10 px-4 md:px-6">
-                    <div className="flex flex-col items-center text-center max-w-4xl mx-auto space-y-8">
-                        <div className="inline-flex items-center gap-2 rounded-full border border-indigo-200 bg-indigo-100/50 px-4 py-1.5 text-sm font-bold text-indigo-700 dark:text-indigo-300 backdrop-blur-sm">
-                            <BadgeIndianRupee className="h-4 w-4 text-indigo-600" />
-                            <span>Empowering Micro Enterprises</span>
-                        </div>
+                    <div className="container relative z-10 px-4 md:px-6">
+                        <div className="flex flex-col items-center text-center max-w-4xl mx-auto space-y-8">
+                            <div className="inline-flex items-center gap-2 rounded-full border border-indigo-200 bg-indigo-100/50 px-4 py-1.5 text-sm font-bold text-indigo-700 dark:text-indigo-300 backdrop-blur-sm">
+                                <BadgeIndianRupee className="h-4 w-4 text-indigo-600" />
+                                <span>Empowering Micro Enterprises</span>
+                            </div>
 
-                        <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight leading-tight text-slate-900 dark:text-white">
-                            Pradhan Mantri <br />
-                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600">MUDRA Yojana</span>
-                        </h1>
+                            <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight leading-tight text-slate-900 dark:text-white">
+                                Pradhan Mantri <br />
+                                <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600">MUDRA Yojana</span>
+                            </h1>
 
-                        <p className="text-xl text-slate-600 dark:text-slate-300 max-w-2xl leading-relaxed">
-                            Fuel your business dreams with collateral-free loans up to ₹10 Lakhs. Tailored support for Shishu, Kishor, and Tarun stages.
-                        </p>
+                            <p className="text-xl text-slate-600 dark:text-slate-300 max-w-2xl leading-relaxed">
+                                Fuel your business dreams with collateral-free loans up to ₹10 Lakhs. Tailored support for Shishu, Kishor, and Tarun stages.
+                            </p>
 
-                        <div className="flex flex-wrap justify-center gap-4">
-                            <Button size="lg" className="h-14 px-8 text-lg rounded-full shadow-lg bg-indigo-600 hover:bg-indigo-700 text-white font-bold">
-                                Checked Eligibility
-                            </Button>
+                            <div className="flex flex-wrap justify-center gap-4">
+                                <Button size="lg" className="h-14 px-8 text-lg rounded-full shadow-lg bg-indigo-600 hover:bg-indigo-700 text-white font-bold">
+                                    Checked Eligibility
+                                </Button>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </section>
+                </section>
+            </DynamicHeroWrapper>
 
             <div className="container px-4 md:px-6 py-12 grid lg:grid-cols-[1fr_400px] gap-12">
 

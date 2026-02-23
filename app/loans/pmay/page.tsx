@@ -9,6 +9,7 @@ import { useEmailForm } from "@/hooks/use-email-form";
 import { cn } from "@/lib/utils";
 import { ContentSection } from "@/components/ui/content-section";
 import { SimpleAccordion } from "@/components/ui/simple-accordion";
+import { DynamicHeroWrapper } from "@/components/dynamic-hero-wrapper";
 
 export default function PMAYPage() {
     const { sendEmail, isSubmitting, isSuccess, error, resetForm } = useEmailForm();
@@ -29,36 +30,38 @@ export default function PMAYPage() {
 
     return (
         <div className="pb-20 bg-slate-50 dark:bg-black selection:bg-orange-500/30 font-sans">
-            {/* PMAY Hero - Official & Trustworthy */}
-            <section className="relative pt-32 pb-20 overflow-hidden bg-gradient-to-br from-orange-50 via-white to-green-50 dark:from-orange-950 dark:via-slate-900 dark:to-green-950">
-                {/* Tri-color Globs */}
-                <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-orange-400/10 rounded-full blur-[100px] mix-blend-multiply animate-pulse"></div>
-                <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-green-400/10 rounded-full blur-[100px] mix-blend-multiply"></div>
+            <DynamicHeroWrapper page="pmay">
+                {/* PMAY Hero - Official & Trustworthy */}
+                <section className="relative pt-32 pb-20 overflow-hidden bg-gradient-to-br from-orange-50 via-white to-green-50 dark:from-orange-950 dark:via-slate-900 dark:to-green-950">
+                    {/* Tri-color Globs */}
+                    <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-orange-400/10 rounded-full blur-[100px] mix-blend-multiply animate-pulse"></div>
+                    <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-green-400/10 rounded-full blur-[100px] mix-blend-multiply"></div>
 
-                <div className="container relative z-10 px-4 md:px-6">
-                    <div className="flex flex-col items-center text-center max-w-4xl mx-auto space-y-8">
-                        <div className="inline-flex items-center gap-2 rounded-full border border-slate-300 bg-white/50 px-4 py-1.5 text-sm font-bold text-slate-700 dark:text-slate-300 backdrop-blur-sm">
-                            <Building2 className="h-4 w-4 text-orange-600" />
-                            <span>Housing for All by 2024</span>
-                        </div>
+                    <div className="container relative z-10 px-4 md:px-6">
+                        <div className="flex flex-col items-center text-center max-w-4xl mx-auto space-y-8">
+                            <div className="inline-flex items-center gap-2 rounded-full border border-slate-300 bg-white/50 px-4 py-1.5 text-sm font-bold text-slate-700 dark:text-slate-300 backdrop-blur-sm">
+                                <Building2 className="h-4 w-4 text-orange-600" />
+                                <span>Housing for All by 2024</span>
+                            </div>
 
-                        <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight leading-tight text-slate-900 dark:text-white">
-                            Pradhan Mantri <br />
-                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-600 via-slate-500 to-green-600">Awas Yojana (PMAY)</span>
-                        </h1>
+                            <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight leading-tight text-slate-900 dark:text-white">
+                                Pradhan Mantri <br />
+                                <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-600 via-slate-500 to-green-600">Awas Yojana (PMAY)</span>
+                            </h1>
 
-                        <p className="text-xl text-slate-600 dark:text-slate-300 max-w-2xl leading-relaxed">
-                            Own your dream home with government subsidy up to ₹2.67 Lakhs. Affordable housing solutions for EWS, LIG, and MIG categories.
-                        </p>
+                            <p className="text-xl text-slate-600 dark:text-slate-300 max-w-2xl leading-relaxed">
+                                Own your dream home with government subsidy up to ₹2.67 Lakhs. Affordable housing solutions for EWS, LIG, and MIG categories.
+                            </p>
 
-                        <div className="flex flex-wrap justify-center gap-4">
-                            <Button size="lg" className="h-14 px-8 text-lg rounded-full shadow-lg bg-orange-600 hover:bg-orange-700 text-white font-bold">
-                                Check Subsidy Eligibility
-                            </Button>
+                            <div className="flex flex-wrap justify-center gap-4">
+                                <Button size="lg" className="h-14 px-8 text-lg rounded-full shadow-lg bg-orange-600 hover:bg-orange-700 text-white font-bold">
+                                    Check Subsidy Eligibility
+                                </Button>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </section>
+                </section>
+            </DynamicHeroWrapper>
 
             <div className="container px-4 md:px-6 py-12 grid lg:grid-cols-[1fr_400px] gap-12">
 

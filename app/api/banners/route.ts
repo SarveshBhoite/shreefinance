@@ -4,11 +4,17 @@ import Banner from "@/models/Banner";
 import { uploadToCloudinary } from "@/lib/cloudinary";
 import { getAdminFromToken } from "@/lib/auth";
 
-// GET /api/banners — public, no auth needed
-export async function GET() {
+// GET /api/banners?page=home — public, no auth needed
+export async function GET(request: Request) {
     try {
         await connectDB();
-        const banners = await Banner.find({ active: true }).sort({ order: 1, createdAt: -1 });
+        const { searchParams } = new URL(request.url);
+        const page = searchParams.get("page");
+
+        const filter: Record<string, unknown> = { active: true };
+        if (page) filter.page = page;
+
+        const banners = await Banner.find(filter).sort({ order: 1, createdAt: -1 });
         return NextResponse.json({ banners });
     } catch (error) {
         console.error("Error fetching banners:", error);
@@ -30,6 +36,7 @@ export async function POST(request: Request) {
         const file = formData.get("image") as File;
         const title = formData.get("title") as string;
         const link = (formData.get("link") as string) || "";
+        const page = (formData.get("page") as string) || "home";
 
         if (!file || !title) {
             return NextResponse.json({ error: "Image and title are required" }, { status: 400 });
@@ -42,8 +49,8 @@ export async function POST(request: Request) {
         // Upload to Cloudinary
         const { url, publicId } = await uploadToCloudinary(buffer, file.name);
 
-        // Get the highest order number
-        const lastBanner = await Banner.findOne().sort({ order: -1 });
+        // Get the highest order number for this page
+        const lastBanner = await Banner.findOne({ page }).sort({ order: -1 });
         const order = lastBanner ? lastBanner.order + 1 : 0;
 
         // Save to MongoDB
@@ -52,6 +59,7 @@ export async function POST(request: Request) {
             publicId,
             title,
             link,
+            page,
             order,
             active: true,
         });

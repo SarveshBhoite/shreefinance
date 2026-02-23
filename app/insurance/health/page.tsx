@@ -9,6 +9,7 @@ import { useEmailForm } from "@/hooks/use-email-form";
 import { cn } from "@/lib/utils";
 import { ContentSection } from "@/components/ui/content-section";
 import { SimpleAccordion } from "@/components/ui/simple-accordion";
+import { DynamicHeroWrapper } from "@/components/dynamic-hero-wrapper";
 
 export default function HealthInsurancePage() {
     const { sendEmail, isSubmitting, isSuccess, error, resetForm } = useEmailForm();
@@ -33,80 +34,82 @@ export default function HealthInsurancePage() {
 
     return (
         <div className="pb-20 bg-emerald-50/30 dark:bg-black selection:bg-emerald-500/30 font-sans">
-            {/* Unique Hero Section - Family Pulse Theme */}
-            <section className="relative pt-40 pb-20 overflow-hidden bg-white dark:bg-slate-950">
-                {/* Heartbeat Background Line */}
-                <div className="absolute top-1/2 left-0 right-0 h-[200px] -translate-y-1/2 pointer-events-none opacity-5 dark:opacity-10">
-                    <svg viewBox="0 0 1000 200" preserveAspectRatio="none" className="w-full h-full stroke-emerald-500 fill-none stroke-2">
-                        <path d="M0,100 L200,100 L220,150 L250,50 L280,150 L300,100 L1000,100" vectorEffect="non-scaling-stroke" />
-                    </svg>
-                </div>
+            <DynamicHeroWrapper page="health-insurance">
+                {/* Unique Hero Section - Family Pulse Theme */}
+                <section className="relative pt-40 pb-20 overflow-hidden bg-white dark:bg-slate-950">
+                    {/* Heartbeat Background Line */}
+                    <div className="absolute top-1/2 left-0 right-0 h-[200px] -translate-y-1/2 pointer-events-none opacity-5 dark:opacity-10">
+                        <svg viewBox="0 0 1000 200" preserveAspectRatio="none" className="w-full h-full stroke-emerald-500 fill-none stroke-2">
+                            <path d="M0,100 L200,100 L220,150 L250,50 L280,150 L300,100 L1000,100" vectorEffect="non-scaling-stroke" />
+                        </svg>
+                    </div>
 
-                <div className="container px-4 md:px-6 grid lg:grid-cols-2 gap-12 items-center relative z-10">
-                    <div className="space-y-8">
-                        <div className="inline-flex items-center gap-2 rounded-full border border-emerald-200 bg-emerald-50 px-4 py-1.5 text-sm font-bold text-emerald-700 dark:bg-emerald-900/20 dark:border-emerald-800 dark:text-emerald-300">
-                            <Activity className="h-4 w-4 animate-pulse" />
-                            <span>Comprehensive Family Protection</span>
-                        </div>
-
-                        <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight leading-tight text-slate-900 dark:text-white">
-                            Health is Wealth. <br />
-                            <span className="text-emerald-600">Protect it.</span>
-                        </h1>
-
-                        <p className="text-xl text-slate-600 dark:text-slate-300 max-w-lg leading-relaxed">
-                            Uncompromised healthcare for your loved ones. Cashless treatment at top hospitals, zero paperwork claims, and lifetime renewability.
-                        </p>
-
-                        <div className="flex flex-wrap gap-4">
-                            <Button size="lg" className="h-14 px-8 text-lg rounded-full shadow-lg shadow-emerald-500/20 bg-emerald-600 hover:bg-emerald-700 text-white font-bold" onClick={scrollToForm}>
-                                Secure Your Family
-                            </Button>
-                        </div>
-
-                        <div className="flex items-center gap-8 text-sm font-semibold text-slate-500">
-                            <div className="flex items-center gap-2">
-                                <CheckCircle2 className="text-emerald-500 h-5 w-5" />
-                                <span>No Medical Today*</span>
+                    <div className="container px-4 md:px-6 grid lg:grid-cols-2 gap-12 items-center relative z-10">
+                        <div className="space-y-8">
+                            <div className="inline-flex items-center gap-2 rounded-full border border-emerald-200 bg-emerald-50 px-4 py-1.5 text-sm font-bold text-emerald-700 dark:bg-emerald-900/20 dark:border-emerald-800 dark:text-emerald-300">
+                                <Activity className="h-4 w-4 animate-pulse" />
+                                <span>Comprehensive Family Protection</span>
                             </div>
-                            <div className="flex items-center gap-2">
-                                <CheckCircle2 className="text-emerald-500 h-5 w-5" />
-                                <span>Tax Saver (80D)</span>
+
+                            <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight leading-tight text-slate-900 dark:text-white">
+                                Health is Wealth. <br />
+                                <span className="text-emerald-600">Protect it.</span>
+                            </h1>
+
+                            <p className="text-xl text-slate-600 dark:text-slate-300 max-w-lg leading-relaxed">
+                                Uncompromised healthcare for your loved ones. Cashless treatment at top hospitals, zero paperwork claims, and lifetime renewability.
+                            </p>
+
+                            <div className="flex flex-wrap gap-4">
+                                <Button size="lg" className="h-14 px-8 text-lg rounded-full shadow-lg shadow-emerald-500/20 bg-emerald-600 hover:bg-emerald-700 text-white font-bold" onClick={scrollToForm}>
+                                    Secure Your Family
+                                </Button>
+                            </div>
+
+                            <div className="flex items-center gap-8 text-sm font-semibold text-slate-500">
+                                <div className="flex items-center gap-2">
+                                    <CheckCircle2 className="text-emerald-500 h-5 w-5" />
+                                    <span>No Medical Today*</span>
+                                </div>
+                                <div className="flex items-center gap-2">
+                                    <CheckCircle2 className="text-emerald-500 h-5 w-5" />
+                                    <span>Tax Saver (80D)</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        {/* Visual Hero Element - Family Shield */}
+                        <div className="relative hidden lg:flex justify-center items-center h-[500px]">
+                            <div className="relative">
+                                <div className="absolute inset-0 bg-emerald-100 dark:bg-emerald-900/30 rounded-full blur-3xl animate-pulse"></div>
+                                {/* Shield Container */}
+                                <div className="relative w-72 h-80 bg-gradient-to-br from-emerald-500 to-teal-600 rounded-[50px] rounded-br-[100px] flex items-center justify-center shadow-2xl shadow-emerald-900/20 border-4 border-white dark:border-slate-800">
+                                    <div className="text-center text-white">
+                                        <ShieldCheck className="h-32 w-32 mx-auto mb-2 opacity-90" />
+                                        <p className="font-bold text-lg opacity-90">Total Cover</p>
+                                        <p className="text-3xl font-extrabold">₹1 Cr</p>
+                                    </div>
+                                    {/* Floating Badges */}
+                                    <div className="absolute -left-12 top-10 bg-white dark:bg-slate-800 p-4 rounded-2xl shadow-lg border border-emerald-100 dark:border-emerald-900 flex items-center gap-3">
+                                        <div className="bg-red-100 p-2 rounded-full"><Heart className="h-5 w-5 text-red-500 fill-red-500" /></div>
+                                        <div className="text-left">
+                                            <p className="text-xs text-slate-500 font-bold uppercase">Family</p>
+                                            <p className="text-sm font-bold text-slate-800 dark:text-white">Protected</p>
+                                        </div>
+                                    </div>
+                                    <div className="absolute -right-8 bottom-20 bg-white dark:bg-slate-800 p-4 rounded-2xl shadow-lg border border-emerald-100 dark:border-emerald-900 flex items-center gap-3">
+                                        <div className="bg-blue-100 p-2 rounded-full"><Building2 className="h-5 w-5 text-blue-500" /></div>
+                                        <div className="text-left">
+                                            <p className="text-xs text-slate-500 font-bold uppercase">Hospitals</p>
+                                            <p className="text-sm font-bold text-slate-800 dark:text-white">10,000+</p>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
-
-                    {/* Visual Hero Element - Family Shield */}
-                    <div className="relative hidden lg:flex justify-center items-center h-[500px]">
-                        <div className="relative">
-                            <div className="absolute inset-0 bg-emerald-100 dark:bg-emerald-900/30 rounded-full blur-3xl animate-pulse"></div>
-                            {/* Shield Container */}
-                            <div className="relative w-72 h-80 bg-gradient-to-br from-emerald-500 to-teal-600 rounded-[50px] rounded-br-[100px] flex items-center justify-center shadow-2xl shadow-emerald-900/20 border-4 border-white dark:border-slate-800">
-                                <div className="text-center text-white">
-                                    <ShieldCheck className="h-32 w-32 mx-auto mb-2 opacity-90" />
-                                    <p className="font-bold text-lg opacity-90">Total Cover</p>
-                                    <p className="text-3xl font-extrabold">₹1 Cr</p>
-                                </div>
-                                {/* Floating Badges */}
-                                <div className="absolute -left-12 top-10 bg-white dark:bg-slate-800 p-4 rounded-2xl shadow-lg border border-emerald-100 dark:border-emerald-900 flex items-center gap-3">
-                                    <div className="bg-red-100 p-2 rounded-full"><Heart className="h-5 w-5 text-red-500 fill-red-500" /></div>
-                                    <div className="text-left">
-                                        <p className="text-xs text-slate-500 font-bold uppercase">Family</p>
-                                        <p className="text-sm font-bold text-slate-800 dark:text-white">Protected</p>
-                                    </div>
-                                </div>
-                                <div className="absolute -right-8 bottom-20 bg-white dark:bg-slate-800 p-4 rounded-2xl shadow-lg border border-emerald-100 dark:border-emerald-900 flex items-center gap-3">
-                                    <div className="bg-blue-100 p-2 rounded-full"><Building2 className="h-5 w-5 text-blue-500" /></div>
-                                    <div className="text-left">
-                                        <p className="text-xs text-slate-500 font-bold uppercase">Hospitals</p>
-                                        <p className="text-sm font-bold text-slate-800 dark:text-white">10,000+</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
+                </section>
+            </DynamicHeroWrapper>
 
             {/* Protection Stats Strip */}
             <div className="bg-emerald-900 text-white py-12">

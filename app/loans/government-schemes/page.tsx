@@ -8,6 +8,7 @@ import { Input } from "@/components/ui/input";
 import { useState } from "react";
 import { useEmailForm } from "@/hooks/use-email-form";
 import { ContentSection } from "@/components/ui/content-section";
+import { DynamicHeroWrapper } from "@/components/dynamic-hero-wrapper";
 
 export default function GovernmentSchemesPage() {
     const { sendEmail, isSubmitting, isSuccess, error, resetForm } = useEmailForm();
@@ -79,35 +80,37 @@ export default function GovernmentSchemesPage() {
 
     return (
         <div className="min-h-screen bg-slate-50 dark:bg-black font-sans pb-20">
-            {/* Premium Hero Section */}
-            <section className="relative pt-32 pb-24 overflow-hidden bg-gradient-to-br from-slate-900 via-slate-800 to-indigo-950 text-white">
-                <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10"></div>
-                {/* Decorative blobs */}
-                <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-orange-500/20 rounded-full blur-[100px] mix-blend-screen animate-pulse"></div>
-                <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-blue-500/20 rounded-full blur-[100px] mix-blend-screen"></div>
+            <DynamicHeroWrapper page="government-schemes">
+                {/* Premium Hero Section */}
+                <section className="relative pt-32 pb-24 overflow-hidden bg-gradient-to-br from-slate-900 via-slate-800 to-indigo-950 text-white">
+                    <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10"></div>
+                    {/* Decorative blobs */}
+                    <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-orange-500/20 rounded-full blur-[100px] mix-blend-screen animate-pulse"></div>
+                    <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-blue-500/20 rounded-full blur-[100px] mix-blend-screen"></div>
 
-                <div className="container px-4 relative z-10 text-center max-w-4xl mx-auto">
-                    <div className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-1.5 text-sm font-bold text-white mb-6 backdrop-blur-md">
-                        <Landmark className="h-4 w-4" />
-                        <span>Nation Building Initiatives</span>
+                    <div className="container px-4 relative z-10 text-center max-w-4xl mx-auto">
+                        <div className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-1.5 text-sm font-bold text-white mb-6 backdrop-blur-md">
+                            <Landmark className="h-4 w-4" />
+                            <span>Nation Building Initiatives</span>
+                        </div>
+
+                        <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight leading-tight mb-6 text-transparent bg-clip-text bg-gradient-to-r from-orange-200 via-white to-green-200">
+                            Government Schemes <br />
+                            <span className="text-white">Made Simple.</span>
+                        </h1>
+
+                        <p className="text-xl text-slate-300 max-w-2xl mx-auto mb-8 leading-relaxed">
+                            Unlock the benefits of various financial initiatives by the Government of India. We help you identify, understand, and apply for the schemes you are eligible for.
+                        </p>
+
+                        <div className="flex flex-wrap justify-center gap-4">
+                            <Button size="lg" className="h-14 px-8 text-lg rounded-full bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white font-bold shadow-lg shadow-orange-500/20">
+                                Check Eligibility
+                            </Button>
+                        </div>
                     </div>
-
-                    <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight leading-tight mb-6 text-transparent bg-clip-text bg-gradient-to-r from-orange-200 via-white to-green-200">
-                        Government Schemes <br />
-                        <span className="text-white">Made Simple.</span>
-                    </h1>
-
-                    <p className="text-xl text-slate-300 max-w-2xl mx-auto mb-8 leading-relaxed">
-                        Unlock the benefits of various financial initiatives by the Government of India. We help you identify, understand, and apply for the schemes you are eligible for.
-                    </p>
-
-                    <div className="flex flex-wrap justify-center gap-4">
-                        <Button size="lg" className="h-14 px-8 text-lg rounded-full bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white font-bold shadow-lg shadow-orange-500/20">
-                            Check Eligibility
-                        </Button>
-                    </div>
-                </div>
-            </section>
+                </section>
+            </DynamicHeroWrapper>
 
             {/* Featured Schemes - Large Cards */}
             <div className="container px-4 -mt-16 relative z-20">

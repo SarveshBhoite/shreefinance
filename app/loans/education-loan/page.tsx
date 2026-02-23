@@ -10,6 +10,7 @@ import { useEmailForm } from "@/hooks/use-email-form";
 import { cn } from "@/lib/utils";
 import { ContentSection } from "@/components/ui/content-section";
 import { SimpleAccordion } from "@/components/ui/simple-accordion";
+import { DynamicHeroWrapper } from "@/components/dynamic-hero-wrapper";
 
 export default function EducationLoanPage() {
     const { sendEmail, isSubmitting, isSuccess, error, resetForm } = useEmailForm();
@@ -34,80 +35,82 @@ export default function EducationLoanPage() {
 
     return (
         <div className="pb-20 bg-slate-50 dark:bg-black selection:bg-cyan-500/30 font-sans">
-            {/* Unique Hero Section - Global Future Theme */}
-            <section className="relative pt-40 pb-20 overflow-hidden bg-slate-900 text-white">
-                {/* Globe/Map background */}
-                <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/black-scales.png')] opacity-30 z-0"></div>
-                <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-cyan-600/20 rounded-full blur-[120px] mix-blend-screen animate-pulse"></div>
+            <DynamicHeroWrapper page="education-loan">
+                {/* Unique Hero Section - Global Future Theme */}
+                <section className="relative pt-40 pb-20 overflow-hidden bg-slate-900 text-white">
+                    {/* Globe/Map background */}
+                    <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/black-scales.png')] opacity-30 z-0"></div>
+                    <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-cyan-600/20 rounded-full blur-[120px] mix-blend-screen animate-pulse"></div>
 
-                <div className="container px-4 md:px-6 grid lg:grid-cols-2 gap-12 items-center relative z-10">
-                    <div className="space-y-8">
-                        <div className="inline-flex items-center gap-2 rounded-full border border-cyan-500/30 bg-cyan-900/20 px-4 py-1.5 text-sm font-bold text-cyan-400">
-                            <GraduationCap className="h-4 w-4" />
-                            <span>Unlock Your Global Potential</span>
+                    <div className="container px-4 md:px-6 grid lg:grid-cols-2 gap-12 items-center relative z-10">
+                        <div className="space-y-8">
+                            <div className="inline-flex items-center gap-2 rounded-full border border-cyan-500/30 bg-cyan-900/20 px-4 py-1.5 text-sm font-bold text-cyan-400">
+                                <GraduationCap className="h-4 w-4" />
+                                <span>Unlock Your Global Potential</span>
+                            </div>
+
+                            <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight leading-tight">
+                                Invest in Your <br />
+                                <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-400 to-indigo-400">Future Success.</span>
+                            </h1>
+
+                            <p className="text-xl text-slate-300 max-w-lg leading-relaxed">
+                                Complete funding for tuition and living expenses for premier institutions in India and abroad. Up to 100% financing for meritorious students.
+                            </p>
+
+                            <div className="flex flex-wrap gap-4">
+                                <Button size="lg" className="h-14 px-8 text-lg rounded-full shadow-lg shadow-cyan-900/40 bg-cyan-600 hover:bg-cyan-700 text-white font-bold" onClick={scrollToForm}>
+                                    Check Eligibility
+                                </Button>
+                            </div>
+
+                            <div className="flex items-center gap-6 pt-4 border-t border-slate-800">
+                                <div className="text-center">
+                                    <p className="text-2xl font-bold text-white">100%</p>
+                                    <p className="text-xs text-slate-400 uppercase tracking-wider">Tuition Fee</p>
+                                </div>
+                                <div className="w-px h-10 bg-slate-700"></div>
+                                <div className="text-center">
+                                    <p className="text-2xl font-bold text-white">No</p>
+                                    <p className="text-xs text-slate-400 uppercase tracking-wider">Collateral*</p>
+                                </div>
+                                <div className="w-px h-10 bg-slate-700"></div>
+                                <div className="text-center">
+                                    <p className="text-2xl font-bold text-white">15 Yr</p>
+                                    <p className="text-xs text-slate-400 uppercase tracking-wider">Repayment</p>
+                                </div>
+                            </div>
                         </div>
 
-                        <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight leading-tight">
-                            Invest in Your <br />
-                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-400 to-indigo-400">Future Success.</span>
-                        </h1>
+                        {/* Visual Hero Element - Globe/Cap */}
+                        <div className="relative hidden lg:block h-[500px]">
+                            <div className="absolute inset-0 flex items-center justify-center">
+                                {/* Abstract Globe */}
+                                <div className="relative w-96 h-96">
+                                    <div className="absolute inset-0 bg-cyan-500/10 rounded-full blur-3xl animate-pulse"></div>
+                                    <div className="absolute inset-10 border border-cyan-500/30 rounded-full animate-[spin_10s_linear_infinite]"></div>
+                                    <div className="absolute inset-20 border border-dashed border-cyan-400/50 rounded-full animate-[spin_15s_linear_infinite_reverse]"></div>
 
-                        <p className="text-xl text-slate-300 max-w-lg leading-relaxed">
-                            Complete funding for tuition and living expenses for premier institutions in India and abroad. Up to 100% financing for meritorious students.
-                        </p>
+                                    {/* Central Cap Icon */}
+                                    <div className="absolute inset-0 flex items-center justify-center">
+                                        <GraduationCap className="h-32 w-32 text-cyan-400 drop-shadow-[0_0_15px_rgba(34,211,238,0.5)]" />
+                                    </div>
 
-                        <div className="flex flex-wrap gap-4">
-                            <Button size="lg" className="h-14 px-8 text-lg rounded-full shadow-lg shadow-cyan-900/40 bg-cyan-600 hover:bg-cyan-700 text-white font-bold" onClick={scrollToForm}>
-                                Check Eligibility
-                            </Button>
-                        </div>
-
-                        <div className="flex items-center gap-6 pt-4 border-t border-slate-800">
-                            <div className="text-center">
-                                <p className="text-2xl font-bold text-white">100%</p>
-                                <p className="text-xs text-slate-400 uppercase tracking-wider">Tuition Fee</p>
-                            </div>
-                            <div className="w-px h-10 bg-slate-700"></div>
-                            <div className="text-center">
-                                <p className="text-2xl font-bold text-white">No</p>
-                                <p className="text-xs text-slate-400 uppercase tracking-wider">Collateral*</p>
-                            </div>
-                            <div className="w-px h-10 bg-slate-700"></div>
-                            <div className="text-center">
-                                <p className="text-2xl font-bold text-white">15 Yr</p>
-                                <p className="text-xs text-slate-400 uppercase tracking-wider">Repayment</p>
+                                    {/* Floating Locations */}
+                                    <div className="absolute top-0 right-10 bg-slate-800/90 backdrop-blur-md px-3 py-1 rounded-full border border-slate-700 shadow-xl flex items-center gap-2 animate-bounce delay-700">
+                                        <Globe className="h-4 w-4 text-blue-400" />
+                                        <span className="text-xs font-bold text-white">USA</span>
+                                    </div>
+                                    <div className="absolute bottom-10 left-10 bg-slate-800/90 backdrop-blur-md px-3 py-1 rounded-full border border-slate-700 shadow-xl flex items-center gap-2 animate-bounce delay-300">
+                                        <Globe className="h-4 w-4 text-green-400" />
+                                        <span className="text-xs font-bold text-white">UK</span>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
-
-                    {/* Visual Hero Element - Globe/Cap */}
-                    <div className="relative hidden lg:block h-[500px]">
-                        <div className="absolute inset-0 flex items-center justify-center">
-                            {/* Abstract Globe */}
-                            <div className="relative w-96 h-96">
-                                <div className="absolute inset-0 bg-cyan-500/10 rounded-full blur-3xl animate-pulse"></div>
-                                <div className="absolute inset-10 border border-cyan-500/30 rounded-full animate-[spin_10s_linear_infinite]"></div>
-                                <div className="absolute inset-20 border border-dashed border-cyan-400/50 rounded-full animate-[spin_15s_linear_infinite_reverse]"></div>
-
-                                {/* Central Cap Icon */}
-                                <div className="absolute inset-0 flex items-center justify-center">
-                                    <GraduationCap className="h-32 w-32 text-cyan-400 drop-shadow-[0_0_15px_rgba(34,211,238,0.5)]" />
-                                </div>
-
-                                {/* Floating Locations */}
-                                <div className="absolute top-0 right-10 bg-slate-800/90 backdrop-blur-md px-3 py-1 rounded-full border border-slate-700 shadow-xl flex items-center gap-2 animate-bounce delay-700">
-                                    <Globe className="h-4 w-4 text-blue-400" />
-                                    <span className="text-xs font-bold text-white">USA</span>
-                                </div>
-                                <div className="absolute bottom-10 left-10 bg-slate-800/90 backdrop-blur-md px-3 py-1 rounded-full border border-slate-700 shadow-xl flex items-center gap-2 animate-bounce delay-300">
-                                    <Globe className="h-4 w-4 text-green-400" />
-                                    <span className="text-xs font-bold text-white">UK</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
+                </section>
+            </DynamicHeroWrapper>
 
             {/* University Strip */}
             <div className="bg-cyan-950 border-y border-cyan-900 py-6 overflow-hidden">
