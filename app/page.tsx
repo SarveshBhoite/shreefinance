@@ -3,11 +3,13 @@ import { PartnerLogos } from "@/components/home/partner-logos";
 import { RateComparisonTable } from "@/components/home/rate-comparison-table";
 import { ServicesSnapshot } from "@/components/home/services-snapshot";
 import { EligibilityPreview } from "@/components/home/eligibility-preview";
+import { UniversalCalculator } from "@/components/home/universal-calculator";
 
 export default function Home() {
   return (
     <>
       <HeroSection />
+      <UniversalCalculator />
       <PartnerLogos />
       <RateComparisonTable />
       <ServicesSnapshot />

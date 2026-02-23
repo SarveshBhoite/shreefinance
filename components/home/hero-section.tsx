@@ -1,8 +1,8 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { EMICalculator } from "@/components/calculators/emi-calculator";
-import { CheckCircle2, TrendingUp, ShieldCheck, Star } from "lucide-react";
+import { HeroBannerCarousel } from "@/components/home/hero-banner-carousel";
+import { TrendingUp, ShieldCheck, Star } from "lucide-react";
 import { useState } from "react";
 import { LeadFormModal } from "@/components/dialogs/lead-form-modal";
 import { motion } from "framer-motion";
@@ -10,7 +10,7 @@ import { motion } from "framer-motion";
 export function HeroSection() {
     const [modalConfig, setModalConfig] = useState<{ isOpen: boolean; type: "general" | "cibil" }>({
         isOpen: false,
-        type: "general" // default
+        type: "general"
     });
 
     const openModal = (type: "general" | "cibil") => {
@@ -99,21 +99,22 @@ export function HeroSection() {
                                 </div>
                                 <div className="text-sm">
                                     <p className="font-bold">4.9/5 Rating</p>
-                                    <p className="text-muted-foreground text-xs">Cusomter Trust</p>
+                                    <p className="text-muted-foreground text-xs">Customer Trust</p>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    {/* Calculator Modal / Card */}
-                    <div className="lg:pl-10 relative">
-                        {/* Decorative Blob behind calculator */}
+                    {/* Banner Carousel (replaces old EMI Calculator) */}
+                    <motion.div
+                        initial={{ opacity: 0, scale: 0.95 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        transition={{ duration: 0.6, delay: 0.2 }}
+                        className="lg:pl-10 relative"
+                    >
                         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-white/50 dark:bg-white/5 blur-3xl -z-10 rounded-full"></div>
-
-                        <div className="glass-card rounded-3xl p-1 md:p-2 ring-1 ring-white/40 dark:ring-white/10">
-                            <EMICalculator />
-                        </div>
-                    </div>
+                        <HeroBannerCarousel />
+                    </motion.div>
                 </div>
             </div>
 
