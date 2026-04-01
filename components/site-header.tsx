@@ -23,11 +23,11 @@ export function SiteHeader() {
     return (
         <>
             <header className={cn(
-                "fixed top-4 md:top-6 left-1/2 -translate-x-1/2 z-50 w-[95%] max-w-7xl transition-all duration-500",
+                "fixed top-4 md:top-6 left-1/2 -translate-x-1/2 z-50 w-[95%] max-w-7xl transition-[margin,box-shadow,color,background-color] duration-300",
                 isMobileMenuOpen ? "rounded-[2rem]" : "rounded-full"
             )}>
                 <div className={cn(
-                    "relative w-full border border-primary/20 bg-white/95 dark:bg-black/90 backdrop-blur-3xl shadow-[0_8px_40px_rgba(0,0,0,0.12)] transition-all duration-500 ring-1 ring-primary/5",
+                    "relative w-full border border-primary/20 bg-white/95 dark:bg-black/90 backdrop-blur-3xl shadow-[0_8px_40px_rgba(0,0,0,0.12)] transition-[margin,box-shadow,color,background-color] duration-300 ring-1 ring-primary/5",
                     isMobileMenuOpen ? "rounded-[2rem]" : "rounded-full"
                 )}>
                 <div className="flex h-16 md:h-20 items-center justify-between px-8 relative">
