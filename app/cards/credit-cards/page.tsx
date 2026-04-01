@@ -12,7 +12,7 @@ import { motion } from "framer-motion";
 import { DynamicHeroWrapper } from "@/components/dynamic-hero-wrapper";
 
 export default function CreditCardsPage() {
-    const { sendEmail, isSubmitting, isSuccess, error, resetForm } = useEmailForm();
+    const { sendEmail, isSuccess } = useEmailForm();
     const [formData, setFormData] = useState({
         name: "",
         mobile: "",
@@ -110,7 +110,7 @@ export default function CreditCardsPage() {
             </DynamicHeroWrapper>
 
             {/* Main Content Layout with Sticky Sidebar */}
-            <div className="container px-4 md:px-6 py-12 grid lg:grid-cols-[1fr_400px] gap-12">
+            <div className="container px-4 md:px-6 py-12 grid lg:grid-cols-[1fr_400px] gap-12 mx-auto">
                 {/* Left Column: Content */}
                 <div className="space-y-16">
                     <ContentSection
@@ -159,66 +159,72 @@ export default function CreditCardsPage() {
 
                 {/* Right Column: Sticky Form */}
                 <aside className="relative">
-                    <div id="lead-form" className="sticky top-24">
-                        <Card className="glass-card bg-white/80 dark:bg-sky-950/80 border-sky-100 dark:border-sky-900 shadow-2xl overflow-hidden ring-1 ring-primary/10">
-                            <CardHeader className="bg-gradient-to-r from-primary to-sky-600 text-white p-6">
-                                <CardTitle className="text-lg">Check Eligibility</CardTitle>
-                                <p className="text-sky-100 text-sm">No credit score impact</p>
+                    <div id="lead-form" className="sticky top-32">
+                        <Card className="glass-card bg-white/90 dark:bg-slate-900/90 border-primary/20 shadow-[0_20px_50px_rgba(0,0,0,0.15)] overflow-hidden rounded-[2.5rem] ring-1 ring-primary/5">
+                            <CardHeader className="bg-gradient-to-r from-primary to-sky-700 text-white p-8 pb-10">
+                                <div className="flex justify-between items-start mb-4">
+                                    <div className="p-3 bg-white/20 rounded-2xl backdrop-blur-md">
+                                        <CreditCard className="h-6 w-6 text-white" />
+                                    </div>
+                                    <span className="text-[10px] font-black uppercase tracking-[0.2em] bg-accent text-slate-900 px-3 py-1 rounded-full shadow-lg">Instant Approval</span>
+                                </div>
+                                <CardTitle className="text-2xl font-black tracking-tight leading-none mb-2">Check Offer</CardTitle>
+                                <p className="text-sky-100/70 text-xs font-bold uppercase tracking-widest tracking-tighter">No credit score impact</p>
                             </CardHeader>
-                            <CardContent className="p-6">
+                            <CardContent className="p-8 -mt-6 bg-white dark:bg-slate-950 rounded-t-[2.5rem] relative z-10 shadow-2xl">
                                 {isSuccess ? (
-                                    <div className="text-center py-8">
-                                        <div className="h-12 w-12 bg-green-500 rounded-full flex items-center justify-center mx-auto mb-4 tracking-tighter">
-                                            <CheckCircle2 className="h-6 w-6 text-white" />
+                                    <div className="text-center py-10">
+                                        <div className="h-20 w-20 bg-primary rounded-[2rem] flex items-center justify-center mx-auto mb-6 shadow-2xl shadow-primary/30">
+                                            <CheckCircle2 className="h-10 w-10 text-white" />
                                         </div>
-                                        <h3 className="text-xl font-bold text-slate-800 dark:text-white">Request Received</h3>
-                                        <p className="text-slate-600 dark:text-slate-300 mt-2">We will update you shortly.</p>
+                                        <h3 className="text-2xl font-black text-slate-900 dark:text-white mb-2">Request Received</h3>
+                                        <p className="text-slate-500 dark:text-slate-400 font-bold uppercase text-xs tracking-widest leading-loose">We will update you shortly.</p>
                                     </div>
                                 ) : (
-                                    <form onSubmit={handleSubmit} className="space-y-4">
+                                    <form onSubmit={handleSubmit} className="space-y-6">
                                         <div className="space-y-2">
-                                            <label className="text-xs font-bold uppercase tracking-wider text-slate-500">Name</label>
+                                            <label className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 ml-1">Full Name</label>
                                             <Input
                                                 placeholder="Name as per PAN"
-                                                className="bg-sky-50 dark:bg-sky-900/10 border-sky-100"
+                                                className="h-14 bg-slate-50 dark:bg-sky-950/20 border-slate-100 dark:border-primary/10 rounded-2xl font-bold px-6 focus:ring-primary shadow-sm"
                                                 value={formData.name}
                                                 onChange={e => setFormData({ ...formData, name: e.target.value })}
                                                 required
                                             />
                                         </div>
                                         <div className="space-y-2">
-                                            <label className="text-xs font-bold uppercase tracking-wider text-slate-500">Mobile</label>
+                                            <label className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 ml-1">Mobile Access</label>
                                             <Input
-                                                placeholder="10 digit number"
-                                                className="bg-sky-50 dark:bg-sky-900/10 border-sky-100"
+                                                placeholder="10-digit number"
+                                                className="h-14 bg-slate-50 dark:bg-sky-950/20 border-slate-100 dark:border-primary/10 rounded-2xl font-bold px-6 focus:ring-primary shadow-sm"
                                                 value={formData.mobile}
                                                 onChange={e => setFormData({ ...formData, mobile: e.target.value })}
                                                 required
                                             />
                                         </div>
-                                        <div className="grid grid-cols-2 gap-4">
+                                        <div className="grid grid-cols-2 gap-6">
                                             <div className="space-y-2">
-                                                <label className="text-xs font-bold uppercase tracking-wider text-slate-500">City</label>
+                                                <label className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 ml-1">City</label>
                                                 <Input
-                                                    placeholder="City"
-                                                    className="bg-sky-50 dark:bg-sky-900/10 border-sky-100"
+                                                    placeholder="Pune"
+                                                    className="h-14 bg-slate-50 dark:bg-sky-950/20 border-slate-100 dark:border-primary/10 rounded-2xl font-bold px-6 focus:ring-primary shadow-sm"
                                                     value={formData.city}
                                                     onChange={e => setFormData({ ...formData, city: e.target.value })}
                                                     required
                                                 />
                                             </div>
                                             <div className="space-y-2">
-                                                <label className="text-xs font-bold uppercase tracking-wider text-slate-500">Income</label>
+                                                <label className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 ml-1">Monthly Income</label>
                                                 <Input
-                                                    placeholder="Monthly ₹"
-                                                    className="bg-sky-50 dark:bg-sky-900/10 border-sky-100"
+                                                    placeholder="₹ 50,000"
+                                                    className="h-14 bg-slate-50 dark:bg-sky-950/20 border-slate-100 dark:border-primary/10 rounded-2xl font-bold px-6 focus:ring-primary shadow-sm"
                                                     value={formData.income}
                                                     onChange={e => setFormData({ ...formData, income: e.target.value })}
                                                     required
                                                 />
                                             </div>
                                         </div>
-                                        <Button className="w-full bg-primary hover:bg-sky-600 text-white font-bold h-12 text-base shadow-lg shadow-primary/20 mt-2 border border-white/10 transition-all">View Offers</Button>
+                                        <Button className="w-full bg-primary hover:bg-sky-600 text-white font-black h-16 text-lg rounded-2xl shadow-2xl shadow-primary/20 mt-4 transition-all hover:scale-[1.02] active:scale-95 uppercase tracking-widest border border-white/10">View Offers</Button>
                                     </form>
                                 )}
                             </CardContent>

@@ -2,17 +2,16 @@
 
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { CheckCircle2, Heart, Activity, Stethoscope, ShieldCheck, Zap, FileText, Users, Building2, Umbrella } from "lucide-react";
+import { CheckCircle2, Heart, Activity, ShieldCheck, Zap, Users, Building2, Umbrella } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { useState } from "react";
 import { useEmailForm } from "@/hooks/use-email-form";
-import { cn } from "@/lib/utils";
 import { ContentSection } from "@/components/ui/content-section";
 import { SimpleAccordion } from "@/components/ui/simple-accordion";
 import { DynamicHeroWrapper } from "@/components/dynamic-hero-wrapper";
 
 export default function HealthInsurancePage() {
-    const { sendEmail, isSubmitting, isSuccess, error, resetForm } = useEmailForm();
+    const { sendEmail, isSuccess } = useEmailForm();
     const [formData, setFormData] = useState({
         name: "",
         mobile: "",
@@ -37,7 +36,6 @@ export default function HealthInsurancePage() {
             <DynamicHeroWrapper page="health-insurance">
                 {/* Unique Hero Section - Family Pulse Ocean Theme */}
                 <section className="relative pt-40 pb-20 overflow-hidden bg-gradient-to-b from-sky-950 to-sky-900 border-b border-primary/20 text-white">
-                    {/* Heartbeat Background Line - Ocean Style */}
                     <div className="absolute top-1/2 left-0 right-0 h-[200px] -translate-y-1/2 pointer-events-none opacity-10">
                         <svg viewBox="0 0 1000 200" preserveAspectRatio="none" className="w-full h-full stroke-primary/30 fill-none stroke-2">
                             <path d="M0,100 L200,100 L220,150 L250,50 L280,150 L300,100 L1000,100" vectorEffect="non-scaling-stroke" />
@@ -65,31 +63,17 @@ export default function HealthInsurancePage() {
                                     Secure Your Family
                                 </Button>
                             </div>
-
-                            <div className="flex items-center gap-8 text-sm font-semibold text-sky-200/80">
-                                <div className="flex items-center gap-2">
-                                    <CheckCircle2 className="text-emerald-400 h-5 w-5" />
-                                    <span>No Medical Today*</span>
-                                </div>
-                                <div className="flex items-center gap-2">
-                                    <CheckCircle2 className="text-emerald-400 h-5 w-5" />
-                                    <span>Tax Saver (80D)</span>
-                                </div>
-                            </div>
                         </div>
 
-                        {/* Visual Hero Element - Family Shield */}
                         <div className="relative hidden lg:flex justify-center items-center h-[500px]">
                             <div className="relative">
                                 <div className="absolute inset-0 bg-primary/20 rounded-full blur-3xl animate-pulse"></div>
-                                {/* Shield Container - Ocean Blue & Gold */}
                                 <div className="relative w-72 h-80 bg-gradient-to-br from-primary to-sky-700 rounded-[50px] rounded-br-[100px] flex items-center justify-center shadow-2xl shadow-primary/20 border-4 border-white dark:border-sky-900">
                                     <div className="text-center text-white">
                                         <ShieldCheck className="h-32 w-32 mx-auto mb-2 opacity-90 text-accent" />
                                         <p className="font-bold text-lg opacity-90">Total Cover</p>
                                         <p className="text-3xl font-extrabold">₹1 Cr</p>
                                     </div>
-                                    {/* Floating Badges */}
                                     <div className="absolute -left-12 top-10 bg-white/90 dark:bg-sky-950/90 backdrop-blur-md p-4 rounded-2xl shadow-xl border border-primary/20 flex items-center gap-3">
                                         <div className="bg-rose-100 p-2 rounded-full"><Heart className="h-5 w-5 text-rose-500 fill-rose-500" /></div>
                                         <div className="text-left">
@@ -111,7 +95,6 @@ export default function HealthInsurancePage() {
                 </section>
             </DynamicHeroWrapper>
 
-            {/* Protection Stats Strip */}
             <div className="bg-sky-950 text-white py-12 border-y border-sky-900">
                 <div className="container px-4 mx-auto">
                     <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center divide-x divide-sky-900">
@@ -135,9 +118,7 @@ export default function HealthInsurancePage() {
                 </div>
             </div>
 
-            {/* Main Content Layout with Sticky Sidebar */}
             <div className="container px-4 md:px-6 py-20 grid lg:grid-cols-[1fr_400px] gap-12 mx-auto">
-                {/* Left Column: Content */}
                 <div className="space-y-16">
                     <ContentSection
                         title="More Than Just Insurance"
@@ -161,7 +142,6 @@ export default function HealthInsurancePage() {
                         </div>
                     </ContentSection>
 
-                    {/* Accordions */}
                     <div className="space-y-8">
                         <div className="space-y-4">
                             <h3 className="text-2xl font-bold flex items-center gap-2">
@@ -192,68 +172,73 @@ export default function HealthInsurancePage() {
                     </div>
                 </div>
 
-                {/* Right Column: Sticky Form */}
                 <aside className="relative">
-                    <div id="lead-form" className="sticky top-28">
-                        <Card className="glass-card bg-white/80 dark:bg-sky-950/80 border-sky-100 dark:border-sky-900 shadow-2xl overflow-hidden ring-1 ring-primary/10">
-                            <CardHeader className="bg-gradient-to-r from-primary to-sky-600 text-white p-6">
-                                <CardTitle className="text-lg">Get Health Quote</CardTitle>
-                                <p className="text-sky-100 text-sm">Protect your family today</p>
+                    <div id="lead-form" className="sticky top-32">
+                        <Card className="glass-card bg-white/90 dark:bg-slate-900/90 border-primary/20 shadow-[0_20px_50px_rgba(0,0,0,0.15)] overflow-hidden rounded-[2.5rem] ring-1 ring-primary/5">
+                            <CardHeader className="bg-gradient-to-r from-primary to-sky-700 text-white p-8 pb-10">
+                                <div className="flex justify-between items-start mb-4">
+                                    <div className="p-3 bg-white/20 rounded-2xl backdrop-blur-md">
+                                        <Activity className="h-6 w-6 text-white" />
+                                    </div>
+                                    <span className="text-[10px] font-black uppercase tracking-[0.2em] bg-accent text-slate-900 px-3 py-1 rounded-full shadow-lg">Cashless Care</span>
+                                </div>
+                                <CardTitle className="text-2xl font-black tracking-tight leading-none mb-2">Get Quote</CardTitle>
+                                <p className="text-sky-100/70 text-xs font-bold uppercase tracking-widest">Protect your family today</p>
                             </CardHeader>
-                            <CardContent className="p-6">
+                            <CardContent className="p-8 -mt-6 bg-white dark:bg-slate-950 rounded-t-[2.5rem] relative z-10 shadow-2xl">
                                 {isSuccess ? (
-                                    <div className="text-center py-8">
-                                        <div className="h-12 w-12 bg-emerald-500 rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg shadow-emerald-500/20">
-                                            <CheckCircle2 className="h-6 w-6 text-white" />
+                                    <div className="text-center py-10">
+                                        <div className="h-20 w-20 bg-primary rounded-[2rem] flex items-center justify-center mx-auto mb-6 shadow-2xl shadow-primary/30">
+                                            <CheckCircle2 className="h-10 w-10 text-white" />
                                         </div>
-                                        <h3 className="text-xl font-bold text-slate-800 dark:text-white">Request Received</h3>
-                                        <p className="text-slate-600 dark:text-slate-300 mt-2">Health expert contacting shortly.</p>
+                                        <h3 className="text-2xl font-black text-slate-900 dark:text-white mb-2">Request Received</h3>
+                                        <p className="text-slate-500 dark:text-slate-400 font-bold uppercase text-xs tracking-widest leading-loose">A health expert will contact you shortly.</p>
                                     </div>
                                 ) : (
-                                    <form onSubmit={handleSubmit} className="space-y-4">
+                                    <form onSubmit={handleSubmit} className="space-y-6">
                                         <div className="space-y-2">
-                                            <label className="text-xs font-bold uppercase tracking-wider text-slate-500">Name</label>
+                                            <label className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 ml-1">Full Name</label>
                                             <Input
-                                                placeholder="Full Name"
-                                                className="bg-sky-50 dark:bg-sky-900/10 border-sky-100"
+                                                placeholder="Enter Name"
+                                                className="h-14 bg-slate-50 dark:bg-sky-950/20 border-slate-100 dark:border-primary/10 rounded-2xl font-bold px-6 focus:ring-primary shadow-sm"
                                                 value={formData.name}
                                                 onChange={e => setFormData({ ...formData, name: e.target.value })}
                                                 required
                                             />
                                         </div>
                                         <div className="space-y-2">
-                                            <label className="text-xs font-bold uppercase tracking-wider text-slate-500">Mobile</label>
+                                            <label className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 ml-1">Mobile Access</label>
                                             <Input
-                                                placeholder="10 digit number"
-                                                className="bg-sky-50 dark:bg-sky-900/10 border-sky-100"
+                                                placeholder="10-digit number"
+                                                className="h-14 bg-slate-50 dark:bg-sky-950/20 border-slate-100 dark:border-primary/10 rounded-2xl font-bold px-6 focus:ring-primary shadow-sm"
                                                 value={formData.mobile}
                                                 onChange={e => setFormData({ ...formData, mobile: e.target.value })}
                                                 required
                                             />
                                         </div>
-                                        <div className="grid grid-cols-2 gap-4">
+                                        <div className="grid grid-cols-2 gap-6">
                                             <div className="space-y-2">
-                                                <label className="text-xs font-bold uppercase tracking-wider text-slate-500">City</label>
+                                                <label className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 ml-1">City</label>
                                                 <Input
-                                                    placeholder="City"
-                                                    className="bg-sky-50 dark:bg-sky-900/10 border-sky-100"
+                                                    placeholder="Pune"
+                                                    className="h-14 bg-slate-50 dark:bg-sky-950/20 border-slate-100 dark:border-primary/10 rounded-2xl font-bold px-6 focus:ring-primary shadow-sm"
                                                     value={formData.city}
                                                     onChange={e => setFormData({ ...formData, city: e.target.value })}
                                                     required
                                                 />
                                             </div>
                                             <div className="space-y-2">
-                                                <label className="text-xs font-bold uppercase tracking-wider text-slate-500">Members</label>
+                                                <label className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 ml-1">Members</label>
                                                 <Input
-                                                    placeholder="e.g. 2 Adults 1 Child"
-                                                    className="bg-sky-50 dark:bg-sky-900/10 border-sky-100"
+                                                    placeholder="2A + 1C"
+                                                    className="h-14 bg-slate-50 dark:bg-sky-950/20 border-slate-100 dark:border-primary/10 rounded-2xl font-bold px-6 focus:ring-primary shadow-sm"
                                                     value={formData.members}
                                                     onChange={e => setFormData({ ...formData, members: e.target.value })}
                                                     required
                                                 />
                                             </div>
                                         </div>
-                                        <Button className="w-full bg-primary hover:bg-sky-600 text-white font-bold h-12 text-base shadow-lg shadow-primary/20 mt-2 border border-white/10 transition-all">View Plans</Button>
+                                        <Button className="w-full bg-primary hover:bg-sky-600 text-white font-black h-16 text-lg rounded-2xl shadow-2xl shadow-primary/20 mt-4 transition-all hover:scale-[1.02] active:scale-95 uppercase tracking-widest border border-white/10">View Plans</Button>
                                     </form>
                                 )}
                             </CardContent>

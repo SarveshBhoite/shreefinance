@@ -179,66 +179,72 @@ export default function BusinessCardsPage() {
 
                 {/* Right Column: Sticky Form */}
                 <aside className="relative">
-                    <div id="lead-form" className="sticky top-24">
-                        <Card className="glass-card bg-white/80 dark:bg-sky-950/80 border-sky-100 dark:border-sky-900 shadow-2xl overflow-hidden ring-1 ring-primary/10">
-                            <CardHeader className="bg-gradient-to-r from-primary to-sky-600 text-white p-6">
-                                <CardTitle className="text-lg">Contact Sales</CardTitle>
-                                <p className="text-sky-100 text-sm">For custom corporate solutions</p>
+                    <div id="lead-form" className="sticky top-32">
+                        <Card className="glass-card bg-white/90 dark:bg-slate-900/90 border-primary/20 shadow-[0_20px_50px_rgba(0,0,0,0.15)] overflow-hidden rounded-[2.5rem] ring-1 ring-primary/5">
+                            <CardHeader className="bg-gradient-to-r from-primary to-sky-700 text-white p-8 pb-10">
+                                <div className="flex justify-between items-start mb-4">
+                                    <div className="p-3 bg-white/20 rounded-2xl backdrop-blur-md">
+                                        <Briefcase className="h-6 w-6 text-white" />
+                                    </div>
+                                    <span className="text-[10px] font-black uppercase tracking-[0.2em] bg-accent text-slate-900 px-3 py-1 rounded-full shadow-lg">Corporate Elite</span>
+                                </div>
+                                <CardTitle className="text-2xl font-black tracking-tight leading-none mb-2">Contact Sales</CardTitle>
+                                <p className="text-sky-100/70 text-xs font-bold uppercase tracking-widest tracking-tighter">For custom corporate solutions</p>
                             </CardHeader>
-                            <CardContent className="p-6">
+                            <CardContent className="p-8 -mt-6 bg-white dark:bg-slate-950 rounded-t-[2.5rem] relative z-10 shadow-2xl">
                                 {isSuccess ? (
-                                    <div className="text-center py-8">
-                                        <div className="h-12 w-12 bg-green-500 rounded-full flex items-center justify-center mx-auto mb-4 tracking-tighter">
-                                            <CheckCircle2 className="h-6 w-6 text-white" />
+                                    <div className="text-center py-10">
+                                        <div className="h-20 w-20 bg-primary rounded-[2rem] flex items-center justify-center mx-auto mb-6 shadow-2xl shadow-primary/30">
+                                            <CheckCircle2 className="h-10 w-10 text-white" />
                                         </div>
-                                        <h3 className="text-xl font-bold text-slate-800 dark:text-white">Request Sent</h3>
-                                        <p className="text-slate-600 dark:text-slate-300 mt-2">B2B Team will contact you.</p>
+                                        <h3 className="text-2xl font-black text-slate-900 dark:text-white mb-2">Request Sent</h3>
+                                        <p className="text-slate-500 dark:text-slate-400 font-bold uppercase text-xs tracking-widest leading-loose">Our B2B team will contact you shortly.</p>
                                     </div>
                                 ) : (
-                                    <form onSubmit={handleSubmit} className="space-y-4">
+                                    <form onSubmit={handleSubmit} className="space-y-6">
                                         <div className="space-y-2">
-                                            <label className="text-xs font-bold uppercase tracking-wider text-slate-500">Contact Person</label>
+                                            <label className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 ml-1">Contact Person</label>
                                             <Input
                                                 placeholder="Full Name"
-                                                className="bg-sky-50 dark:bg-sky-900/10 border-sky-100"
+                                                className="h-14 bg-slate-50 dark:bg-sky-950/20 border-slate-100 dark:border-primary/10 rounded-2xl font-bold px-6 focus:ring-primary shadow-sm"
                                                 value={formData.name}
                                                 onChange={e => setFormData({ ...formData, name: e.target.value })}
                                                 required
                                             />
                                         </div>
                                         <div className="space-y-2">
-                                            <label className="text-xs font-bold uppercase tracking-wider text-slate-500">Company</label>
+                                            <label className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 ml-1">Company Name</label>
                                             <Input
                                                 placeholder="Business Name"
-                                                className="bg-sky-50 dark:bg-sky-900/10 border-sky-100"
+                                                className="h-14 bg-slate-50 dark:bg-sky-950/20 border-slate-100 dark:border-primary/10 rounded-2xl font-bold px-6 focus:ring-primary shadow-sm"
                                                 value={formData.businessName}
                                                 onChange={e => setFormData({ ...formData, businessName: e.target.value })}
                                                 required
                                             />
                                         </div>
-                                        <div className="grid grid-cols-2 gap-4">
+                                        <div className="grid grid-cols-2 gap-6">
                                             <div className="space-y-2">
-                                                <label className="text-xs font-bold uppercase tracking-wider text-slate-500">Mobile</label>
+                                                <label className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 ml-1">Mobile Access</label>
                                                 <Input
-                                                    placeholder="10 digit number"
-                                                    className="bg-sky-50 dark:bg-sky-900/10 border-sky-100"
+                                                    placeholder="10-digit #"
+                                                    className="h-14 bg-slate-50 dark:bg-sky-950/20 border-slate-100 dark:border-primary/10 rounded-2xl font-bold px-6 focus:ring-primary shadow-sm"
                                                     value={formData.mobile}
                                                     onChange={e => setFormData({ ...formData, mobile: e.target.value })}
                                                     required
                                                 />
                                             </div>
                                             <div className="space-y-2">
-                                                <label className="text-xs font-bold uppercase tracking-wider text-slate-500">Turnover</label>
+                                                <label className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 ml-1">Annual Turnover</label>
                                                 <Input
-                                                    placeholder="Annual"
-                                                    className="bg-sky-50 dark:bg-sky-900/10 border-sky-100"
+                                                    placeholder="e.g. 5 Cr"
+                                                    className="h-14 bg-slate-50 dark:bg-sky-950/20 border-slate-100 dark:border-primary/10 rounded-2xl font-bold px-6 focus:ring-primary shadow-sm"
                                                     value={formData.turnover}
                                                     onChange={e => setFormData({ ...formData, turnover: e.target.value })}
                                                     required
                                                 />
                                             </div>
                                         </div>
-                                        <Button className="w-full bg-primary hover:bg-sky-600 text-white font-bold h-12 text-base shadow-lg shadow-primary/20 mt-2 border border-white/10 transition-all">Request Callback</Button>
+                                        <Button className="w-full bg-primary hover:bg-sky-600 text-white font-black h-16 text-lg rounded-2xl shadow-2xl shadow-primary/20 mt-4 transition-all hover:scale-[1.02] active:scale-95 uppercase tracking-widest border border-white/10">Request Callback</Button>
                                     </form>
                                 )}
                             </CardContent>
