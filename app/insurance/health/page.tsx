@@ -35,7 +35,7 @@ export default function HealthInsurancePage() {
         <div className="pb-20 bg-slate-50 dark:bg-black selection:bg-primary/30 font-sans mx-auto">
             <DynamicHeroWrapper page="health-insurance">
                 {/* Unique Hero Section - Family Pulse Ocean Theme */}
-                <section className="relative pt-40 pb-20 overflow-hidden bg-gradient-to-b from-sky-950 to-sky-900 border-b border-primary/20 text-white">
+                <section className="relative pt-12 md:pt-20 pb-20 overflow-hidden bg-gradient-to-b from-sky-950 to-sky-900 border-b border-primary/20 text-white">
                     <div className="absolute top-1/2 left-0 right-0 h-[200px] -translate-y-1/2 pointer-events-none opacity-10">
                         <svg viewBox="0 0 1000 200" preserveAspectRatio="none" className="w-full h-full stroke-primary/30 fill-none stroke-2">
                             <path d="M0,100 L200,100 L220,150 L250,50 L280,150 L300,100 L1000,100" vectorEffect="non-scaling-stroke" />

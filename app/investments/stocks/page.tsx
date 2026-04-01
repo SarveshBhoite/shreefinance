@@ -37,7 +37,7 @@ export default function StocksPage() {
         <div className="pb-20 bg-slate-50 dark:bg-black selection:bg-primary/30 font-sans mx-auto">
             <DynamicHeroWrapper page="stocks">
                 {/* Unique Hero Section - Bull Run Ocean Theme */}
-                <section className="relative pt-32 pb-32 overflow-hidden bg-gradient-to-b from-sky-950 to-sky-900 border-b border-primary/20 text-white">
+                <section className="relative pt-12 md:pt-20 pb-32 overflow-hidden bg-gradient-to-b from-sky-950 to-sky-900 border-b border-primary/20 text-white">
                     {/* Grid Background - Ocean Style */}
                     <div className="absolute inset-0 bg-[linear-gradient(to_right,#0ea5e91a_1px,transparent_1px),linear-gradient(to_bottom,#0ea5e91a_1px,transparent_1px)] bg-[size:40px_40px]"></div>
                     <div className="absolute inset-0 bg-gradient-to-t from-sky-950 via-transparent to-transparent"></div>

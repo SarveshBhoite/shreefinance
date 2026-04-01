@@ -36,7 +36,7 @@ export default function BusinessCardsPage() {
         <div className="pb-20 bg-slate-50 dark:bg-black selection:bg-primary/30 font-sans mx-auto">
             <DynamicHeroWrapper page="business-cards">
                 {/* Unique Hero Section - Corporate Power Ocean Theme */}
-                <section className="relative pt-32 pb-32 overflow-hidden bg-gradient-to-b from-sky-950 to-sky-900 border-b border-primary/20 text-white">
+                <section className="relative pt-12 md:pt-20 pb-32 overflow-hidden bg-gradient-to-b from-sky-950 to-sky-900 border-b border-primary/20 text-white">
                     {/* Dark Metallic Background - Ocean Style */}
                     <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-5"></div>
                     <div className="absolute inset-0 bg-gradient-to-br from-sky-950 via-sky-900 to-black opacity-90"></div>

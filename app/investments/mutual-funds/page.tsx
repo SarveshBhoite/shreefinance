@@ -38,7 +38,7 @@ export default function MutualFundsPage() {
         <div className="pb-20 bg-slate-50 dark:bg-black selection:bg-primary/30 font-sans">
             <DynamicHeroWrapper page="mutual-funds">
                 {/* Ocean Blue Hero Section - Wealth Growth Theme */}
-                <section className="relative pt-40 pb-20 overflow-hidden bg-sky-950 text-white">
+                <section className="relative pt-12 md:pt-20 pb-20 overflow-hidden bg-sky-950 text-white">
                     {/* Water-inspired Background pattern */}
                     <div className="absolute inset-0 pointer-events-none opacity-20">
                         <div className="absolute -top-24 -right-24 w-[500px] h-[500px] bg-primary/30 rounded-full blur-[100px] animate-pulse"></div>

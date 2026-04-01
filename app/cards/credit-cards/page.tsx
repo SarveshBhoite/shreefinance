@@ -36,7 +36,7 @@ export default function CreditCardsPage() {
         <div className="pb-20 bg-slate-50 dark:bg-black selection:bg-primary/30 font-sans mx-auto">
             <DynamicHeroWrapper page="credit-cards">
                 {/* Unique Hero Section - Premium Lifestyle Ocean Theme */}
-                <section className="relative pt-32 pb-32 overflow-hidden bg-white dark:bg-sky-950 mx-auto">
+                <section className="relative pt-12 md:pt-20 pb-32 overflow-hidden bg-white dark:bg-sky-950 mx-auto">
                     {/* Spotlight Background - Ocean Style */}
                     <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[600px] bg-primary/20 rounded-full blur-[120px] mix-blend-screen opacity-60 pointer-events-none"></div>
                     <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/diamond-upholstery.png')] opacity-5"></div>

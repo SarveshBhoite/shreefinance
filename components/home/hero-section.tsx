@@ -22,7 +22,7 @@ export function HeroSection() {
     };
 
     return (
-        <section className="relative w-full py-16 md:py-28 lg:py-32 overflow-hidden bg-slate-50 dark:bg-black font-sans">
+        <section className="relative w-full py-12 md:py-20 lg:py-28 overflow-hidden bg-slate-50 dark:bg-black font-sans">
             {/* Background Gradients & Effects - Ocean Theme */}
             <div className="absolute inset-0 overflow-hidden pointer-events-none">
                 <div className="absolute -top-[20%] -left-[10%] w-[700px] h-[700px] bg-primary/20 rounded-full blur-[100px] animate-[pulse_6s_ease-in-out_infinite]"></div>
@@ -35,7 +35,7 @@ export function HeroSection() {
                 <div className="flex flex-col-reverse lg:grid lg:grid-cols-[1.2fr_0.8fr] lg:gap-8 items-center lg:container lg:mx-auto">
 
                     {/* Text Content */}
-                    <div className="space-y-8 px-4 md:px-6 lg:px-0 pb-16 lg:pb-0">
+                    <div className="space-y-8 px-8 md:px-10 lg:px-0 pb-16 lg:pb-0">
                         <motion.div
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}

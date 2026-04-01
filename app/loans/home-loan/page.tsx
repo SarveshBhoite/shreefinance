@@ -45,7 +45,7 @@ export default function HomeLoanPage() {
         <div className="pb-20 bg-slate-50 dark:bg-black selection:bg-primary/30 font-sans mx-auto">
             <DynamicHeroWrapper page="home-loan">
                 {/* Unique Hero Section - Dream Home Ocean Theme */}
-                <section className="relative pt-40 pb-32 overflow-hidden bg-white dark:bg-sky-950 border-b border-sky-100 dark:border-sky-900">
+                <section className="relative pt-12 md:pt-20 pb-32 overflow-hidden bg-white dark:bg-sky-950 border-b border-sky-100 dark:border-sky-900">
                     {/* Abstract Background Shapes - Ocean Style */}
                     <div className="absolute top-0 right-0 w-[60%] h-full bg-sky-50 dark:bg-sky-900/20 rounded-bl-[100px] -z-10"></div>
                     <div className="absolute bottom-10 left-10 w-32 h-32 bg-accent/10 dark:bg-accent/20 rounded-full blur-3xl opacity-50"></div>

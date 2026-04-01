@@ -27,7 +27,7 @@ export default async function RootLayout({
     <html lang="en">
       <body className={cn(sora.variable, urbanist.variable, "antialiased font-sans bg-slate-50 dark:bg-black text-slate-900 dark:text-slate-50 min-h-screen flex flex-col selection:bg-primary/30 selection:text-primary-foreground")}>
         {!isAdmin && <SiteHeader />}
-        <main className={cn("flex-1", !isAdmin && "pt-28 md:pt-36")}>
+        <main className="flex-1">
           {children}
         </main>
         {!isAdmin && <SiteFooter />}

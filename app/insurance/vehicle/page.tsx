@@ -37,7 +37,7 @@ export default function VehicleInsurancePage() {
         <div className="pb-20 bg-slate-50 dark:bg-black selection:bg-primary/30 font-sans">
             <DynamicHeroWrapper page="vehicle-insurance">
                 {/* Ocean Blue Hero Section - Road Safety Theme */}
-                <section className="relative pt-32 pb-40 overflow-hidden bg-sky-950 text-white">
+                <section className="relative pt-12 md:pt-20 pb-40 overflow-hidden bg-sky-950 text-white">
                     {/* Safety Grid Background - Blue Variant */}
                     <div className="absolute inset-0 bg-[linear-gradient(to_right,#0ea5e91a_1px,transparent_1px),linear-gradient(to_bottom,#0ea5e91a_1px,transparent_1px)] bg-[size:40px_40px]"></div>
                     <div className="absolute inset-0 bg-gradient-to-t from-sky-950 via-transparent to-transparent"></div>

@@ -87,13 +87,13 @@ export default function GovernmentSchemesPage() {
         <div className="min-h-screen bg-slate-50 dark:bg-black font-sans pb-20 selection:bg-primary/30 mx-auto">
             <DynamicHeroWrapper page="government-schemes">
                 {/* Premium Hero Section - Ocean Theme */}
-                <section className="relative pt-32 pb-24 overflow-hidden bg-gradient-to-b from-sky-950 to-sky-900 border-b border-primary/20 text-white">
+                <section className="relative pt-12 md:pt-20 pb-24 overflow-hidden bg-gradient-to-b from-sky-950 to-sky-900 border-b border-primary/20 text-white">
                     <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-5"></div>
                     {/* Decorative blobs */}
                     <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-primary/20 rounded-full blur-[100px] mix-blend-screen animate-[pulse_6s_ease-in-out_infinite]"></div>
                     <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-accent/10 rounded-full blur-[100px] mix-blend-screen opacity-50"></div>
 
-                    <div className="container px-4 relative z-10 text-center max-w-4xl mx-auto">
+                    <div className="container px-8 relative z-10 text-center max-w-4xl mx-auto">
                         <div className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-1.5 text-sm font-bold text-sky-100 mb-6 backdrop-blur-md">
                             <Landmark className="h-4 w-4 text-accent" />
                             <span>Nation Building Initiatives</span>
@@ -118,7 +118,7 @@ export default function GovernmentSchemesPage() {
             </DynamicHeroWrapper>
 
             {/* Featured Schemes - Large Cards */}
-            <div className="container px-4 -mt-16 relative z-20 mx-auto">
+            <div className="container px-8 -mt-16 relative z-20 mx-auto">
                 <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
                     {featuredSchemes.map((scheme, i) => (
                         <Link key={i} href={scheme.link} className="group cursor-pointer">
@@ -144,7 +144,7 @@ export default function GovernmentSchemesPage() {
             </div>
 
             {/* Other Initiatives Grid */}
-            <div className="container px-4 py-24 mx-auto">
+            <div className="container px-8 py-24 mx-auto">
                 <div className="text-center mb-16">
                     <h2 className="text-3xl md:text-5xl font-extrabold text-slate-900 dark:text-white mb-4">Other Key Initiatives</h2>
                     <p className="text-slate-500 dark:text-slate-400 text-lg max-w-2xl mx-auto">Diverse programs designed to empower every sector of society.</p>
@@ -167,7 +167,7 @@ export default function GovernmentSchemesPage() {
             </div>
 
             {/* General Inquiry Form - Glassmorphism */}
-            <div id="lead-form" className="container px-4 pb-20 mx-auto">
+            <div id="lead-form" className="container px-8 pb-20 mx-auto">
                 <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-sky-950 via-sky-900 to-sky-950 text-white p-8 md:p-16 max-w-6xl mx-auto grid lg:grid-cols-2 gap-12 items-center border border-primary/20 shadow-2xl">
                     <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-5"></div>
                     <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-primary/20 rounded-full blur-[80px]"></div>

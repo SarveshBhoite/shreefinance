@@ -36,7 +36,7 @@ export default function PMAYPage() {
         <div className="pb-20 bg-slate-50 dark:bg-black selection:bg-primary/30 font-sans mx-auto">
             <DynamicHeroWrapper page="pmay">
                 {/* PMAY Hero - Official & Trustworthy Ocean Theme */}
-                <section className="relative pt-32 pb-20 overflow-hidden bg-gradient-to-b from-sky-950 to-sky-900 border-b border-primary/20 text-white">
+                <section className="relative pt-12 md:pt-20 pb-20 overflow-hidden bg-gradient-to-b from-sky-950 to-sky-900 border-b border-primary/20 text-white">
                     {/* Abstract Globs - Ocean Style */}
                     <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-primary/20 rounded-full blur-[100px] mix-blend-multiply animate-[pulse_6s_ease-in-out_infinite]"></div>
                     <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-accent/10 rounded-full blur-[100px] mix-blend-multiply opacity-50"></div>

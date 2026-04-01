@@ -22,15 +22,9 @@ export function SiteHeader() {
 
     return (
         <>
-            <header className={cn(
-                "fixed top-4 md:top-6 left-1/2 -translate-x-1/2 z-50 w-[95%] max-w-7xl transition-[margin,box-shadow,color,background-color] duration-300",
-                isMobileMenuOpen ? "rounded-[2rem]" : "rounded-full"
-            )}>
-                <div className={cn(
-                    "relative w-full border border-primary/20 bg-white/95 dark:bg-black/90 backdrop-blur-3xl shadow-[0_8px_40px_rgba(0,0,0,0.12)] transition-[margin,box-shadow,color,background-color] duration-300 ring-1 ring-primary/5",
-                    isMobileMenuOpen ? "rounded-[2rem]" : "rounded-full"
-                )}>
-                <div className="flex h-16 md:h-20 items-center justify-between px-8 relative">
+            <header className="sticky top-0 z-50 w-full bg-white dark:bg-black border-b border-primary/10 shadow-sm transition-colors duration-300">
+                <div className="w-full relative">
+                <div className="container mx-auto flex h-16 md:h-20 items-center justify-between px-6 md:px-8 relative">
                     {/* Logo Section */}
                     <div className="flex items-center gap-2">
                         <Link href="/" className="flex items-center group transition-transform hover:scale-105">
@@ -87,7 +81,7 @@ export function SiteHeader() {
 
                 {/* Mobile Menu Overlay */}
                 {isMobileMenuOpen && (
-                    <div className="lg:hidden border-t border-primary/10 p-6 space-y-6 max-h-[70vh] overflow-y-auto animate-in fade-in slide-in-from-top-4 duration-300">
+                    <div className="lg:hidden border-t border-primary/10 bg-white dark:bg-black p-6 space-y-6 max-h-[calc(100vh-80px)] overflow-y-auto animate-in fade-in slide-in-from-top-4 duration-300">
                         <nav className="space-y-4">
                             {Object.entries(megaMenuData).map(([key, category]) => (
                                 <div key={key} className="space-y-2">
