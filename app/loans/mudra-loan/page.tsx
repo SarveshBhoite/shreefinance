@@ -28,6 +28,10 @@ export default function MudraLoanPage() {
         });
     };
 
+    const scrollToForm = () => {
+        document.getElementById('lead-form')?.scrollIntoView({ behavior: 'smooth' });
+    };
+
     return (
         <div className="pb-20 bg-slate-50 dark:bg-black selection:bg-primary/30 font-sans mx-auto">
             <DynamicHeroWrapper page="mudra-loan">
@@ -54,7 +58,7 @@ export default function MudraLoanPage() {
                             </p>
 
                             <div className="flex flex-wrap justify-center gap-4">
-                                <Button size="lg" className="h-14 px-8 text-lg rounded-full shadow-lg shadow-primary/20 bg-primary hover:bg-sky-600 text-white font-bold border border-white/10 transition-all hover:scale-105">
+                                <Button size="lg" className="h-14 px-8 text-lg rounded-full shadow-lg shadow-primary/20 bg-primary hover:bg-sky-600 text-white font-bold border border-white/10 transition-all hover:scale-105" onClick={scrollToForm}>
                                     Check Eligibility
                                 </Button>
                             </div>
@@ -121,7 +125,7 @@ export default function MudraLoanPage() {
 
                 {/* Sticky Sidebar Form */}
                 <aside className="relative">
-                    <div className="sticky top-32">
+                    <div id="lead-form" className="sticky top-32">
                         <Card className="glass-card bg-white/90 dark:bg-sky-950/90 border-primary/20 shadow-[0_20px_50px_rgba(0,0,0,0.15)] overflow-hidden rounded-[2.5rem] ring-1 ring-primary/5">
                             <CardHeader className="bg-gradient-to-r from-primary to-sky-700 text-white p-8 pb-10">
                                 <div className="flex justify-between items-start mb-4">

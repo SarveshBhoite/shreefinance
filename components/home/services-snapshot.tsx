@@ -130,7 +130,9 @@ export function ServicesSnapshot() {
                 </div>
 
                 <div className="mt-12 text-center md:hidden">
-                    <Button variant="outline" className="w-full h-12 rounded-xl font-bold border-primary/20 text-primary">View All Services</Button>
+                    <Link href="/loans/personal-loan">
+                        <Button variant="outline" className="w-full h-12 rounded-xl font-bold border-primary/20 text-primary">View All Services</Button>
+                    </Link>
                 </div>
             </div>
         </section>

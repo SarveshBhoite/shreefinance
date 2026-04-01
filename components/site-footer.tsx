@@ -57,6 +57,7 @@ export function SiteFooter() {
                                 { name: "Car Loan", href: "/loans/car-loan" },
                                 { name: "Mudra Loan", href: "/loans/mudra-loan" },
                                 { name: "Govt Schemes", href: "/loans/government-schemes" },
+                                { name: "Education Loan", href: "/loans/education-loan" },
                             ].map((item, i) => (
                                 <li key={i}>
                                     <Link href={item.href} className="text-slate-400 hover:text-accent font-bold text-base flex items-center group transition-colors">
@@ -79,6 +80,7 @@ export function SiteFooter() {
                                 { name: "Life Insurance", href: "/insurance/life" },
                                 { name: "Mutual Funds", href: "/investments/mutual-funds" },
                                 { name: "Stock Market", href: "/investments/stocks" },
+                                { name: "Vehicle Insurance", href: "/insurance/vehicle" },
                             ].map((item, i) => (
                                 <li key={i}>
                                     <Link href={item.href} className="text-slate-400 hover:text-primary font-bold text-base flex items-center group transition-colors">

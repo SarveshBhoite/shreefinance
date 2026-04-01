@@ -12,6 +12,7 @@ import { cn } from "@/lib/utils";
 export function SiteHeader() {
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
     const [isCibilModalOpen, setIsCibilModalOpen] = useState(false);
+    const [isGeneralModalOpen, setIsGeneralModalOpen] = useState(false);
 
     return (
         <>
@@ -38,7 +39,10 @@ export function SiteHeader() {
 
                     {/* Action Buttons */}
                     <div className="flex items-center gap-3">
-                        <div className="hidden md:flex items-center gap-2.5 text-sm font-bold text-slate-600 dark:text-slate-300 hover:text-primary transition-all cursor-pointer group">
+                        <div 
+                            className="hidden md:flex items-center gap-2.5 text-sm font-bold text-slate-600 dark:text-slate-300 hover:text-primary transition-all cursor-pointer group"
+                            onClick={() => setIsGeneralModalOpen(true)}
+                        >
                             <div className="p-2 rounded-full bg-primary/10 dark:bg-primary/20 group-hover:bg-primary group-hover:text-white transition-all duration-300">
                                 <Phone className="h-4 w-4" />
                             </div>
@@ -72,9 +76,10 @@ export function SiteHeader() {
                             {[
                                 { name: "Loans", href: "/loans/personal-loan" },
                                 { name: "Cards", href: "/cards/credit-cards" },
-                                { name: "Insurance", href: "/insurance/health" },
-                                { name: "Investments", href: "/investments/stocks" },
-                            ].map((item) => (
+                                { name: "Mudra Loan", href: "/loans/mudra-loan" },
+                                { name: "Govt Schemes", href: "/loans/government-schemes" },
+                                { name: "Education Loan", href: "/loans/education-loan" },
+                            ].map((item, i) => (
                                 <Link 
                                     key={item.href}
                                     href={item.href} 
@@ -101,6 +106,11 @@ export function SiteHeader() {
                 isOpen={isCibilModalOpen}
                 onClose={() => setIsCibilModalOpen(false)}
                 type="cibil"
+            />
+            <LeadFormModal
+                isOpen={isGeneralModalOpen}
+                onClose={() => setIsGeneralModalOpen(false)}
+                type="general"
             />
         </>
     );

@@ -28,6 +28,10 @@ export default function PMAYPage() {
         });
     };
 
+    const scrollToForm = () => {
+        document.getElementById('lead-form')?.scrollIntoView({ behavior: 'smooth' });
+    };
+
     return (
         <div className="pb-20 bg-slate-50 dark:bg-black selection:bg-primary/30 font-sans mx-auto">
             <DynamicHeroWrapper page="pmay">
@@ -54,8 +58,8 @@ export default function PMAYPage() {
                             </p>
 
                             <div className="flex flex-wrap justify-center gap-4">
-                                <Button size="lg" className="h-14 px-8 text-lg rounded-full shadow-lg shadow-primary/20 bg-primary hover:bg-sky-600 text-white font-bold border border-white/10 transition-all hover:scale-105">
-                                    Check Subsidy Eligibility
+                                <Button size="lg" className="h-14 px-8 text-lg rounded-full shadow-lg shadow-primary/20 bg-primary hover:bg-sky-600 text-white font-bold border border-white/10 transition-all hover:scale-105" onClick={scrollToForm}>
+                                    Check My Subsidy
                                 </Button>
                             </div>
                         </div>

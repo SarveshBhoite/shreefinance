@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { EMICalculator } from "@/components/calculators/emi-calculator";
 import { CheckCircle2, Home, IndianRupee, Percent, ShieldCheck, Zap, FileText, Key, Map, Calendar, DollarSign, Clock } from "lucide-react";
+import Link from "next/link";
 import { Input } from "@/components/ui/input";
 import { useState } from "react";
 import { useEmailForm } from "@/hooks/use-email-form";
@@ -157,7 +158,9 @@ export default function HomeLoanPage() {
                                 <Percent className="h-12 w-12 text-sky-200 mb-6" />
                                 <h3 className="text-2xl font-bold mb-2 text-white">PMAY Subsidy</h3>
                                 <p className="text-sky-100 mb-6">First-time homebuyers can save up to ₹2.67 Lakhs on interest under the CLSS scheme.</p>
-                                <Button variant="secondary" className="w-full font-bold text-primary bg-white hover:bg-sky-50 border-none">Check PMAY Eligibility</Button>
+                                <Link href="/loans/pmay" className="w-full">
+                                    <Button variant="secondary" className="w-full font-bold text-primary bg-white hover:bg-sky-50 border-none">Check PMAY Eligibility</Button>
+                                </Link>
                             </CardContent>
                         </Card>
                         <Card className="bg-sky-50 dark:bg-sky-900/10 border border-sky-100 dark:border-sky-800 shadow-sm overflow-hidden group">
@@ -166,7 +169,7 @@ export default function HomeLoanPage() {
                                 <Map className="h-12 w-12 text-primary mb-6" />
                                 <h3 className="text-2xl font-bold mb-2 text-slate-900 dark:text-white">Balance Transfer</h3>
                                 <p className="text-slate-500 dark:text-slate-400 mb-6">Already have a loan? Transfer it to us for lower rates and top-up benefits.</p>
-                                <Button variant="outline" className="w-full font-bold border-primary text-primary hover:bg-primary/5">Transfer Loan</Button>
+                                <Button variant="outline" className="w-full font-bold border-primary text-primary hover:bg-primary/5" onClick={scrollToForm}>Transfer Loan</Button>
                             </CardContent>
                         </Card>
                     </div>

@@ -4,6 +4,7 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { ArrowUpDown, Zap, CheckCircle2, TrendingDown } from "lucide-react";
+import Link from "next/link";
 import { cn } from "@/lib/utils";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -136,9 +137,16 @@ export function RateComparisonTable() {
                                             <td className="px-8 py-6 text-slate-500 dark:text-slate-400 font-bold">{item.fee}</td>
                                             <td className="px-8 py-6 text-slate-500 dark:text-slate-400 font-bold">{item.tenure}</td>
                                             <td className="px-8 py-6 text-right">
-                                                <Button size="sm" className="rounded-xl font-bold px-6 h-10 border border-primary/20 bg-primary hover:bg-sky-600 text-white shadow-lg shadow-primary/20 transition-all hover:-translate-y-0.5 min-w-[120px]">
-                                                    Get Quote
-                                                </Button>
+                                                <Link href={
+                                                    item.type === "Personal Loan" ? "/loans/personal-loan" :
+                                                    item.type === "Home Loan" ? "/loans/home-loan" :
+                                                    item.type === "Car Loan" ? "/loans/car-loan" :
+                                                    "/loans/personal-loan"
+                                                }>
+                                                    <Button size="sm" className="rounded-xl font-bold px-6 h-10 border border-primary/20 bg-primary hover:bg-sky-600 text-white shadow-lg shadow-primary/20 transition-all hover:-translate-y-0.5 min-w-[120px]">
+                                                        Get Quote
+                                                    </Button>
+                                                </Link>
                                             </td>
                                         </motion.tr>
                                     ))}

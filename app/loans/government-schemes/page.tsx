@@ -27,6 +27,10 @@ export default function GovernmentSchemesPage() {
         });
     };
 
+    const scrollToForm = () => {
+        document.getElementById('lead-form')?.scrollIntoView({ behavior: 'smooth' });
+    };
+
     const featuredSchemes = [
         {
             title: "PMAY (Housing)",
@@ -105,7 +109,7 @@ export default function GovernmentSchemesPage() {
                         </p>
 
                         <div className="flex flex-wrap justify-center gap-4">
-                            <Button size="lg" className="h-14 px-8 text-lg rounded-full bg-primary hover:bg-sky-600 text-white font-bold shadow-lg shadow-primary/20 border border-white/10 transition-all hover:scale-105">
+                            <Button size="lg" className="h-14 px-8 text-lg rounded-full bg-primary hover:bg-sky-600 text-white font-bold shadow-lg shadow-primary/20 border border-white/10 transition-all hover:scale-105" onClick={scrollToForm}>
                                 Check Eligibility
                             </Button>
                         </div>
@@ -163,7 +167,7 @@ export default function GovernmentSchemesPage() {
             </div>
 
             {/* General Inquiry Form - Glassmorphism */}
-            <div className="container px-4 pb-20 mx-auto">
+            <div id="lead-form" className="container px-4 pb-20 mx-auto">
                 <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-sky-950 via-sky-900 to-sky-950 text-white p-8 md:p-16 max-w-6xl mx-auto grid lg:grid-cols-2 gap-12 items-center border border-primary/20 shadow-2xl">
                     <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-5"></div>
                     <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-primary/20 rounded-full blur-[80px]"></div>

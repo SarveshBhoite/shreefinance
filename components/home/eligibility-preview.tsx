@@ -4,10 +4,15 @@ import { Button } from "@/components/ui/button";
 import { CheckCircle, Clock, Shield, Sparkles } from "lucide-react";
 import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
+import { useState } from "react";
+import { LeadFormModal } from "@/components/dialogs/lead-form-modal";
 
 export function EligibilityPreview() {
+    const [isModalOpen, setIsModalOpen] = useState(false);
+
     return (
-        <section className="w-full py-24 bg-gradient-to-br from-sky-950 via-sky-900 to-sky-950 text-white relative overflow-hidden font-sans border-y border-white/5">
+        <>
+            <section className="w-full py-24 bg-gradient-to-br from-sky-950 via-sky-900 to-sky-950 text-white relative overflow-hidden font-sans border-y border-white/5">
             {/* Dynamic Water-inspired Background pattern */}
             <div className="absolute inset-0 pointer-events-none">
                 <div className="absolute -top-48 -left-48 w-[600px] h-[600px] bg-primary/20 rounded-full blur-[120px] animate-[pulse_8s_ease-in-out_infinite]"></div>
@@ -62,7 +67,11 @@ export function EligibilityPreview() {
                     ))}
                 </div>
 
-                <Button size="lg" className="h-16 px-12 text-xl rounded-full shadow-2xl shadow-primary/40 bg-primary hover:bg-sky-600 text-white font-black border border-white/20 transition-all hover:scale-105 active:scale-95">
+                <Button 
+                    size="lg" 
+                    className="h-16 px-12 text-xl rounded-full shadow-2xl shadow-primary/40 bg-primary hover:bg-sky-600 text-white font-black border border-white/20 transition-all hover:scale-105 active:scale-95"
+                    onClick={() => setIsModalOpen(true)}
+                >
                     Check My Eligibility Now
                 </Button>
                 <p className="mt-8 text-xs font-bold text-sky-200/40 uppercase tracking-[0.2em]">
@@ -70,5 +79,12 @@ export function EligibilityPreview() {
                 </p>
             </div>
         </section>
+
+        <LeadFormModal 
+            isOpen={isModalOpen}
+            onClose={() => setIsModalOpen(false)}
+            type="cibil"
+        />
+    </>
     );
 }
