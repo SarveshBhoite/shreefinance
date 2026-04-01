@@ -32,10 +32,10 @@ export function HeroSection() {
             </div>
 
             <div className="relative z-10">
-                <div className="flex flex-col-reverse lg:grid lg:grid-cols-[1.2fr_0.8fr] lg:gap-8 items-center lg:container lg:mx-auto">
+                <div className="container mx-auto px-4 md:px-6 lg:px-8 flex flex-col-reverse lg:grid lg:grid-cols-[1.2fr_0.8fr] lg:gap-8 items-center">
 
                     {/* Text Content */}
-                    <div className="space-y-8 px-8 md:px-10 lg:px-0 pb-16 lg:pb-0">
+                    <div className="space-y-8 pb-16 lg:pb-0">
                         <motion.div
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
