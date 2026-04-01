@@ -29,16 +29,16 @@ export default function MudraLoanPage() {
     };
 
     return (
-        <div className="pb-20 bg-slate-50 dark:bg-black selection:bg-primary/30 font-sans">
+        <div className="pb-20 bg-slate-50 dark:bg-black selection:bg-primary/30 font-sans mx-auto">
             <DynamicHeroWrapper page="mudra-loan">
                 {/* Mudra Hero - Business & Growth Ocean Theme */}
-                <section className="relative pt-32 pb-20 overflow-hidden bg-gradient-to-b from-sky-950 to-sky-900 mx-auto">
+                <section className="relative pt-32 pb-20 overflow-hidden bg-gradient-to-b from-sky-950 to-sky-900 border-b border-primary/20 text-white">
                     {/* Abstract Globs - Ocean Style */}
                     <div className="absolute top-0 left-0 w-[600px] h-[600px] bg-primary/20 rounded-full blur-[100px] mix-blend-multiply animate-pulse"></div>
                     <div className="absolute bottom-0 right-0 w-[600px] h-[600px] bg-accent/10 rounded-full blur-[100px] mix-blend-multiply"></div>
 
                     <div className="container relative z-10 px-4 md:px-6 mx-auto">
-                        <div className="flex flex-col items-center text-center max-w-4xl mx-auto space-y-8 text-white">
+                        <div className="flex flex-col items-center text-center max-w-4xl mx-auto space-y-8">
                             <div className="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-4 py-1.5 text-sm font-bold text-sky-200 backdrop-blur-sm">
                                 <BadgeIndianRupee className="h-4 w-4 text-accent" />
                                 <span>Empowering Micro Enterprises</span>
@@ -63,7 +63,7 @@ export default function MudraLoanPage() {
                 </section>
             </DynamicHeroWrapper>
 
-            <div className="container px-4 md:px-6 py-12 grid lg:grid-cols-[1fr_400px] gap-12">
+            <div className="container px-4 md:px-6 py-20 grid lg:grid-cols-[1fr_400px] gap-12 mx-auto">
 
                 {/* Main Content */}
                 <div className="space-y-12">
@@ -74,23 +74,23 @@ export default function MudraLoanPage() {
                         imageAlt="Small business owner"
                     >
                         <div className="grid grid-cols-2 gap-4 mt-6">
-                            <div className="p-4 rounded-xl bg-sky-50 dark:bg-sky-900/10 border border-sky-100 dark:border-sky-800">
-                                <h4 className="font-bold text-primary text-lg">No Collateral</h4>
-                                <p className="text-sm text-slate-600 dark:text-slate-400">Security-free loans</p>
+                            <div className="p-4 rounded-xl bg-primary/5 border border-primary/10">
+                                <h4 className="font-bold text-primary text-lg tracking-tight">No Collateral</h4>
+                                <p className="text-xs text-slate-500 font-bold uppercase tracking-wider">Security-free loans</p>
                             </div>
-                            <div className="p-4 rounded-xl bg-orange-50 dark:bg-orange-900/20 border border-orange-100 dark:border-orange-800">
-                                <h4 className="font-bold text-neutral-800 dark:text-accent text-lg">Processing Fee</h4>
-                                <p className="text-sm text-slate-600 dark:text-slate-400">Zero or Nominal</p>
+                            <div className="p-4 rounded-xl bg-accent/5 border border-accent/20">
+                                <h4 className="font-bold text-accent text-lg tracking-tight">Processing Fee</h4>
+                                <p className="text-xs text-slate-500 font-bold uppercase tracking-wider">Zero or Nominal</p>
                             </div>
                         </div>
                     </ContentSection>
 
                     <div className="space-y-6">
                         <div className="flex items-center gap-3 mb-6">
-                            <div className="h-10 w-10 rounded-full bg-primary/10 dark:bg-primary/20 flex items-center justify-center text-primary">
+                            <div className="h-12 w-12 rounded-2xl bg-primary/10 dark:bg-primary/20 flex items-center justify-center text-primary shadow-sm">
                                 <CheckCircle2 className="h-6 w-6" />
                             </div>
-                            <h3 className="text-2xl font-bold">Loan Categories</h3>
+                            <h3 className="text-3xl font-black tracking-tight text-slate-900 dark:text-white">Loan Categories</h3>
                         </div>
                         <SimpleAccordion
                             items={[
@@ -103,10 +103,10 @@ export default function MudraLoanPage() {
 
                     <div className="space-y-6">
                         <div className="flex items-center gap-3 mb-6">
-                            <div className="h-10 w-10 rounded-full bg-accent/10 dark:bg-accent/20 flex items-center justify-center text-accent">
+                            <div className="h-12 w-12 rounded-2xl bg-accent/10 dark:bg-accent/20 flex items-center justify-center text-accent shadow-sm">
                                 <FileText className="h-6 w-6" />
                             </div>
-                            <h3 className="text-2xl font-bold">Required Documents</h3>
+                            <h3 className="text-3xl font-black tracking-tight text-slate-900 dark:text-white">Required Documents</h3>
                         </div>
                         <SimpleAccordion
                             items={[
@@ -121,39 +121,43 @@ export default function MudraLoanPage() {
 
                 {/* Sticky Sidebar Form */}
                 <aside className="relative">
-                    <div className="sticky top-24">
-                        <Card className="glass-card bg-white/80 dark:bg-sky-950/80 border-sky-100 dark:border-sky-900 shadow-2xl overflow-hidden ring-1 ring-primary/10">
-                            <CardHeader className="bg-gradient-to-r from-primary to-sky-600 text-white p-6">
-                                <CardTitle className="flex items-center gap-2">
-                                    <Briefcase className="h-5 w-5" />
-                                    Mudra Loan Inquiry
-                                </CardTitle>
+                    <div className="sticky top-32">
+                        <Card className="glass-card bg-white/90 dark:bg-sky-950/90 border-primary/20 shadow-[0_20px_50px_rgba(0,0,0,0.15)] overflow-hidden rounded-[2.5rem] ring-1 ring-primary/5">
+                            <CardHeader className="bg-gradient-to-r from-primary to-sky-700 text-white p-8 pb-10">
+                                <div className="flex justify-between items-start mb-4">
+                                    <div className="p-3 bg-white/20 rounded-2xl backdrop-blur-md">
+                                        <Briefcase className="h-6 w-6 text-white" />
+                                    </div>
+                                    <span className="text-[10px] font-black uppercase tracking-[0.2em] bg-accent text-slate-900 px-3 py-1 rounded-full shadow-lg">Govt Scheme</span>
+                                </div>
+                                <CardTitle className="text-2xl font-black tracking-tight leading-none mb-2">Mudra Inquiry</CardTitle>
+                                <p className="text-sky-100/70 text-xs font-bold uppercase tracking-widest tracking-tighter">Fuel Your Micro Enterprise</p>
                             </CardHeader>
-                            <CardContent className="p-6">
+                            <CardContent className="p-8 -mt-6 bg-white dark:bg-slate-950 rounded-t-[2.5rem] relative z-10 shadow-2xl">
                                 {isSuccess ? (
-                                    <div className="text-center py-8">
-                                        <div className="h-12 w-12 bg-green-500 rounded-full flex items-center justify-center mx-auto mb-4">
-                                            <CheckCircle2 className="h-6 w-6 text-white" />
+                                    <div className="text-center py-10">
+                                        <div className="h-20 w-20 bg-primary rounded-[2rem] flex items-center justify-center mx-auto mb-6 shadow-2xl shadow-primary/30">
+                                            <CheckCircle2 className="h-10 w-10 text-white" />
                                         </div>
-                                        <h3 className="text-xl font-bold text-slate-800 dark:text-white">Inquiry Sent</h3>
-                                        <p className="text-slate-600 dark:text-slate-300 mt-2">We will connect you with a Mudra agent.</p>
+                                        <h3 className="text-2xl font-black text-slate-900 dark:text-white mb-2">Inquiry Sent</h3>
+                                        <p className="text-slate-500 dark:text-slate-400 font-bold uppercase text-xs tracking-widest leading-loose">A Mudra expert will connect shortly.</p>
                                     </div>
                                 ) : (
-                                    <form onSubmit={handleSubmit} className="space-y-4">
+                                    <form onSubmit={handleSubmit} className="space-y-6">
                                         <div className="space-y-2">
-                                            <label className="text-xs font-bold uppercase tracking-wider text-slate-500">Loan Amount Required</label>
+                                            <label className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 ml-1">Capital Needed</label>
                                             <Input
                                                 placeholder="e.g. ₹2,00,000"
-                                                className="bg-sky-50 dark:bg-sky-900/10 border-sky-100"
+                                                className="h-14 bg-slate-50 dark:bg-sky-950/20 border-slate-100 dark:border-primary/10 rounded-2xl font-bold px-6 focus:ring-primary shadow-sm"
                                                 value={formData.loanAmount}
                                                 onChange={e => setFormData({ ...formData, loanAmount: e.target.value })}
                                                 required
                                             />
                                         </div>
                                         <div className="space-y-2">
-                                            <label className="text-xs font-bold uppercase tracking-wider text-slate-500">Business Stage</label>
+                                            <label className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 ml-1">Business Stage</label>
                                             <select
-                                                className="flex h-12 w-full rounded-xl border border-sky-100 bg-sky-50 dark:bg-sky-900/10 dark:border-sky-800 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary transition-all text-slate-700 dark:text-slate-200"
+                                                className="flex h-14 w-full rounded-2xl border border-slate-100 bg-slate-50 dark:bg-sky-950/20 px-6 py-2 text-sm font-bold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary transition-all shadow-sm"
                                                 value={formData.businessType}
                                                 onChange={e => setFormData({ ...formData, businessType: e.target.value })}
                                             >
@@ -164,34 +168,34 @@ export default function MudraLoanPage() {
                                             </select>
                                         </div>
                                         <div className="space-y-2">
-                                            <label className="text-xs font-bold uppercase tracking-wider text-slate-500">Contact Name</label>
+                                            <label className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 ml-1">Promoter Name</label>
                                             <Input
                                                 placeholder="Your Name"
-                                                className="bg-sky-50 dark:bg-sky-900/10 border-sky-100"
+                                                className="h-14 bg-slate-50 dark:bg-sky-950/20 border-slate-100 dark:border-primary/10 rounded-2xl font-bold px-6 focus:ring-primary shadow-sm"
                                                 value={formData.name}
                                                 onChange={e => setFormData({ ...formData, name: e.target.value })}
                                                 required
                                             />
                                         </div>
                                         <div className="space-y-2">
-                                            <label className="text-xs font-bold uppercase tracking-wider text-slate-500">Mobile Number</label>
+                                            <label className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 ml-1">Mobile Access</label>
                                             <Input
                                                 placeholder="10 digit number"
-                                                className="bg-sky-50 dark:bg-sky-900/10 border-sky-100"
+                                                className="h-14 bg-slate-50 dark:bg-sky-950/20 border-slate-100 dark:border-primary/10 rounded-2xl font-bold px-6 focus:ring-primary shadow-sm"
                                                 value={formData.mobile}
                                                 onChange={e => setFormData({ ...formData, mobile: e.target.value })}
                                                 required
                                             />
                                         </div>
-                                        <Button className="w-full bg-primary hover:bg-sky-600 text-white font-bold h-12 text-base shadow-lg shadow-primary/20 mt-4 border border-white/10 transition-all">Get Support</Button>
+                                        <Button className="w-full bg-primary hover:bg-sky-600 text-white font-black h-16 text-lg rounded-2xl shadow-2xl shadow-primary/20 mt-4 transition-all hover:scale-[1.02] active:scale-95 uppercase tracking-widest border border-white/10">Get Expert Support</Button>
                                     </form>
                                 )}
                             </CardContent>
                         </Card>
-                        <div className="mt-6 p-4 bg-sky-50 dark:bg-sky-950/40 rounded-xl border border-sky-100 dark:border-sky-800 text-sm text-slate-600 dark:text-slate-400">
-                            <p className="flex items-start gap-2">
-                                <Zap className="h-4 w-4 text-primary mt-0.5 shrink-0" />
-                                <span>No collateral security required for loans up to ₹10 Lakhs under MUDRA.</span>
+                        <div className="mt-8 p-6 bg-primary/5 dark:bg-primary/10 rounded-3xl border border-primary/20 text-sm text-slate-600 dark:text-sky-300 font-bold shadow-sm ring-1 ring-primary/5">
+                            <p className="flex items-start gap-3">
+                                <Zap className="h-5 w-5 text-accent mt-0.5 shrink-0 fill-accent" />
+                                <span>No collateral security required for loans up to ₹10 Lakhs under the official government MUDRA guidelines.</span>
                             </p>
                         </div>
                     </div>

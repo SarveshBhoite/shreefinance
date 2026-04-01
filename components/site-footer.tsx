@@ -47,15 +47,16 @@ export function SiteFooter() {
 
                     <div>
                         <h4 className="font-black text-white text-xl mb-10 tracking-tight flex items-center gap-2">
-                             Key Products
+                             Loan Products
                         </h4>
                         <ul className="space-y-5">
                             {[
                                 { name: "Personal Loan", href: "/loans/personal-loan" },
                                 { name: "Home Loan", href: "/loans/home-loan" },
-                                { name: "Government Schemes", href: "/loans/government-schemes" },
-                                { name: "Health Insurance", href: "/insurance/health" },
-                                { name: "Stocks & Mutual Funds", href: "/investments/stocks" },
+                                { name: "Business Loan", href: "/loans/business-loan" },
+                                { name: "Car Loan", href: "/loans/car-loan" },
+                                { name: "Mudra Loan", href: "/loans/mudra-loan" },
+                                { name: "Govt Schemes", href: "/loans/government-schemes" },
                             ].map((item, i) => (
                                 <li key={i}>
                                     <Link href={item.href} className="text-slate-400 hover:text-accent font-bold text-base flex items-center group transition-colors">
@@ -69,14 +70,20 @@ export function SiteFooter() {
 
                     <div>
                         <h4 className="font-black text-white text-xl mb-10 tracking-tight flex items-center gap-2">
-                            Governance
+                            Other Services
                         </h4>
                         <ul className="space-y-5">
-                            {["About Our Vision", "Careers @ Shree", "Privacy & Security", "Risk Compliance", "Investor Relations"].map((item, i) => (
+                            {[
+                                { name: "Credit Cards", href: "/cards/credit-cards" },
+                                { name: "Health Insurance", href: "/insurance/health" },
+                                { name: "Life Insurance", href: "/insurance/life" },
+                                { name: "Mutual Funds", href: "/investments/mutual-funds" },
+                                { name: "Stock Market", href: "/investments/stocks" },
+                            ].map((item, i) => (
                                 <li key={i}>
-                                    <Link href="#" className="text-slate-400 hover:text-primary font-bold text-base flex items-center group transition-colors">
+                                    <Link href={item.href} className="text-slate-400 hover:text-primary font-bold text-base flex items-center group transition-colors">
                                         <ChevronRight className="h-4 w-4 mr-3 text-accent opacity-0 group-hover:opacity-100 -translate-x-4 group-hover:translate-x-0 transition-all" />
-                                        {item}
+                                        {item.name}
                                     </Link>
                                 </li>
                             ))}
@@ -93,14 +100,16 @@ export function SiteFooter() {
                                     <MapPin className="h-6 w-6 text-primary" />
                                 </div>
                                 <span className="text-slate-400 font-bold leading-relaxed">
-                                    Level 5, Future Towers,<br />Pune, MH 411001
+                                    Office No. D/201, Siddhivinayak Angan Society,<br /> 
+                                    Behind Shree Ji Pure Veg, Near Navale Bridge,<br />
+                                    Narhe, Pune - 411 041
                                 </span>
                             </li>
                             <li className="flex items-center gap-6 group">
                                 <div className="h-10 w-10 rounded-xl bg-accent/10 flex items-center justify-center shrink-0 group-hover:bg-accent group-hover:text-white transition-all">
                                     <Phone className="h-5 w-5 text-accent group-hover:text-white" />
                                 </div>
-                                <span className="text-white font-black text-lg">+91 98765 43210</span>
+                                <span className="text-white font-black text-lg">+91 88304 34945</span>
                             </li>
                             <li className="flex items-center gap-6 group">
                                 <div className="h-10 w-10 rounded-xl bg-primary/10 flex items-center justify-center shrink-0 group-hover:bg-primary group-hover:text-white transition-all">
