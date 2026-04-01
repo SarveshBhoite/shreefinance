@@ -34,50 +34,50 @@ export default function EducationLoanPage() {
     };
 
     return (
-        <div className="pb-20 bg-slate-50 dark:bg-black selection:bg-cyan-500/30 font-sans">
+        <div className="pb-20 bg-slate-50 dark:bg-black selection:bg-primary/30 font-sans mx-auto">
             <DynamicHeroWrapper page="education-loan">
-                {/* Unique Hero Section - Global Future Theme */}
-                <section className="relative pt-40 pb-20 overflow-hidden bg-slate-900 text-white">
-                    {/* Globe/Map background */}
-                    <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/black-scales.png')] opacity-30 z-0"></div>
-                    <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-cyan-600/20 rounded-full blur-[120px] mix-blend-screen animate-pulse"></div>
+                {/* Unique Hero Section - Global Future Ocean Theme */}
+                <section className="relative pt-40 pb-20 overflow-hidden bg-gradient-to-b from-sky-950 to-sky-900 border-b border-primary/20 text-white">
+                    {/* Globe/Map background - Ocean Style */}
+                    <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/black-scales.png')] opacity-10 z-0"></div>
+                    <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-primary/20 rounded-full blur-[120px] mix-blend-screen animate-[pulse_6s_ease-in-out_infinite]"></div>
 
-                    <div className="container px-4 md:px-6 grid lg:grid-cols-2 gap-12 items-center relative z-10">
+                    <div className="container px-4 md:px-6 grid lg:grid-cols-2 gap-12 items-center relative z-10 mx-auto">
                         <div className="space-y-8">
-                            <div className="inline-flex items-center gap-2 rounded-full border border-cyan-500/30 bg-cyan-900/20 px-4 py-1.5 text-sm font-bold text-cyan-400">
-                                <GraduationCap className="h-4 w-4" />
+                            <div className="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-4 py-1.5 text-sm font-bold text-sky-200 backdrop-blur-sm">
+                                <GraduationCap className="h-4 w-4 text-accent" />
                                 <span>Unlock Your Global Potential</span>
                             </div>
 
                             <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight leading-tight">
                                 Invest in Your <br />
-                                <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-400 to-indigo-400">Future Success.</span>
+                                <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-blue-900 to-accent">Future Success.</span>
                             </h1>
 
-                            <p className="text-xl text-slate-300 max-w-lg leading-relaxed">
+                            <p className="text-xl text-sky-100/80 max-w-lg leading-relaxed">
                                 Complete funding for tuition and living expenses for premier institutions in India and abroad. Up to 100% financing for meritorious students.
                             </p>
 
                             <div className="flex flex-wrap gap-4">
-                                <Button size="lg" className="h-14 px-8 text-lg rounded-full shadow-lg shadow-cyan-900/40 bg-cyan-600 hover:bg-cyan-700 text-white font-bold" onClick={scrollToForm}>
+                                <Button size="lg" className="h-14 px-8 text-lg rounded-full shadow-lg shadow-primary/20 bg-primary hover:bg-sky-600 text-white font-bold border border-white/10 transition-all hover:-translate-y-1" onClick={scrollToForm}>
                                     Check Eligibility
                                 </Button>
                             </div>
 
-                            <div className="flex items-center gap-6 pt-4 border-t border-slate-800">
+                            <div className="flex items-center gap-6 pt-4 border-t border-sky-800">
                                 <div className="text-center">
                                     <p className="text-2xl font-bold text-white">100%</p>
-                                    <p className="text-xs text-slate-400 uppercase tracking-wider">Tuition Fee</p>
+                                    <p className="text-xs text-sky-400 uppercase tracking-wider">Tuition Fee</p>
                                 </div>
-                                <div className="w-px h-10 bg-slate-700"></div>
+                                <div className="w-px h-10 bg-sky-800"></div>
                                 <div className="text-center">
                                     <p className="text-2xl font-bold text-white">No</p>
-                                    <p className="text-xs text-slate-400 uppercase tracking-wider">Collateral*</p>
+                                    <p className="text-xs text-sky-400 uppercase tracking-wider">Collateral*</p>
                                 </div>
-                                <div className="w-px h-10 bg-slate-700"></div>
+                                <div className="w-px h-10 bg-sky-800"></div>
                                 <div className="text-center">
                                     <p className="text-2xl font-bold text-white">15 Yr</p>
-                                    <p className="text-xs text-slate-400 uppercase tracking-wider">Repayment</p>
+                                    <p className="text-xs text-sky-400 uppercase tracking-wider">Repayment</p>
                                 </div>
                             </div>
                         </div>
@@ -87,22 +87,22 @@ export default function EducationLoanPage() {
                             <div className="absolute inset-0 flex items-center justify-center">
                                 {/* Abstract Globe */}
                                 <div className="relative w-96 h-96">
-                                    <div className="absolute inset-0 bg-cyan-500/10 rounded-full blur-3xl animate-pulse"></div>
-                                    <div className="absolute inset-10 border border-cyan-500/30 rounded-full animate-[spin_10s_linear_infinite]"></div>
-                                    <div className="absolute inset-20 border border-dashed border-cyan-400/50 rounded-full animate-[spin_15s_linear_infinite_reverse]"></div>
+                                    <div className="absolute inset-0 bg-primary/10 rounded-full blur-3xl animate-pulse"></div>
+                                    <div className="absolute inset-10 border border-primary/30 rounded-full animate-[spin_10s_linear_infinite]"></div>
+                                    <div className="absolute inset-20 border border-dashed border-sky-400/50 rounded-full animate-[spin_15s_linear_infinite_reverse]"></div>
 
                                     {/* Central Cap Icon */}
                                     <div className="absolute inset-0 flex items-center justify-center">
-                                        <GraduationCap className="h-32 w-32 text-cyan-400 drop-shadow-[0_0_15px_rgba(34,211,238,0.5)]" />
+                                        <GraduationCap className="h-32 w-32 text-primary drop-shadow-[0_0_15px_rgba(14,165,233,0.5)]" />
                                     </div>
 
                                     {/* Floating Locations */}
-                                    <div className="absolute top-0 right-10 bg-slate-800/90 backdrop-blur-md px-3 py-1 rounded-full border border-slate-700 shadow-xl flex items-center gap-2 animate-bounce delay-700">
-                                        <Globe className="h-4 w-4 text-blue-400" />
+                                    <div className="absolute top-0 right-10 bg-sky-950/90 backdrop-blur-md px-3 py-1 rounded-full border border-primary/30 shadow-xl flex items-center gap-2 animate-bounce delay-700">
+                                        <Globe className="h-4 w-4 text-primary" />
                                         <span className="text-xs font-bold text-white">USA</span>
                                     </div>
-                                    <div className="absolute bottom-10 left-10 bg-slate-800/90 backdrop-blur-md px-3 py-1 rounded-full border border-slate-700 shadow-xl flex items-center gap-2 animate-bounce delay-300">
-                                        <Globe className="h-4 w-4 text-green-400" />
+                                    <div className="absolute bottom-10 left-10 bg-sky-950/90 backdrop-blur-md px-3 py-1 rounded-full border border-primary/30 shadow-xl flex items-center gap-2 animate-bounce delay-300">
+                                        <Globe className="h-4 w-4 text-accent" />
                                         <span className="text-xs font-bold text-white">UK</span>
                                     </div>
                                 </div>
@@ -113,9 +113,9 @@ export default function EducationLoanPage() {
             </DynamicHeroWrapper>
 
             {/* University Strip */}
-            <div className="bg-cyan-950 border-y border-cyan-900 py-6 overflow-hidden">
-                <div className="container px-4 text-center">
-                    <p className="text-cyan-200/60 uppercase tracking-[0.2em] text-sm font-bold mb-4">Funding for Top Universities Globally</p>
+            <div className="bg-sky-950 border-y border-sky-900 py-6 overflow-hidden">
+                <div className="container px-4 text-center mx-auto">
+                    <p className="text-sky-200/60 uppercase tracking-[0.2em] text-sm font-bold mb-4">Funding for Top Universities Globally</p>
                     <div className="flex justify-center gap-12 opacity-50 grayscale hover:grayscale-0 transition-all duration-500">
                         {/* Placeholders for Uni Logos - Using text for now */}
                         <span className="text-xl font-serif font-bold text-white">Harvard</span>
@@ -139,22 +139,22 @@ export default function EducationLoanPage() {
                         imageAlt="Students studying"
                     >
                         <div className="grid grid-cols-2 gap-4 mt-6">
-                            <div className="p-4 rounded-xl bg-cyan-50 dark:bg-cyan-900/20 border border-cyan-100 dark:border-cyan-800">
-                                <h4 className="font-bold text-cyan-700 dark:text-cyan-300 text-lg">Moratorium</h4>
+                            <div className="p-4 rounded-xl bg-sky-50 dark:bg-sky-900/10 border border-sky-100 dark:border-sky-800">
+                                <h4 className="font-bold text-primary text-lg">Moratorium</h4>
                                 <p className="text-sm text-slate-600 dark:text-slate-400">Pay after job secured</p>
                             </div>
-                            <div className="p-4 rounded-xl bg-blue-50 dark:bg-blue-900/20 border border-blue-100 dark:border-blue-800">
-                                <h4 className="font-bold text-blue-700 dark:text-blue-300 text-lg">Section 80E</h4>
+                            <div className="p-4 rounded-xl bg-sky-100/50 dark:bg-sky-900/20 border border-sky-200 dark:border-sky-800">
+                                <h4 className="font-bold text-sky-800 dark:text-sky-300 text-lg">Section 80E</h4>
                                 <p className="text-sm text-slate-600 dark:text-slate-400">Tax deduction on interest</p>
                             </div>
                         </div>
                     </ContentSection>
 
                     {/* Calculator Section */}
-                    <div className="p-1 rounded-3xl bg-gradient-to-r from-cyan-200 to-blue-200 dark:from-slate-800 dark:to-slate-900 shadow-sm border border-cyan-100 dark:border-cyan-900">
-                        <div className="bg-white dark:bg-slate-950 rounded-[22px] p-6">
+                    <div className="p-1 rounded-3xl bg-gradient-to-r from-sky-100 to-sky-200 dark:from-sky-900/40 dark:to-sky-800/20 shadow-sm border border-sky-200 dark:border-sky-900">
+                        <div className="bg-white dark:bg-sky-950 rounded-[22px] p-6">
                             <div className="flex items-center gap-3 mb-6">
-                                <div className="p-2 bg-cyan-100 rounded-lg text-cyan-600"><GraduationCap className="h-6 w-6" /></div>
+                                <div className="p-2 bg-primary/10 rounded-lg text-primary"><GraduationCap className="h-6 w-6" /></div>
                                 <h3 className="text-xl font-bold">Calculate Education Loan EMI</h3>
                             </div>
                             <EMICalculator defaultAmount={4000000} defaultRate={9.5} defaultTenure={10} />
@@ -165,7 +165,7 @@ export default function EducationLoanPage() {
                     <div className="space-y-8">
                         <div className="space-y-4">
                             <h3 className="text-2xl font-bold flex items-center gap-2">
-                                <CheckCircle2 className="text-cyan-600" /> Eligibility Criteria
+                                <CheckCircle2 className="text-primary" /> Eligibility Criteria
                             </h3>
                             <SimpleAccordion
                                 items={[
@@ -178,7 +178,7 @@ export default function EducationLoanPage() {
 
                         <div className="space-y-4">
                             <h3 className="text-2xl font-bold flex items-center gap-2">
-                                <FileText className="text-blue-600" /> Documents Required
+                                <FileText className="text-accent" /> Documents Required
                             </h3>
                             <SimpleAccordion
                                 items={[
@@ -194,10 +194,10 @@ export default function EducationLoanPage() {
                 {/* Right Column: Sticky Form */}
                 <aside className="relative">
                     <div id="lead-form" className="sticky top-24">
-                        <Card className="glass-card bg-white/80 dark:bg-slate-900/80 border-cyan-100 dark:border-cyan-900 shadow-2xl overflow-hidden ring-1 ring-cyan-500/10">
-                            <CardHeader className="bg-gradient-to-r from-cyan-600 to-blue-600 text-white p-6">
+                        <Card className="glass-card bg-white/80 dark:bg-sky-950/80 border-sky-100 dark:border-sky-900 shadow-2xl overflow-hidden ring-1 ring-primary/10">
+                            <CardHeader className="bg-gradient-to-r from-primary to-sky-600 text-white p-6">
                                 <CardTitle className="text-lg">Education Support</CardTitle>
-                                <p className="text-cyan-100 text-sm">Study at your dream college</p>
+                                <p className="text-sky-100 text-sm">Study at your dream college</p>
                             </CardHeader>
                             <CardContent className="p-6">
                                 {isSuccess ? (
@@ -214,7 +214,7 @@ export default function EducationLoanPage() {
                                             <label className="text-xs font-bold uppercase tracking-wider text-slate-500">Student Name</label>
                                             <Input
                                                 placeholder="Full Name"
-                                                className="bg-slate-50 border-slate-200"
+                                                className="bg-sky-50 dark:bg-sky-900/10 border-sky-100"
                                                 value={formData.name}
                                                 onChange={e => setFormData({ ...formData, name: e.target.value })}
                                                 required
@@ -224,7 +224,7 @@ export default function EducationLoanPage() {
                                             <label className="text-xs font-bold uppercase tracking-wider text-slate-500">Mobile</label>
                                             <Input
                                                 placeholder="10 digit number"
-                                                className="bg-slate-50 border-slate-200"
+                                                className="bg-sky-50 dark:bg-sky-900/10 border-sky-100"
                                                 value={formData.mobile}
                                                 onChange={e => setFormData({ ...formData, mobile: e.target.value })}
                                                 required
@@ -235,7 +235,7 @@ export default function EducationLoanPage() {
                                                 <label className="text-xs font-bold uppercase tracking-wider text-slate-500">City</label>
                                                 <Input
                                                     placeholder="City"
-                                                    className="bg-slate-50 border-slate-200"
+                                                    className="bg-sky-50 dark:bg-sky-900/10 border-sky-100"
                                                     value={formData.city}
                                                     onChange={e => setFormData({ ...formData, city: e.target.value })}
                                                     required
@@ -245,14 +245,14 @@ export default function EducationLoanPage() {
                                                 <label className="text-xs font-bold uppercase tracking-wider text-slate-500">Course</label>
                                                 <Input
                                                     placeholder="e.g. MBA"
-                                                    className="bg-slate-50 border-slate-200"
+                                                    className="bg-sky-50 dark:bg-sky-900/10 border-sky-100"
                                                     value={formData.courseName}
                                                     onChange={e => setFormData({ ...formData, courseName: e.target.value })}
                                                     required
                                                 />
                                             </div>
                                         </div>
-                                        <Button className="w-full bg-cyan-600 hover:bg-cyan-700 text-white font-bold h-12 text-base shadow-lg shadow-cyan-500/20 mt-2">Get Funding Advice</Button>
+                                        <Button className="w-full bg-primary hover:bg-sky-600 text-white font-bold h-12 text-base shadow-lg shadow-primary/20 mt-2 border border-white/10 transition-all">Get Funding Advice</Button>
                                     </form>
                                 )}
                             </CardContent>

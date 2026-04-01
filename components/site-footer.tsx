@@ -1,45 +1,65 @@
 import Link from "next/link"
-import { Facebook, Twitter, Instagram, Linkedin, Mail, Phone, MapPin, ChevronRight } from "lucide-react"
+import Image from "next/image"
+import { Facebook, Twitter, Instagram, Linkedin, Mail, Phone, MapPin, ChevronRight, Zap } from "lucide-react"
+import { cn } from "@/lib/utils"
 
 export function SiteFooter() {
     return (
-        <footer className="bg-slate-950 text-slate-300 border-t border-slate-900 pb-10">
-            {/* Top Bar with decorative gradient */}
-            <div className="w-full h-1 bg-gradient-to-r from-blue-600 via-indigo-600 to-amber-500"></div>
+        <footer className="relative bg-black dark:bg-black text-slate-300 border-t border-primary/20 pt-20 pb-12 font-sans overflow-hidden">
+            {/* Water-inspired Background Gradient Bar */}
+            <div className="absolute top-0 inset-x-0 h-1.5 bg-gradient-to-r from-primary via-sky-300 to-accent shadow-[0_4px_20px_rgba(14,165,233,0.3)]"></div>
+            
+            {/* Background pattern */}
+            <div className="absolute inset-0 pointer-events-none opacity-5">
+                <div className="absolute -bottom-48 -left-48 w-[600px] h-[600px] bg-primary rounded-full blur-[120px]"></div>
+                <div className="absolute -top-48 -right-48 w-[500px] h-[500px] bg-accent rounded-full blur-[100px]"></div>
+            </div>
 
-            <div className="container py-16 md:py-20">
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
-                    <div className="space-y-6">
-                        <div className="space-y-2">
-                            <h3 className="text-2xl font-bold text-white tracking-tight">ShreeFinance</h3>
-                            <p className="text-[10px] uppercase tracking-widest text-amber-500 font-bold">Premium Banking Partners</p>
+            <div className="container relative z-10 mx-auto px-8">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-16 lg:gap-12">
+                    <div className="space-y-8">
+                        <div className="space-y-6">
+                            <Link href="/" className="inline-block transition-transform hover:scale-105">
+                                <Image
+                                    src="/shreelogobg.png"
+                                    alt="ShreeFinance Logo"
+                                    width={240}
+                                    height={60}
+                                    className="h-14 w-auto object-contain brightness-0 invert opacity-100"
+                                />
+                            </Link>
+                            <div className="inline-flex items-center gap-2 rounded-full border border-accent/20 bg-accent/5 px-4 py-1.5 text-xs font-black text-accent tracking-widest uppercase">
+                                <Zap className="h-3.5 w-3.5 fill-accent" />
+                                Elite Financial Partner
+                            </div>
                         </div>
-                        <p className="text-sm text-slate-400 leading-relaxed">
-                            Empowering millions with transparent, secure, and instant financial solutions.
-                            Your wealth, our priority.
+                        <p className="text-base text-slate-400 font-medium leading-[1.8]">
+                            Leading the digital revolution in finance with transparent, hyper-secure, and instant solutions for every Indian.
                         </p>
-                        <div className="flex gap-4 pt-2">
+                        <div className="flex gap-5 pt-4">
                             {[Facebook, Twitter, Instagram, Linkedin].map((Icon, i) => (
-                                <Link key={i} href="#" className="h-10 w-10 rounded-full bg-slate-900 flex items-center justify-center text-slate-400 hover:bg-blue-600 hover:text-white transition-all duration-300">
-                                    <Icon className="h-4 w-4" />
+                                <Link key={i} href="#" className="h-12 w-12 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-slate-400 hover:bg-primary hover:text-white hover:-translate-y-2 hover:shadow-2xl hover:shadow-primary/20 transition-all duration-300 ring-1 ring-white/5">
+                                    <Icon className="h-5 w-5" />
                                 </Link>
                             ))}
                         </div>
                     </div>
 
                     <div>
-                        <h4 className="font-bold mb-6 text-white text-lg">Key Products</h4>
-                        <ul className="space-y-3 text-sm">
+                        <h4 className="font-black text-white text-xl mb-10 tracking-tight flex items-center gap-2">
+                             Key Products
+                        </h4>
+                        <ul className="space-y-5">
                             {[
                                 { name: "Personal Loan", href: "/loans/personal-loan" },
                                 { name: "Home Loan", href: "/loans/home-loan" },
-                                { name: "Credit Cards", href: "/cards/credit-cards" },
+                                { name: "Government Schemes", href: "/loans/government-schemes" },
                                 { name: "Health Insurance", href: "/insurance/health" },
-                                { name: "Mutual Funds", href: "/investments/mutual-funds" },
+                                { name: "Stocks & Mutual Funds", href: "/investments/stocks" },
                             ].map((item, i) => (
                                 <li key={i}>
-                                    <Link href={item.href} className="flex items-center group hover:text-amber-400 transition-colors">
-                                        <ChevronRight className="h-3 w-3 mr-2 text-slate-600 group-hover:text-amber-500 transition-colors" />
+                                    <Link href={item.href} className="text-slate-400 hover:text-accent font-bold text-base flex items-center group transition-colors">
+                                        <ChevronRight className="h-4 w-4 mr-3 text-primary opacity-0 group-hover:opacity-100 -translate-x-4 group-hover:translate-x-0 transition-all" />
                                         {item.name}
                                     </Link>
                                 </li>
@@ -48,12 +68,14 @@ export function SiteFooter() {
                     </div>
 
                     <div>
-                        <h4 className="font-bold mb-6 text-white text-lg">Company</h4>
-                        <ul className="space-y-3 text-sm">
-                            {["About Us", "Careers", "Privacy Policy", "Terms of Service", "Compliance"].map((item, i) => (
+                        <h4 className="font-black text-white text-xl mb-10 tracking-tight flex items-center gap-2">
+                            Governance
+                        </h4>
+                        <ul className="space-y-5">
+                            {["About Our Vision", "Careers @ Shree", "Privacy & Security", "Risk Compliance", "Investor Relations"].map((item, i) => (
                                 <li key={i}>
-                                    <Link href="#" className="flex items-center group hover:text-amber-400 transition-colors">
-                                        <ChevronRight className="h-3 w-3 mr-2 text-slate-600 group-hover:text-amber-500 transition-colors" />
+                                    <Link href="#" className="text-slate-400 hover:text-primary font-bold text-base flex items-center group transition-colors">
+                                        <ChevronRight className="h-4 w-4 mr-3 text-accent opacity-0 group-hover:opacity-100 -translate-x-4 group-hover:translate-x-0 transition-all" />
                                         {item}
                                     </Link>
                                 </li>
@@ -62,30 +84,43 @@ export function SiteFooter() {
                     </div>
 
                     <div>
-                        <h4 className="font-bold mb-6 text-white text-lg">Contact Us</h4>
-                        <ul className="space-y-4 text-sm text-slate-400">
-                            <li className="flex items-start gap-4 p-4 rounded-xl bg-slate-900/50 border border-slate-800">
-                                <MapPin className="h-5 w-5 text-amber-500 shrink-0 mt-0.5" />
-                                <span>Level 5, Future Towers,<br />Pune, Maharashtra 411001</span>
+                        <h4 className="font-black text-white text-xl mb-10 tracking-tight flex items-center gap-2">
+                            Support Headquarters
+                        </h4>
+                        <ul className="space-y-6">
+                            <li className="flex items-start gap-6 p-6 rounded-3xl bg-white/5 border border-white/10 ring-1 ring-white/5 shadow-2xl">
+                                <div className="h-12 w-12 rounded-2xl bg-primary/10 flex items-center justify-center shrink-0">
+                                    <MapPin className="h-6 w-6 text-primary" />
+                                </div>
+                                <span className="text-slate-400 font-bold leading-relaxed">
+                                    Level 5, Future Towers,<br />Pune, MH 411001
+                                </span>
                             </li>
-                            <li className="flex items-center gap-4">
-                                <Phone className="h-5 w-5 text-amber-500 shrink-0" />
-                                <span className="text-white">+91 98765 43210</span>
+                            <li className="flex items-center gap-6 group">
+                                <div className="h-10 w-10 rounded-xl bg-accent/10 flex items-center justify-center shrink-0 group-hover:bg-accent group-hover:text-white transition-all">
+                                    <Phone className="h-5 w-5 text-accent group-hover:text-white" />
+                                </div>
+                                <span className="text-white font-black text-lg">+91 98765 43210</span>
                             </li>
-                            <li className="flex items-center gap-4">
-                                <Mail className="h-5 w-5 text-amber-500 shrink-0" />
-                                <span className="text-white">support@shreefinance.com</span>
+                            <li className="flex items-center gap-6 group">
+                                <div className="h-10 w-10 rounded-xl bg-primary/10 flex items-center justify-center shrink-0 group-hover:bg-primary group-hover:text-white transition-all">
+                                    <Mail className="h-5 w-5 text-primary group-hover:text-white" />
+                                </div>
+                                <span className="text-white font-black text-lg">care@shreefinance.com</span>
                             </li>
                         </ul>
                     </div>
                 </div>
 
-                <div className="mt-16 border-t border-slate-900 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-slate-500">
-                    <p>© {new Date().getFullYear()} ShreeFinance. All rights reserved. Trade logos belong to respective owners.</p>
-                    <div className="flex gap-6">
-                        <Link href="#" className="hover:text-white">Privacy</Link>
-                        <Link href="#" className="hover:text-white">Cookies</Link>
-                        <Link href="#" className="hover:text-white">Sitemap</Link>
+                <div className="mt-20 pt-10 border-t border-white/5 flex flex-col lg:row justify-between items-center gap-8 text-sm text-slate-500 font-bold">
+                    <p className="text-center lg:text-left">
+                        © {new Date().getFullYear()} ShreeFinance Corporation. RBI Registered Financial Platform. All trade logos belong to respective owners.
+                    </p>
+                    <div className="flex flex-wrap justify-center gap-10">
+                        <Link href="#" className="hover:text-white transition-colors">Privacy</Link>
+                        <Link href="#" className="hover:text-white transition-colors">Terms of Use</Link>
+                        <Link href="#" className="hover:text-white transition-colors">Cookie Policy</Link>
+                        <Link href="#" className="hover:text-white transition-colors">Sitemap</Link>
                     </div>
                 </div>
             </div>

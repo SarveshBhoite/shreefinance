@@ -274,7 +274,7 @@ export default function AdminDashboardPage() {
                                         value={title}
                                         onChange={(e) => setTitle(e.target.value)}
                                         required
-                                        className="w-full h-11 px-4 bg-slate-800/60 border border-slate-700 rounded-xl text-white placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all"
+                                        className="w-full h-11 px-4 bg-sky-900/10 border border-sky-800 rounded-xl text-white placeholder:text-sky-500 focus:outline-none focus:ring-2 focus:ring-primary transition-all"
                                     />
                                 </div>
                                 <div className="space-y-2">
@@ -282,7 +282,7 @@ export default function AdminDashboardPage() {
                                     <select
                                         value={page}
                                         onChange={(e) => setPage(e.target.value)}
-                                        className="w-full h-11 px-4 bg-slate-800/60 border border-slate-700 rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all"
+                                        className="w-full h-11 px-4 bg-sky-900/10 border border-sky-800 rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-primary transition-all"
                                     >
                                         {PAGE_OPTIONS.map((opt) => (
                                             <option key={opt.value} value={opt.value}>{opt.label}</option>
@@ -296,13 +296,13 @@ export default function AdminDashboardPage() {
                                         placeholder="https://example.com"
                                         value={link}
                                         onChange={(e) => setLink(e.target.value)}
-                                        className="w-full h-11 px-4 bg-slate-800/60 border border-slate-700 rounded-xl text-white placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all"
+                                        className="w-full h-11 px-4 bg-sky-900/10 border border-sky-800 rounded-xl text-white placeholder:text-sky-500 focus:outline-none focus:ring-2 focus:ring-primary transition-all"
                                     />
                                 </div>
                                 <button
                                     type="submit"
                                     disabled={uploading || !selectedFile}
-                                    className="w-full h-12 bg-gradient-to-r from-blue-600 to-indigo-700 hover:from-blue-700 hover:to-indigo-800 text-white font-semibold rounded-xl shadow-lg shadow-blue-500/25 hover:shadow-blue-500/40 transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+                                    className="w-full h-12 bg-primary hover:bg-sky-600 text-white font-bold rounded-xl shadow-lg shadow-primary/25 hover:shadow-primary/40 transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 border border-white/10"
                                 >
                                     {uploading ? (
                                         <>

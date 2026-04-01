@@ -3,8 +3,9 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
-import { ArrowUpDown, Zap, CheckCircle2 } from "lucide-react";
+import { ArrowUpDown, Zap, CheckCircle2, TrendingDown } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { motion, AnimatePresence } from "framer-motion";
 
 // Mock Data
 const ratesData = [
@@ -24,101 +25,132 @@ export function RateComparisonTable() {
         ? ratesData
         : ratesData.filter(item => item.type === filterType);
 
-    // Simple sort by rate
     const sortedData = [...filteredData].sort((a, b) => a.rate - b.rate);
 
     return (
-        <section className="py-20 md:py-28 bg-slate-50 dark:bg-black border-y border-white/5 relative overflow-hidden">
-            {/* Background Beams */}
-            <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-indigo-500/10 rounded-full blur-[100px]"></div>
+        <section className="py-20 md:py-28 bg-white dark:bg-black relative overflow-hidden font-sans">
+            {/* Background Beams - Ocean Theme */}
+            <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-primary/10 rounded-full blur-[100px] animate-pulse"></div>
+            <div className="absolute bottom-0 left-0 w-[300px] h-[300px] bg-accent/5 rounded-full blur-[80px]"></div>
 
-            <div className="container px-4 md:px-6 relative z-10">
-                <div className="text-center mb-12 space-y-4">
-                    <h2 className="text-3xl font-extrabold tracking-tight text-foreground sm:text-5xl">
-                        <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-700 to-indigo-900 dark:from-blue-300 dark:to-indigo-500">Compare Rates</span> Live
+            <div className="container px-4 md:px-6 relative z-10 mx-auto">
+                <div className="text-center mb-16 space-y-6">
+                    <motion.div
+                        initial={{ opacity: 0, y: 10 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        className="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/5 px-4 py-1.5 text-sm font-bold text-primary dark:border-primary/50 dark:bg-primary/20 dark:text-sky-200"
+                    >
+                        <TrendingDown className="h-4 w-4 text-accent" />
+                        Live Competitive Analysis
+                    </motion.div>
+                    <h2 className="text-4xl font-extrabold tracking-tight text-foreground sm:text-6xl max-w-3xl mx-auto">
+                        <span className="text-gradient">Compare Rates</span> from India's Top Banks
                     </h2>
-                    <p className="text-muted-foreground md:text-xl max-w-2xl mx-auto font-light">
-                        We track interest rates from India's top banks so you don't have to.
-                        <span className="block mt-2 font-medium text-amber-500">Save up to 2% with the right choice.</span>
+                    <p className="text-muted-foreground text-lg md:text-xl max-w-2xl mx-auto leading-relaxed">
+                        We scan the financial market in real-time to bring you the lowest available interest rates.
+                        <span className="block mt-2 font-bold text-primary">Save lakhs over your loan tenure with the right partner.</span>
                     </p>
                 </div>
 
-                <div className="glass-card max-w-6xl mx-auto rounded-3xl overflow-hidden shadow-2xl ring-1 ring-white/20 dark:ring-white/10">
-                    <div className="p-6 border-b border-border/50 flex flex-col sm:flex-row justify-between items-center gap-6 bg-white/50 dark:bg-slate-900/50">
-                        <div className="flex gap-2 p-1 bg-slate-100 dark:bg-slate-800 rounded-full">
+                <div className="glass-card max-w-6xl mx-auto rounded-[2.5rem] overflow-hidden shadow-2xl ring-1 ring-primary/10 dark:ring-white/5 bg-white/80 dark:bg-sky-950/20 backdrop-blur-3xl">
+                    <div className="p-8 border-b border-primary/10 flex flex-col sm:flex-row justify-between items-center gap-8 bg-sky-50/50 dark:bg-slate-900/50">
+                        <div className="flex gap-2 p-1.5 bg-slate-100 dark:bg-sky-950/80 rounded-2xl border border-primary/5 shadow-inner">
                             {["All", "Personal Loan", "Home Loan"].map((type) => (
                                 <button
                                     key={type}
                                     onClick={() => setFilterType(type as any)}
                                     className={cn(
-                                        "px-6 py-2 rounded-full text-sm font-bold transition-all",
+                                        "px-8 py-3 rounded-xl text-sm font-extrabold transition-all duration-300",
                                         filterType === type
-                                            ? "bg-white dark:bg-slate-700 text-primary shadow-sm"
-                                            : "text-muted-foreground hover:text-foreground"
+                                            ? "bg-white dark:bg-primary text-primary dark:text-white shadow-xl shadow-primary/10 scale-105 border border-primary/10"
+                                            : "text-slate-500 hover:text-primary dark:text-slate-400 dark:hover:text-sky-200"
                                     )}
                                 >
                                     {type}
                                 </button>
                             ))}
                         </div>
-                        <p className="text-xs text-muted-foreground flex items-center gap-2">
-                            <span className="h-2 w-2 rounded-full bg-green-500 animate-pulse"></span>
-                            Last updated: Just now
-                        </p>
+                        <div className="flex items-center gap-3">
+                            <span className="relative flex h-3 w-3">
+                                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                                <span className="relative inline-flex rounded-full h-3 w-3 bg-emerald-500"></span>
+                            </span>
+                            <p className="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest">
+                                Live Market Data
+                            </p>
+                        </div>
                     </div>
 
                     <div className="overflow-x-auto">
                         <table className="w-full text-sm text-left">
-                            <thead className="text-xs text-muted-foreground uppercase bg-slate-50/80 dark:bg-slate-800/80 backdrop-blur-sm">
+                            <thead className="text-[11px] text-slate-500 dark:text-slate-400 uppercase font-extrabold tracking-widest bg-slate-50/50 dark:bg-sky-950/40 backdrop-blur-sm border-b border-primary/10">
                                 <tr>
-                                    <th className="px-6 py-5 font-bold tracking-wider">Bank Partner</th>
-                                    <th className="px-6 py-5 font-bold tracking-wider">Loan Type</th>
-                                    <th className="px-6 py-5 font-bold tracking-wider text-primary">Interest Rate</th>
-                                    <th className="px-6 py-5 font-bold tracking-wider">Processing Fee</th>
-                                    <th className="px-6 py-5 font-bold tracking-wider">Tenure</th>
-                                    <th className="px-6 py-5 font-bold tracking-wider text-right">Action</th>
+                                    <th className="px-8 py-6 font-extrabold">Bank Partner</th>
+                                    <th className="px-8 py-6 font-extrabold">Loan Type</th>
+                                    <th className="px-8 py-6 font-extrabold text-primary">Interest Rate</th>
+                                    <th className="px-8 py-6 font-extrabold">Processing Fee</th>
+                                    <th className="px-8 py-6 font-extrabold">Tenure</th>
+                                    <th className="px-8 py-6 font-extrabold text-right uppercase">Action</th>
                                 </tr>
                             </thead>
-                            <tbody className="divide-y divide-border/50">
-                                {sortedData.map((item, idx) => (
-                                    <tr key={idx} className="bg-white/40 dark:bg-slate-900/40 hover:bg-blue-50/50 dark:hover:bg-blue-900/10 transition-colors group">
-                                        <td className="px-6 py-5 font-bold text-foreground flex items-center gap-3">
-                                            <div className="h-8 w-8 rounded bg-slate-200 dark:bg-slate-800 flex items-center justify-center text-[10px] text-muted-foreground font-bold">
-                                                {item.bank[0]}
-                                            </div>
-                                            {item.bank}
-                                        </td>
-                                        <td className="px-6 py-5">
-                                            <span className={cn(
-                                                "inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[10px] uppercase font-bold tracking-wide border",
-                                                item.type === "Personal Loan" ? "bg-purple-50 text-purple-700 border-purple-200 dark:bg-purple-900/30 dark:text-purple-300 dark:border-purple-800" :
-                                                    item.type === "Home Loan" ? "bg-emerald-50 text-emerald-700 border-emerald-200 dark:bg-emerald-900/30 dark:text-emerald-300 dark:border-emerald-800" :
-                                                        "bg-orange-50 text-orange-700 border-orange-200 dark:bg-orange-900/30 dark:text-orange-300 dark:border-orange-800"
-                                            )}>
-                                                {item.type}
-                                            </span>
-                                        </td>
-                                        <td className="px-6 py-5">
-                                            <div className="flex items-center gap-2">
-                                                <span className="text-lg font-bold text-slate-900 dark:text-white">{item.rate.toFixed(2)}%</span>
-                                                {idx === 0 && (
-                                                    <span className="text-[10px] bg-amber-100 text-amber-700 px-2 py-0.5 rounded-full font-bold border border-amber-200 flex items-center">
-                                                        <Zap className="h-3 w-3 mr-1 fill-amber-500 text-amber-500" /> Lowest
-                                                    </span>
-                                                )}
-                                            </div>
-                                        </td>
-                                        <td className="px-6 py-5 text-muted-foreground font-medium">{item.fee}</td>
-                                        <td className="px-6 py-5 text-muted-foreground font-medium">{item.tenure}</td>
-                                        <td className="px-6 py-5 text-right">
-                                            <Button size="sm" className="rounded-full font-bold opacity-0 group-hover:opacity-100 transition-opacity bg-blue-600 hover:bg-blue-700">
-                                                Apply Now
-                                            </Button>
-                                        </td>
-                                    </tr>
-                                ))}
+                            <tbody className="divide-y divide-primary/5">
+                                <AnimatePresence mode="popLayout">
+                                    {sortedData.map((item, idx) => (
+                                        <motion.tr 
+                                            key={`${item.bank}-${item.type}-${idx}`}
+                                            initial={{ opacity: 0 }}
+                                            animate={{ opacity: 1 }}
+                                            exit={{ opacity: 0 }}
+                                            className="bg-white/40 dark:bg-transparent hover:bg-sky-50 dark:hover:bg-primary/5 transition-all duration-300 group"
+                                        >
+                                            <td className="px-8 py-6 font-extrabold text-slate-900 dark:text-sky-50 flex items-center gap-4">
+                                                <div className="h-10 w-10 rounded-xl bg-primary text-white flex items-center justify-center font-black shadow-lg shadow-primary/20 rotate-3 group-hover:rotate-0 transition-transform">
+                                                    {item.bank[0]}
+                                                </div>
+                                                <span className="text-lg tracking-tight">{item.bank}</span>
+                                            </td>
+                                            <td className="px-8 py-6">
+                                                <span className={cn(
+                                                    "inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-[10px] uppercase font-black tracking-widest border shadow-sm",
+                                                    item.type === "Personal Loan" ? "bg-sky-50 text-primary border-primary/20 dark:bg-primary/20 dark:text-sky-200" :
+                                                        item.type === "Home Loan" ? "bg-accent/10 text-accent border-accent/20 dark:bg-accent/20 dark:text-accent" :
+                                                            "bg-sky-50 text-sky-700 border-sky-200 dark:bg-sky-900/30 dark:text-sky-300 dark:border-sky-800"
+                                                )}>
+                                                    <div className={cn("h-1.5 w-1.5 rounded-full animate-pulse", 
+                                                        item.type === "Personal Loan" ? "bg-primary" : "bg-accent"
+                                                    )}></div>
+                                                    {item.type}
+                                                </span>
+                                            </td>
+                                            <td className="px-8 py-6">
+                                                <div className="flex items-center gap-3">
+                                                    <span className="text-2xl font-black text-slate-900 dark:text-white">{item.rate.toFixed(2)}%</span>
+                                                    {idx === 0 && (
+                                                        <span className="text-[10px] bg-accent/90 text-slate-900 px-3 py-1 rounded-full font-black uppercase tracking-tighter border border-white/20 flex items-center shadow-lg shadow-accent/20">
+                                                            <Zap className="h-3 w-3 mr-1 fill-slate-900" /> Best
+                                                        </span>
+                                                    )}
+                                                </div>
+                                            </td>
+                                            <td className="px-8 py-6 text-slate-500 dark:text-slate-400 font-bold">{item.fee}</td>
+                                            <td className="px-8 py-6 text-slate-500 dark:text-slate-400 font-bold">{item.tenure}</td>
+                                            <td className="px-8 py-6 text-right">
+                                                <Button size="sm" className="rounded-xl font-bold px-6 h-10 border border-primary/20 bg-primary hover:bg-sky-600 text-white shadow-lg shadow-primary/20 transition-all hover:-translate-y-0.5 min-w-[120px]">
+                                                    Get Quote
+                                                </Button>
+                                            </td>
+                                        </motion.tr>
+                                    ))}
+                                </AnimatePresence>
                             </tbody>
                         </table>
+                    </div>
+                    {/* Bottom Link Table Footer */}
+                    <div className="p-6 bg-slate-50 dark:bg-sky-950/60 border-t border-primary/10 text-center">
+                        <p className="text-xs font-bold text-slate-400 uppercase tracking-widest">
+                            *Interest rates are subject to change by banks. Final rate depends on CIBIL and Eligibility.
+                        </p>
                     </div>
                 </div>
             </div>

@@ -4,16 +4,16 @@ import useEmblaCarousel from "embla-carousel-react";
 import AutoScroll from "embla-carousel-auto-scroll";
 import { cn } from "@/lib/utils";
 
-// Mock Bank Data
+// Mock Bank Data - Refined for "Ocean Blue" Theme
 const banks = [
-    { name: "HDFC Bank", color: "bg-[#004c8f]" },
-    { name: "SBI", color: "bg-[#280071]" },
-    { name: "ICICI Bank", color: "bg-[#f37e20]" },
-    { name: "Axis Bank", color: "bg-[#97144d]" },
-    { name: "Kotak", color: "bg-[#ed1c24]" },
-    { name: "Bajaj Finserv", color: "bg-[#005a9c]" },
-    { name: "Bank of Baroda", color: "bg-[#f26522]" },
-    { name: "PNB", color: "bg-[#a20a3a]" },
+    { name: "HDFC Bank", color: "bg-primary" },
+    { name: "SBI", color: "bg-sky-700" },
+    { name: "ICICI Bank", color: "bg-accent" },
+    { name: "Axis Bank", color: "bg-sky-600" },
+    { name: "Kotak", color: "bg-primary" },
+    { name: "Bajaj Finserv", color: "bg-sky-800" },
+    { name: "Bank of Baroda", color: "bg-accent" },
+    { name: "PNB", color: "bg-sky-900" },
 ];
 
 export function PartnerLogos() {
@@ -23,10 +23,10 @@ export function PartnerLogos() {
     );
 
     return (
-        <section className="py-10 bg-slate-50/50 dark:bg-black/20 border-b border-white/5 backdrop-blur-sm">
-            <div className="container px-4 md:px-6 mb-6">
-                <p className="text-center text-xs font-bold tracking-[0.2em] text-muted-foreground uppercase">
-                    Trusted by India's Top 50+ Banks & NBFCs
+        <section className="py-12 bg-white dark:bg-black border-y border-primary/10 relative overflow-hidden font-sans">
+            <div className="container px-4 md:px-6 mb-10 mx-auto">
+                <p className="text-center text-xs font-bold tracking-[0.3em] text-slate-400 dark:text-slate-500 uppercase">
+                    Trusted by India's Top 50+ Financial Institutions
                 </p>
             </div>
 
@@ -35,13 +35,13 @@ export function PartnerLogos() {
                     {[...banks, ...banks, ...banks, ...banks].map((bank, index) => (
                         <div
                             key={`${bank.name}-${index}`}
-                            className="flex-[0_0_180px] min-w-0 mx-4 flex items-center justify-center cursor-pointer group"
+                            className="flex-[0_0_220px] min-w-0 mx-6 flex items-center justify-center cursor-pointer group"
                         >
-                            <div className="flex items-center gap-3 px-6 py-3 rounded-full bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm group-hover:shadow-md transition-all duration-300 group-hover:-translate-y-1">
-                                <div className={cn("h-8 w-8 rounded-full flex items-center justify-center text-white font-bold text-[10px] shrink-0", bank.color)}>
+                            <div className="flex items-center gap-4 px-8 py-4 rounded-2xl bg-white/80 dark:bg-sky-950/20 border border-slate-100 dark:border-sky-900/50 shadow-sm group-hover:shadow-2xl group-hover:shadow-primary/20 transition-all duration-500 group-hover:-translate-y-2 ring-1 ring-primary/5">
+                                <div className={cn("h-10 w-10 rounded-xl flex items-center justify-center text-white font-black text-sm shrink-0 shadow-lg transform group-hover:rotate-6 transition-transform", bank.color)}>
                                     {bank.name.substring(0, 1)}
                                 </div>
-                                <span className="text-xs font-bold text-slate-600 dark:text-slate-300 group-hover:text-slate-900 dark:group-hover:text-white transition-colors whitespace-nowrap">
+                                <span className="text-sm font-black text-slate-700 dark:text-slate-300 group-hover:text-primary dark:group-hover:text-white transition-colors whitespace-nowrap tracking-tight">
                                     {bank.name}
                                 </span>
                             </div>

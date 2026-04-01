@@ -42,19 +42,19 @@ export function HeroBannerCarousel() {
 
     if (loading) {
         return (
-            <div className="w-full aspect-[4/3] rounded-2xl bg-gradient-to-br from-blue-100 to-indigo-100 dark:from-blue-950 dark:to-indigo-950 animate-pulse flex items-center justify-center">
-                <div className="h-10 w-10 border-4 border-blue-500 border-t-transparent rounded-full animate-spin" />
+            <div className="w-full aspect-[4/3] rounded-2xl bg-gradient-to-br from-primary/5 to-primary/20 dark:from-sky-900/40 dark:to-sky-800/20 animate-pulse flex items-center justify-center border border-primary/10">
+                <div className="h-10 w-10 border-4 border-primary border-t-transparent rounded-full animate-spin" />
             </div>
         );
     }
 
     if (banners.length === 0) {
         return (
-            <div className="w-full aspect-[4/3] rounded-2xl bg-gradient-to-br from-blue-600 via-indigo-600 to-purple-700 flex items-center justify-center text-white p-8 text-center">
+            <div className="w-full aspect-[4/3] rounded-2xl bg-gradient-to-br from-primary via-sky-600 to-sky-900 flex items-center justify-center text-white p-8 text-center border border-primary/20 shadow-xl">
                 <div className="space-y-4">
-                    <div className="text-6xl">🎉</div>
-                    <h3 className="text-2xl font-bold">Special Offers Coming Soon!</h3>
-                    <p className="text-blue-100 text-sm">Stay tuned for exciting festive deals and exclusive offers.</p>
+                    <div className="text-6xl text-white/90 animate-bounce">🌊</div>
+                    <h3 className="text-2xl font-bold">Premium Offers Coming Soon!</h3>
+                    <p className="text-sky-100 text-sm italic">Stay tuned for exclusive financial deals and festive offers.</p>
                 </div>
             </div>
         );

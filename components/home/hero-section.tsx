@@ -23,15 +23,15 @@ export function HeroSection() {
 
     return (
         <section className="relative w-full py-16 md:py-28 lg:py-32 overflow-hidden bg-slate-50 dark:bg-black font-sans">
-            {/* Background Gradients & Effects */}
+            {/* Background Gradients & Effects - Ocean Theme */}
             <div className="absolute inset-0 overflow-hidden pointer-events-none">
-                <div className="absolute -top-[20%] -left-[10%] w-[700px] h-[700px] bg-blue-500/20 rounded-full blur-[100px] animate-pulse"></div>
-                <div className="absolute top-[40%] -right-[10%] w-[600px] h-[600px] bg-purple-500/10 rounded-full blur-[100px]"></div>
-                <div className="absolute bottom-0 left-1/2 w-[800px] h-[400px] bg-indigo-500/10 rounded-full blur-[120px] -translate-x-1/2"></div>
-                <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-[0.03]"></div>
+                <div className="absolute -top-[20%] -left-[10%] w-[700px] h-[700px] bg-primary/20 rounded-full blur-[100px] animate-[pulse_6s_ease-in-out_infinite]"></div>
+                <div className="absolute top-[40%] -right-[10%] w-[600px] h-[600px] bg-sky-400/10 rounded-full blur-[100px]"></div>
+                <div className="absolute bottom-0 left-1/2 w-[800px] h-[400px] bg-accent/5 rounded-full blur-[120px] -translate-x-1/2"></div>
+                <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-[0.03] mix-blend-overlay"></div>
             </div>
 
-            <div className="container relative z-10 px-4 md:px-6">
+            <div className="container relative z-10 px-4 md:px-6 mx-auto">
                 <div className="grid gap-12 lg:grid-cols-[1.2fr_0.8fr] lg:gap-8 items-center">
 
                     {/* Text Content */}
@@ -40,9 +40,9 @@ export function HeroSection() {
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.5 }}
-                            className="inline-flex items-center gap-2 rounded-full border border-blue-200 bg-blue-50/50 px-3 py-1 text-sm font-medium text-blue-800 dark:border-blue-800 dark:bg-blue-950/30 dark:text-blue-300 backdrop-blur-md"
+                            className="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/5 px-3 py-1 text-sm font-medium text-primary dark:border-primary/50 dark:bg-primary/20 dark:text-sky-200 backdrop-blur-md"
                         >
-                            <span className="flex h-2 w-2 rounded-full bg-blue-600 animate-pulse"></span>
+                            <span className="flex h-2 w-2 rounded-full bg-accent animate-pulse"></span>
                             Trusted by 10 Lakh+ Indians
                         </motion.div>
 
@@ -59,7 +59,7 @@ export function HeroSection() {
                         <div className="flex flex-col sm:flex-row gap-4">
                             <Button
                                 size="lg"
-                                className="h-14 px-8 text-lg rounded-xl shadow-blue-500/25 shadow-lg hover:shadow-blue-500/40 transition-all hover:-translate-y-1 bg-gradient-to-r from-blue-600 to-indigo-700 hover:from-blue-700 hover:to-indigo-800"
+                                className="h-14 px-8 text-lg rounded-xl shadow-primary/25 shadow-lg hover:shadow-primary/40 transition-all hover:-translate-y-1 bg-primary hover:bg-sky-600 text-white font-bold"
                                 onClick={() => openModal("general")}
                             >
                                 Apply for Loan
@@ -76,7 +76,7 @@ export function HeroSection() {
 
                         <div className="grid grid-cols-2 md:grid-cols-3 gap-6 pt-6">
                             <div className="flex items-center gap-3">
-                                <div className="h-10 w-10 rounded-full bg-green-100 dark:bg-green-900/30 text-green-600 flex items-center justify-center">
+                                <div className="h-10 w-10 rounded-full bg-primary/10 dark:bg-primary/30 text-primary flex items-center justify-center">
                                     <TrendingUp className="h-5 w-5" />
                                 </div>
                                 <div className="text-sm">
@@ -85,7 +85,7 @@ export function HeroSection() {
                                 </div>
                             </div>
                             <div className="flex items-center gap-3">
-                                <div className="h-10 w-10 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-600 flex items-center justify-center">
+                                <div className="h-10 w-10 rounded-full bg-primary/10 dark:bg-primary/30 text-primary dark:text-blue-200 flex items-center justify-center">
                                     <ShieldCheck className="h-5 w-5" />
                                 </div>
                                 <div className="text-sm">
@@ -94,7 +94,7 @@ export function HeroSection() {
                                 </div>
                             </div>
                             <div className="flex items-center gap-3">
-                                <div className="h-10 w-10 rounded-full bg-amber-100 dark:bg-amber-900/30 text-amber-600 flex items-center justify-center">
+                                <div className="h-10 w-10 rounded-full bg-accent/10 dark:bg-accent/30 text-accent flex items-center justify-center">
                                     <Star className="h-5 w-5" />
                                 </div>
                                 <div className="text-sm">

@@ -94,75 +94,74 @@
 }
 
 :root {
-  --background: 220 30% 98%;
-  /* Soft cool grey-white */
-  --foreground: 222 47% 11%;
-  /* Deep Navy */
+  --background: 195 40% 98%;
+  /* Very light water-tinted white */
+  --foreground: 201 100% 12%;
+  /* Deep Ocean Blue for better readability */
 
   --card: 0 0% 100%;
-  --card-foreground: 222 47% 11%;
+  --card-foreground: 201 100% 12%;
 
   --popover: 0 0% 100%;
-  --popover-foreground: 222 47% 11%;
+  --popover-foreground: 201 100% 12%;
 
-  --primary: 221 83% 53%;
-  /* Vivid Royal Blue */
+  --primary: 199 89% 48%;
+  /* Vibrant Ocean Blue */
   --primary-foreground: 210 40% 98%;
 
-  --secondary: 48 96% 89%;
-  /* Soft Gold/Champagne */
-  --secondary-foreground: 24 9.8% 10%;
+  --secondary: 42 66% 92%;
+  /* Softest Gold */
+  --secondary-foreground: 218 64% 17%;
 
-  --muted: 210 40% 96.1%;
-  --muted-foreground: 215 16% 47%;
+  --muted: 199 20% 96.1%;
+  --muted-foreground: 199 16% 47%;
 
-  --accent: 48 100% 50%;
-  /* Gold Accent */
-  --accent-foreground: 222 47% 11%;
+  --accent: 42 66% 45%;
+  /* Gold Accent remains as is */
+  --accent-foreground: 210 40% 98%;
 
   --destructive: 0 84.2% 60.2%;
   --destructive-foreground: 210 40% 98%;
 
-  --border: 214.3 31.8% 91.4%;
-  --input: 214.3 31.8% 91.4%;
-  --ring: 221 83% 53%;
+  --border: 199 31.8% 91.4%;
+  --input: 199 31.8% 91.4%;
+  --ring: 199 89% 48%;
 
   --radius: 0.75rem;
-  /* Slightly more rounded for premium feel */
 }
 
 .dark {
-  --background: 222 47% 6%;
-  /* Almost black navy */
+  --background: 201 100% 6%;
+  /* Deepest Abyss Blue */
   --foreground: 210 40% 98%;
 
-  --card: 222 47% 11%;
-  /* Deep Navy Card */
+  --card: 201 100% 10%;
+  /* Deep Water Card */
   --card-foreground: 210 40% 98%;
 
-  --popover: 222 47% 11%;
+  --popover: 201 100% 10%;
   --popover-foreground: 210 40% 98%;
 
-  --primary: 217 91% 60%;
-  /* Bright Blue for Dark Mode */
-  --primary-foreground: 222 47.4% 11.2%;
+  --primary: 199 89% 48%;
+  /* Ocean Blue stays vibrant */
+  --primary-foreground: 210 40% 98%;
 
-  --secondary: 217 32% 17%;
+  --secondary: 201 32% 17%;
   --secondary-foreground: 210 40% 98%;
 
-  --muted: 217 32% 17%;
-  --muted-foreground: 215 20% 65%;
+  --muted: 201 32% 17%;
+  --muted-foreground: 201 20% 65%;
 
-  --accent: 48 100% 50%;
-  /* Gold Accent */
+  --accent: 42 66% 45%;
+  /* Gold Accent remains */
   --accent-foreground: 210 40% 98%;
 
   --destructive: 0 62.8% 30.6%;
   --destructive-foreground: 210 40% 98%;
 
-  --border: 217 32% 17%;
-  --input: 217 32% 17%;
-  --ring: 217 91% 60%;
+  --border: 201 32% 17%;
+  --input: 201 32% 17%;
+  --ring: 199 89% 48%;
 }
 
 @layer base {
@@ -177,7 +176,7 @@
 
 @layer utilities {
   .glass-card {
-    @apply bg-white/60 dark:bg-slate-900/60 backdrop-blur-xl border border-white/40 dark:border-slate-700/30 transition-all duration-300;
+    @apply bg-white/60 dark:bg-sky-950/40 backdrop-blur-xl border border-white/40 dark:border-sky-800/30 transition-all duration-300;
     box-shadow: 0 8px 30px rgba(0, 0, 0, 0.04);
 
     &:hover {
@@ -190,10 +189,10 @@
   }
 
   .text-gradient {
-    @apply bg-clip-text text-transparent bg-gradient-to-r from-blue-700 via-indigo-700 to-blue-900 dark:from-blue-400 dark:via-indigo-400 dark:to-blue-200;
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary via-sky-400 to-accent dark:from-sky-300 dark:via-primary dark:to-accent;
   }
 
   .text-gradient-gold {
-    @apply bg-clip-text text-transparent bg-gradient-to-r from-amber-500 to-yellow-300;
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-accent to-yellow-500;
   }
 }

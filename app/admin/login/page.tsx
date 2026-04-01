@@ -41,63 +41,63 @@ export default function AdminLoginPage() {
     };
 
     return (
-        <div className="min-h-screen flex items-center justify-center bg-slate-950 relative overflow-hidden px-4">
-            {/* Background effects */}
+        <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-sky-950 via-sky-900 to-black relative overflow-hidden px-4 font-sans">
+            {/* Background effects - Ocean Theme */}
             <div className="absolute inset-0 pointer-events-none">
-                <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-blue-600/10 rounded-full blur-[120px]" />
-                <div className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] bg-indigo-600/10 rounded-full blur-[120px]" />
+                <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-primary/10 rounded-full blur-[120px] animate-pulse" />
+                <div className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] bg-accent/10 rounded-full blur-[120px]" />
             </div>
 
             <motion.div
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5 }}
-                className="relative z-10 w-full max-w-md"
+                className="relative z-10 w-full max-w-md mx-auto"
             >
-                <div className="bg-slate-900/80 backdrop-blur-xl border border-slate-800 rounded-3xl p-8 md:p-10 shadow-2xl">
+                <div className="bg-sky-950/40 backdrop-blur-xl border border-primary/20 rounded-3xl p-8 md:p-10 shadow-2xl">
                     {/* Logo / Title */}
                     <div className="text-center mb-8">
-                        <div className="inline-flex items-center justify-center h-16 w-16 rounded-2xl bg-gradient-to-br from-blue-600 to-indigo-700 shadow-lg shadow-blue-500/30 mb-4">
+                        <div className="inline-flex items-center justify-center h-16 w-16 rounded-2xl bg-gradient-to-br from-primary to-sky-600 shadow-lg shadow-primary/30 mb-4 border border-white/10">
                             <Lock className="h-8 w-8 text-white" />
                         </div>
-                        <h1 className="text-2xl font-bold text-white">Admin Dashboard</h1>
-                        <p className="text-slate-400 text-sm mt-1">Sign in to manage banners</p>
+                        <h1 className="text-2xl font-bold text-white uppercase tracking-tight text-gradient">Admin Dashboard</h1>
+                        <p className="text-sky-200/60 text-sm mt-1">Sign in to manage banners</p>
                     </div>
 
                     <form onSubmit={handleSubmit} className="space-y-5">
                         {/* Username */}
                         <div className="space-y-2">
-                            <label className="text-sm font-medium text-slate-300">Username</label>
+                            <label className="text-sm font-medium text-sky-100/80">Username</label>
                             <div className="relative">
-                                <User className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-500" />
+                                <User className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-sky-400" />
                                 <input
                                     type="text"
                                     value={username}
                                     onChange={(e) => setUsername(e.target.value)}
                                     placeholder="Enter username"
                                     required
-                                    className="w-full h-12 pl-10 pr-4 bg-slate-800/60 border border-slate-700 rounded-xl text-white placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
+                                    className="w-full h-12 pl-10 pr-4 bg-sky-900/20 border border-sky-800/50 rounded-xl text-white placeholder:text-sky-600 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all"
                                 />
                             </div>
                         </div>
 
                         {/* Password */}
                         <div className="space-y-2">
-                            <label className="text-sm font-medium text-slate-300">Password</label>
+                            <label className="text-sm font-medium text-sky-100/80">Password</label>
                             <div className="relative">
-                                <Lock className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-500" />
+                                <Lock className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-sky-400" />
                                 <input
                                     type={showPassword ? "text" : "password"}
                                     value={password}
                                     onChange={(e) => setPassword(e.target.value)}
                                     placeholder="Enter password"
                                     required
-                                    className="w-full h-12 pl-10 pr-12 bg-slate-800/60 border border-slate-700 rounded-xl text-white placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
+                                    className="w-full h-12 pl-10 pr-12 bg-sky-900/20 border border-sky-800/50 rounded-xl text-white placeholder:text-sky-600 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all"
                                 />
                                 <button
                                     type="button"
                                     onClick={() => setShowPassword(!showPassword)}
-                                    className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-500 hover:text-slate-300 transition-colors"
+                                    className="absolute right-3 top-1/2 -translate-y-1/2 text-sky-500 hover:text-sky-300 transition-colors"
                                 >
                                     {showPassword ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
                                 </button>
@@ -119,7 +119,7 @@ export default function AdminLoginPage() {
                         <button
                             type="submit"
                             disabled={loading}
-                            className="w-full h-12 bg-gradient-to-r from-blue-600 to-indigo-700 hover:from-blue-700 hover:to-indigo-800 text-white font-semibold rounded-xl shadow-lg shadow-blue-500/25 hover:shadow-blue-500/40 transition-all hover:-translate-y-0.5 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:translate-y-0 flex items-center justify-center gap-2"
+                            className="w-full h-12 bg-primary hover:bg-sky-600 text-white font-bold rounded-xl shadow-lg shadow-primary/25 hover:shadow-primary/40 transition-all hover:-translate-y-0.5 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:translate-y-0 flex items-center justify-center gap-2 border border-white/10"
                         >
                             {loading ? (
                                 <>

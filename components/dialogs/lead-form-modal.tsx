@@ -71,11 +71,11 @@ export function LeadFormModal({ isOpen, onClose, type }: LeadFormModalProps) {
                     {/* Visual Header */}
                     <div className={cn(
                         "rounded-xl p-4 flex items-center gap-3",
-                        isCibil ? "bg-amber-50 text-amber-900" : "bg-blue-50 text-blue-900"
+                        isCibil ? "bg-accent/10 text-accent" : "bg-primary/10 text-primary"
                     )}>
                         <div className={cn(
                             "h-10 w-10 rounded-full flex items-center justify-center shrink-0",
-                            isCibil ? "bg-amber-100 text-amber-600" : "bg-blue-100 text-blue-600"
+                            isCibil ? "bg-accent/20 text-accent" : "bg-primary/20 text-primary"
                         )}>
                             {isCibil ? <PieChart className="h-5 w-5" /> : <CreditCard className="h-5 w-5" />}
                         </div>

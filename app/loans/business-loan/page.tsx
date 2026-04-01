@@ -34,48 +34,48 @@ export default function BusinessLoanPage() {
     };
 
     return (
-        <div className="pb-20 bg-slate-50 dark:bg-black selection:bg-blue-500/30 font-sans">
+        <div className="pb-20 bg-slate-50 dark:bg-black selection:bg-primary/30 font-sans mx-auto">
             <DynamicHeroWrapper page="business-loan">
-                {/* Unique Hero Section - Empire Builder Theme */}
-                <section className="relative pt-40 pb-20 overflow-hidden bg-slate-900 text-white">
-                    {/* City skyline background */}
-                    <div className="absolute bottom-0 left-0 right-0 h-64 bg-[url('https://www.transparenttextures.com/patterns/city-lights.png')] opacity-20 z-0"></div>
-                    <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-blue-600/20 rounded-full blur-[120px] mix-blend-screen animate-pulse"></div>
+                {/* Unique Hero Section - Empire Builder Ocean Theme */}
+                <section className="relative pt-40 pb-20 overflow-hidden bg-gradient-to-b from-sky-950 to-sky-900 text-white border-b border-primary/20">
+                    {/* City skyline background - Ocean Style */}
+                    <div className="absolute bottom-0 left-0 right-0 h-64 bg-[url('https://www.transparenttextures.com/patterns/city-lights.png')] opacity-10 z-0"></div>
+                    <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-primary/20 rounded-full blur-[120px] mix-blend-screen animate-[pulse_6s_ease-in-out_infinite]"></div>
 
-                    <div className="container px-4 md:px-6 grid lg:grid-cols-2 gap-12 items-center relative z-10">
+                    <div className="container px-4 md:px-6 grid lg:grid-cols-2 gap-12 items-center relative z-10 mx-auto">
                         <div className="space-y-8">
-                            <div className="inline-flex items-center gap-2 rounded-full border border-blue-500/30 bg-blue-900/20 px-4 py-1.5 text-sm font-bold text-blue-400">
-                                <Building2 className="h-4 w-4" />
+                            <div className="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/20 px-4 py-1.5 text-sm font-bold text-sky-200">
+                                <Building2 className="h-4 w-4 text-accent" />
                                 <span>Fuel Your Business Growth</span>
                             </div>
 
-                            <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight leading-tight">
+                            <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight leading-tight text-white">
                                 Build Your <br />
-                                <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-indigo-400 to-purple-400">Empire.</span>
+                                <span className="text-gradient">Empire.</span>
                             </h1>
 
-                            <p className="text-xl text-slate-300 max-w-lg leading-relaxed">
+                            <p className="text-xl text-sky-100/80 max-w-lg leading-relaxed">
                                 Capital solutions for every stage of your business. Unsecured loans up to ₹50 Lakhs with flexible repayment options.
                             </p>
 
                             <div className="flex flex-wrap gap-4">
-                                <Button size="lg" className="h-14 px-8 text-lg rounded-full shadow-lg shadow-blue-900/40 bg-blue-600 hover:bg-blue-700 text-white font-bold" onClick={scrollToForm}>
+                                <Button size="lg" className="h-14 px-8 text-lg rounded-full shadow-lg shadow-primary/40 bg-primary hover:bg-sky-600 text-white font-bold border border-white/10 transition-all hover:-translate-y-1" onClick={scrollToForm}>
                                     Check Eligibility
                                 </Button>
                             </div>
 
-                            <div className="grid grid-cols-3 gap-6 pt-4 border-t border-slate-800">
+                            <div className="grid grid-cols-3 gap-6 pt-4 border-t border-sky-800">
                                 <div>
                                     <p className="text-3xl font-bold text-white">₹50L</p>
-                                    <p className="text-xs text-slate-400 uppercase tracking-wider">Max Amount</p>
+                                    <p className="text-xs text-sky-400 uppercase tracking-wider">Max Amount</p>
                                 </div>
                                 <div>
                                     <p className="text-3xl font-bold text-white">48hr</p>
-                                    <p className="text-xs text-slate-400 uppercase tracking-wider">Disbursal</p>
+                                    <p className="text-xs text-sky-400 uppercase tracking-wider">Disbursal</p>
                                 </div>
                                 <div>
                                     <p className="text-3xl font-bold text-white">0</p>
-                                    <p className="text-xs text-slate-400 uppercase tracking-wider">Collateral</p>
+                                    <p className="text-xs text-sky-400 uppercase tracking-wider">Collateral</p>
                                 </div>
                             </div>
                         </div>
@@ -85,18 +85,18 @@ export default function BusinessLoanPage() {
                             <div className="absolute inset-0 flex items-center justify-center">
                                 {/* Abstract Building Blocks */}
                                 <div className="relative w-64 h-96">
-                                    <div className="absolute bottom-0 left-0 w-20 h-40 bg-blue-900 rounded-t-lg opacity-80 animate-pulse"></div>
-                                    <div className="absolute bottom-0 left-24 w-20 h-64 bg-blue-700 rounded-t-lg opacity-90 animate-pulse delay-100"></div>
-                                    <div className="absolute bottom-0 right-0 w-20 h-80 bg-blue-500 rounded-t-lg shadow-[0_0_30px_rgba(59,130,246,0.5)] animate-pulse delay-200"></div>
+                                    <div className="absolute bottom-0 left-0 w-20 h-40 bg-sky-900 rounded-t-lg opacity-80 animate-pulse"></div>
+                                    <div className="absolute bottom-0 left-24 w-20 h-64 bg-sky-700 rounded-t-lg opacity-90 animate-pulse delay-100"></div>
+                                    <div className="absolute bottom-0 right-0 w-20 h-80 bg-primary rounded-t-lg shadow-[0_0_30px_rgba(14,165,233,0.5)] animate-pulse delay-200"></div>
 
                                     {/* Floating Growth Graph */}
-                                    <div className="absolute top-10 -right-16 bg-slate-800/90 backdrop-blur-md p-4 rounded-xl border border-slate-700 shadow-xl w-64 animate-bounce delay-700">
+                                    <div className="absolute top-10 -right-16 bg-sky-950/90 backdrop-blur-md p-4 rounded-xl border border-sky-800 shadow-xl w-64 animate-bounce delay-700">
                                         <div className="flex justify-between items-center mb-2">
-                                            <p className="text-xs text-slate-400 font-bold uppercase">Revenue Growth</p>
-                                            <TrendingUp className="h-4 w-4 text-green-500" />
+                                            <p className="text-xs text-sky-400 font-bold uppercase tracking-tighter">Revenue Growth</p>
+                                            <TrendingUp className="h-4 w-4 text-accent" />
                                         </div>
-                                        <div className="h-2 w-full bg-slate-700 rounded-full overflow-hidden">
-                                            <div className="h-full w-[80%] bg-green-500 rounded-full"></div>
+                                        <div className="h-2 w-full bg-sky-900 rounded-full overflow-hidden">
+                                            <div className="h-full w-[80%] bg-accent rounded-full shadow-[0_0_10px_rgba(255,215,0,0.4)]"></div>
                                         </div>
                                     </div>
                                 </div>
@@ -107,29 +107,29 @@ export default function BusinessLoanPage() {
             </DynamicHeroWrapper>
 
             {/* Business Solutions Strip */}
-            <div className="border-y border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950 py-10">
-                <div className="container px-4 grid md:grid-cols-4 gap-8 text-center divide-x divide-slate-100 dark:divide-slate-800">
-                    <div className="group">
-                        <Briefcase className="h-8 w-8 mx-auto mb-3 text-blue-600 group-hover:scale-110 transition-transform" />
+            <div className="border-y border-sky-100 dark:border-sky-900 bg-white/80 dark:bg-sky-950/80 backdrop-blur-md py-10 shadow-sm relative z-20">
+                <div className="container px-4 mx-auto grid md:grid-cols-4 gap-8 text-center divide-x divide-sky-100 dark:divide-sky-900">
+                    <div className="group transition-all hover:-translate-y-1">
+                        <Briefcase className="h-8 w-8 mx-auto mb-3 text-primary group-hover:scale-110 transition-transform" />
                         <p className="font-bold text-slate-900 dark:text-white">Working Capital</p>
                     </div>
-                    <div className="group">
-                        <Globe className="h-8 w-8 mx-auto mb-3 text-indigo-600 group-hover:scale-110 transition-transform" />
+                    <div className="group transition-all hover:-translate-y-1">
+                        <Globe className="h-8 w-8 mx-auto mb-3 text-primary group-hover:scale-110 transition-transform" />
                         <p className="font-bold text-slate-900 dark:text-white">Business Expansion</p>
                     </div>
-                    <div className="group">
-                        <Zap className="h-8 w-8 mx-auto mb-3 text-amber-500 group-hover:scale-110 transition-transform" />
+                    <div className="group transition-all hover:-translate-y-1">
+                        <Zap className="h-8 w-8 mx-auto mb-3 text-accent group-hover:scale-110 transition-transform" />
                         <p className="font-bold text-slate-900 dark:text-white">Equipment Finance</p>
                     </div>
-                    <div className="group">
-                        <ShieldCheck className="h-8 w-8 mx-auto mb-3 text-green-600 group-hover:scale-110 transition-transform" />
+                    <div className="group transition-all hover:-translate-y-1">
+                        <ShieldCheck className="h-8 w-8 mx-auto mb-3 text-emerald-500 group-hover:scale-110 transition-transform" />
                         <p className="font-bold text-slate-900 dark:text-white">Debt Consolidation</p>
                     </div>
                 </div>
             </div>
 
             {/* Main Content Layout with Sticky Sidebar */}
-            <div className="container px-4 md:px-6 py-12 grid lg:grid-cols-[1fr_400px] gap-12">
+            <div className="container px-4 md:px-6 py-12 grid lg:grid-cols-[1fr_400px] gap-12 mx-auto">
                 {/* Left Column: Content */}
                 <div className="space-y-16">
                     <ContentSection
@@ -139,22 +139,22 @@ export default function BusinessLoanPage() {
                         imageAlt="Modern Skyscraper"
                     >
                         <div className="grid grid-cols-2 gap-4 mt-6">
-                            <div className="p-4 rounded-xl bg-blue-50 dark:bg-blue-900/20 border border-blue-100 dark:border-blue-800">
-                                <h4 className="font-bold text-blue-700 dark:text-blue-300 text-lg">Collateral Free</h4>
+                            <div className="p-4 rounded-xl bg-sky-50 dark:bg-sky-900/10 border border-sky-100 dark:border-sky-800 transition-all hover:bg-sky-100 dark:hover:bg-sky-900/40 group">
+                                <h4 className="font-bold text-primary text-lg group-hover:scale-110 transition-transform">Collateral Free</h4>
                                 <p className="text-sm text-slate-600 dark:text-slate-400">No Asset Pledge</p>
                             </div>
-                            <div className="p-4 rounded-xl bg-indigo-50 dark:bg-indigo-900/20 border border-indigo-100 dark:border-indigo-800">
-                                <h4 className="font-bold text-indigo-700 dark:text-indigo-300 text-lg">Quick Access</h4>
+                            <div className="p-4 rounded-xl bg-sky-50/50 dark:bg-sky-900/5 border border-sky-100/50 dark:border-sky-800/50 transition-all hover:bg-sky-100 dark:hover:bg-sky-900/40 group">
+                                <h4 className="font-bold text-accent text-lg group-hover:scale-110 transition-transform">Quick Access</h4>
                                 <p className="text-sm text-slate-600 dark:text-slate-400">Disbursal in 48 Hrs</p>
                             </div>
                         </div>
                     </ContentSection>
 
                     {/* Calculator Section */}
-                    <div className="p-1 rounded-3xl bg-gradient-to-r from-blue-200 to-indigo-200 dark:from-slate-800 dark:to-slate-900 shadow-sm border border-blue-100 dark:border-blue-900">
-                        <div className="bg-white dark:bg-slate-950 rounded-[22px] p-6">
+                    <div className="p-1 rounded-3xl bg-gradient-to-r from-sky-100 to-sky-200 dark:from-sky-900/40 dark:to-sky-800/20 shadow-sm border border-sky-200 dark:border-sky-900">
+                        <div className="bg-white dark:bg-sky-950 rounded-[22px] p-6 shadow-inner">
                             <div className="flex items-center gap-3 mb-6">
-                                <div className="p-2 bg-blue-100 rounded-lg text-blue-600"><BarChart3 className="h-6 w-6" /></div>
+                                <div className="p-2 bg-primary/10 rounded-lg text-primary"><BarChart3 className="h-6 w-6" /></div>
                                 <h3 className="text-xl font-bold">Calculate Business Loan EMI</h3>
                             </div>
                             <EMICalculator defaultAmount={2000000} defaultRate={12.0} defaultTenure={3} />
@@ -164,9 +164,12 @@ export default function BusinessLoanPage() {
                     {/* Accordions */}
                     <div className="space-y-8">
                         <div className="space-y-4">
-                            <h3 className="text-2xl font-bold flex items-center gap-2">
-                                <CheckCircle2 className="text-blue-600" /> Eligibility Criteria
-                            </h3>
+                            <div className="flex items-center gap-3 mb-4">
+                                <div className="h-10 w-10 rounded-full bg-sky-100 dark:bg-sky-900/40 flex items-center justify-center text-primary">
+                                    <CheckCircle2 className="h-6 w-6" />
+                                </div>
+                                <h3 className="text-2xl font-bold">Eligibility Criteria</h3>
+                            </div>
                             <SimpleAccordion
                                 items={[
                                     { title: "Business Vintage", content: "Minimum 3 years of business continuity." },
@@ -177,9 +180,12 @@ export default function BusinessLoanPage() {
                         </div>
 
                         <div className="space-y-4">
-                            <h3 className="text-2xl font-bold flex items-center gap-2">
-                                <FileText className="text-indigo-600" /> Documents Required
-                            </h3>
+                            <div className="flex items-center gap-3 mb-4">
+                                <div className="h-10 w-10 rounded-full bg-primary/10 dark:bg-primary/20 flex items-center justify-center text-primary">
+                                    <FileText className="h-6 w-6" />
+                                </div>
+                                <h3 className="text-2xl font-bold">Documents Required</h3>
+                            </div>
                             <SimpleAccordion
                                 items={[
                                     { title: "Registration Proof", content: "GST Registration, Trade License, Partnership Deed/MOA." },
@@ -194,15 +200,15 @@ export default function BusinessLoanPage() {
                 {/* Right Column: Sticky Form */}
                 <aside className="relative">
                     <div id="lead-form" className="sticky top-24">
-                        <Card className="glass-card bg-white/80 dark:bg-slate-900/80 border-blue-100 dark:border-blue-900 shadow-2xl overflow-hidden ring-1 ring-blue-500/10">
-                            <CardHeader className="bg-gradient-to-r from-blue-600 to-indigo-600 text-white p-6">
+                        <Card className="glass-card bg-white/80 dark:bg-sky-950/80 border-sky-100 dark:border-sky-900 shadow-2xl overflow-hidden ring-1 ring-primary/10">
+                            <CardHeader className="bg-gradient-to-r from-primary to-sky-600 text-white p-6">
                                 <CardTitle className="text-lg">Business Funding Inquiry</CardTitle>
-                                <p className="text-blue-100 text-sm">Grow your business today</p>
+                                <p className="text-sky-100 text-sm">Grow your business today</p>
                             </CardHeader>
                             <CardContent className="p-6">
                                 {isSuccess ? (
                                     <div className="text-center py-8">
-                                        <div className="h-12 w-12 bg-green-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                                        <div className="h-12 w-12 bg-emerald-500 rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg shadow-emerald-500/20">
                                             <CheckCircle2 className="h-6 w-6 text-white" />
                                         </div>
                                         <h3 className="text-xl font-bold text-slate-800 dark:text-white">Request Received</h3>
@@ -214,7 +220,7 @@ export default function BusinessLoanPage() {
                                             <label className="text-xs font-bold uppercase tracking-wider text-slate-500">Name</label>
                                             <Input
                                                 placeholder="Proprietor/Director Name"
-                                                className="bg-slate-50 border-slate-200"
+                                                className="bg-sky-50 dark:bg-sky-900/10 border-sky-100"
                                                 value={formData.name}
                                                 onChange={e => setFormData({ ...formData, name: e.target.value })}
                                                 required
@@ -224,7 +230,7 @@ export default function BusinessLoanPage() {
                                             <label className="text-xs font-bold uppercase tracking-wider text-slate-500">Mobile</label>
                                             <Input
                                                 placeholder="10 digit number"
-                                                className="bg-slate-50 border-slate-200"
+                                                className="bg-sky-50 dark:bg-sky-900/10 border-sky-100"
                                                 value={formData.mobile}
                                                 onChange={e => setFormData({ ...formData, mobile: e.target.value })}
                                                 required
@@ -234,7 +240,7 @@ export default function BusinessLoanPage() {
                                             <label className="text-xs font-bold uppercase tracking-wider text-slate-500">Company Name</label>
                                             <Input
                                                 placeholder="Registered Business Name"
-                                                className="bg-slate-50 border-slate-200"
+                                                className="bg-sky-50 dark:bg-sky-900/10 border-sky-100"
                                                 value={formData.companyName}
                                                 onChange={e => setFormData({ ...formData, companyName: e.target.value })}
                                                 required
@@ -244,13 +250,13 @@ export default function BusinessLoanPage() {
                                             <label className="text-xs font-bold uppercase tracking-wider text-slate-500">Annual Turnover</label>
                                             <Input
                                                 placeholder="e.g. 50 Lakhs"
-                                                className="bg-slate-50 border-slate-200"
+                                                className="bg-sky-50 dark:bg-sky-900/10 border-sky-100"
                                                 value={formData.turnover}
                                                 onChange={e => setFormData({ ...formData, turnover: e.target.value })}
                                                 required
                                             />
                                         </div>
-                                        <Button className="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold h-12 text-base shadow-lg shadow-blue-500/20 mt-2">Check Eligibility</Button>
+                                        <Button className="w-full bg-primary hover:bg-sky-600 text-white font-bold h-12 text-base shadow-lg shadow-primary/20 mt-2 border border-white/10 transition-all">Check Eligibility</Button>
                                     </form>
                                 )}
                             </CardContent>

@@ -21,14 +21,14 @@ type EMISolveFor = "emi" | "principal" | "rate" | "tenure";
 type SIPSolveFor = "futureValue" | "monthly" | "duration";
 
 const CALC_TABS: { id: CalcType; label: string; icon: React.ReactNode; color: string }[] = [
-    { id: "emi", label: "EMI", icon: <Home className="h-4 w-4" />, color: "from-blue-600 to-indigo-700" },
-    { id: "sip", label: "SIP", icon: <TrendingUp className="h-4 w-4" />, color: "from-green-600 to-emerald-700" },
-    { id: "fd", label: "FD", icon: <Landmark className="h-4 w-4" />, color: "from-amber-500 to-orange-600" },
-    { id: "rd", label: "RD", icon: <Wallet className="h-4 w-4" />, color: "from-purple-600 to-violet-700" },
-    { id: "lumpsum", label: "Lumpsum", icon: <PiggyBank className="h-4 w-4" />, color: "from-rose-500 to-pink-600" },
+    { id: "emi", label: "EMI", icon: <Home className="h-4 w-4" />, color: "from-primary to-sky-800" },
+    { id: "sip", label: "SIP", icon: <TrendingUp className="h-4 w-4" />, color: "from-sky-500 to-primary" },
+    { id: "fd", label: "FD", icon: <Landmark className="h-4 w-4" />, color: "from-accent to-sky-700" },
+    { id: "rd", label: "RD", icon: <Wallet className="h-4 w-4" />, color: "from-primary to-accent" },
+    { id: "lumpsum", label: "Lumpsum", icon: <PiggyBank className="h-4 w-4" />, color: "from-sky-600 to-primary" },
 ];
 
-const COLORS = ["#3b82f6", "#1e1b4b"];
+const COLORS = ["hsl(199 89% 48%)", "hsl(45 93% 47%)"]; // Primary (Ocean Blue) and Accent (Gold)
 
 const fmt = (v: number) =>
     new Intl.NumberFormat("en-IN", { style: "currency", currency: "INR", maximumFractionDigits: 0 }).format(v);
@@ -101,8 +101,8 @@ function EMISection() {
                             key={opt.id}
                             onClick={() => setSolveFor(opt.id)}
                             className={`px-3 py-2 rounded-lg text-sm font-medium transition-all ${solveFor === opt.id
-                                    ? "bg-blue-600 text-white shadow-lg shadow-blue-500/30"
-                                    : "bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700"
+                                    ? "bg-primary text-white shadow-lg shadow-primary/30"
+                                    : "bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 font-bold"
                                 }`}
                         >
                             {opt.label}
@@ -132,7 +132,7 @@ function EMISection() {
                 </div>
 
                 {/* Results */}
-                <div className="rounded-2xl bg-slate-50 dark:bg-slate-900/80 p-6 flex flex-col items-center justify-center text-center space-y-4">
+                <div className="rounded-2xl bg-sky-50 dark:bg-sky-950/40 border border-sky-100 dark:border-sky-900 p-6 flex flex-col items-center justify-center text-center space-y-4">
                     <div className="h-28 w-28 relative">
                         <ResponsiveContainer width="100%" height="100%">
                             {isMounted ? (
@@ -147,10 +147,10 @@ function EMISection() {
                     </div>
 
                     <div className="space-y-1">
-                        <p className="text-sm text-muted-foreground">
+                        <p className="text-sm text-muted-foreground font-medium">
                             {solveFor === "emi" ? "Monthly EMI" : solveFor === "principal" ? "Loan Amount" : solveFor === "rate" ? "Interest Rate" : "Tenure"}
                         </p>
-                        <p className="text-3xl font-bold text-blue-600">
+                        <p className="text-3xl font-extrabold text-primary">
                             {solveFor === "emi" ? fmt(result.emi)
                                 : solveFor === "principal" ? fmt(result.principal)
                                     : solveFor === "rate" ? `${result.solvedRate ?? rate}%`
@@ -158,10 +158,12 @@ function EMISection() {
                         </p>
                     </div>
 
-                    <div className="w-full text-xs space-y-2 pt-2 border-t border-slate-200 dark:border-slate-800">
-                        <div className="flex justify-between"><span>Principal</span><span className="font-semibold">{fmt(result.principal)}</span></div>
-                        <div className="flex justify-between"><span>Total Interest</span><span className="font-semibold text-red-500">+ {fmt(Math.max(0, result.totalInterest))}</span></div>
-                        <div className="flex justify-between"><span>Total Payable</span><span className="font-semibold">{fmt(result.totalPayment)}</span></div>
+                    <div className="w-full text-xs space-y-2 pt-2 border-t border-sky-100 dark:border-sky-900">
+                        <div className="flex justify-between"><span>Principal</span><span className="font-bold">{fmt(result.principal)}</span></div>
+                        <div className="flex justify-between"><span>Total Interest</span><span className="font-bold text-primary">+ {fmt(Math.max(0, result.totalInterest))}</span></div>
+                        <div className="flex justify-between bg-white/50 dark:bg-white/5 p-2 rounded-lg">
+                            <span className="font-bold">Total Payable</span><span className="font-extrabold text-primary">{fmt(result.totalPayment)}</span>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -213,8 +215,8 @@ function SIPSection() {
                             key={opt.id}
                             onClick={() => setSolveFor(opt.id)}
                             className={`px-3 py-2 rounded-lg text-sm font-medium transition-all ${solveFor === opt.id
-                                    ? "bg-green-600 text-white shadow-lg shadow-green-500/30"
-                                    : "bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700"
+                                    ? "bg-primary text-white shadow-lg shadow-primary/30"
+                                    : "bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 font-bold"
                                 }`}
                         >
                             {opt.label}
@@ -237,21 +239,21 @@ function SIPSection() {
                     )}
                 </div>
 
-                <div className="rounded-2xl bg-slate-50 dark:bg-slate-900/80 p-6 space-y-3">
-                    <div className="text-center space-y-1 pb-3 border-b border-slate-200 dark:border-slate-800">
-                        <p className="text-sm text-muted-foreground">
+                <div className="rounded-2xl bg-sky-50 dark:bg-sky-950/40 border border-sky-100 dark:border-sky-900 p-6 space-y-3">
+                    <div className="text-center space-y-1 pb-3 border-b border-sky-100 dark:border-sky-900">
+                        <p className="text-sm text-muted-foreground font-medium">
                             {solveFor === "futureValue" ? "Total Value" : solveFor === "monthly" ? "Monthly SIP Needed" : "Time Required"}
                         </p>
-                        <p className="text-3xl font-bold text-green-600">
+                        <p className="text-3xl font-extrabold text-primary">
                             {solveFor === "futureValue" ? fmt(result.total)
                                 : solveFor === "monthly" ? fmt(result.solvedMonthly ?? 0)
                                     : `${result.solvedYears ?? 0} Years`}
                         </p>
                     </div>
-                    <div className="flex justify-between"><span className="text-sm text-slate-500">Invested</span><span className="font-bold">{fmt(result.invested)}</span></div>
-                    <div className="flex justify-between"><span className="text-sm text-slate-500">Returns</span><span className="font-bold text-green-600">+{fmt(Math.max(0, result.returns))}</span></div>
-                    <div className="flex justify-between bg-green-50 dark:bg-green-900/20 p-3 rounded-xl">
-                        <span className="font-bold">Total</span><span className="font-extrabold text-green-700 dark:text-green-300">{fmt(result.total)}</span>
+                    <div className="flex justify-between"><span className="text-sm text-slate-500 font-medium">Invested</span><span className="font-bold">{fmt(result.invested)}</span></div>
+                    <div className="flex justify-between"><span className="text-sm text-slate-500 font-medium">Returns</span><span className="font-bold text-accent">+{fmt(Math.max(0, result.returns))}</span></div>
+                    <div className="flex justify-between bg-primary/10 dark:bg-primary/20 p-3 rounded-xl border border-primary/20">
+                        <span className="font-bold">Total</span><span className="font-extrabold text-primary">{fmt(result.total)}</span>
                     </div>
                 </div>
             </div>
@@ -277,13 +279,13 @@ function FDSection() {
                 <SliderField label="Interest Rate (% p.a)" value={rate} onChange={setRate} min={1} max={15} step={0.1} />
                 <SliderField label="Tenure (Years)" value={years} onChange={setYears} min={1} max={20} step={1} />
             </div>
-            <div className="rounded-2xl bg-slate-50 dark:bg-slate-900/80 p-6 space-y-3">
-                <div className="text-center space-y-1 pb-3 border-b border-slate-200 dark:border-slate-800">
-                    <p className="text-sm text-muted-foreground">Maturity Amount</p>
-                    <p className="text-3xl font-bold text-amber-600">{fmt(result.maturity)}</p>
+            <div className="rounded-2xl bg-sky-50 dark:bg-sky-950/40 border border-sky-100 dark:border-sky-900 p-6 space-y-3">
+                <div className="text-center space-y-1 pb-3 border-b border-sky-100 dark:border-sky-900">
+                    <p className="text-sm text-muted-foreground font-medium">Maturity Amount</p>
+                    <p className="text-3xl font-extrabold text-primary">{fmt(result.maturity)}</p>
                 </div>
-                <div className="flex justify-between"><span className="text-sm text-slate-500">Deposit</span><span className="font-bold">{fmt(result.principal)}</span></div>
-                <div className="flex justify-between"><span className="text-sm text-slate-500">Interest Earned</span><span className="font-bold text-amber-600">+{fmt(result.interest)}</span></div>
+                <div className="flex justify-between"><span className="text-sm text-slate-500 font-medium">Deposit</span><span className="font-bold">{fmt(result.principal)}</span></div>
+                <div className="flex justify-between"><span className="text-sm text-slate-500 font-medium">Interest Earned</span><span className="font-bold text-accent">+{fmt(result.interest)}</span></div>
             </div>
         </div>
     );
@@ -311,13 +313,13 @@ function RDSection() {
                 <SliderField label="Interest Rate (% p.a)" value={rate} onChange={setRate} min={1} max={15} step={0.1} />
                 <SliderField label="Tenure (Years)" value={years} onChange={setYears} min={1} max={10} step={1} />
             </div>
-            <div className="rounded-2xl bg-slate-50 dark:bg-slate-900/80 p-6 space-y-3">
-                <div className="text-center space-y-1 pb-3 border-b border-slate-200 dark:border-slate-800">
-                    <p className="text-sm text-muted-foreground">Maturity Amount</p>
-                    <p className="text-3xl font-bold text-purple-600">{fmt(result.maturity)}</p>
+            <div className="rounded-2xl bg-sky-50 dark:bg-sky-950/40 border border-sky-100 dark:border-sky-900 p-6 space-y-3">
+                <div className="text-center space-y-1 pb-3 border-b border-sky-100 dark:border-sky-900">
+                    <p className="text-sm text-muted-foreground font-medium">Maturity Amount</p>
+                    <p className="text-3xl font-extrabold text-primary">{fmt(result.maturity)}</p>
                 </div>
-                <div className="flex justify-between"><span className="text-sm text-slate-500">Total Deposited</span><span className="font-bold">{fmt(result.invested)}</span></div>
-                <div className="flex justify-between"><span className="text-sm text-slate-500">Interest Earned</span><span className="font-bold text-purple-600">+{fmt(result.interest)}</span></div>
+                <div className="flex justify-between"><span className="text-sm text-slate-500 font-medium">Total Deposited</span><span className="font-bold">{fmt(result.invested)}</span></div>
+                <div className="flex justify-between"><span className="text-sm text-slate-500 font-medium">Interest Earned</span><span className="font-bold text-accent">+{fmt(result.interest)}</span></div>
             </div>
         </div>
     );
@@ -341,13 +343,13 @@ function LumpsumSection() {
                 <SliderField label="Expected Return (% p.a)" value={rate} onChange={setRate} min={1} max={30} step={0.5} />
                 <SliderField label="Time Period (Years)" value={years} onChange={setYears} min={1} max={30} step={1} />
             </div>
-            <div className="rounded-2xl bg-slate-50 dark:bg-slate-900/80 p-6 space-y-3">
-                <div className="text-center space-y-1 pb-3 border-b border-slate-200 dark:border-slate-800">
-                    <p className="text-sm text-muted-foreground">Total Value</p>
-                    <p className="text-3xl font-bold text-rose-600">{fmt(result.maturity)}</p>
+            <div className="rounded-2xl bg-sky-50 dark:bg-sky-950/40 border border-sky-100 dark:border-sky-900 p-6 space-y-3">
+                <div className="text-center space-y-1 pb-3 border-b border-sky-100 dark:border-sky-900">
+                    <p className="text-sm text-muted-foreground font-medium">Total Value</p>
+                    <p className="text-3xl font-extrabold text-primary">{fmt(result.maturity)}</p>
                 </div>
-                <div className="flex justify-between"><span className="text-sm text-slate-500">Invested</span><span className="font-bold">{fmt(result.principal)}</span></div>
-                <div className="flex justify-between"><span className="text-sm text-slate-500">Returns</span><span className="font-bold text-rose-600">+{fmt(result.returns)}</span></div>
+                <div className="flex justify-between"><span className="text-sm text-slate-500 font-medium">Invested</span><span className="font-bold">{fmt(result.principal)}</span></div>
+                <div className="flex justify-between"><span className="text-sm text-slate-500 font-medium">Returns</span><span className="font-bold text-accent">+{fmt(result.returns)}</span></div>
             </div>
         </div>
     );
@@ -362,16 +364,16 @@ function SliderField({
     return (
         <div className="space-y-3">
             <div className="flex justify-between items-center">
-                <label className="text-sm font-medium text-slate-700 dark:text-slate-300">{label}</label>
+                <label className="text-sm font-bold text-slate-700 dark:text-slate-300">{label}</label>
                 <div className="relative">
                     {prefix && (
-                        <span className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground text-sm">{prefix}</span>
+                        <span className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground text-sm font-bold">{prefix}</span>
                     )}
                     <Input
                         type="number"
                         value={value}
                         onChange={(e) => onChange(Number(e.target.value))}
-                        className={`${prefix ? "w-32 pl-6" : "w-20"} h-8 text-right`}
+                        className={`${prefix ? "w-32 pl-6" : "w-20"} h-8 text-right font-extrabold bg-sky-50 dark:bg-sky-900/10 border-sky-100 dark:border-sky-800`}
                     />
                 </div>
             </div>
@@ -393,42 +395,42 @@ export function UniversalCalculator() {
     const activeTab = CALC_TABS.find((t) => t.id === active)!;
 
     return (
-        <section className="py-16 md:py-24 bg-white dark:bg-slate-950 relative overflow-hidden">
+        <section className="py-16 md:py-24 bg-white dark:bg-black relative overflow-hidden font-sans">
             {/* Decorative BG */}
             <div className="absolute inset-0 pointer-events-none">
-                <div className="absolute top-0 left-1/3 w-[600px] h-[600px] bg-blue-500/5 rounded-full blur-[120px]" />
-                <div className="absolute bottom-0 right-1/4 w-[500px] h-[500px] bg-purple-500/5 rounded-full blur-[120px]" />
+                <div className="absolute top-0 left-1/3 w-[600px] h-[600px] bg-primary/5 rounded-full blur-[120px]" />
+                <div className="absolute bottom-0 right-1/4 w-[500px] h-[500px] bg-accent/5 rounded-full blur-[120px]" />
             </div>
 
-            <div className="container relative z-10 px-4 md:px-6">
+            <div className="container relative z-10 px-4 md:px-6 mx-auto">
                 {/* Header */}
                 <div className="text-center mb-12 space-y-4">
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
-                        className="inline-flex items-center gap-2 rounded-full border border-blue-200 bg-blue-50/50 px-3 py-1 text-sm font-medium text-blue-800 dark:border-blue-800 dark:bg-blue-950/30 dark:text-blue-300"
+                        className="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/5 px-3 py-1 text-sm font-bold text-primary dark:border-primary/50 dark:bg-primary/20 dark:text-sky-200 backdrop-blur-md"
                     >
-                        <Calculator className="h-4 w-4" />
+                        <Calculator className="h-4 w-4 text-accent" />
                         Financial Calculators
                     </motion.div>
-                    <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight">
+                    <h2 className="text-3xl md:text-5xl font-extrabold tracking-tight">
                         Plan Your <span className="text-gradient">Finances</span> Smartly
                     </h2>
-                    <p className="text-muted-foreground max-w-2xl mx-auto">
-                        Choose a calculator, enter your values, and even select which variable you want to solve for.
+                    <p className="text-muted-foreground text-lg max-w-2xl mx-auto leading-relaxed">
+                        Precision planning for your wealth. Choose a calculator and visualize your financial goals with real-time analytics.
                     </p>
                 </div>
 
                 {/* Tab Selector */}
-                <div className="flex flex-wrap justify-center gap-3 mb-10">
+                <div className="flex flex-wrap justify-center gap-3 mb-12">
                     {CALC_TABS.map((tab) => (
                         <button
                             key={tab.id}
                             onClick={() => setActive(tab.id)}
-                            className={`flex items-center gap-2 px-5 py-3 rounded-xl text-sm font-semibold transition-all duration-300 ${active === tab.id
-                                    ? `bg-gradient-to-r ${tab.color} text-white shadow-lg scale-105`
-                                    : "bg-slate-100 dark:bg-slate-800/80 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 hover:scale-[1.02]"
+                            className={`flex items-center gap-2 px-6 py-4 rounded-2xl text-sm font-extrabold transition-all duration-300 ${active === tab.id
+                                    ? `bg-gradient-to-r ${tab.color} text-white shadow-xl scale-105 shadow-primary/25 border border-white/10`
+                                    : "bg-slate-50 dark:bg-sky-950/40 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-sky-900/60 hover:scale-[1.02] border border-transparent shadow-sm"
                                 }`}
                         >
                             {tab.icon}
@@ -438,14 +440,15 @@ export function UniversalCalculator() {
                 </div>
 
                 {/* Calculator Card */}
-                <Card className="glass-card max-w-5xl mx-auto border-t-4 shadow-xl" style={{ borderTopColor: active === "emi" ? "#3b82f6" : active === "sip" ? "#16a34a" : active === "fd" ? "#d97706" : active === "rd" ? "#9333ea" : "#e11d48" }}>
-                    <CardContent className="p-6 md:p-10">
+                <Card className="glass-card max-w-5xl mx-auto border-t-8 shadow-2xl relative overflow-hidden ring-1 ring-primary/10" style={{ borderTopColor: "hsl(199 89% 48%)" }}>
+                    <div className="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-full -mr-16 -mt-16 pointer-events-none"></div>
+                    <CardContent className="p-6 md:p-10 relative z-10">
                         <AnimatePresence mode="wait">
                             <motion.div
                                 key={active}
-                                initial={{ opacity: 0, y: 20 }}
+                                initial={{ opacity: 0, y: 10 }}
                                 animate={{ opacity: 1, y: 0 }}
-                                exit={{ opacity: 0, y: -20 }}
+                                exit={{ opacity: 0, y: -10 }}
                                 transition={{ duration: 0.3 }}
                             >
                                 {active === "emi" && <EMISection />}

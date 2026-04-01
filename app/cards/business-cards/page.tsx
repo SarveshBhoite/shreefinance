@@ -33,48 +33,48 @@ export default function BusinessCardsPage() {
     };
 
     return (
-        <div className="pb-20 bg-slate-50 dark:bg-black selection:bg-slate-500/30 font-sans">
+        <div className="pb-20 bg-slate-50 dark:bg-black selection:bg-primary/30 font-sans mx-auto">
             <DynamicHeroWrapper page="business-cards">
-                {/* Unique Hero Section - Corporate Power Theme */}
-                <section className="relative pt-32 pb-32 overflow-hidden bg-slate-900 text-white">
-                    {/* Dark Metallic Background */}
-                    <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-10"></div>
-                    <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-slate-800 to-black opacity-90"></div>
+                {/* Unique Hero Section - Corporate Power Ocean Theme */}
+                <section className="relative pt-32 pb-32 overflow-hidden bg-gradient-to-b from-sky-950 to-sky-900 border-b border-primary/20 text-white">
+                    {/* Dark Metallic Background - Ocean Style */}
+                    <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-5"></div>
+                    <div className="absolute inset-0 bg-gradient-to-br from-sky-950 via-sky-900 to-black opacity-90"></div>
 
                     {/* Accent Glow */}
-                    <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-sky-500/10 rounded-full blur-[120px] mix-blend-screen animate-pulse"></div>
+                    <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-primary/20 rounded-full blur-[120px] mix-blend-screen animate-[pulse_6s_ease-in-out_infinite]"></div>
 
-                    <div className="container relative z-10 px-4 md:px-6 text-center">
-                        <div className="inline-flex items-center gap-2 rounded-full border border-slate-600/50 bg-slate-800/50 px-4 py-1.5 text-sm font-bold text-slate-300 mb-8 backdrop-blur-md">
-                            <Building2 className="h-4 w-4 text-sky-400" />
+                    <div className="container relative z-10 px-4 md:px-6 text-center mx-auto">
+                        <div className="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-4 py-1.5 text-sm font-bold text-sky-200 mb-8 backdrop-blur-sm">
+                            <Building2 className="h-4 w-4 text-accent" />
                             <span>Executive Corporate Solutions</span>
                         </div>
 
                         <h1 className="text-5xl md:text-8xl font-extrabold tracking-tight leading-tight mb-6">
                             Power Up <br />
-                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-sky-400 via-slate-200 to-sky-400">Your Business.</span>
+                            <span className="text-gradient">Your Business.</span>
                         </h1>
 
-                        <p className="text-xl text-slate-400 max-w-2xl mx-auto leading-relaxed mb-10">
+                        <p className="text-xl text-sky-100/70 max-w-2xl mx-auto leading-relaxed mb-10">
                             Streamline expenses, maximize cash flow, and unlock premium corporate privileges with our metal business cards.
                         </p>
 
                         <div className="flex justify-center flex-wrap gap-4 mb-20">
-                            <Button size="lg" className="h-14 px-10 text-lg rounded-full shadow-2xl shadow-sky-900/20 bg-gradient-to-r from-slate-700 to-slate-800 hover:from-slate-600 hover:to-slate-700 border border-slate-600 text-white font-bold hover:scale-105 transition-transform" onClick={scrollToForm}>
+                            <Button size="lg" className="h-14 px-10 text-lg rounded-full shadow-2xl shadow-primary/20 bg-primary hover:bg-sky-600 border border-white/10 text-white font-bold hover:scale-105 transition-all" onClick={scrollToForm}>
                                 Request Corporate Card
                             </Button>
                         </div>
 
                         {/* Floating Metal Card Animation */}
                         <div className="relative mx-auto w-full max-w-md perspective-1000 group">
-                            {/* Glow effect */}
-                            <div className="absolute inset-0 bg-sky-500/20 rounded-xl blur-3xl opacity-30 group-hover:opacity-50 transition-opacity duration-500"></div>
+                            {/* Glow effect - Ocean Blue & Gold */}
+                            <div className="absolute inset-0 bg-primary/20 rounded-xl blur-3xl opacity-30 group-hover:opacity-50 transition-opacity duration-500"></div>
 
                             <motion.div
                                 initial={{ y: 0, rotateX: 0, rotateY: 0 }}
                                 animate={{ y: [0, -10, 0], rotateX: [0, 5, 0], rotateY: [0, -5, 0] }}
                                 transition={{ repeat: Infinity, duration: 8, ease: "easeInOut" }}
-                                className="relative aspect-[1.586/1] rounded-xl bg-gradient-to-br from-gray-900 via-gray-800 to-black shadow-2xl border border-gray-700 overflow-hidden transform-style-3d"
+                                className="relative aspect-[1.586/1] rounded-xl bg-gradient-to-br from-sky-950 via-slate-900 to-black shadow-2xl border border-white/10 overflow-hidden transform-style-3d ring-1 ring-white/10"
                             >
                                 {/* Metal Texture */}
                                 <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/brushed-alum.png')] opacity-30 mix-blend-overlay"></div>
@@ -84,21 +84,21 @@ export default function BusinessCardsPage() {
 
                                 {/* Card Elements */}
                                 <div className="absolute top-6 right-6">
-                                    <span className="text-gray-300 font-bold italic text-xl tracking-widest opacity-80">Mastercard</span>
-                                    <span className="block text-[8px] text-sky-400 text-right tracking-widest uppercase mt-1">World Elite</span>
+                                    <span className="text-sky-100 font-bold italic text-xl tracking-widest opacity-80">Mastercard</span>
+                                    <span className="block text-[8px] text-primary text-right tracking-widest uppercase mt-1">World Elite</span>
                                 </div>
 
                                 <div className="absolute top-6 left-6">
-                                    <div className="h-8 w-11 rounded bg-gradient-to-br from-yellow-400 to-yellow-600 shadow-inner"></div>
+                                    <div className="h-8 w-11 rounded bg-gradient-to-br from-accent to-yellow-600 shadow-inner"></div>
                                 </div>
 
                                 <div className="absolute bottom-6 left-6 text-left z-10 w-full pr-12">
                                     <div className="flex justify-between items-end">
                                         <div className="space-y-1">
-                                            <p className="text-gray-500 text-[10px] uppercase tracking-[0.2em] mb-1">Business Platinum</p>
-                                            <p className="text-gray-200 text-lg font-mono tracking-[0.15em] drop-shadow-md">5520 8812 3456 7890</p>
+                                            <p className="text-sky-400 text-[10px] uppercase tracking-[0.2em] mb-1">Business Platinum</p>
+                                            <p className="text-white text-lg font-mono tracking-[0.15em] drop-shadow-md">5520 8812 3456 7890</p>
                                         </div>
-                                        <Briefcase className="text-gray-600 h-8 w-8" />
+                                        <Briefcase className="text-sky-700 h-8 w-8" />
                                     </div>
                                 </div>
                             </motion.div>
@@ -108,21 +108,21 @@ export default function BusinessCardsPage() {
             </DynamicHeroWrapper>
 
             {/* Expense Management Feature Strip */}
-            <div className="bg-slate-900 border-y border-slate-800 py-10">
-                <div className="container px-4">
+            <div className="bg-sky-950 border-y border-sky-900 py-10">
+                <div className="container px-4 mx-auto">
                     <div className="flex flex-col md:flex-row justify-between items-center gap-8 text-center md:text-left">
                         <div>
                             <h3 className="text-2xl font-bold text-white mb-2">Integrated Expense Dashboard</h3>
-                            <p className="text-slate-400">Track every penny in real-time with our advanced corporate portal.</p>
+                            <p className="text-sky-200/60">Track every penny in real-time with our advanced corporate portal.</p>
                         </div>
                         <div className="flex gap-4">
-                            <div className="px-6 py-3 rounded-xl bg-slate-800 border border-slate-700">
-                                <p className="text-xs text-slate-400 uppercase tracking-wider mb-1">Monthly Spend</p>
-                                <p className="text-xl font-bold text-green-400 flex items-center gap-2"><TrendingUp className="h-4 w-4" /> ₹ 12.5L</p>
+                            <div className="px-6 py-3 rounded-xl bg-sky-900/40 border border-sky-800 backdrop-blur-sm">
+                                <p className="text-xs text-sky-400 uppercase tracking-wider mb-1 font-bold">Monthly Spend</p>
+                                <p className="text-xl font-bold text-emerald-400 flex items-center gap-2"><TrendingUp className="h-4 w-4" /> ₹ 12.5L</p>
                             </div>
-                            <div className="px-6 py-3 rounded-xl bg-slate-800 border border-slate-700">
-                                <p className="text-xs text-slate-400 uppercase tracking-wider mb-1">Savings</p>
-                                <p className="text-xl font-bold text-sky-400">₹ 45k</p>
+                            <div className="px-6 py-3 rounded-xl bg-sky-900/40 border border-sky-800 backdrop-blur-sm">
+                                <p className="text-xs text-sky-400 uppercase tracking-wider mb-1 font-bold">Savings</p>
+                                <p className="text-xl font-bold text-primary">₹ 45k</p>
                             </div>
                         </div>
                     </div>
@@ -130,7 +130,7 @@ export default function BusinessCardsPage() {
             </div>
 
             {/* Main Content Layout with Sticky Sidebar */}
-            <div className="container px-4 md:px-6 py-12 grid lg:grid-cols-[1fr_400px] gap-12">
+            <div className="container px-4 md:px-6 py-12 grid lg:grid-cols-[1fr_400px] gap-12 mx-auto">
                 {/* Left Column: Content */}
                 <div className="space-y-16">
                     <ContentSection
@@ -141,11 +141,11 @@ export default function BusinessCardsPage() {
                     >
                         <div className="grid grid-cols-2 gap-4 mt-6">
                             <div className="p-4 rounded-xl bg-sky-50 dark:bg-sky-900/20 border border-sky-100 dark:border-sky-800">
-                                <h4 className="font-bold text-sky-700 dark:text-sky-300 text-lg">Real-time</h4>
+                                <h4 className="font-bold text-primary dark:text-sky-300 text-lg">Real-time</h4>
                                 <p className="text-sm text-slate-600 dark:text-slate-400">Expense Tracking</p>
                             </div>
-                            <div className="p-4 rounded-xl bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700">
-                                <h4 className="font-bold text-slate-700 dark:text-slate-300 text-lg">SaaS Offers</h4>
+                            <div className="p-4 rounded-xl bg-accent/10 dark:bg-accent/20 border border-accent/20">
+                                <h4 className="font-bold text-accent text-lg">SaaS Offers</h4>
                                 <p className="text-sm text-slate-600 dark:text-slate-400">AWS, Google, Zoho</p>
                             </div>
                         </div>
@@ -160,16 +160,16 @@ export default function BusinessCardsPage() {
 
                         <div className="grid sm:grid-cols-2 gap-6">
                             {[
-                                { title: "Travel", icon: Globe, desc: "Global Lounge Access & Flight Insurance", color: "text-sky-500", bg: "bg-sky-50" },
-                                { title: "Vendor Payments", icon: Receipt, desc: "Pay vendors via card for credit period", color: "text-green-500", bg: "bg-green-50" },
-                                { title: "Workspace", icon: Building2, desc: "Discounts on WeWork & Regus", color: "text-purple-500", bg: "bg-purple-50" },
-                                { title: "Fuel", icon: Zap, desc: "Surcharge waiver & fleet management", color: "text-amber-500", bg: "bg-amber-50" }
+                                { title: "Travel", icon: Globe, desc: "Global Lounge Access & Flight Insurance", color: "text-primary", bg: "bg-sky-50" },
+                                { title: "Vendor Payments", icon: Receipt, desc: "Pay vendors via card for credit period", color: "text-accent", bg: "bg-sky-100/50" },
+                                { title: "Workspace", icon: Building2, desc: "Discounts on WeWork & Regus", color: "text-primary", bg: "bg-sky-50" },
+                                { title: "Fuel", icon: Zap, desc: "Surcharge waiver & fleet management", color: "text-accent", bg: "bg-sky-100/50" }
                             ].map((item, i) => (
-                                <div key={i} className={cn("p-6 rounded-3xl transition-transform hover:-translate-y-2 border border-slate-100 dark:border-slate-800", item.bg, "dark:bg-slate-900")}>
-                                    <div className={cn("h-12 w-12 rounded-2xl flex items-center justify-center mb-4 bg-white dark:bg-slate-800 shadow-sm", item.color)}>
+                                <div key={i} className={cn("p-6 rounded-3xl transition-all duration-300 hover:-translate-y-2 border border-sky-100 dark:border-sky-900 group", item.bg, "dark:bg-sky-950/40")}>
+                                    <div className={cn("h-12 w-12 rounded-2xl flex items-center justify-center mb-4 bg-white dark:bg-sky-900 shadow-sm transition-transform group-hover:scale-110", item.color)}>
                                         <item.icon className="h-6 w-6" />
                                     </div>
-                                    <h3 className="text-lg font-bold mb-1 text-slate-900 dark:text-white">{item.title}</h3>
+                                    <h3 className="text-lg font-bold mb-1 text-slate-900 dark:text-white group-hover:text-primary transition-colors">{item.title}</h3>
                                     <p className="text-slate-500 text-sm leading-snug">{item.desc}</p>
                                 </div>
                             ))}
@@ -180,15 +180,15 @@ export default function BusinessCardsPage() {
                 {/* Right Column: Sticky Form */}
                 <aside className="relative">
                     <div id="lead-form" className="sticky top-24">
-                        <Card className="glass-card bg-white/80 dark:bg-slate-900/80 border-slate-200 dark:border-slate-800 shadow-2xl overflow-hidden">
-                            <CardHeader className="bg-slate-900 text-white p-6">
+                        <Card className="glass-card bg-white/80 dark:bg-sky-950/80 border-sky-100 dark:border-sky-900 shadow-2xl overflow-hidden ring-1 ring-primary/10">
+                            <CardHeader className="bg-gradient-to-r from-primary to-sky-600 text-white p-6">
                                 <CardTitle className="text-lg">Contact Sales</CardTitle>
-                                <p className="text-slate-400 text-sm">For custom corporate solutions</p>
+                                <p className="text-sky-100 text-sm">For custom corporate solutions</p>
                             </CardHeader>
                             <CardContent className="p-6">
                                 {isSuccess ? (
                                     <div className="text-center py-8">
-                                        <div className="h-12 w-12 bg-green-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                                        <div className="h-12 w-12 bg-green-500 rounded-full flex items-center justify-center mx-auto mb-4 tracking-tighter">
                                             <CheckCircle2 className="h-6 w-6 text-white" />
                                         </div>
                                         <h3 className="text-xl font-bold text-slate-800 dark:text-white">Request Sent</h3>
@@ -200,7 +200,7 @@ export default function BusinessCardsPage() {
                                             <label className="text-xs font-bold uppercase tracking-wider text-slate-500">Contact Person</label>
                                             <Input
                                                 placeholder="Full Name"
-                                                className="bg-slate-50 border-slate-200"
+                                                className="bg-sky-50 dark:bg-sky-900/10 border-sky-100"
                                                 value={formData.name}
                                                 onChange={e => setFormData({ ...formData, name: e.target.value })}
                                                 required
@@ -210,7 +210,7 @@ export default function BusinessCardsPage() {
                                             <label className="text-xs font-bold uppercase tracking-wider text-slate-500">Company</label>
                                             <Input
                                                 placeholder="Business Name"
-                                                className="bg-slate-50 border-slate-200"
+                                                className="bg-sky-50 dark:bg-sky-900/10 border-sky-100"
                                                 value={formData.businessName}
                                                 onChange={e => setFormData({ ...formData, businessName: e.target.value })}
                                                 required
@@ -221,7 +221,7 @@ export default function BusinessCardsPage() {
                                                 <label className="text-xs font-bold uppercase tracking-wider text-slate-500">Mobile</label>
                                                 <Input
                                                     placeholder="10 digit number"
-                                                    className="bg-slate-50 border-slate-200"
+                                                    className="bg-sky-50 dark:bg-sky-900/10 border-sky-100"
                                                     value={formData.mobile}
                                                     onChange={e => setFormData({ ...formData, mobile: e.target.value })}
                                                     required
@@ -231,14 +231,14 @@ export default function BusinessCardsPage() {
                                                 <label className="text-xs font-bold uppercase tracking-wider text-slate-500">Turnover</label>
                                                 <Input
                                                     placeholder="Annual"
-                                                    className="bg-slate-50 border-slate-200"
+                                                    className="bg-sky-50 dark:bg-sky-900/10 border-sky-100"
                                                     value={formData.turnover}
                                                     onChange={e => setFormData({ ...formData, turnover: e.target.value })}
                                                     required
                                                 />
                                             </div>
                                         </div>
-                                        <Button className="w-full bg-slate-900 hover:bg-slate-800 text-white font-bold h-12 text-base shadow-lg shadow-slate-900/20 mt-2">Request Callback</Button>
+                                        <Button className="w-full bg-primary hover:bg-sky-600 text-white font-bold h-12 text-base shadow-lg shadow-primary/20 mt-2 border border-white/10 transition-all">Request Callback</Button>
                                     </form>
                                 )}
                             </CardContent>
