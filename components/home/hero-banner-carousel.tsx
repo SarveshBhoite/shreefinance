@@ -42,7 +42,7 @@ export function HeroBannerCarousel() {
 
     if (loading) {
         return (
-            <div className="w-full aspect-[4/3] rounded-2xl bg-gradient-to-br from-primary/5 to-primary/20 dark:from-sky-900/40 dark:to-sky-800/20 animate-pulse flex items-center justify-center border border-primary/10">
+            <div className="w-full aspect-[4/3] lg:rounded-2xl rounded-none bg-gradient-to-br from-primary/5 to-primary/20 dark:from-sky-900/40 dark:to-sky-800/20 animate-pulse flex items-center justify-center border border-primary/10">
                 <div className="h-10 w-10 border-4 border-primary border-t-transparent rounded-full animate-spin" />
             </div>
         );
@@ -50,7 +50,7 @@ export function HeroBannerCarousel() {
 
     if (banners.length === 0) {
         return (
-            <div className="w-full aspect-[4/3] rounded-2xl bg-gradient-to-br from-primary via-sky-600 to-sky-900 flex items-center justify-center text-white p-8 text-center border border-primary/20 shadow-xl">
+            <div className="w-full aspect-[4/3] lg:rounded-2xl rounded-none bg-gradient-to-br from-primary via-sky-600 to-sky-900 flex items-center justify-center text-white p-8 text-center border border-primary/20 shadow-xl">
                 <div className="space-y-4">
                     <div className="text-6xl text-white/90 animate-bounce">🌊</div>
                     <h3 className="text-2xl font-bold">Premium Offers Coming Soon!</h3>
@@ -65,7 +65,7 @@ export function HeroBannerCarousel() {
     return (
         <div className="w-full relative">
             {/* Image container */}
-            <div className="relative aspect-[4/3] w-full rounded-2xl shadow-2xl overflow-hidden bg-slate-200 dark:bg-slate-800">
+            <div className="relative aspect-[4/3] w-full lg:rounded-2xl rounded-none shadow-2xl overflow-hidden bg-slate-200 dark:bg-slate-800">
                 <AnimatePresence mode="wait">
                     <motion.div
                         key={current._id}

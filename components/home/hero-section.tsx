@@ -31,11 +31,11 @@ export function HeroSection() {
                 <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-[0.03] mix-blend-overlay"></div>
             </div>
 
-            <div className="container relative z-10 px-4 md:px-6 mx-auto">
-                <div className="grid gap-12 lg:grid-cols-[1.2fr_0.8fr] lg:gap-8 items-center">
+            <div className="relative z-10">
+                <div className="flex flex-col-reverse lg:grid lg:grid-cols-[1.2fr_0.8fr] lg:gap-8 items-center lg:container lg:mx-auto">
 
                     {/* Text Content */}
-                    <div className="space-y-8">
+                    <div className="space-y-8 px-4 md:px-6 lg:px-0 pb-16 lg:pb-0">
                         <motion.div
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
@@ -107,12 +107,12 @@ export function HeroSection() {
 
                     {/* Banner Carousel (replaces old EMI Calculator) */}
                     <motion.div
-                        initial={{ opacity: 0, scale: 0.95 }}
-                        animate={{ opacity: 1, scale: 1 }}
+                        initial={{ opacity: 0, y: -20 }}
+                        animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.6, delay: 0.2 }}
-                        className="lg:pl-10 relative"
+                        className="relative w-full lg:pl-10"
                     >
-                        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-white/50 dark:bg-white/5 blur-3xl -z-10 rounded-full"></div>
+                        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-white/50 dark:bg-white/5 blur-3xl -z-10 rounded-full hidden lg:block"></div>
                         <HeroBannerCarousel />
                     </motion.div>
                 </div>
