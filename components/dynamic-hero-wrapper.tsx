@@ -56,7 +56,7 @@ export function DynamicHeroWrapper({ page, children }: DynamicHeroWrapperProps) 
     const current = banners[currentIndex];
 
     return (
-        <section className="relative w-full overflow-hidden bg-slate-950">
+        <section className="relative w-full overflow-hidden bg-[#181a1d] text-white border-b border-slate-800">
             {/* Full-width banner slider */}
             <div className="relative w-full aspect-[21/9] md:aspect-[3/1] lg:aspect-[3.5/1]">
                 <AnimatePresence mode="wait">

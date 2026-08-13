@@ -5,8 +5,8 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 @theme {
-  --font-sans: var(--font-urbanist), ui-sans-serif, system-ui, sans-serif;
-  --font-heading: var(--font-sora), ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font-heading: "Helvetica Neue", Helvetica, Arial, sans-serif;
 
   --color-border: hsl(var(--border));
   --color-input: hsl(var(--input));
@@ -68,6 +68,9 @@
   so we've added these compatibility styles to sure everything still looks the same.
 */
 @layer base {
+  html {
+    font-size: 92.5%;
+  }
 
   *,
   ::after,
@@ -79,89 +82,86 @@
 }
 
 @layer utilities {
-  body {
-    font-family: var(--font-sans);
-  }
-
+  *,
+  body,
   h1,
   h2,
   h3,
   h4,
   h5,
-  h6 {
-    font-family: var(--font-heading);
+  h6,
+  input,
+  button,
+  select,
+  textarea {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   }
 }
 
 :root {
-  --background: 195 40% 98%;
-  /* Very light water-tinted white */
-  --foreground: 201 100% 12%;
-  /* Deep Ocean Blue for better readability */
+  --background: 215 10% 10%;
+  /* Charcoal Graphite #181a1d */
+  --foreground: 0 0% 98%;
 
-  --card: 0 0% 100%;
-  --card-foreground: 201 100% 12%;
+  --card: 215 10% 15%;
+  /* Dark Card #24272c */
+  --card-foreground: 0 0% 98%;
 
-  --popover: 0 0% 100%;
-  --popover-foreground: 201 100% 12%;
+  --popover: 215 10% 15%;
+  --popover-foreground: 0 0% 98%;
 
-  --primary: 199 89% 48%;
-  /* Vibrant Ocean Blue */
-  --primary-foreground: 210 40% 98%;
+  --primary: 160 100% 39%;
+  /* Vibrant Emerald Green #00c985 */
+  --primary-foreground: 215 10% 10%;
 
-  --secondary: 42 66% 92%;
-  /* Softest Gold */
-  --secondary-foreground: 218 64% 17%;
+  --secondary: 215 10% 20%;
+  --secondary-foreground: 0 0% 98%;
 
-  --muted: 199 20% 96.1%;
-  --muted-foreground: 199 16% 47%;
+  --muted: 215 10% 20%;
+  --muted-foreground: 215 10% 65%;
 
-  --accent: 42 66% 45%;
-  /* Gold Accent remains as is */
-  --accent-foreground: 210 40% 98%;
+  --accent: 50 100% 50%;
+  /* Gold #ffd700 */
+  --accent-foreground: 215 10% 10%;
 
   --destructive: 0 84.2% 60.2%;
-  --destructive-foreground: 210 40% 98%;
+  --destructive-foreground: 0 0% 98%;
 
-  --border: 199 31.8% 91.4%;
-  --input: 199 31.8% 91.4%;
-  --ring: 199 89% 48%;
+  --border: 215 10% 22%;
+  --input: 215 10% 22%;
+  --ring: 160 100% 39%;
 
   --radius: 0.75rem;
 }
 
 .dark {
-  --background: 201 100% 6%;
-  /* Deepest Abyss Blue */
-  --foreground: 210 40% 98%;
+  --background: 215 10% 10%;
+  --foreground: 0 0% 98%;
 
-  --card: 201 100% 10%;
-  /* Deep Water Card */
-  --card-foreground: 210 40% 98%;
+  --card: 215 10% 15%;
+  --card-foreground: 0 0% 98%;
 
-  --popover: 201 100% 10%;
-  --popover-foreground: 210 40% 98%;
+  --popover: 215 10% 15%;
+  --popover-foreground: 0 0% 98%;
 
-  --primary: 199 89% 48%;
-  /* Ocean Blue stays vibrant */
-  --primary-foreground: 210 40% 98%;
+  --primary: 160 100% 39%;
+  --primary-foreground: 215 10% 10%;
 
-  --secondary: 201 32% 17%;
-  --secondary-foreground: 210 40% 98%;
+  --secondary: 215 10% 20%;
+  --secondary-foreground: 0 0% 98%;
 
-  --muted: 201 32% 17%;
-  --muted-foreground: 201 20% 65%;
+  --muted: 215 10% 20%;
+  --muted-foreground: 215 10% 65%;
 
-  --accent: 42 66% 45%;
-  /* Gold Accent remains */
-  --accent-foreground: 210 40% 98%;
+  --accent: 50 100% 50%;
+  --accent-foreground: 215 10% 10%;
 
   --destructive: 0 62.8% 30.6%;
-  --destructive-foreground: 210 40% 98%;
+  --destructive-foreground: 0 0% 98%;
 
-  --border: 201 32% 17%;
-  --input: 201 32% 17%;
-  --ring: 199 89% 48%;
+  --border: 215 10% 22%;
+  --input: 215 10% 22%;
+  --ring: 160 100% 39%;
 }
 
 @layer base {
@@ -176,11 +176,12 @@
 
 @layer utilities {
   .glass-card {
-    @apply bg-white/60 dark:bg-sky-950/40 backdrop-blur-xl border border-white/40 dark:border-sky-800/30 transition-all duration-300;
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.04);
+    @apply bg-white/70 dark:bg-sky-950/40 backdrop-blur-xl border border-white/50 dark:border-sky-800/30 transition-all duration-500;
+    box-shadow: 0 10px 40px -10px rgba(14, 165, 233, 0.08), 0 0 15px rgba(0, 0, 0, 0.02);
 
     &:hover {
-      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+      box-shadow: 0 20px 50px -10px rgba(14, 165, 233, 0.18), 0 0 25px rgba(14, 165, 233, 0.1);
+      border-color: rgba(14, 165, 233, 0.3);
     }
   }
 
@@ -193,6 +194,66 @@
   }
 
   .text-gradient-gold {
-    @apply bg-clip-text text-transparent bg-gradient-to-r from-accent to-yellow-500;
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-accent via-amber-400 to-yellow-500;
   }
-}
+
+  .glow-primary {
+    box-shadow: 0 0 25px -5px rgba(14, 165, 233, 0.4);
+  }
+
+  .glow-gold {
+    box-shadow: 0 0 25px -5px rgba(202, 138, 4, 0.4);
+  }
+
+  .animate-float {
+    animation: float 4s ease-in-out infinite;
+  }
+
+  .animate-float-delayed {
+    animation: float 4s ease-in-out 2s infinite;
+  }
+
+  .animate-pulse-slow {
+    animation: pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-8px);
+    }
+  }
+
+  .shimmer-btn {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .shimmer-btn::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(
+      60deg,
+      transparent 30%,
+      rgba(255, 255, 255, 0.25) 50%,
+      transparent 70%
+    );
+    transform: rotate(30deg);
+    animation: shimmer 4s infinite;
+  }
+
+  @keyframes shimmer {
+    0% {
+      transform: translateX(-100%) rotate(30deg);
+    }
+    20%, 100% {
+      transform: translateX(100%) rotate(30deg);
+    }
+  }
+}

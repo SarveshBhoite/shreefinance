@@ -112,10 +112,25 @@ function EMISection() {
             </div>
 
             <div className="grid gap-8 md:grid-cols-2">
-                <div className="space-y-5">
+                <div className="space-y-4">
                     {/* Loan Amount */}
                     {solveFor !== "principal" && (
-                        <SliderField label="Loan Amount" prefix="₹" value={amount} onChange={setAmount} min={10000} max={10000000} step={10000} />
+                        <SliderField 
+                            label="Loan Amount" 
+                            prefix="₹" 
+                            value={amount} 
+                            onChange={setAmount} 
+                            min={10000} 
+                            max={10000000} 
+                            step={10000} 
+                            presets={[
+                                { label: "₹2L", value: 200000 },
+                                { label: "₹5L", value: 500000 },
+                                { label: "₹10L", value: 1000000 },
+                                { label: "₹25L", value: 2500000 },
+                                { label: "₹50L", value: 5000000 },
+                            ]}
+                        />
                     )}
                     {/* Interest Rate */}
                     {solveFor !== "rate" && (
@@ -133,17 +148,17 @@ function EMISection() {
 
                 {/* Results */}
                 <div className="rounded-2xl bg-sky-50 dark:bg-sky-950/40 border border-sky-100 dark:border-sky-900 p-6 flex flex-col items-center justify-center text-center space-y-4">
-                    <div className="h-28 w-28 relative">
-                        <ResponsiveContainer width="100%" height="100%">
-                            {isMounted ? (
+                    <div className="h-28 w-28 relative flex items-center justify-center">
+                        {isMounted && (
+                            <ResponsiveContainer width="100%" height="100%" minWidth={0} minHeight={0}>
                                 <PieChart>
                                     <Pie data={chartData} cx="50%" cy="50%" innerRadius={35} outerRadius={52} paddingAngle={5} dataKey="value">
                                         {chartData.map((_, i) => <Cell key={i} fill={COLORS[i]} />)}
                                     </Pie>
                                     <Tooltip />
                                 </PieChart>
-                            ) : <div></div>}
-                        </ResponsiveContainer>
+                            </ResponsiveContainer>
+                        )}
                     </div>
 
                     <div className="space-y-1">
@@ -357,33 +372,53 @@ function LumpsumSection() {
 
 /* ─── Shared Slider Field ─── */
 function SliderField({
-    label, prefix, value, onChange, min, max, step,
+    label, prefix, value, onChange, min, max, step, presets,
 }: {
-    label: string; prefix?: string; value: number; onChange: (v: number) => void; min: number; max: number; step: number;
+    label: string; prefix?: string; value: number; onChange: (v: number) => void; min: number; max: number; step: number; presets?: { label: string; value: number }[];
 }) {
     return (
-        <div className="space-y-3">
+        <div className="space-y-3 p-4 rounded-2xl bg-slate-50/80 dark:bg-sky-950/30 border border-slate-200/60 dark:border-sky-900/40">
             <div className="flex justify-between items-center">
-                <label className="text-sm font-bold text-slate-700 dark:text-slate-300">{label}</label>
+                <label className="text-sm font-extrabold text-slate-800 dark:text-slate-200">{label}</label>
                 <div className="relative">
                     {prefix && (
-                        <span className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground text-sm font-bold">{prefix}</span>
+                        <span className="absolute left-3 top-1/2 -translate-y-1/2 text-primary font-black text-sm">{prefix}</span>
                     )}
                     <Input
                         type="number"
                         value={value}
                         onChange={(e) => onChange(Number(e.target.value))}
-                        className={`${prefix ? "w-32 pl-6" : "w-20"} h-8 text-right font-extrabold bg-sky-50 dark:bg-sky-900/10 border-sky-100 dark:border-sky-800`}
+                        className={`${prefix ? "w-36 pl-7" : "w-24"} h-9 text-right font-black text-primary bg-white dark:bg-slate-900 border-sky-200 dark:border-sky-800 rounded-xl shadow-sm focus-visible:ring-primary`}
                     />
                 </div>
             </div>
+            
+            {presets && presets.length > 0 && (
+                <div className="flex flex-wrap gap-1.5 pt-1">
+                    {presets.map((preset, i) => (
+                        <button
+                            key={i}
+                            type="button"
+                            onClick={() => onChange(preset.value)}
+                            className={`px-2.5 py-1 text-[11px] font-black rounded-lg transition-all ${
+                                value === preset.value
+                                    ? "bg-primary text-white shadow-sm scale-105"
+                                    : "bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-sky-100 dark:hover:bg-slate-700 border border-slate-200 dark:border-slate-700"
+                            }`}
+                        >
+                            {preset.label}
+                        </button>
+                    ))}
+                </div>
+            )}
+
             <Slider
                 value={[value]}
                 onValueChange={(vals) => onChange(vals[0])}
                 min={min}
                 max={max}
                 step={step}
-                className="py-2"
+                className="py-2 cursor-pointer"
             />
         </div>
     );

@@ -24,7 +24,7 @@ export function AccordionItem({
         <div className={cn("border-b border-slate-200 dark:border-slate-800", className)}>
             <button
                 onClick={onToggle}
-                className="flex w-full items-center justify-between py-4 text-left font-medium text-slate-900 dark:text-white transition-all hover:text-blue-600 dark:hover:text-blue-400"
+                className="flex w-full items-center justify-between py-4 text-left font-bold text-white transition-all hover:text-[#00e699]"
             >
                 <span className="text-lg">{title}</span>
                 <motion.div

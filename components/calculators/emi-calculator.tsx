@@ -130,9 +130,9 @@ export function EMICalculator({
                 {/* Results */}
                 <div className="rounded-xl bg-slate-50 dark:bg-slate-900 p-6 flex flex-col items-center justify-center text-center space-y-4">
                     {/* Chart */}
-                    <div className="h-32 w-32 relative">
-                        <ResponsiveContainer width="100%" height="100%">
-                            {isMounted ? (
+                    <div className="h-32 w-32 relative flex items-center justify-center">
+                        {isMounted && (
+                            <ResponsiveContainer width="100%" height="100%" minWidth={0} minHeight={0}>
                                 <PieChart>
                                     <Pie
                                         data={chartData}
@@ -149,8 +149,8 @@ export function EMICalculator({
                                     </Pie>
                                     <Tooltip />
                                 </PieChart>
-                            ) : <div></div>}
-                        </ResponsiveContainer>
+                            </ResponsiveContainer>
+                        )}
                         <div className="absolute inset-0 flex items-center justify-center text-[10px] font-bold text-muted-foreground pointer-events-none">
                             Breakdown
                         </div>

@@ -3,24 +3,25 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { EMICalculator } from "@/components/calculators/emi-calculator";
-import { CheckCircle2, Home, IndianRupee, Percent, ShieldCheck, Zap, FileText, Key, Map, Calendar, DollarSign, Clock } from "lucide-react";
-import Link from "next/link";
+import { BalanceTransferCalculator } from "@/components/calculators/balance-transfer-calculator";
+import { TaxBenefitCalculator } from "@/components/calculators/tax-benefit-calculator";
+import { QuoteFinderWizard } from "@/components/home/quote-finder-wizard";
+import { CheckCircle2, Home, ShieldCheck, FileText, Key, Clock } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { useState } from "react";
 import { useEmailForm } from "@/hooks/use-email-form";
-import { cn } from "@/lib/utils";
-import { ContentSection } from "@/components/ui/content-section";
-import { SimpleAccordion } from "@/components/ui/simple-accordion";
 import { DynamicHeroWrapper } from "@/components/dynamic-hero-wrapper";
 
 export default function HomeLoanPage() {
-    const { sendEmail, isSubmitting, isSuccess, error, resetForm } = useEmailForm();
+    const { sendEmail, isSubmitting, isSuccess } = useEmailForm();
     const [formData, setFormData] = useState({
         name: "",
         mobile: "",
         city: "",
         income: "",
     });
+
+    const [activeTab, setActiveTab] = useState<"salaried" | "self-employed" | "nri">("salaried");
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
@@ -35,268 +36,288 @@ export default function HomeLoanPage() {
     };
 
     const steps = [
-        { icon: FileText, title: "Application", desc: "Submit basic details online" },
-        { icon: ShieldCheck, title: "Verification", desc: "Document & property check" },
-        { icon: CheckCircle2, title: "Sanction", desc: "Loan approval letter" },
-        { icon: Key, title: "Disbursal", desc: "Funds transferred to seller" },
+        { icon: FileText, title: "Online Application", desc: "Submit basic details & income proof digitally" },
+        { icon: ShieldCheck, title: "Digital Verification", desc: "Instant e-KYC & property valuation check" },
+        { icon: CheckCircle2, title: "Sanction Letter", desc: "Instant pre-approved sanction letter generated" },
+        { icon: Key, title: "Disbursal", desc: "Funds transferred to property seller within 24-48 hrs" },
     ];
 
     return (
-        <div className="pb-20 bg-slate-50 dark:bg-black selection:bg-primary/30 font-sans mx-auto">
+        <div className="pb-20 bg-[#181a1d] text-white font-sans mx-auto">
             <DynamicHeroWrapper page="home-loan">
-                {/* Unique Hero Section - Dream Home Ocean Theme */}
-                <section className="relative pt-12 md:pt-20 pb-32 overflow-hidden bg-white dark:bg-sky-950 border-b border-sky-100 dark:border-sky-900">
-                    {/* Abstract Background Shapes - Ocean Style */}
-                    <div className="absolute top-0 right-0 w-[60%] h-full bg-sky-50 dark:bg-sky-900/20 rounded-bl-[100px] -z-10"></div>
-                    <div className="absolute bottom-10 left-10 w-32 h-32 bg-accent/10 dark:bg-accent/20 rounded-full blur-3xl opacity-50"></div>
+                {/* Hero Section */}
+                <section className="relative pt-12 md:pt-20 pb-20 overflow-hidden bg-[#181a1d] text-white border-b border-slate-800">
+                    <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#00c985]/10 rounded-full blur-[120px] pointer-events-none" />
 
-                    <div className="container px-4 md:px-6 grid lg:grid-cols-2 gap-12 items-center mx-auto">
+                    <div className="container px-4 md:px-6 grid lg:grid-cols-2 gap-12 items-center mx-auto relative z-10">
                         <div className="space-y-8">
-                            <div className="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/5 px-4 py-1.5 text-sm font-bold text-primary dark:bg-primary/20 dark:border-primary/50 dark:text-sky-200">
-                                <Home className="h-4 w-4 text-accent" />
-                                <span>Unlock Your Dream Home</span>
+                            <div className="inline-flex items-center gap-2 rounded-full border border-emerald-500/40 bg-emerald-500/10 px-4 py-1.5 text-xs font-black text-[#00e699] uppercase tracking-widest">
+                                <Home className="h-4 w-4 text-[#00e699]" />
+                                <span>Multi-Bank Home Loan Portal (2026)</span>
                             </div>
 
-                            <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight leading-[1.1] text-slate-900 dark:text-white">
-                                The Key to <br />
-                                <span className="text-gradient">Happiness.</span>
+                            <h1 className="text-5xl md:text-7xl font-black tracking-tight leading-[1.1] text-white">
+                                Low Interest <br />
+                                <span className="text-[#00e699]">
+                                    Home Loans
+                                </span> starting 8.35%
                             </h1>
 
-                            <p className="text-xl text-slate-600 dark:text-slate-300 max-w-lg leading-relaxed">
-                                Stop renting, start owning. With interest rates starting at just <strong>8.40% p.a.</strong>, your dream home is closer than you think.
+                            <p className="text-lg md:text-xl text-slate-300 max-w-lg leading-relaxed font-medium">
+                                Compare Home Loans across <strong className="text-white">YES Bank, SBI, HDFC, ICICI</strong> & Shree Finance Direct. Get 100% paperless digital sanction in 24 hours.
                             </p>
 
                             <div className="flex flex-wrap gap-4">
-                                <Button size="lg" className="h-14 px-8 text-lg rounded-full shadow-xl shadow-primary/20 bg-primary hover:bg-sky-600 text-white font-bold transition-all hover:-translate-y-1" onClick={scrollToForm}>
-                                    Apply for Home Loan
+                                <Button size="lg" className="h-14 px-8 text-sm font-black rounded-full bg-[#00c985] hover:bg-[#00b074] text-slate-950 uppercase tracking-wider transition-all hover:scale-105" onClick={scrollToForm}>
+                                    Get Multi-Bank Sanction
                                 </Button>
                             </div>
 
-                            {/* Stats Row */}
-                            <div className="flex gap-8 pt-4 border-t border-sky-100 dark:border-sky-800">
+                            <div className="grid grid-cols-3 gap-6 pt-6 border-t border-slate-800">
                                 <div>
-                                    <p className="text-3xl font-bold text-slate-900 dark:text-white">30Y</p>
-                                    <p className="text-sm text-slate-500 font-medium uppercase tracking-wider">Max Tenure</p>
+                                    <p className="text-3xl font-black text-[#00e699]">8.35%</p>
+                                    <p className="text-xs text-slate-400 font-bold uppercase tracking-wider mt-1">Starting APR</p>
                                 </div>
                                 <div>
-                                    <p className="text-3xl font-bold text-slate-900 dark:text-white">90%</p>
-                                    <p className="text-sm text-slate-500 font-medium uppercase tracking-wider">Funding</p>
+                                    <p className="text-3xl font-black text-white">30 Yrs</p>
+                                    <p className="text-xs text-slate-400 font-bold uppercase tracking-wider mt-1">Max Tenure</p>
                                 </div>
                                 <div>
-                                    <p className="text-3xl font-bold text-slate-900 dark:text-white">0%</p>
-                                    <p className="text-sm text-slate-500 font-medium uppercase tracking-wider">Hidden Charges</p>
+                                    <p className="text-3xl font-black text-amber-400">90%</p>
+                                    <p className="text-xs text-slate-400 font-bold uppercase tracking-wider mt-1">LTV Funding</p>
                                 </div>
                             </div>
                         </div>
 
-                        {/* Visual Hero Element */}
-                        <div className="relative hidden lg:block h-[500px]">
-                            <div className="absolute inset-0 bg-gradient-to-tr from-sky-100 to-white dark:from-sky-900 dark:to-sky-950 rounded-[40px] rotate-3 shadow-2xl overflow-hidden border border-sky-200 dark:border-sky-800">
-                                {/* Mock House Visual */}
-                                <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[80%] h-[70%] bg-primary rounded-t-[40px] shadow-inner flex items-center justify-center">
-                                    <Key className="text-white/20 h-48 w-48" />
+                        {/* Interactive Hero Card Visual */}
+                        <div className="relative hidden lg:block">
+                            <Card className="bg-[#24272c] border border-slate-800 backdrop-blur-2xl rounded-[2.5rem] p-8 text-white shadow-2xl space-y-6">
+                                <div className="flex justify-between items-center border-b border-slate-800 pb-4">
+                                    <span className="text-xs font-black uppercase tracking-widest text-[#00e699]">YES Bank & Partner Network</span>
+                                    <span className="text-xs font-bold text-slate-400">100% Digital Flow</span>
                                 </div>
-                                <div className="absolute top-10 right-10 p-4 bg-white dark:bg-sky-900 rounded-2xl shadow-lg border border-sky-100 dark:border-sky-800 animate-bounce">
-                                    <div className="flex items-center gap-3">
-                                        <div className="h-10 w-10 rounded-full bg-emerald-100 dark:bg-emerald-900/30 flex items-center justify-center text-emerald-600">
-                                            <CheckCircle2 className="h-6 w-6" />
-                                        </div>
-                                        <div>
-                                            <p className="text-xs text-slate-500 font-bold uppercase tracking-tighter">Status</p>
-                                            <p className="text-sm font-bold text-slate-900 dark:text-white">Approved</p>
-                                        </div>
+                                <div className="space-y-4">
+                                    <div className="flex justify-between items-center bg-slate-900/60 p-4 rounded-2xl border border-slate-800">
+                                        <span className="text-sm font-bold text-slate-300">Sanction Time</span>
+                                        <span className="text-lg font-black text-[#00e699]">24 Hours</span>
+                                    </div>
+                                    <div className="flex justify-between items-center bg-slate-900/60 p-4 rounded-2xl border border-slate-800">
+                                        <span className="text-sm font-bold text-slate-300">Processing Fee</span>
+                                        <span className="text-lg font-black text-white">Zero Fee Offers</span>
+                                    </div>
+                                    <div className="flex justify-between items-center bg-slate-900/60 p-4 rounded-2xl border border-slate-800">
+                                        <span className="text-sm font-bold text-slate-300">PMAY Tax Subsidy</span>
+                                        <span className="text-lg font-black text-amber-300">Up to ₹2.67 Lakhs</span>
                                     </div>
                                 </div>
-                            </div>
+                            </Card>
                         </div>
                     </div>
                 </section>
             </DynamicHeroWrapper>
 
-            {/* Timeline Process Section (Unique to Home Loan) */}
-            <section className="py-20 bg-sky-50 dark:bg-sky-950/20">
-                <div className="container px-4 mx-auto">
-                    <div className="text-center max-w-2xl mx-auto mb-16">
-                        <h2 className="text-3xl md:text-4xl font-bold mb-4 text-slate-900 dark:text-white">Steps to Ownership</h2>
-                        <p className="text-slate-500 dark:text-slate-400">A simplified journey from application to getting your house keys.</p>
+            {/* Instant Multi-Bank Quote Wizard Container */}
+            <section className="py-12 container px-4 mx-auto">
+                <QuoteFinderWizard />
+            </section>
+
+            {/* Home Loan Balance Transfer Savings Calculator */}
+            <section className="py-12 container px-4 mx-auto">
+                <BalanceTransferCalculator />
+            </section>
+
+            {/* Home Loan Tax Benefit Calculator */}
+            <section className="py-12 container px-4 mx-auto">
+                <TaxBenefitCalculator />
+            </section>
+
+            {/* Digital Approval Roadmap Section */}
+            <section className="py-16 bg-[#181a1d] text-white border-y border-slate-800">
+                <div className="container px-4 mx-auto space-y-12">
+                    <div className="text-center max-w-2xl mx-auto space-y-3">
+                        <h2 className="text-3xl md:text-5xl font-black text-white">
+                            100% Digital Sanction Journey
+                        </h2>
+                        <p className="text-slate-400 font-medium">
+                            Paperless approval workflow backed by YES Bank & Shree Finance digital engine.
+                        </p>
                     </div>
 
-                    <div className="grid md:grid-cols-4 gap-8 relative">
-                        {/* Connecting Line */}
-                        <div className="hidden md:block absolute top-12 left-[10%] right-[10%] h-0.5 bg-primary/20 dark:bg-primary/40 z-0"></div>
-
+                    <div className="grid md:grid-cols-4 gap-6 relative">
                         {steps.map((step, i) => (
-                            <div key={i} className="relative z-10 flex flex-col items-center text-center group">
-                                <div className="h-24 w-24 rounded-full bg-white dark:bg-sky-900 border-4 border-sky-100 dark:border-sky-800 shadow-xl flex items-center justify-center mb-6 group-hover:scale-110 group-hover:border-primary/50 transition-all duration-300">
-                                    <step.icon className="h-10 w-10 text-primary" />
+                            <div key={i} className="relative z-10 flex flex-col items-center text-center p-6 rounded-3xl bg-[#24272c] border border-slate-800 shadow-xl">
+                                <div className="h-16 w-16 rounded-2xl bg-[#00c985]/15 border border-[#00c985]/30 flex items-center justify-center mb-4 text-[#00c985]">
+                                    <step.icon className="h-8 w-8" />
                                 </div>
-                                <h3 className="text-lg font-bold text-slate-900 dark:text-white mb-2">{step.title}</h3>
-                                <p className="text-sm text-slate-500 dark:text-slate-400">{step.desc}</p>
+                                <h3 className="text-lg font-extrabold text-white mb-1">{step.title}</h3>
+                                <p className="text-xs text-slate-400 font-medium">{step.desc}</p>
                             </div>
                         ))}
                     </div>
                 </div>
             </section>
 
-            {/* Main Content Layout with Sticky Sidebar */}
-            <div className="container px-4 md:px-6 py-20 grid lg:grid-cols-[1fr_400px] gap-12 mx-auto">
-                {/* Left Column: Content */}
-                <div className="space-y-16">
-                    {/* Calculator Section - Integrated Style */}
-                    <div className="bg-white dark:bg-sky-950 rounded-3xl p-8 border border-sky-100 dark:border-sky-900 shadow-lg">
-                        <h3 className="text-2xl font-bold mb-6 flex items-center gap-3">
-                            <Clock className="text-accent" />
-                            <span>Plan Your Tenure</span>
+            {/* Document Checklist & Eligibility Tabs */}
+            <section className="container px-4 md:px-6 py-16 mx-auto grid lg:grid-cols-[1fr_400px] gap-12">
+                <div className="space-y-12">
+                    {/* EMI Calculator */}
+                    <div className="bg-[#24272c] rounded-3xl p-8 border border-slate-800 shadow-xl text-white">
+                        <h3 className="text-2xl font-black mb-6 flex items-center gap-3 text-white">
+                            <Clock className="text-[#00e699]" />
+                            <span>Standard Home Loan EMI Calculator</span>
                         </h3>
-                        <EMICalculator defaultAmount={5000000} defaultRate={8.5} defaultTenure={20} />
+                        <EMICalculator defaultAmount={5000000} defaultRate={8.35} defaultTenure={20} />
                     </div>
 
-                    <div className="grid md:grid-cols-2 gap-6">
-                        <Card className="bg-primary text-white border-0 shadow-lg overflow-hidden group">
-                            <CardContent className="p-8 relative">
-                                <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full -mr-16 -mt-16 group-hover:scale-150 transition-transform duration-500"></div>
-                                <Percent className="h-12 w-12 text-sky-200 mb-6" />
-                                <h3 className="text-2xl font-bold mb-2 text-white">PMAY Subsidy</h3>
-                                <p className="text-sky-100 mb-6">First-time homebuyers can save up to ₹2.67 Lakhs on interest under the CLSS scheme.</p>
-                                <Link href="/loans/pmay" className="w-full">
-                                    <Button variant="secondary" className="w-full font-bold text-primary bg-white hover:bg-sky-50 border-none">Check PMAY Eligibility</Button>
-                                </Link>
-                            </CardContent>
-                        </Card>
-                        <Card className="bg-sky-50 dark:bg-sky-900/10 border border-sky-100 dark:border-sky-800 shadow-sm overflow-hidden group">
-                            <CardContent className="p-8 relative">
-                                <div className="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-full -mr-16 -mt-16 group-hover:scale-150 transition-transform duration-500"></div>
-                                <Map className="h-12 w-12 text-primary mb-6" />
-                                <h3 className="text-2xl font-bold mb-2 text-slate-900 dark:text-white">Balance Transfer</h3>
-                                <p className="text-slate-500 dark:text-slate-400 mb-6">Already have a loan? Transfer it to us for lower rates and top-up benefits.</p>
-                                <Button variant="outline" className="w-full font-bold border-primary text-primary hover:bg-primary/5" onClick={scrollToForm}>Transfer Loan</Button>
-                            </CardContent>
-                        </Card>
-                    </div>
-
-                    {/* Accordions */}
-                    <div className="space-y-8">
-                        <div className="space-y-4">
-                            <div className="flex items-center gap-3 mb-4">
-                                <div className="h-10 w-10 rounded-full bg-sky-100 dark:bg-sky-900/40 flex items-center justify-center text-primary">
-                                    <CheckCircle2 className="h-6 w-6" />
-                                </div>
-                                <h3 className="text-2xl font-bold">Eligibility Criteria</h3>
+                    {/* Document Checklist Tabs */}
+                    <div className="bg-[#24272c] rounded-3xl p-8 border border-slate-800 shadow-xl text-white space-y-6">
+                        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+                            <h3 className="text-2xl font-black text-white">Required Document Checklist</h3>
+                            <div className="flex gap-2 p-1 bg-slate-900 rounded-2xl border border-slate-800">
+                                {(["salaried", "self-employed", "nri"] as const).map((tab) => (
+                                    <button
+                                        key={tab}
+                                        onClick={() => setActiveTab(tab)}
+                                        className={`px-4 py-2 rounded-xl text-xs font-black uppercase transition-all ${
+                                            activeTab === tab
+                                                ? "bg-[#00c985] text-slate-950 shadow-md"
+                                                : "text-slate-400 hover:text-white"
+                                        }`}
+                                    >
+                                        {tab}
+                                    </button>
+                                ))}
                             </div>
-                            <SimpleAccordion
-                                items={[
-                                    { title: "Salaried Individuals", content: "Age: 21-60 years. Minimum Income: ₹25,000/month. Work Experience: 2 years min." },
-                                    { title: "Self-Employed", content: "Age: 23-70 years. Business Vintage: 3 years. ITR required for last 2 years." },
-                                    { title: "CIBIL Score", content: "Minimum 700+ score preferred for best rates. Lower scores may have higher interest rates." },
-                                ]}
-                            />
                         </div>
 
                         <div className="space-y-4">
-                            <div className="flex items-center gap-3 mb-4">
-                                <div className="h-10 w-10 rounded-full bg-primary/10 dark:bg-primary/20 flex items-center justify-center text-primary">
-                                    <FileText className="h-6 w-6" />
-                                </div>
-                                <h3 className="text-2xl font-bold">Documents Required</h3>
-                            </div>
-                            <SimpleAccordion
-                                items={[
-                                    { title: "Identity & Address Proof", content: "Aadhaar Card, PAN Card, Voter ID, Passport, Utility Bills." },
-                                    { title: "Income Proof", content: "Last 3 months payslips, 6 months bank statement, Form 16, ITR for last 2 years." },
-                                    { title: "Property Documents", content: "Sale Deed, Allotment Letter, Property Map, Possession Certificate." },
-                                ]}
-                            />
+                            {activeTab === "salaried" && (
+                                <ul className="grid md:grid-cols-2 gap-4 text-xs font-bold text-slate-300">
+                                    <li className="flex items-center gap-2 p-3 bg-slate-900/60 border border-slate-800 rounded-xl">
+                                        <CheckCircle2 className="h-4 w-4 text-[#00e699] shrink-0" /> PAN Card & Aadhaar Card
+                                    </li>
+                                    <li className="flex items-center gap-2 p-3 bg-slate-900/60 border border-slate-800 rounded-xl">
+                                        <CheckCircle2 className="h-4 w-4 text-[#00e699] shrink-0" /> Last 3 Months Salary Slips
+                                    </li>
+                                    <li className="flex items-center gap-2 p-3 bg-slate-900/60 border border-slate-800 rounded-xl">
+                                        <CheckCircle2 className="h-4 w-4 text-[#00e699] shrink-0" /> Last 6 Months Bank Statement
+                                    </li>
+                                    <li className="flex items-center gap-2 p-3 bg-slate-900/60 border border-slate-800 rounded-xl">
+                                        <CheckCircle2 className="h-4 w-4 text-[#00e699] shrink-0" /> Form 16 / ITR for last 2 years
+                                    </li>
+                                </ul>
+                            )}
+
+                            {activeTab === "self-employed" && (
+                                <ul className="grid md:grid-cols-2 gap-4 text-xs font-bold text-slate-300">
+                                    <li className="flex items-center gap-2 p-3 bg-slate-900/60 border border-slate-800 rounded-xl">
+                                        <CheckCircle2 className="h-4 w-4 text-[#00e699] shrink-0" /> Business Registration Proof (GST/MSME)
+                                    </li>
+                                    <li className="flex items-center gap-2 p-3 bg-slate-900/60 border border-slate-800 rounded-xl">
+                                        <CheckCircle2 className="h-4 w-4 text-[#00e699] shrink-0" /> ITR & Computation for last 3 years
+                                    </li>
+                                    <li className="flex items-center gap-2 p-3 bg-slate-900/60 border border-slate-800 rounded-xl">
+                                        <CheckCircle2 className="h-4 w-4 text-[#00e699] shrink-0" /> 12 Months Current Account Statement
+                                    </li>
+                                    <li className="flex items-center gap-2 p-3 bg-slate-900/60 border border-slate-800 rounded-xl">
+                                        <CheckCircle2 className="h-4 w-4 text-[#00e699] shrink-0" /> Audited P&L Account & Balance Sheet
+                                    </li>
+                                </ul>
+                            )}
+
+                            {activeTab === "nri" && (
+                                <ul className="grid md:grid-cols-2 gap-4 text-xs font-bold text-slate-300">
+                                    <li className="flex items-center gap-2 p-3 bg-slate-900/60 border border-slate-800 rounded-xl">
+                                        <CheckCircle2 className="h-4 w-4 text-[#00e699] shrink-0" /> Passport Copy with Visa Stamp
+                                    </li>
+                                    <li className="flex items-center gap-2 p-3 bg-slate-900/60 border border-slate-800 rounded-xl">
+                                        <CheckCircle2 className="h-4 w-4 text-[#00e699] shrink-0" /> Employment Contract / Salary Certificate
+                                    </li>
+                                    <li className="flex items-center gap-2 p-3 bg-slate-900/60 border border-slate-800 rounded-xl">
+                                        <CheckCircle2 className="h-4 w-4 text-[#00e699] shrink-0" /> 6 Months Overseas Bank Statement
+                                    </li>
+                                    <li className="flex items-center gap-2 p-3 bg-slate-900/60 border border-slate-800 rounded-xl">
+                                        <CheckCircle2 className="h-4 w-4 text-[#00e699] shrink-0" /> NRE/NRO Account Details
+                                    </li>
+                                </ul>
+                            )}
                         </div>
                     </div>
                 </div>
 
-                {/* Right Column: Sticky Form */}
+                {/* Sticky Right Application Sidebar */}
                 <aside className="relative">
-                    <div id="lead-form" className="sticky top-32">
-                        <Card className="glass-card bg-white/90 dark:bg-slate-900/90 border-primary/20 shadow-[0_20px_50px_rgba(0,0,0,0.15)] overflow-hidden rounded-[2.5rem] ring-1 ring-primary/5">
-                            <CardHeader className="bg-gradient-to-r from-primary to-sky-700 text-white p-8 pb-10">
-                                <div className="flex justify-between items-start mb-4">
-                                    <div className="p-3 bg-white/20 rounded-2xl backdrop-blur-md">
-                                        <Home className="h-6 w-6 text-white" />
-                                    </div>
-                                    <span className="text-[10px] font-black uppercase tracking-[0.2em] bg-accent text-slate-900 px-3 py-1 rounded-full shadow-lg">Best Rates</span>
-                                </div>
-                                <CardTitle className="text-2xl font-black tracking-tight leading-none mb-2">Check My Offers</CardTitle>
-                                <p className="text-sky-100/70 text-xs font-bold uppercase tracking-widest tracking-tighter">Offers from 40+ Top Banks</p>
+                    <div id="lead-form" className="sticky top-28">
+                        <Card className="bg-[#24272c] border border-slate-800 shadow-2xl rounded-[2.5rem] overflow-hidden text-white">
+                            <CardHeader className="bg-gradient-to-r from-lime-400 via-emerald-400 to-teal-400 text-slate-950 p-8">
+                                <span className="text-[10px] font-black uppercase tracking-widest bg-slate-950 text-white px-3 py-1 rounded-full w-fit">
+                                    YES Bank & Partner Approval
+                                </span>
+                                <CardTitle className="text-2xl font-black mt-3 text-slate-950">Apply for Home Loan</CardTitle>
+                                <p className="text-slate-900 text-xs font-bold mt-1">Get pre-approved offer in 2 minutes</p>
                             </CardHeader>
-                            <CardContent className="p-8 -mt-6 bg-white dark:bg-slate-950 rounded-t-[2.5rem] relative z-10 shadow-2xl">
+                            <CardContent className="p-8 space-y-6">
                                 {isSuccess ? (
-                                    <div className="text-center py-10">
-                                        <div className="h-20 w-20 bg-primary rounded-[2rem] flex items-center justify-center mx-auto mb-6 shadow-2xl shadow-primary/30">
-                                            <CheckCircle2 className="h-10 w-10 text-white" />
+                                    <div className="text-center py-8 space-y-3">
+                                        <div className="h-16 w-16 bg-[#00c985] rounded-full flex items-center justify-center mx-auto text-slate-950 font-black">
+                                            <CheckCircle2 className="h-8 w-8" />
                                         </div>
-                                        <h3 className="text-2xl font-black text-slate-900 dark:text-white mb-2">Request Received</h3>
-                                        <p className="text-slate-500 dark:text-slate-400 font-bold uppercase text-xs tracking-widest leading-loose">A Home Loan expert will call shortly.</p>
+                                        <h4 className="text-xl font-black text-white">Application Received!</h4>
+                                        <p className="text-xs text-slate-400">A Shree Finance Home Loan advisor will reach out shortly.</p>
                                     </div>
                                 ) : (
-                                    <form onSubmit={handleSubmit} className="space-y-6">
-                                        <div className="space-y-2">
-                                            <label className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 ml-1">Full Name</label>
+                                    <form onSubmit={handleSubmit} className="space-y-4">
+                                        <div>
+                                            <label className="text-[10px] font-black uppercase text-slate-400">Full Name</label>
                                             <Input
-                                                placeholder="Enter Name"
-                                                className="h-14 bg-slate-50 dark:bg-sky-950/20 border-slate-100 dark:border-primary/10 rounded-2xl font-bold px-6 focus:ring-primary shadow-sm"
+                                                placeholder="Enter full name"
                                                 value={formData.name}
                                                 onChange={e => setFormData({ ...formData, name: e.target.value })}
                                                 required
                                             />
                                         </div>
-                                        <div className="space-y-2">
-                                            <label className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 ml-1">Mobile Access</label>
+                                        <div>
+                                            <label className="text-[10px] font-black uppercase text-slate-400">Mobile Number</label>
                                             <Input
-                                                placeholder="10-digit number"
-                                                className="h-14 bg-slate-50 dark:bg-sky-950/20 border-slate-100 dark:border-primary/10 rounded-2xl font-bold px-6 focus:ring-primary shadow-sm"
+                                                placeholder="10-digit mobile"
                                                 value={formData.mobile}
                                                 onChange={e => setFormData({ ...formData, mobile: e.target.value })}
                                                 required
                                             />
                                         </div>
-                                        <div className="grid grid-cols-2 gap-6">
-                                            <div className="space-y-2">
-                                                <label className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 ml-1">City</label>
+                                        <div className="grid grid-cols-2 gap-4">
+                                            <div>
+                                                <label className="text-[10px] font-black uppercase text-slate-400">City</label>
                                                 <Input
-                                                    placeholder="Pune"
-                                                    className="h-14 bg-slate-50 dark:bg-sky-950/20 border-slate-100 dark:border-primary/10 rounded-2xl font-bold px-6 focus:ring-primary shadow-sm"
+                                                    placeholder="City"
                                                     value={formData.city}
                                                     onChange={e => setFormData({ ...formData, city: e.target.value })}
                                                     required
                                                 />
                                             </div>
-                                            <div className="space-y-2">
-                                                <label className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 ml-1">Monthly</label>
+                                            <div>
+                                                <label className="text-[10px] font-black uppercase text-slate-400">Monthly Salary</label>
                                                 <Input
-                                                    placeholder="₹45,000"
-                                                    className="h-14 bg-slate-50 dark:bg-sky-950/20 border-slate-100 dark:border-primary/10 rounded-2xl font-bold px-6 focus:ring-primary shadow-sm"
+                                                    placeholder="₹ Income"
                                                     value={formData.income}
                                                     onChange={e => setFormData({ ...formData, income: e.target.value })}
                                                     required
                                                 />
                                             </div>
                                         </div>
-                                        <Button className="w-full bg-primary hover:bg-sky-600 text-white font-black h-16 text-lg rounded-2xl shadow-2xl shadow-primary/20 mt-4 transition-all hover:scale-[1.02] active:scale-95 uppercase tracking-widest border border-white/10">Check My Offers</Button>
+                                        <Button
+                                            disabled={isSubmitting}
+                                            className="w-full bg-[#00c985] hover:bg-[#00b074] text-slate-950 font-black h-14 rounded-full text-sm uppercase tracking-wider shadow-xl"
+                                        >
+                                            {isSubmitting ? "Submitting..." : "Get Instant Callback"}
+                                        </Button>
                                     </form>
                                 )}
                             </CardContent>
                         </Card>
-
-                        {/* Trust Micro-widgets */}
-                        <div className="mt-6 grid grid-cols-2 gap-4">
-                            <div className="flex flex-col items-center p-3 bg-emerald-50 dark:bg-emerald-900/10 rounded-lg text-center border border-emerald-100 dark:border-emerald-800">
-                                <ShieldCheck className="h-6 w-6 text-emerald-600 mb-1" />
-                                <span className="text-xs font-bold text-emerald-800 dark:text-emerald-400">Encrypted Data</span>
-                            </div>
-                            <div className="flex flex-col items-center p-3 bg-sky-50 dark:bg-sky-900/10 rounded-lg text-center border border-sky-100 dark:border-sky-800">
-                                <Zap className="h-6 w-6 text-primary mb-1" />
-                                <span className="text-xs font-bold text-sky-800 dark:text-sky-400">Fast Approval</span>
-                            </div>
-                        </div>
                     </div>
                 </aside>
-            </div>
+            </section>
         </div>
     );
 }

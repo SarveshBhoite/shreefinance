@@ -41,11 +41,11 @@ export default function AdminLoginPage() {
     };
 
     return (
-        <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-sky-950 via-sky-900 to-black relative overflow-hidden px-4 font-sans">
-            {/* Background effects - Ocean Theme */}
+        <div className="min-h-screen flex items-center justify-center bg-[#181a1d] text-white relative overflow-hidden px-4 font-sans">
+            {/* Background effects */}
             <div className="absolute inset-0 pointer-events-none">
-                <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-primary/10 rounded-full blur-[120px] animate-pulse" />
-                <div className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] bg-accent/10 rounded-full blur-[120px]" />
+                <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-[#00c985]/10 rounded-full blur-[120px]" />
+                <div className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] bg-amber-400/5 rounded-full blur-[120px]" />
             </div>
 
             <motion.div
@@ -54,50 +54,50 @@ export default function AdminLoginPage() {
                 transition={{ duration: 0.5 }}
                 className="relative z-10 w-full max-w-md mx-auto"
             >
-                <div className="bg-sky-950/40 backdrop-blur-xl border border-primary/20 rounded-3xl p-8 md:p-10 shadow-2xl">
+                <div className="bg-[#24272c] border border-slate-800 rounded-3xl p-8 md:p-10 shadow-2xl">
                     {/* Logo / Title */}
                     <div className="text-center mb-8">
-                        <div className="inline-flex items-center justify-center h-16 w-16 rounded-2xl bg-gradient-to-br from-primary to-sky-600 shadow-lg shadow-primary/30 mb-4 border border-white/10">
-                            <Lock className="h-8 w-8 text-white" />
+                        <div className="inline-flex items-center justify-center h-16 w-16 rounded-2xl bg-[#00c985]/15 border border-[#00c985]/30 text-[#00c985] shadow-lg mb-4">
+                            <Lock className="h-8 w-8" />
                         </div>
-                        <h1 className="text-2xl font-bold text-white uppercase tracking-tight text-gradient">Admin Dashboard</h1>
-                        <p className="text-sky-200/60 text-sm mt-1">Sign in to manage banners</p>
+                        <h1 className="text-2xl font-black text-white uppercase tracking-tight">Admin Dashboard</h1>
+                        <p className="text-slate-400 text-xs mt-1">Sign in to manage banners & portal settings</p>
                     </div>
 
                     <form onSubmit={handleSubmit} className="space-y-5">
                         {/* Username */}
                         <div className="space-y-2">
-                            <label className="text-sm font-medium text-sky-100/80">Username</label>
+                            <label className="text-xs font-black uppercase text-slate-400">Username</label>
                             <div className="relative">
-                                <User className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-sky-400" />
+                                <User className="absolute left-3.5 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-400" />
                                 <input
                                     type="text"
                                     value={username}
                                     onChange={(e) => setUsername(e.target.value)}
                                     placeholder="Enter username"
                                     required
-                                    className="w-full h-12 pl-10 pr-4 bg-sky-900/20 border border-sky-800/50 rounded-xl text-white placeholder:text-sky-600 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all"
+                                    className="w-full h-12 pl-10 pr-4 bg-slate-900 border border-slate-700 rounded-xl text-white placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-[#00c985] transition-all"
                                 />
                             </div>
                         </div>
 
                         {/* Password */}
                         <div className="space-y-2">
-                            <label className="text-sm font-medium text-sky-100/80">Password</label>
+                            <label className="text-xs font-black uppercase text-slate-400">Password</label>
                             <div className="relative">
-                                <Lock className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-sky-400" />
+                                <Lock className="absolute left-3.5 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-400" />
                                 <input
                                     type={showPassword ? "text" : "password"}
                                     value={password}
                                     onChange={(e) => setPassword(e.target.value)}
                                     placeholder="Enter password"
                                     required
-                                    className="w-full h-12 pl-10 pr-12 bg-sky-900/20 border border-sky-800/50 rounded-xl text-white placeholder:text-sky-600 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all"
+                                    className="w-full h-12 pl-10 pr-12 bg-slate-900 border border-slate-700 rounded-xl text-white placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-[#00c985] transition-all"
                                 />
                                 <button
                                     type="button"
                                     onClick={() => setShowPassword(!showPassword)}
-                                    className="absolute right-3 top-1/2 -translate-y-1/2 text-sky-500 hover:text-sky-300 transition-colors"
+                                    className="absolute right-3.5 top-1/2 -translate-y-1/2 text-slate-400 hover:text-white transition-colors"
                                 >
                                     {showPassword ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
                                 </button>
@@ -109,7 +109,7 @@ export default function AdminLoginPage() {
                             <motion.div
                                 initial={{ opacity: 0 }}
                                 animate={{ opacity: 1 }}
-                                className="text-red-400 text-sm text-center bg-red-500/10 border border-red-500/20 rounded-lg p-3"
+                                className="text-red-400 text-xs text-center bg-red-500/10 border border-red-500/20 rounded-lg p-3"
                             >
                                 {error}
                             </motion.div>
@@ -119,7 +119,7 @@ export default function AdminLoginPage() {
                         <button
                             type="submit"
                             disabled={loading}
-                            className="w-full h-12 bg-primary hover:bg-sky-600 text-white font-bold rounded-xl shadow-lg shadow-primary/25 hover:shadow-primary/40 transition-all hover:-translate-y-0.5 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:translate-y-0 flex items-center justify-center gap-2 border border-white/10"
+                            className="w-full h-12 bg-[#00c985] hover:bg-[#00b074] text-slate-950 font-black rounded-full uppercase tracking-wider shadow-lg transition-all flex items-center justify-center gap-2"
                         >
                             {loading ? (
                                 <>

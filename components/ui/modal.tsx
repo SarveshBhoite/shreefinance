@@ -36,7 +36,7 @@ export function Modal({ isOpen, onClose, children, className, title }: ModalProp
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
                         onClick={onClose}
-                        className="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm transition-opacity"
+                        className="fixed inset-0 z-50 bg-black/70 backdrop-blur-md transition-opacity"
                     />
 
                     {/* Modal Content */}
@@ -45,20 +45,19 @@ export function Modal({ isOpen, onClose, children, className, title }: ModalProp
                             initial={{ opacity: 0, scale: 0.95, y: 20 }}
                             animate={{ opacity: 1, scale: 1, y: 0 }}
                             exit={{ opacity: 0, scale: 0.95, y: 20 }}
-                            transition={{ duration: 0.2, ease: "easeOut" }}
                             className={cn(
-                                "relative w-full max-w-lg overflow-hidden rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-2xl px-2",
+                                "relative w-full max-w-lg overflow-hidden rounded-3xl bg-[#24272c] text-white border border-slate-800 shadow-2xl px-2",
                                 className
                             )}
                         >
                             {/* Header */}
                             <div className="flex items-center justify-between p-6 pb-2">
-                                {title && <h2 className="text-xl font-bold tracking-tight">{title}</h2>}
+                                {title && <h2 className="text-xl font-bold tracking-tight text-white">{title}</h2>}
                                 <button
                                     onClick={onClose}
-                                    className="rounded-full p-2 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors"
+                                    className="rounded-full p-2 bg-slate-800 hover:bg-slate-700 transition-colors"
                                 >
-                                    <X className="h-4 w-4 text-slate-500" />
+                                    <X className="h-4 w-4 text-slate-400" />
                                     <span className="sr-only">Close</span>
                                 </button>
                             </div>

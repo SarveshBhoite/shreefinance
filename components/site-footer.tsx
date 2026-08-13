@@ -1,18 +1,17 @@
 import Link from "next/link"
 import Image from "next/image"
 import { Facebook, Twitter, Instagram, Linkedin, Mail, Phone, MapPin, ChevronRight, Zap } from "lucide-react"
-import { cn } from "@/lib/utils"
 
 export function SiteFooter() {
     return (
-        <footer className="relative bg-black dark:bg-black text-slate-300 border-t border-primary/20 pt-20 pb-12 font-sans overflow-hidden">
-            {/* Water-inspired Background Gradient Bar */}
-            <div className="absolute top-0 inset-x-0 h-1.5 bg-gradient-to-r from-primary via-sky-300 to-accent shadow-[0_4px_20px_rgba(14,165,233,0.3)]"></div>
+        <footer className="relative bg-[#141618] text-slate-300 border-t border-slate-800 pt-20 pb-12 font-sans overflow-hidden">
+            {/* Top Emerald/Lime Gradient Accent Line */}
+            <div className="absolute top-0 inset-x-0 h-1.5 bg-gradient-to-r from-lime-400 via-[#00e699] to-teal-400 shadow-[0_4px_20px_rgba(0,230,153,0.4)]"></div>
             
-            {/* Background pattern */}
+            {/* Background Ambient Glow */}
             <div className="absolute inset-0 pointer-events-none opacity-5">
-                <div className="absolute -bottom-48 -left-48 w-[600px] h-[600px] bg-primary rounded-full blur-[120px]"></div>
-                <div className="absolute -top-48 -right-48 w-[500px] h-[500px] bg-accent rounded-full blur-[100px]"></div>
+                <div className="absolute -bottom-48 -left-48 w-[600px] h-[600px] bg-[#00c985] rounded-full blur-[120px]"></div>
+                <div className="absolute -top-48 -right-48 w-[500px] h-[500px] bg-emerald-400 rounded-full blur-[100px]"></div>
             </div>
 
             <div className="container relative z-10 mx-auto px-8">
@@ -23,13 +22,13 @@ export function SiteFooter() {
                                 <Image
                                     src="/shreelogobg.png"
                                     alt="ShreeFinance Logo"
-                                    width={240}
-                                    height={60}
-                                    className="h-14 w-auto object-contain brightness-0 invert opacity-100"
+                                    width={450}
+                                    height={140}
+                                    className="h-20 md:h-24 max-h-24 w-auto object-contain brightness-0 invert opacity-100 scale-110 origin-left"
                                 />
                             </Link>
-                            <div className="inline-flex items-center gap-2 rounded-full border border-accent/20 bg-accent/5 px-4 py-1.5 text-xs font-black text-accent tracking-widest uppercase">
-                                <Zap className="h-3.5 w-3.5 fill-accent" />
+                            <div className="inline-flex items-center gap-2 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-4 py-1.5 text-xs font-black text-[#00e699] tracking-widest uppercase">
+                                <Zap className="h-3.5 w-3.5 fill-[#00e699]" />
                                 Elite Financial Partner
                             </div>
                         </div>
@@ -38,7 +37,7 @@ export function SiteFooter() {
                         </p>
                         <div className="flex gap-5 pt-4">
                             {[Facebook, Twitter, Instagram, Linkedin].map((Icon, i) => (
-                                <Link key={i} href="#" className="h-12 w-12 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-slate-400 hover:bg-primary hover:text-white hover:-translate-y-2 hover:shadow-2xl hover:shadow-primary/20 transition-all duration-300 ring-1 ring-white/5">
+                                <Link key={i} href="#" className="h-12 w-12 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-slate-400 hover:bg-[#00c985] hover:text-slate-950 hover:-translate-y-2 hover:shadow-2xl hover:shadow-[#00c985]/30 transition-all duration-300 ring-1 ring-white/5">
                                     <Icon className="h-5 w-5" />
                                 </Link>
                             ))}
@@ -60,8 +59,8 @@ export function SiteFooter() {
                                 { name: "Education Loan", href: "/loans/education-loan" },
                             ].map((item, i) => (
                                 <li key={i}>
-                                    <Link href={item.href} className="text-slate-400 hover:text-accent font-bold text-base flex items-center group transition-colors">
-                                        <ChevronRight className="h-4 w-4 mr-3 text-primary opacity-0 group-hover:opacity-100 -translate-x-4 group-hover:translate-x-0 transition-all" />
+                                    <Link href={item.href} className="text-slate-400 hover:text-[#00e699] font-bold text-base flex items-center group transition-colors">
+                                        <ChevronRight className="h-4 w-4 mr-3 text-[#00c985] opacity-0 group-hover:opacity-100 -translate-x-4 group-hover:translate-x-0 transition-all" />
                                         {item.name}
                                     </Link>
                                 </li>
@@ -83,8 +82,8 @@ export function SiteFooter() {
                                 { name: "Vehicle Insurance", href: "/insurance/vehicle" },
                             ].map((item, i) => (
                                 <li key={i}>
-                                    <Link href={item.href} className="text-slate-400 hover:text-primary font-bold text-base flex items-center group transition-colors">
-                                        <ChevronRight className="h-4 w-4 mr-3 text-accent opacity-0 group-hover:opacity-100 -translate-x-4 group-hover:translate-x-0 transition-all" />
+                                    <Link href={item.href} className="text-slate-400 hover:text-[#00e699] font-bold text-base flex items-center group transition-colors">
+                                        <ChevronRight className="h-4 w-4 mr-3 text-[#00c985] opacity-0 group-hover:opacity-100 -translate-x-4 group-hover:translate-x-0 transition-all" />
                                         {item.name}
                                     </Link>
                                 </li>
@@ -97,33 +96,52 @@ export function SiteFooter() {
                             Support Headquarters
                         </h4>
                         <ul className="space-y-6">
-                            <li className="flex items-start gap-6 p-6 rounded-3xl bg-white/5 border border-white/10 ring-1 ring-white/5 shadow-2xl">
-                                <div className="h-12 w-12 rounded-2xl bg-primary/10 flex items-center justify-center shrink-0">
-                                    <MapPin className="h-6 w-6 text-primary" />
-                                </div>
-                                <span className="text-slate-400 font-bold leading-relaxed">
-                                    Office No. D/201, Siddhivinayak Angan Society,<br /> 
-                                    Behind Shree Ji Pure Veg, Near Navale Bridge,<br />
-                                    Narhe, Pune - 411 041
-                                </span>
+                            <li>
+                                <a
+                                    href="https://maps.google.com/?q=Office+No.+D/201,+Siddhivinayak+Angan+Society,+Behind+Shree+Ji+Pure+Veg,+Near+Navale+Bridge,+Narhe,+Pune+-+411041"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="flex items-start gap-6 p-6 rounded-3xl bg-[#24272c] border border-slate-800 shadow-2xl hover:border-[#00c985] transition-all group cursor-pointer"
+                                >
+                                    <div className="h-12 w-12 rounded-2xl bg-[#00c985]/15 border border-[#00c985]/30 flex items-center justify-center shrink-0 text-[#00c985] group-hover:bg-[#00c985] group-hover:text-slate-950 transition-colors">
+                                        <MapPin className="h-6 w-6" />
+                                    </div>
+                                    <span className="text-slate-300 font-bold leading-relaxed text-sm group-hover:text-white transition-colors">
+                                        Office No. D/201, Siddhivinayak Angan Society,<br /> 
+                                        Behind Shree Ji Pure Veg, Near Navale Bridge,<br />
+                                        Narhe, Pune - 411 041
+                                    </span>
+                                </a>
                             </li>
-                            <li className="flex items-center gap-6 group">
-                                <div className="h-10 w-10 rounded-xl bg-accent/10 flex items-center justify-center shrink-0 group-hover:bg-accent group-hover:text-white transition-all">
-                                    <Phone className="h-5 w-5 text-accent group-hover:text-white" />
-                                </div>
-                                <span className="text-white font-black text-lg">+91 88304 34945</span>
+                            <li>
+                                <a
+                                    href="tel:+918830434945"
+                                    className="flex items-center gap-6 group hover:opacity-90 transition-all cursor-pointer"
+                                >
+                                    <div className="h-10 w-10 rounded-xl bg-amber-400/10 border border-amber-400/20 flex items-center justify-center shrink-0 group-hover:bg-amber-400 group-hover:text-slate-950 transition-all">
+                                        <Phone className="h-5 w-5 text-amber-400 group-hover:text-slate-950" />
+                                    </div>
+                                    <span className="text-white font-black text-lg group-hover:text-[#00e699] transition-colors">+91 88304 34945</span>
+                                </a>
                             </li>
-                            <li className="flex items-center gap-6 group">
-                                <div className="h-10 w-10 rounded-xl bg-primary/10 flex items-center justify-center shrink-0 group-hover:bg-primary group-hover:text-white transition-all">
-                                    <Mail className="h-5 w-5 text-primary group-hover:text-white" />
-                                </div>
-                                <span className="text-white font-black text-lg">care@shreefinance.com</span>
+                            <li>
+                                <a
+                                    href="https://mail.google.com/mail/?view=cm&fs=1&to=care@shreefinance.com"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="flex items-center gap-6 group hover:opacity-90 transition-all cursor-pointer"
+                                >
+                                    <div className="h-10 w-10 rounded-xl bg-[#00c985]/10 border border-[#00c985]/20 flex items-center justify-center shrink-0 group-hover:bg-[#00c985] group-hover:text-slate-950 transition-all">
+                                        <Mail className="h-5 w-5 text-[#00c985] group-hover:text-slate-950" />
+                                    </div>
+                                    <span className="text-white font-black text-lg group-hover:text-[#00e699] transition-colors">care@shreefinance.com</span>
+                                </a>
                             </li>
                         </ul>
                     </div>
                 </div>
 
-                <div className="mt-20 pt-10 border-t border-white/5 flex flex-col lg:row justify-between items-center gap-8 text-sm text-slate-500 font-bold">
+                <div className="mt-20 pt-10 border-t border-slate-800 flex flex-col lg:row justify-between items-center gap-8 text-sm text-slate-500 font-bold">
                     <p className="text-center lg:text-left">
                         © {new Date().getFullYear()} ShreeFinance Corporation. RBI Registered Financial Platform. All trade logos belong to respective owners.
                     </p>

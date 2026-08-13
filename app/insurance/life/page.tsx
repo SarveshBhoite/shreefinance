@@ -2,18 +2,16 @@
 
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { CheckCircle2, Heart, Umbrella, Shield, ShieldCheck, Zap, FileText, Sun, Users } from "lucide-react";
+import { CheckCircle2, Shield, FileText, Sun } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { useState } from "react";
 import { useEmailForm } from "@/hooks/use-email-form";
-import { cn } from "@/lib/utils";
 import { ContentSection } from "@/components/ui/content-section";
 import { SimpleAccordion } from "@/components/ui/simple-accordion";
-import { motion } from "framer-motion";
 import { DynamicHeroWrapper } from "@/components/dynamic-hero-wrapper";
 
 export default function LifeInsurancePage() {
-    const { sendEmail, isSubmitting, isSuccess, error, resetForm } = useEmailForm();
+    const { sendEmail, isSubmitting, isSuccess } = useEmailForm();
     const [formData, setFormData] = useState({
         name: "",
         mobile: "",
@@ -34,222 +32,187 @@ export default function LifeInsurancePage() {
     };
 
     return (
-        <div className="pb-20 bg-slate-50 dark:bg-black selection:bg-primary/30 font-sans mx-auto">
+        <div className="pb-20 bg-[#181a1d] text-white font-sans mx-auto">
             <DynamicHeroWrapper page="life-insurance">
-                {/* Unique Hero Section - Legacy Protection Ocean Theme */}
-                <section className="relative pt-12 md:pt-20 pb-32 overflow-hidden bg-gradient-to-b from-sky-950 to-sky-900 border-b border-primary/20 text-white">
-                    {/* Dark Metallic Background - Ocean Style */}
-                    <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-5"></div>
-                    <div className="absolute inset-0 bg-gradient-to-br from-sky-950 via-sky-900 to-black opacity-90"></div>
+                {/* Hero Section */}
+                <section className="relative pt-12 md:pt-20 pb-20 overflow-hidden bg-[#181a1d] text-white border-b border-slate-800">
+                    <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-[#00c985]/10 rounded-full blur-[120px] pointer-events-none" />
 
-                    {/* Accent Glow */}
-                    <div className="absolute top-0 right-1/4 w-[600px] h-[600px] bg-primary/20 rounded-full blur-[100px] mix-blend-screen animate-[pulse_6s_ease-in-out_infinite]"></div>
-
-                    <div className="container relative z-10 px-4 md:px-6 grid lg:grid-cols-2 gap-12 items-center mx-auto">
+                    <div className="container px-4 md:px-6 grid lg:grid-cols-2 gap-12 items-center relative z-10 mx-auto">
                         <div className="space-y-8">
-                            <div className="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-4 py-1.5 text-sm font-bold text-sky-200 backdrop-blur-sm">
-                                <Sun className="h-4 w-4 fill-primary/20 text-accent" />
-                                <span>Build Your Legacy</span>
+                            <div className="inline-flex items-center gap-2 rounded-full border border-emerald-500/40 bg-emerald-500/10 px-4 py-1.5 text-xs font-black text-[#00e699] uppercase tracking-widest">
+                                <Shield className="h-4 w-4 text-[#00e699]" />
+                                <span>Cover Up To ₹1 Crore (Secure Family Future)</span>
                             </div>
 
-                            <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight leading-tight text-white">
+                            <h1 className="text-5xl md:text-7xl font-black tracking-tight leading-tight text-white">
                                 A Promise That <br />
-                                <span className="text-gradient">Lasts Forever.</span>
+                                <span className="text-[#00e699]">Lasts Forever.</span>
                             </h1>
 
-                            <p className="text-xl text-sky-100/70 max-w-lg leading-relaxed">
-                                Ensure your family's dreams are protected, no matter what. Comprehensive life coverage starting at just ₹490/month.
+                            <p className="text-xl text-slate-300 max-w-lg leading-relaxed font-medium">
+                                Protect your family's financial independence. Term insurance plans with coverage up to ₹1 Crore starting at just ₹490/month.
                             </p>
 
                             <div className="flex flex-wrap gap-4">
-                                <Button size="lg" className="h-14 px-8 text-lg rounded-full shadow-lg shadow-primary/20 bg-primary hover:bg-sky-600 text-white font-bold border border-white/10 transition-all hover:scale-105" onClick={scrollToForm}>
-                                    Check Premium
+                                <Button size="lg" className="h-14 px-8 text-sm font-black rounded-full bg-[#00c985] hover:bg-[#00b074] text-slate-950 uppercase tracking-wider transition-all hover:scale-105" onClick={scrollToForm}>
+                                    Get Term Life Quote
                                 </Button>
                             </div>
 
-                            <div className="flex items-center gap-6 pt-4 border-t border-primary/20">
-                                <div className="text-center">
-                                    <p className="text-3xl font-bold text-white">99.3%</p>
-                                    <p className="text-xs text-sky-400 uppercase tracking-wider font-bold">Claims Paid</p>
+                            <div className="grid grid-cols-3 gap-6 pt-6 border-t border-slate-800">
+                                <div>
+                                    <p className="text-3xl font-black text-[#00e699]">₹1 Crore</p>
+                                    <p className="text-xs text-slate-400 font-bold uppercase tracking-wider mt-1">High Sum Assured</p>
                                 </div>
-                                <div className="w-px h-10 bg-primary/20"></div>
-                                <div className="text-center">
-                                    <p className="text-3xl font-bold text-white">85 Yrs</p>
-                                    <p className="text-xs text-sky-400 uppercase tracking-wider font-bold">Max Age</p>
+                                <div>
+                                    <p className="text-3xl font-black text-white">₹490/mo</p>
+                                    <p className="text-xs text-slate-400 font-bold uppercase tracking-wider mt-1">Starting Premium</p>
                                 </div>
-                                <div className="w-px h-10 bg-primary/20"></div>
-                                <div className="text-center">
-                                    <p className="text-3xl font-bold text-white">Tax</p>
-                                    <p className="text-xs text-sky-400 uppercase tracking-wider font-bold">Benefits*</p>
+                                <div>
+                                    <p className="text-3xl font-black text-amber-400">99.5%</p>
+                                    <p className="text-xs text-slate-400 font-bold uppercase tracking-wider mt-1">Claim Settlement</p>
                                 </div>
                             </div>
                         </div>
 
-                        {/* Visual Hero Element - Silhouette/Family Shield */}
-                        <div className="relative hidden lg:block h-[500px]">
-                            <div className="absolute inset-0 flex items-center justify-center">
-                                {/* Abstract Family Circle - Ocean Style */}
-                                <div className="relative w-96 h-96">
-                                    <div className="absolute inset-0 bg-primary/20 rounded-full blur-3xl animate-pulse"></div>
-                                    <div className="absolute inset-10 border-2 border-primary/30 rounded-full animate-[spin_20s_linear_infinite]"></div>
-                                    <div className="absolute inset-20 border border-accent/20 rounded-full animate-[spin_15s_linear_infinite_reverse]"></div>
-
-                                    {/* Central Heart Icon */}
-                                    <div className="absolute inset-0 flex items-center justify-center">
-                                        <Heart className="h-40 w-40 text-primary drop-shadow-[0_0_20px_rgba(56,189,248,0.4)] animate-pulse" fill="currentColor" />
+                        {/* Interactive Hero Visual */}
+                        <div className="relative hidden lg:flex justify-center items-center h-[450px]">
+                            <Card className="bg-[#24272c] border border-slate-800 rounded-[2.5rem] p-8 text-white shadow-2xl space-y-6 w-full max-w-md">
+                                <div className="flex items-center gap-4 border-b border-slate-800 pb-4">
+                                    <div className="h-12 w-12 rounded-2xl bg-[#00c985]/15 border border-[#00c985]/30 flex items-center justify-center text-[#00c985]">
+                                        <Shield className="h-6 w-6" />
                                     </div>
-
-                                    {/* Floating Shield Badges */}
-                                    <motion.div
-                                        className="absolute -top-4 right-10 bg-white/90 dark:bg-sky-950/90 backdrop-blur-md p-4 rounded-2xl shadow-2xl flex items-center gap-3 border border-primary/20"
-                                        animate={{ y: [0, -10, 0] }}
-                                        transition={{ repeat: Infinity, duration: 4, ease: "easeInOut" }}
-                                    >
-                                        <div className="p-2 bg-sky-100 rounded-lg"><ShieldCheck className="h-6 w-6 text-primary" /></div>
-                                        <div>
-                                            <p className="text-xs text-slate-500 font-bold uppercase">Family</p>
-                                            <p className="text-lg font-bold text-slate-900 dark:text-white">Protected</p>
-                                        </div>
-                                    </motion.div>
+                                    <div>
+                                        <h3 className="font-extrabold text-white">Term Life Insurance</h3>
+                                        <p className="text-xs text-slate-400 font-medium">100% Tax Deductible under 80C</p>
+                                    </div>
                                 </div>
-                            </div>
+                                <div className="space-y-3">
+                                    <div className="flex justify-between items-center bg-slate-900/60 p-3.5 rounded-2xl border border-slate-800 text-xs">
+                                        <span className="text-slate-400 font-bold">Sum Assured</span>
+                                        <span className="font-black text-[#00e699] text-sm">Up to ₹1 Crore+</span>
+                                    </div>
+                                    <div className="flex justify-between items-center bg-slate-900/60 p-3.5 rounded-2xl border border-slate-800 text-xs">
+                                        <span className="text-slate-400 font-bold">Critical Illness Cover</span>
+                                        <span className="font-black text-white text-sm">34 Illnesses Covered</span>
+                                    </div>
+                                    <div className="flex justify-between items-center bg-slate-900/60 p-3.5 rounded-2xl border border-slate-800 text-xs">
+                                        <span className="text-slate-400 font-bold">Partner Insurers</span>
+                                        <span className="font-black text-amber-300 text-sm">HDFC Life, ICICI Pru, Tata</span>
+                                    </div>
+                                </div>
+                            </Card>
                         </div>
                     </div>
                 </section>
             </DynamicHeroWrapper>
 
-            {/* Protection Strip */}
-            <div className="bg-sky-50 dark:bg-sky-950/40 text-slate-800 dark:text-blue-100 py-8 border-y border-primary/20 backdrop-blur-sm">
-                <div className="container px-4 text-center mx-auto">
-                    <div className="flex justify-center gap-8 md:gap-16 items-center flex-wrap">
-                        <span className="flex items-center gap-2 font-bold"><Users className="h-5 w-5 text-primary" /> 24x7 Support</span>
-                        <span className="flex items-center gap-2 font-bold"><FileText className="h-5 w-5 text-primary" /> 1-Day Claim</span>
-                        <span className="flex items-center gap-2 font-bold"><Zap className="h-5 w-5 text-accent" /> Instant Cover</span>
-                    </div>
-                </div>
-            </div>
-
-            {/* Main Content Layout with Sticky Sidebar */}
-            <div className="container px-4 md:px-6 py-12 grid lg:grid-cols-[1fr_400px] gap-12 mx-auto">
-                {/* Left Column: Content */}
-                <div className="space-y-16">
+            {/* Main Content Layout */}
+            <div className="container px-8 md:px-10 py-16 grid lg:grid-cols-[1fr_400px] gap-12 mx-auto">
+                <div className="space-y-12">
                     <ContentSection
-                        title="Ensure Their Dreams Never Stop"
-                        description="Life is unpredictable, but your family's future shouldn't be. Our comprehensive life insurance solutions—ranging from pure Term Plans to Savings and Unit Linked Insurance Plans (ULIPs)—ensure your loved ones maintain their lifestyle even when you are not around. A Term Plan offers high life cover at a nominal cost, acting as a financial shield against liabilities like home loans. Savings plans help you build a corpus for life goals like child education or retirement, while offering life cover. With our high claim settlement ratio and hassle-free process, we deliver on our promise when it matters the most."
-                        imageSrc="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?ixlib=rb-4.0.3&auto=format&fit=crop&w=1632&q=80"
-                        imageAlt="Happy family outdoors"
-                    >
-                        <div className="grid grid-cols-2 gap-4 mt-6">
-                            <div className="p-4 rounded-xl bg-sky-50 dark:bg-sky-900/20 border border-sky-100 dark:border-sky-800">
-                                <h4 className="font-bold text-primary dark:text-sky-300 text-lg">1 Crore</h4>
-                                <p className="text-sm text-slate-600 dark:text-slate-400">Cover @ ₹490/mo*</p>
-                            </div>
-                            <div className="p-4 rounded-xl bg-accent/10 dark:bg-accent/20 border border-accent/20">
-                                <h4 className="font-bold text-accent text-lg">Claim %</h4>
-                                <p className="text-sm text-slate-600 dark:text-slate-400">99.3% Settlement Ratio</p>
-                            </div>
-                        </div>
-                    </ContentSection>
+                        title="Comprehensive Protection For Your Family's Dreams"
+                        description="Ensure your family remains financially secure no matter what happens in the future. Our term insurance policies guarantee high payout cover, zero medical checkup options for young applicants, and critical illness riders."
+                        imageSrc="https://images.unsplash.com/photo-1511895426328-dc8714191300?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80"
+                        imageAlt="Happy Family Outdoors"
+                    />
 
-                    {/* Accordions */}
-                    <div className="space-y-8">
+                    <div className="space-y-6">
                         <div className="space-y-4">
-                            <h3 className="text-2xl font-bold flex items-center gap-2">
-                                <Shield className="text-primary" /> Types of Life Insurance
-                            </h3>
+                            <div className="flex items-center gap-3 mb-4">
+                                <div className="h-10 w-10 rounded-full bg-[#00c985]/15 border border-[#00c985]/30 flex items-center justify-center text-[#00c985]">
+                                    <CheckCircle2 className="h-6 w-6" />
+                                </div>
+                                <h3 className="text-2xl font-black text-white">Why Buy Term Insurance?</h3>
+                            </div>
                             <SimpleAccordion
                                 items={[
-                                    { title: "Term Insurance", content: "Pure risk cover. High sum assured at very low premiums. No maturity benefit, but highest financial security." },
-                                    { title: "ULIP (Unit Linked)", content: "Dual benefit of investment and insurance. Part of premium is invested in market funds for wealth creation." },
-                                    { title: "Endowment/Savings", content: "Guaranteed returns + Life Cover. Safe investment avenue for long-term goals like education or marriage." },
-                                    { title: "Retirement Plans", content: "Build a retirement corpus to receive regular monthly pension after you stop working." },
+                                    { title: "Financial Security", content: "Lump sum payout guarantees your family can pay off home loans, education expenses, and daily bills." },
+                                    { title: "Tax Savings", content: "Premiums paid are 100% tax exempt under Section 80C up to ₹1.5 Lakhs." },
+                                    { title: "Critical Illness Add-on", content: "Get lump sum cash payout on diagnosis of major medical illnesses." },
                                 ]}
                             />
                         </div>
 
                         <div className="space-y-4">
-                            <h3 className="text-2xl font-bold flex items-center gap-2">
-                                <ShieldCheck className="text-accent" /> Additional Riders
-                            </h3>
+                            <div className="flex items-center gap-3 mb-4">
+                                <div className="h-10 w-10 rounded-full bg-[#00c985]/15 border border-[#00c985]/30 flex items-center justify-center text-[#00c985]">
+                                    <FileText className="h-6 w-6" />
+                                </div>
+                                <h3 className="text-2xl font-black text-white">Documents Required</h3>
+                            </div>
                             <SimpleAccordion
                                 items={[
-                                    { title: "Accidental Death Benefit", content: "Additional sum assured is paid to nominee in case of death due to accident." },
-                                    { title: "Critical Illness Rider", content: "Lump sum payout on diagnosis of specified critical illnesses like Cancer, Heart Attack, etc." },
-                                    { title: "Waiver of Premium", content: "Future premiums are waived off if policyholder suffers permanent disability." },
+                                    { title: "Identity & Address Proof", content: "Aadhaar Card, Passport or Voter ID." },
+                                    { title: "Income Proof", content: "Last 3 months salary slips or Form 16 / ITR return." },
                                 ]}
                             />
                         </div>
                     </div>
                 </div>
 
-                {/* Right Column: Sticky Form */}
+                {/* Right Form Sidebar */}
                 <aside className="relative">
-                    <div id="lead-form" className="sticky top-32">
-                        <Card className="glass-card bg-white/90 dark:bg-slate-900/90 border-primary/20 shadow-[0_20px_50px_rgba(0,0,0,0.15)] overflow-hidden rounded-[2.5rem] ring-1 ring-primary/5">
-                            <CardHeader className="bg-gradient-to-r from-primary to-sky-700 text-white p-8 pb-10">
-                                <div className="flex justify-between items-start mb-4">
-                                    <div className="p-3 bg-white/20 rounded-2xl backdrop-blur-md">
-                                        <Heart className="h-6 w-6 text-white" />
-                                    </div>
-                                    <span className="text-[10px] font-black uppercase tracking-[0.2em] bg-accent text-slate-900 px-3 py-1 rounded-full shadow-lg">Protect Legacy</span>
-                                </div>
-                                <CardTitle className="text-2xl font-black tracking-tight leading-none mb-2">Get Quote</CardTitle>
-                                <p className="text-sky-100/70 text-xs font-bold uppercase tracking-widest tracking-tighter">Find the right cover</p>
+                    <div id="lead-form" className="sticky top-28">
+                        <Card className="bg-[#24272c] border border-slate-800 shadow-2xl rounded-[2.5rem] overflow-hidden text-white">
+                            <CardHeader className="bg-gradient-to-r from-lime-400 via-emerald-400 to-teal-400 text-slate-950 p-8">
+                                <span className="text-[10px] font-black uppercase tracking-widest bg-slate-950 text-white px-3 py-1 rounded-full w-fit">₹1 Crore Cover Offer</span>
+                                <CardTitle className="text-2xl font-black text-slate-950 mt-2">Get Term Insurance Quote</CardTitle>
+                                <p className="text-slate-900 text-xs font-bold">Instant free comparison</p>
                             </CardHeader>
-                            <CardContent className="p-8 -mt-6 bg-white dark:bg-slate-950 rounded-t-[2.5rem] relative z-10 shadow-2xl">
+                            <CardContent className="p-8 space-y-4">
                                 {isSuccess ? (
-                                    <div className="text-center py-10">
-                                        <div className="h-20 w-20 bg-primary rounded-[2rem] flex items-center justify-center mx-auto mb-6 shadow-2xl shadow-primary/30">
-                                            <CheckCircle2 className="h-10 w-10 text-white" />
+                                    <div className="text-center py-8 space-y-3">
+                                        <div className="h-16 w-16 bg-[#00c985] text-slate-950 rounded-full flex items-center justify-center mx-auto font-black">
+                                            <CheckCircle2 className="h-8 w-8" />
                                         </div>
-                                        <h3 className="text-2xl font-black text-slate-900 dark:text-white mb-2">Request Received</h3>
-                                        <p className="text-slate-500 dark:text-slate-400 font-bold uppercase text-xs tracking-widest leading-loose">A life advisor will contact you shortly.</p>
+                                        <h4 className="text-xl font-black text-white">Quote Request Received!</h4>
+                                        <p className="text-xs text-slate-400">Our insurance advisor will send you custom quotes.</p>
                                     </div>
                                 ) : (
-                                    <form onSubmit={handleSubmit} className="space-y-6">
-                                        <div className="space-y-2">
-                                            <label className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 ml-1">Full Name</label>
+                                    <form onSubmit={handleSubmit} className="space-y-4">
+                                        <div>
+                                            <label className="text-[10px] font-black uppercase text-slate-400">Full Name</label>
                                             <Input
-                                                placeholder="Enter Name"
-                                                className="h-14 bg-slate-50 dark:bg-sky-950/20 border-slate-100 dark:border-primary/10 rounded-2xl font-bold px-6 focus:ring-primary shadow-sm"
+                                                placeholder="Enter full name"
                                                 value={formData.name}
                                                 onChange={e => setFormData({ ...formData, name: e.target.value })}
                                                 required
                                             />
                                         </div>
-                                        <div className="space-y-2">
-                                            <label className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 ml-1">Mobile Access</label>
+                                        <div>
+                                            <label className="text-[10px] font-black uppercase text-slate-400">Mobile Number</label>
                                             <Input
-                                                placeholder="10-digit number"
-                                                className="h-14 bg-slate-50 dark:bg-sky-950/20 border-slate-100 dark:border-primary/10 rounded-2xl font-bold px-6 focus:ring-primary shadow-sm"
+                                                placeholder="10-digit mobile"
                                                 value={formData.mobile}
                                                 onChange={e => setFormData({ ...formData, mobile: e.target.value })}
                                                 required
                                             />
                                         </div>
-                                        <div className="grid grid-cols-2 gap-6">
-                                            <div className="space-y-2">
-                                                <label className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 ml-1">Your Age</label>
+                                        <div className="grid grid-cols-2 gap-4">
+                                            <div>
+                                                <label className="text-[10px] font-black uppercase text-slate-400">Age</label>
                                                 <Input
-                                                    placeholder="25 Yrs"
-                                                    className="h-14 bg-slate-50 dark:bg-sky-950/20 border-slate-100 dark:border-primary/10 rounded-2xl font-bold px-6 focus:ring-primary shadow-sm"
+                                                    placeholder="Age"
                                                     value={formData.age}
                                                     onChange={e => setFormData({ ...formData, age: e.target.value })}
                                                     required
                                                 />
                                             </div>
-                                            <div className="space-y-2">
-                                                <label className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 ml-1">Cover</label>
+                                            <div>
+                                                <label className="text-[10px] font-black uppercase text-slate-400">Desired Cover</label>
                                                 <Input
-                                                    placeholder="e.g. 1 Cr"
-                                                    className="h-14 bg-slate-50 dark:bg-sky-950/20 border-slate-100 dark:border-primary/10 rounded-2xl font-bold px-6 focus:ring-primary shadow-sm"
+                                                    placeholder="₹1 Crore"
                                                     value={formData.coverage}
                                                     onChange={e => setFormData({ ...formData, coverage: e.target.value })}
                                                     required
                                                 />
                                             </div>
                                         </div>
-                                        <Button className="w-full bg-primary hover:bg-sky-600 text-white font-black h-16 text-lg rounded-2xl shadow-2xl shadow-primary/20 mt-4 transition-all hover:scale-[1.02] active:scale-95 uppercase tracking-widest border border-white/10">Calculate Premium</Button>
+                                        <Button className="w-full bg-[#00c985] hover:bg-[#00b074] text-slate-950 font-black h-14 text-sm rounded-full uppercase tracking-wider shadow-xl mt-4">
+                                            Get Free Term Plan Quote
+                                        </Button>
                                     </form>
                                 )}
                             </CardContent>

@@ -7,6 +7,12 @@ import {
     Landmark,
     Shield,
     TrendingUp,
+    Building2,
+    Calculator,
+    ArrowLeftRight,
+    Users,
+    Percent,
+    FileText,
 } from "lucide-react";
 
 export const megaMenuData = {
@@ -17,7 +23,7 @@ export const megaMenuData = {
                 title: "Personal Loan",
                 href: "/loans/personal-loan",
                 icon: Briefcase,
-                rate: "10.50% p.a.",
+                rate: "10.25% p.a.",
                 desc: "Quick funds for personal needs"
             },
             {
@@ -28,25 +34,32 @@ export const megaMenuData = {
                 desc: "Buy or construct your dream home"
             },
             {
+                title: "Loan Against Property",
+                href: "/loans/loan-against-property",
+                icon: Building2,
+                rate: "9.25% p.a.",
+                desc: "High-value loan against property"
+            },
+            {
                 title: "Car Loan",
                 href: "/loans/car-loan",
                 icon: Car,
-                rate: "8.85% p.a.",
+                rate: "8.75% p.a.",
                 desc: "Drive home your new car today"
+            },
+            {
+                title: "Business Loan",
+                href: "/loans/business-loan",
+                icon: Landmark,
+                rate: "13.99% p.a.",
+                desc: "Expand your business horizons"
             },
             {
                 title: "Education Loan",
                 href: "/loans/education-loan",
                 icon: GraduationCap,
                 rate: "9.50% p.a.",
-                desc: "Invest in your future"
-            },
-            {
-                title: "Business Loan",
-                href: "/loans/business-loan",
-                icon: Landmark,
-                rate: "15% p.a.",
-                desc: "Expand your business horizons"
+                desc: "Invest in higher education"
             },
             {
                 title: "Government Schemes",
@@ -54,6 +67,46 @@ export const megaMenuData = {
                 icon: Landmark,
                 rate: "Subsidies & Grants",
                 desc: "PMAY, Mudra & more"
+            },
+        ]
+    },
+    tools: {
+        title: "Compare & Partner",
+        items: [
+            {
+                title: "Compare All Loans",
+                href: "/compare",
+                icon: ArrowLeftRight,
+                rate: "Live Rate Matrix",
+                desc: "Compare 40+ top Indian banks"
+            },
+            {
+                title: "Become a Partner (DSA)",
+                href: "/partner",
+                icon: Users,
+                rate: "Earn 2.5% Payout",
+                desc: "Join channel partner network"
+            },
+            {
+                title: "Payout Structure",
+                href: "/payout-structure",
+                icon: Percent,
+                rate: "Up to 2.5% Commission",
+                desc: "DSA slab payouts & bonuses"
+            },
+            {
+                title: "Required Documents",
+                href: "/documents-required",
+                icon: FileText,
+                rate: "Check Checklist",
+                desc: "KYC, Income & Bank proofs"
+            },
+            {
+                title: "All Calculators",
+                href: "/calculators",
+                icon: Calculator,
+                rate: "Instant EMI Tools",
+                desc: "EMI, HLBT & Tax calculators"
             },
         ]
     },
@@ -116,7 +169,7 @@ export const megaMenuData = {
                 title: "Stocks",
                 href: "/investments/stocks",
                 icon: TrendingUp,
-                rate: "Zero Brokrage",
+                rate: "Zero Brokerage",
                 desc: "Invest in top companies"
             },
         ]
