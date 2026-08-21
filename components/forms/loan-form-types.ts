@@ -12,7 +12,6 @@ export interface LoanCategoryConfig {
     tenureYears: number;
     icon: LucideIcon;
     amountPresets: number[];
-    requiredDocuments: string[];
 }
 
 export const LOAN_CATEGORIES: Record<LoanCategoryType, LoanCategoryConfig> = {
@@ -25,14 +24,7 @@ export const LOAN_CATEGORIES: Record<LoanCategoryType, LoanCategoryConfig> = {
         defaultAmount: 500000,
         tenureYears: 5,
         icon: Coins,
-        amountPresets: [100000, 300000, 500000, 1000000, 2000000],
-        requiredDocuments: [
-            "Aadhaar Card",
-            "PAN Card",
-            "Last 3 months' salary slips",
-            "Last 6 months' bank statements",
-            "Passport-size photo"
-        ]
+        amountPresets: [100000, 300000, 500000, 1000000, 2000000]
     },
     home: {
         id: "home",
@@ -43,15 +35,7 @@ export const LOAN_CATEGORIES: Record<LoanCategoryType, LoanCategoryConfig> = {
         defaultAmount: 4500000,
         tenureYears: 20,
         icon: HomeIcon,
-        amountPresets: [2000000, 3500000, 5000000, 7500000, 15000000],
-        requiredDocuments: [
-            "PAN Card & Aadhaar Card",
-            "Passport-size photos",
-            "Co-applicant KYC",
-            "Last 3 months' salary slips",
-            "Registered Sale Agreement / Allotment Letter",
-            "Approved Building Plan & RERA certificate"
-        ]
+        amountPresets: [2000000, 3500000, 5000000, 7500000, 15000000]
     },
     car: {
         id: "car",
@@ -62,13 +46,7 @@ export const LOAN_CATEGORIES: Record<LoanCategoryType, LoanCategoryConfig> = {
         defaultAmount: 800000,
         tenureYears: 5,
         icon: Car,
-        amountPresets: [400000, 800000, 1200000, 1800000, 2500000],
-        requiredDocuments: [
-            "PAN Card & Aadhaar Card",
-            "Passport-size photo",
-            "Salaried: Last 3 months' salary slips + 6 months' bank statements + Form 16",
-            "Driving Licence"
-        ]
+        amountPresets: [400000, 800000, 1200000, 1800000, 2500000]
     },
     business: {
         id: "business",
@@ -79,17 +57,7 @@ export const LOAN_CATEGORIES: Record<LoanCategoryType, LoanCategoryConfig> = {
         defaultAmount: 2000000,
         tenureYears: 5,
         icon: Briefcase,
-        amountPresets: [500000, 1000000, 2000000, 3500000, 5000000],
-        requiredDocuments: [
-            "PAN Card (Applicant & Business entity)",
-            "Aadhaar Card / Passport / Voter ID",
-            "GST Registration Certificate",
-            "Passport-size photographs",
-            "Last 2–3 years' ITR with computation of income",
-            "Audited Balance Sheet & P&L Statement (certified by CA)",
-            "Last 6 to 12 months' Current Bank Account statements",
-            "Latest GST Returns (GSTR-3B / GSTR-1)"
-        ]
+        amountPresets: [500000, 1000000, 2000000, 3500000, 5000000]
     },
     lap: {
         id: "lap",
@@ -100,15 +68,7 @@ export const LOAN_CATEGORIES: Record<LoanCategoryType, LoanCategoryConfig> = {
         defaultAmount: 6000000,
         tenureYears: 15,
         icon: Building,
-        amountPresets: [2500000, 5000000, 10000000, 20000000, 50000000],
-        requiredDocuments: [
-            "PAN Card (Mandatory)",
-            "Aadhaar Card / Passport / Voter ID",
-            "Last 3 months' salary slips",
-            "Last 6 months' salary bank statements",
-            "GST Certificate (if business / self-employed)",
-            "Passport-size photos"
-        ]
+        amountPresets: [2500000, 5000000, 10000000, 20000000, 50000000]
     },
     education: {
         id: "education",
@@ -119,15 +79,7 @@ export const LOAN_CATEGORIES: Record<LoanCategoryType, LoanCategoryConfig> = {
         defaultAmount: 1500000,
         tenureYears: 10,
         icon: GraduationCap,
-        amountPresets: [500000, 1000000, 2000000, 3500000, 5000000],
-        requiredDocuments: [
-            "PAN Card & Aadhaar Card (KYC)",
-            "10th, 12th, and graduation marksheets / degree",
-            "Last 3 months' salary slips (if salaried)",
-            "Last 6 months' bank statements",
-            "Last 6 months' salary bank statements",
-            "Passport-size photos"
-        ]
+        amountPresets: [500000, 1000000, 2000000, 3500000, 5000000]
     }
 };
 

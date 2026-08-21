@@ -28,6 +28,7 @@ import { BusinessLoanInnerForm, BusinessLoanSpecificFields } from "./business-lo
 import { LAPInnerForm, LAPSpecificFields } from "./lap-loan-form";
 import { EducationLoanInnerForm, EducationLoanSpecificFields } from "./education-loan-form";
 import { LoanDocumentsUploadSection, DocumentUploadState } from "./loan-documents-upload-section";
+import { LOAN_DOCUMENTS_MAP } from "@/config/loan-documents";
 
 export interface Deal4LoansDynamicFormProps {
     initialLoanType?: LoanCategoryType;
@@ -376,10 +377,10 @@ export function Deal4LoansDynamicForm({
                     />
 
                     {/* Step 2 Document Upload Section */}
-                    {activeConfig.requiredDocuments && activeConfig.requiredDocuments.length > 0 && (
+                    {LOAN_DOCUMENTS_MAP[selectedType] && LOAN_DOCUMENTS_MAP[selectedType].length > 0 && (
                         <LoanDocumentsUploadSection
                             loanName={activeConfig.name}
-                            documents={activeConfig.requiredDocuments}
+                            documents={LOAN_DOCUMENTS_MAP[selectedType]}
                             uploadedDocs={uploadedDocuments}
                             onDocumentChange={setUploadedDocuments}
                         />
