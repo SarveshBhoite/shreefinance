@@ -27,6 +27,7 @@ import { CarLoanInnerForm, CarLoanSpecificFields } from "./car-loan-form";
 import { BusinessLoanInnerForm, BusinessLoanSpecificFields } from "./business-loan-form";
 import { LAPInnerForm, LAPSpecificFields } from "./lap-loan-form";
 import { EducationLoanInnerForm, EducationLoanSpecificFields } from "./education-loan-form";
+import { LoanDocumentsUploadSection, DocumentUploadState } from "./loan-documents-upload-section";
 
 export interface Deal4LoansDynamicFormProps {
     initialLoanType?: LoanCategoryType;
@@ -48,6 +49,7 @@ export function Deal4LoansDynamicForm({
     const [selectedType, setSelectedType] = useState<LoanCategoryType>(initialLoanType);
     const [step, setStep] = useState<1 | 2 | 3>(1);
     const [formError, setFormError] = useState("");
+    const [uploadedDocuments, setUploadedDocuments] = useState<DocumentUploadState>({});
 
     const activeConfig = LOAN_CATEGORIES[selectedType] || LOAN_CATEGORIES.personal;
 
@@ -217,6 +219,10 @@ export function Deal4LoansDynamicForm({
             currentLoanAmount = educationSpecific.loanAmount;
         }
 
+        const uploadedDocsSummary = Object.entries(uploadedDocuments)
+            .map(([docName, info]) => `${docName}: ${info.fileName} (${info.fileSize})`)
+            .join(" | ");
+
         const payload = {
             type: `${activeConfig.name} Application (Deal4Loans Standard)`,
             applicationHeader: "Shree Finance Direct Bank Facility Application",
@@ -226,6 +232,7 @@ export function Deal4LoansDynamicForm({
             applicantName: `${personalDetails.firstName} ${personalDetails.lastName}`.trim(),
             ...loanSpecificData,
             ...personalDetails,
+            uploadedDocuments: uploadedDocsSummary || "No documents uploaded during online step (To be collected by Underwriter)",
             source: `Shree Finance Unified Hub (${activeConfig.name})`
         };
 
@@ -367,6 +374,16 @@ export function Deal4LoansDynamicForm({
                         data={personalDetails}
                         onChange={(fields) => setPersonalDetails((prev) => ({ ...prev, ...fields }))}
                     />
+
+                    {/* Step 2 Document Upload Section */}
+                    {activeConfig.requiredDocuments && activeConfig.requiredDocuments.length > 0 && (
+                        <LoanDocumentsUploadSection
+                            loanName={activeConfig.name}
+                            documents={activeConfig.requiredDocuments}
+                            uploadedDocs={uploadedDocuments}
+                            onDocumentChange={setUploadedDocuments}
+                        />
+                    )}
 
                     {formError && (
                         <div className="p-3 bg-rose-50 border border-rose-200 text-rose-700 rounded-xl text-xs font-bold text-center">
