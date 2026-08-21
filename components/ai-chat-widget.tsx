@@ -79,7 +79,7 @@ export function AIChatWidget() {
 
     return (
         <>
-            {/* Floating Trigger Button */}
+            {/* Floating Trigger Button: Icon only, compact, glowing */}
             <div className="fixed bottom-6 right-6 z-50">
                 <AnimatePresence>
                     {!isOpen && (
@@ -87,29 +87,31 @@ export function AIChatWidget() {
                             initial={{ scale: 0, opacity: 0 }}
                             animate={{ scale: 1, opacity: 1 }}
                             exit={{ scale: 0, opacity: 0 }}
+                            whileHover={{ scale: 1.1 }}
+                            whileTap={{ scale: 0.92 }}
                             onClick={() => setIsOpen(true)}
-                            className="group relative flex items-center gap-3 bg-gradient-to-r from-primary to-sky-600 text-white font-extrabold p-4 rounded-full shadow-2xl hover:scale-105 active:scale-95 transition-all duration-300 ring-4 ring-primary/20"
+                            title="Chat with Shree AI Finance Advisor"
+                            className="group relative flex items-center justify-center h-12 w-12 rounded-full bg-gradient-to-r from-[#00c985] to-teal-500 text-slate-950 shadow-2xl transition-all duration-300 ring-4 ring-emerald-500/25 cursor-pointer"
                         >
-                            <div className="relative">
-                                <Bot className="h-7 w-7 text-white" />
-                                <span className="absolute -top-1 -right-1 flex h-3 w-3">
-                                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-                                    <span className="relative inline-flex rounded-full h-3 w-3 bg-emerald-400"></span>
+                            <div className="relative flex items-center justify-center">
+                                <Bot className="h-6 w-6 text-slate-950 group-hover:rotate-12 transition-transform duration-300" />
+                                <span className="absolute -top-1 -right-1 flex h-2.5 w-2.5">
+                                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-300 opacity-80" />
+                                    <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-400" />
                                 </span>
                             </div>
-                            <span className="hidden sm:inline text-sm uppercase tracking-wider pr-2">AI Finance Advisor</span>
                         </motion.button>
                     )}
                 </AnimatePresence>
 
-                {/* Expanded Chat Box */}
+                {/* Expanded Full-Size Chat Box */}
                 <AnimatePresence>
                     {isOpen && (
                         <motion.div
-                            initial={{ opacity: 0, y: 50, scale: 0.9 }}
+                            initial={{ opacity: 0, y: 30, scale: 0.92 }}
                             animate={{ opacity: 1, y: 0, scale: 1 }}
-                            exit={{ opacity: 0, y: 50, scale: 0.9 }}
-                            className="w-[90vw] sm:w-[380px] h-[520px] bg-slate-900/95 border border-sky-800/60 backdrop-blur-2xl rounded-3xl shadow-2xl flex flex-col overflow-hidden text-white font-sans"
+                            exit={{ opacity: 0, y: 30, scale: 0.92 }}
+                            className="w-[92vw] sm:w-[400px] h-[540px] max-h-[85vh] bg-[#181a1d] border border-slate-700/80 backdrop-blur-2xl rounded-3xl shadow-2xl flex flex-col overflow-hidden text-white font-sans"
                         >
                             {/* Chat Header */}
                             <div className="bg-gradient-to-r from-primary to-sky-700 p-4 flex items-center justify-between shadow-md">
