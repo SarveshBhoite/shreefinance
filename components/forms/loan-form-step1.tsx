@@ -2,7 +2,6 @@
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Step1BasicInfo, LoanCategoryConfig, formatIndianCurrencyWords } from "./loan-form-types";
-import { FileCheck, Sparkles } from "lucide-react";
 
 interface Step1Props {
     config: LoanCategoryConfig;
@@ -29,24 +28,6 @@ export function LoanFormStep1({ config, data, onChange, onProceed, error }: Step
                         {config.rate} starting APR
                     </span>
                 </div>
-
-                {/* Required Documents Callout Box */}
-                {config.requiredDocuments && config.requiredDocuments.length > 0 && (
-                    <div className="p-4 rounded-xl bg-slate-50 border border-slate-200/80 space-y-2">
-                        <div className="flex items-center gap-1.5 text-xs font-black text-slate-800 uppercase tracking-wide">
-                            <FileCheck className="h-4 w-4 text-[#00c985]" />
-                            <span>Documents Required for {config.name}:</span>
-                        </div>
-                        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2 pt-1">
-                            {config.requiredDocuments.map((doc, idx) => (
-                                <div key={idx} className="flex items-start gap-2 text-xs font-semibold text-slate-700 bg-white p-2 rounded-lg border border-slate-200 shadow-2xs">
-                                    <span className="h-1.5 w-1.5 rounded-full bg-[#00c985] shrink-0 mt-1.5" />
-                                    <span className="leading-snug">{doc}</span>
-                                </div>
-                            ))}
-                        </div>
-                    </div>
-                )}
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5">
                     {/* Loan Amount */}
