@@ -16,6 +16,15 @@ export interface LoanSlideData {
 
 export const LOAN_SLIDER_ITEMS: LoanSlideData[] = [
     {
+        id: "credit-card",
+        category: "Credit Card",
+        rate: "Lifetime Free",
+        image: "/banners/urban-credit-card.jpg",
+        alt: "Need a Credit Card That Truly Fits Your Life? Don't Just Get a Card, Get the Right Card",
+        defaultAmount: 200000,
+        tenure: "Instant"
+    },
+    {
         id: "vehicle-loan",
         category: "Vehicle Loan",
         rate: "8.75%",
@@ -78,10 +87,10 @@ export function HeroLoanCarousel({ onSelectLoan }: HeroLoanCarouselProps) {
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
         >
-            {/* 1. Main Unified Banner Card (Single Seamless Graphic - Zero Image Seams) */}
+            {/* 1. Main Unified Banner Card (Light Green Theme) */}
             <div 
                 onClick={() => onSelectLoan(currentSlide)}
-                className="relative w-full aspect-[16/9] rounded-[1.5rem] sm:rounded-[1.75rem] md:rounded-[2rem] overflow-hidden shadow-2xl bg-[#ffcd00] cursor-pointer group transition-all duration-300 hover:scale-[1.01] hover:shadow-[#ffcd00]/20"
+                className="relative w-full aspect-[16/9] rounded-[1.5rem] sm:rounded-[1.75rem] md:rounded-[2rem] overflow-hidden shadow-2xl bg-[#a7f3d0] cursor-pointer group transition-all duration-300 hover:scale-[1.01] hover:shadow-emerald-400/25"
             >
                 <AnimatePresence mode="wait">
                     <motion.div

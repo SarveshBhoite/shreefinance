@@ -149,6 +149,75 @@ export async function POST(req: Request) {
             const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://shreefinance.vercel.app";
             const applyLink = `${baseUrl}/apply#application-form`;
 
+            // Document checklists per loan category
+            const documentsByLoanType: Record<string, string[]> = {
+                "personal": [
+                    "Aadhaar Card",
+                    "PAN Card",
+                    "Last 3 months' salary slips",
+                    "Last 6 months' bank statements",
+                    "Passport-size photo"
+                ],
+                "home": [
+                    "PAN Card & Aadhaar Card",
+                    "Passport-size photos",
+                    "Co-applicant KYC",
+                    "Last 3 months' salary slips",
+                    "Registered Sale Agreement / Allotment Letter",
+                    "Approved Building Plan & RERA certificate"
+                ],
+                "business": [
+                    "PAN Card (Applicant & Business entity)",
+                    "Aadhaar Card / Passport / Voter ID",
+                    "GST Registration Certificate",
+                    "Passport-size photographs",
+                    "Last 2–3 years' ITR with computation of income",
+                    "Audited Balance Sheet & P&L Statement (certified by CA)",
+                    "Last 6 to 12 months' Current Bank Account statements",
+                    "Latest GST Returns (GSTR-3B / GSTR-1)"
+                ],
+                "education": [
+                    "PAN Card & Aadhaar Card (KYC)",
+                    "10th, 12th, and graduation marksheets / degree",
+                    "Last 3 months' salary slips (if salaried)",
+                    "Last 6 months' bank statements",
+                    "Last 6 months' salary bank statements",
+                    "Passport-size photos"
+                ],
+                "car": [
+                    "PAN Card & Aadhaar Card",
+                    "Passport-size photo",
+                    "Salaried: Last 3 months' salary slips + 6 months' bank statements + Form 16",
+                    "Driving Licence"
+                ],
+                "lap": [
+                    "PAN Card (Mandatory)",
+                    "Aadhaar Card / Passport / Voter ID",
+                    "Last 3 months' salary slips",
+                    "Last 6 months' salary bank statements",
+                    "GST Certificate (if business / self-employed)",
+                    "Passport-size photos"
+                ]
+            };
+
+            const lowerTitle = (formTitle + " " + (data.loanType || "") + " " + (data.loanCategory || "")).toLowerCase();
+            let matchedDocsKey = "personal";
+            if (lowerTitle.includes("home") || lowerTitle.includes("housing")) matchedDocsKey = "home";
+            else if (lowerTitle.includes("business") || lowerTitle.includes("mudra") || lowerTitle.includes("commercial")) matchedDocsKey = "business";
+            else if (lowerTitle.includes("education") || lowerTitle.includes("study") || lowerTitle.includes("student")) matchedDocsKey = "education";
+            else if (lowerTitle.includes("car") || lowerTitle.includes("vehicle") || lowerTitle.includes("auto")) matchedDocsKey = "car";
+            else if (lowerTitle.includes("property") || lowerTitle.includes("lap") || lowerTitle.includes("against")) matchedDocsKey = "lap";
+            else matchedDocsKey = "personal";
+
+            const docsList = documentsByLoanType[matchedDocsKey] || documentsByLoanType["personal"];
+
+            const docsHtmlRows = docsList.map(doc => `
+                <tr style="border-bottom: 1px solid #e2e8f0;">
+                    <td style="padding: 8px 12px; color: #00c985; font-size: 14px; width: 24px; vertical-align: top;">✔</td>
+                    <td style="padding: 8px 12px 8px 0; color: #1e293b; font-size: 13px; font-weight: 700; line-height: 1.4;">${doc}</td>
+                </tr>
+            `).join("");
+
             const customerHtmlTemplate = `
             <div style="font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, Helvetica, Arial, sans-serif; max-width: 620px; margin: 0 auto; border: 1px solid #cbd5e1; border-radius: 16px; overflow: hidden; background-color: #ffffff; box-shadow: 0 10px 30px rgba(0,0,0,0.06);">
                 <!-- BRAND HEADER -->
@@ -177,24 +246,37 @@ export async function POST(req: Request) {
                         Congratulations ${applicantName}!
                     </h2>
                     <p style="color: #166534; font-size: 16px; font-weight: 800; margin: 0 0 10px 0;">
-                        You are Eligible for the ${formTitle}
+                        Compare ${formTitle} Offers from Top Banks & Get e-Approved & Your Free CIBIL Score Instantly
                     </p>
                     <p style="color: #475569; font-size: 13px; margin: 0; line-height: 1.6; max-width: 500px; margin: 0 auto;">
-                        Based on your submitted basic profile and city parameters, top partner banks are ready to offer you instant sanctions at lowest interest rates.
+                        Based on your submitted preliminary profile and city parameters, 40+ partner banks (SBI, HDFC, ICICI, Axis, YES Bank) are ready with instant sanction terms at lowest interest rates.
                     </p>
                 </div>
 
                 <!-- DIRECT ACTION CTA BUTTON -->
                 <div style="padding: 24px 30px; background-color: #ffffff; text-align: center; border-bottom: 1px solid #f1f5f9;">
                     <p style="font-size: 14px; font-weight: 700; color: #0f172a; margin: 0 0 14px 0;">
-                        Click below to complete your final application & lock in lowest bank quotes:
+                        Click below to apply for loan and compare live bank offers:
                     </p>
                     <a href="${applyLink}" style="display: inline-block; background-color: #00c985; color: #022c22; font-size: 15px; font-weight: 900; text-decoration: none; padding: 14px 32px; border-radius: 30px; text-transform: uppercase; letter-spacing: 0.5px; box-shadow: 0 4px 15px rgba(0,201,133,0.35);">
                         👉 Apply For Loan Online (Click Here)
                     </a>
                     <p style="color: #94a3b8; font-size: 11px; margin: 10px 0 0 0; font-weight: 600;">
-                        Secure 256-bit Encrypted Portal • Zero Processing Fee Concessions
+                        Compare Top Bank Quotes • Instant Pre-Sanction • Free CIBIL Check
                     </p>
+                </div>
+
+                <!-- REQUIRED DOCUMENTS POINT SECTION -->
+                <div style="padding: 24px 30px; background-color: #f8fafc; border-bottom: 1px solid #e2e8f0;">
+                    <h3 style="color: #0f172a; font-size: 14px; text-transform: uppercase; letter-spacing: 0.5px; margin: 0 0 12px 0; padding-bottom: 6px; border-bottom: 2px solid #00c985; display: flex; align-items: center; gap: 6px;">
+                        📁 Documents Required for ${formTitle}
+                    </h3>
+                    <p style="color: #64748b; font-size: 12px; margin: 0 0 12px 0; font-weight: 600;">
+                        Please keep the following documents ready for fast 30-minute digital verification:
+                    </p>
+                    <table width="100%" border="0" cellspacing="0" cellpadding="0" style="background-color: #ffffff; border: 1px solid #cbd5e1; border-radius: 10px; overflow: hidden;">
+                        ${docsHtmlRows}
+                    </table>
                 </div>
 
                 <!-- SUBMITTED DETAILS SUMMARY -->

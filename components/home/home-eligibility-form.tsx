@@ -35,22 +35,22 @@ export function HomeEligibilityForm({ className = "", defaultLoanType = "Persona
     };
 
     return (
-        <div className={`w-full max-w-4xl mx-auto bg-[#181a1d] text-white rounded-3xl border border-slate-800 shadow-2xl p-6 sm:p-10 font-sans relative overflow-hidden ${className}`}>
+        <div className={`w-full max-w-4xl mx-auto bg-white dark:bg-[#181a1d] text-slate-900 dark:text-white rounded-3xl border border-slate-200 dark:border-slate-800 shadow-xl p-6 sm:p-10 font-sans relative overflow-hidden transition-colors duration-300 ${className}`}>
             {/* Ambient Background Accents */}
             <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-[#00c985]/10 rounded-full blur-[100px] pointer-events-none" />
-            <div className="absolute bottom-0 left-0 w-[350px] h-[350px] bg-emerald-500/10 rounded-full blur-[90px] pointer-events-none" />
+            <div className="absolute bottom-0 left-0 w-[350px] h-[350px] bg-emerald-500/5 rounded-full blur-[90px] pointer-events-none" />
 
             {/* Header */}
-            <div className="border-b border-slate-800 pb-6 mb-8 relative z-10">
+            <div className="border-b border-slate-100 dark:border-slate-800 pb-6 mb-8 relative z-10">
                 <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-3">
                     <div>
-                        <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-500/15 text-[#00e699] text-xs font-black uppercase tracking-wider mb-2 border border-emerald-500/30">
+                        <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-50 dark:bg-emerald-500/15 text-[#00a86b] dark:text-[#00e699] text-xs font-black uppercase tracking-wider mb-2 border border-emerald-200 dark:border-emerald-500/30">
                             <Sparkles className="h-3.5 w-3.5" /> Direct Bank Facility Pre-Approval
                         </div>
-                        <h2 className="text-2xl sm:text-3xl font-black text-white tracking-tight">
+                        <h2 className="text-2xl sm:text-3xl font-black text-slate-900 dark:text-white tracking-tight">
                             Check Your Loan Eligibility & Live Bank Offers
                         </h2>
-                        <p className="text-xs sm:text-sm text-slate-400 font-medium mt-1">
+                        <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400 font-medium mt-1">
                             Fill your basic details below. We instantly check 40+ partner banks and email your pre-approved eligibility with the direct application link!
                         </p>
                     </div>
@@ -130,14 +130,14 @@ export function HomeEligibilityForm({ className = "", defaultLoanType = "Persona
                     <form onSubmit={handleSubmit} className="space-y-6">
                         {/* Loan Category Dropdown */}
                         <div className="space-y-2">
-                            <label className="text-xs font-bold uppercase tracking-wider text-slate-400">
+                            <label className="text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300">
                                 Select Loan Facility <span className="text-rose-500">*</span>
                             </label>
                             <select
                                 value={formData.loanType}
                                 onChange={(e) => setFormData({ ...formData, loanType: e.target.value })}
                                 required
-                                className="w-full h-12 rounded-xl border border-slate-700 bg-slate-950 text-white px-4 font-bold text-xs focus:ring-2 focus:ring-[#00c985] focus:outline-none"
+                                className="w-full h-12 rounded-xl border border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-[#121417] text-slate-900 dark:text-white px-4 font-bold text-xs focus:ring-2 focus:ring-[#00c985] focus:outline-none focus:border-emerald-500"
                             >
                                 <option value="Personal Loan">💼 Personal Loan (Instant Disbursal from 10.25% p.a.)</option>
                                 <option value="Home Loan">🏠 Home Loan (Housing Finance from 8.35% p.a.)</option>
@@ -151,7 +151,7 @@ export function HomeEligibilityForm({ className = "", defaultLoanType = "Persona
                         {/* 4 Core Input Fields */}
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                             <div className="space-y-2">
-                                <label className="text-xs font-bold uppercase tracking-wider text-slate-400">
+                                <label className="text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300">
                                     Full Name <span className="text-rose-500">*</span>
                                 </label>
                                 <Input
@@ -159,50 +159,52 @@ export function HomeEligibilityForm({ className = "", defaultLoanType = "Persona
                                     placeholder="Enter your name as per Aadhaar / PAN"
                                     value={formData.name}
                                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                                    className="bg-slate-950 border-slate-700 text-white font-bold h-12 text-xs rounded-xl"
+                                    className="bg-slate-50 dark:bg-[#121417] border-slate-300 dark:border-slate-700 text-slate-900 dark:text-white h-12 rounded-xl text-xs font-medium focus:bg-white dark:focus:bg-[#15171a] focus:border-emerald-500"
                                 />
                             </div>
 
                             <div className="space-y-2">
-                                <label className="text-xs font-bold uppercase tracking-wider text-slate-400">
+                                <label className="text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300">
                                     Mobile Number <span className="text-rose-500">*</span>
                                 </label>
-                                <Input
-                                    required
-                                    type="tel"
-                                    placeholder="10-digit mobile number"
-                                    pattern="[0-9]{10}"
-                                    maxLength={10}
-                                    value={formData.mobile}
-                                    onChange={(e) => setFormData({ ...formData, mobile: e.target.value.replace(/\D/g, "").slice(0, 10) })}
-                                    className="bg-slate-950 border-slate-700 text-white font-bold h-12 text-xs rounded-xl"
-                                />
+                                <div className="relative">
+                                    <span className="absolute left-3.5 top-3 text-xs font-bold text-slate-500 dark:text-slate-400">+91</span>
+                                    <Input
+                                        required
+                                        type="tel"
+                                        maxLength={10}
+                                        placeholder="10-digit number"
+                                        value={formData.mobile}
+                                        onChange={(e) => setFormData({ ...formData, mobile: e.target.value.replace(/\D/g, "") })}
+                                        className="pl-12 bg-slate-50 dark:bg-[#121417] border-slate-300 dark:border-slate-700 text-slate-900 dark:text-white h-12 rounded-xl text-xs font-medium focus:bg-white dark:focus:bg-[#15171a] focus:border-emerald-500"
+                                    />
+                                </div>
                             </div>
 
                             <div className="space-y-2">
-                                <label className="text-xs font-bold uppercase tracking-wider text-slate-400">
-                                    E-Mail ID (For Receiving Eligibility Link) <span className="text-rose-500">*</span>
+                                <label className="text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300">
+                                    Email Address (For Instant Pre-Approval Link) <span className="text-rose-500">*</span>
                                 </label>
                                 <Input
                                     required
                                     type="email"
-                                    placeholder="name@example.com"
+                                    placeholder="yourname@gmail.com"
                                     value={formData.email}
                                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                                    className="bg-slate-950 border-slate-700 text-white font-bold h-12 text-xs rounded-xl"
+                                    className="bg-slate-50 dark:bg-[#121417] border-slate-300 dark:border-slate-700 text-slate-900 dark:text-white h-12 rounded-xl text-xs font-medium focus:bg-white dark:focus:bg-[#15171a] focus:border-emerald-500"
                                 />
                             </div>
 
                             <div className="space-y-2">
-                                <label className="text-xs font-bold uppercase tracking-wider text-slate-400">
-                                    City / Residence Location <span className="text-rose-500">*</span>
+                                <label className="text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300">
+                                    City / Location <span className="text-rose-500">*</span>
                                 </label>
                                 <Input
                                     required
-                                    placeholder="e.g. Pune, Mumbai, Nagpur, Thane"
+                                    placeholder="e.g. Pune, Mumbai, Delhi, Bengaluru"
                                     value={formData.city}
                                     onChange={(e) => setFormData({ ...formData, city: e.target.value })}
-                                    className="bg-slate-950 border-slate-700 text-white font-bold h-12 text-xs rounded-xl"
+                                    className="bg-slate-50 dark:bg-[#121417] border-slate-300 dark:border-slate-700 text-slate-900 dark:text-white h-12 rounded-xl text-xs font-medium focus:bg-white dark:focus:bg-[#15171a] focus:border-emerald-500"
                                 />
                             </div>
                         </div>

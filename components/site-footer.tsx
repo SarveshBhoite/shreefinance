@@ -4,9 +4,9 @@ import { Facebook, Twitter, Instagram, Linkedin, Mail, Phone, MapPin, ChevronRig
 
 export function SiteFooter() {
     return (
-        <footer className="relative bg-[#141618] text-slate-300 border-t border-slate-800 pt-20 pb-12 font-sans overflow-hidden">
-            {/* Top Emerald/Lime Gradient Accent Line */}
-            <div className="absolute top-0 inset-x-0 h-1.5 bg-gradient-to-r from-lime-400 via-[#00e699] to-teal-400 shadow-[0_4px_20px_rgba(0,230,153,0.4)]"></div>
+        <footer className="relative bg-white dark:bg-[#141618] text-slate-700 dark:text-slate-300 border-t border-slate-200 dark:border-slate-800 pt-16 pb-10 font-sans overflow-hidden transition-colors duration-300">
+            {/* Top Emerald Gradient Accent Line */}
+            <div className="absolute top-0 inset-x-0 h-1.5 bg-gradient-to-r from-emerald-400 via-[#00e699] to-teal-500 shadow-[0_2px_12px_rgba(0,230,153,0.3)]"></div>
             
             {/* Background Ambient Glow */}
             <div className="absolute inset-0 pointer-events-none opacity-5">
@@ -14,41 +14,43 @@ export function SiteFooter() {
                 <div className="absolute -top-48 -right-48 w-[500px] h-[500px] bg-emerald-400 rounded-full blur-[100px]"></div>
             </div>
 
-            <div className="container relative z-10 mx-auto px-8">
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-16 lg:gap-12">
-                    <div className="space-y-8">
-                        <div className="space-y-6">
+            <div className="container relative z-10 mx-auto px-6 md:px-8">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-10">
+                    <div className="space-y-6">
+                        <div className="space-y-4">
                             <Link href="/" className="inline-block transition-transform hover:scale-105">
                                 <Image
                                     src="/shreelogobg.png"
                                     alt="ShreeFinance Logo"
                                     width={450}
                                     height={140}
-                                    className="h-20 md:h-24 max-h-24 w-auto object-contain brightness-0 invert opacity-100 scale-110 origin-left"
+                                    className="h-16 md:h-20 max-h-20 w-auto object-contain dark:brightness-0 dark:invert scale-105 origin-left"
                                 />
                             </Link>
-                            <div className="inline-flex items-center gap-2 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-4 py-1.5 text-xs font-black text-[#00e699] tracking-widest uppercase">
-                                <Zap className="h-3.5 w-3.5 fill-[#00e699]" />
-                                Elite Financial Partner
+                            <div>
+                                <div className="inline-flex items-center gap-2 rounded-full border border-emerald-500/30 bg-emerald-50 dark:bg-emerald-500/10 px-3.5 py-1 text-xs font-black text-emerald-700 dark:text-[#00e699] tracking-widest uppercase">
+                                    <Zap className="h-3.5 w-3.5 fill-emerald-600 dark:fill-[#00e699] text-emerald-600 dark:text-[#00e699]" />
+                                    Elite Financial Partner
+                                </div>
                             </div>
                         </div>
-                        <p className="text-base text-slate-400 font-medium leading-[1.8]">
+                        <p className="text-sm text-slate-600 dark:text-slate-400 font-medium leading-[1.7]">
                             Leading the digital revolution in finance with transparent, hyper-secure, and instant solutions for every Indian.
                         </p>
-                        <div className="flex gap-5 pt-4">
+                        <div className="flex gap-3 pt-2">
                             {[Facebook, Twitter, Instagram, Linkedin].map((Icon, i) => (
-                                <Link key={i} href="#" className="h-12 w-12 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-slate-400 hover:bg-[#00c985] hover:text-slate-950 hover:-translate-y-2 hover:shadow-2xl hover:shadow-[#00c985]/30 transition-all duration-300 ring-1 ring-white/5">
-                                    <Icon className="h-5 w-5" />
+                                <Link key={i} href="#" className="h-10 w-10 rounded-xl bg-slate-100 dark:bg-white/5 border border-slate-200 dark:border-white/10 flex items-center justify-center text-slate-600 dark:text-slate-400 hover:bg-[#00c985] hover:text-slate-950 hover:-translate-y-1 hover:shadow-lg transition-all duration-200">
+                                    <Icon className="h-4 w-4" />
                                 </Link>
                             ))}
                         </div>
                     </div>
 
                     <div>
-                        <h4 className="font-black text-white text-xl mb-10 tracking-tight flex items-center gap-2">
+                        <h4 className="font-black text-slate-900 dark:text-white text-lg mb-6 tracking-tight flex items-center gap-2">
                              Loan Products
                         </h4>
-                        <ul className="space-y-5">
+                        <ul className="space-y-4">
                             {[
                                 { name: "Personal Loan", href: "/loans/personal-loan" },
                                 { name: "Home Loan", href: "/loans/home-loan" },
@@ -59,8 +61,8 @@ export function SiteFooter() {
                                 { name: "Education Loan", href: "/loans/education-loan" },
                             ].map((item, i) => (
                                 <li key={i}>
-                                    <Link href={item.href} className="text-slate-400 hover:text-[#00e699] font-bold text-base flex items-center group transition-colors">
-                                        <ChevronRight className="h-4 w-4 mr-3 text-[#00c985] opacity-0 group-hover:opacity-100 -translate-x-4 group-hover:translate-x-0 transition-all" />
+                                    <Link href={item.href} className="text-slate-600 font-semibold hover:text-[#00a86b] hover:translate-x-1.5 transition-all inline-flex items-center gap-2 group text-sm">
+                                        <div className="h-1.5 w-1.5 rounded-full bg-emerald-400 group-hover:w-3 transition-all" />
                                         {item.name}
                                     </Link>
                                 </li>
@@ -69,21 +71,22 @@ export function SiteFooter() {
                     </div>
 
                     <div>
-                        <h4 className="font-black text-white text-xl mb-10 tracking-tight flex items-center gap-2">
-                            Other Services
+                        <h4 className="font-black text-slate-900 text-lg mb-6 tracking-tight flex items-center gap-2">
+                            Quick Links
                         </h4>
-                        <ul className="space-y-5">
+                        <ul className="space-y-4">
                             {[
-                                { name: "Credit Cards", href: "/cards/credit-cards" },
-                                { name: "Health Insurance", href: "/insurance/health" },
-                                { name: "Life Insurance", href: "/insurance/life" },
-                                { name: "Mutual Funds", href: "/investments/mutual-funds" },
-                                { name: "Stock Market", href: "/investments/stocks" },
-                                { name: "Vehicle Insurance", href: "/insurance/vehicle" },
+                                { name: "Check Loan Eligibility", href: "/apply" },
+                                { name: "EMI & Loan Calculators", href: "/calculators" },
+                                { name: "Compare Loan Deals", href: "/compare" },
+                                { name: "Track Application Status", href: "/track-status" },
+                                { name: "DSA Partner Program", href: "/partner" },
+                                { name: "Documents Required", href: "/documents-required" },
+                                { name: "Rewards & Cashback", href: "/rewards-and-offers" },
                             ].map((item, i) => (
                                 <li key={i}>
-                                    <Link href={item.href} className="text-slate-400 hover:text-[#00e699] font-bold text-base flex items-center group transition-colors">
-                                        <ChevronRight className="h-4 w-4 mr-3 text-[#00c985] opacity-0 group-hover:opacity-100 -translate-x-4 group-hover:translate-x-0 transition-all" />
+                                    <Link href={item.href} className="text-slate-600 font-semibold hover:text-[#00a86b] hover:translate-x-1.5 transition-all inline-flex items-center gap-2 group text-sm">
+                                        <div className="h-1.5 w-1.5 rounded-full bg-emerald-400 group-hover:w-3 transition-all" />
                                         {item.name}
                                     </Link>
                                 </li>
@@ -92,21 +95,21 @@ export function SiteFooter() {
                     </div>
 
                     <div>
-                        <h4 className="font-black text-white text-xl mb-10 tracking-tight flex items-center gap-2">
-                            Support Headquarters
+                        <h4 className="font-black text-slate-900 text-lg mb-6 tracking-tight flex items-center gap-2">
+                            Contact Us & Support
                         </h4>
-                        <ul className="space-y-6">
+                        <ul className="space-y-4">
                             <li>
                                 <a
                                     href="https://maps.google.com/?q=Office+No.+D/201,+Siddhivinayak+Angan+Society,+Behind+Shree+Ji+Pure+Veg,+Near+Navale+Bridge,+Narhe,+Pune+-+411041"
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="flex items-start gap-6 p-6 rounded-3xl bg-[#24272c] border border-slate-800 shadow-2xl hover:border-[#00c985] transition-all group cursor-pointer"
+                                    className="flex items-start gap-4 p-4 rounded-2xl bg-slate-50 border border-slate-200 shadow-sm hover:border-[#00c985] transition-all group cursor-pointer"
                                 >
-                                    <div className="h-12 w-12 rounded-2xl bg-[#00c985]/15 border border-[#00c985]/30 flex items-center justify-center shrink-0 text-[#00c985] group-hover:bg-[#00c985] group-hover:text-slate-950 transition-colors">
-                                        <MapPin className="h-6 w-6" />
+                                    <div className="h-10 w-10 rounded-xl bg-emerald-50 border border-emerald-200 flex items-center justify-center shrink-0 text-[#00a86b] group-hover:bg-[#00c985] group-hover:text-slate-950 transition-colors">
+                                        <MapPin className="h-5 w-5" />
                                     </div>
-                                    <span className="text-slate-300 font-bold leading-relaxed text-sm group-hover:text-white transition-colors">
+                                    <span className="text-slate-600 font-semibold leading-relaxed text-xs group-hover:text-slate-900 transition-colors">
                                         Office No. D/201, Siddhivinayak Angan Society,<br /> 
                                         Behind Shree Ji Pure Veg, Near Navale Bridge,<br />
                                         Narhe, Pune - 411 041
@@ -116,12 +119,12 @@ export function SiteFooter() {
                             <li>
                                 <a
                                     href="tel:+917709936965"
-                                    className="flex items-center gap-6 group hover:opacity-90 transition-all cursor-pointer"
+                                    className="flex items-center gap-4 group hover:opacity-90 transition-all cursor-pointer p-3 rounded-2xl bg-slate-50 border border-slate-200"
                                 >
-                                    <div className="h-10 w-10 rounded-xl bg-amber-400/10 border border-amber-400/20 flex items-center justify-center shrink-0 group-hover:bg-amber-400 group-hover:text-slate-950 transition-all">
-                                        <Phone className="h-5 w-5 text-amber-400 group-hover:text-slate-950" />
+                                    <div className="h-9 w-9 rounded-xl bg-emerald-50 border border-emerald-200 flex items-center justify-center shrink-0 text-[#00a86b] group-hover:bg-[#00c985] group-hover:text-slate-950 transition-all">
+                                        <Phone className="h-4 w-4" />
                                     </div>
-                                    <span className="text-white font-black text-lg group-hover:text-[#00e699] transition-colors">+91 77099 36965</span>
+                                    <span className="text-slate-900 font-black text-base group-hover:text-[#00a86b] transition-colors">+91 77099 36965</span>
                                 </a>
                             </li>
                             <li>
@@ -129,27 +132,24 @@ export function SiteFooter() {
                                     href="https://mail.google.com/mail/?view=cm&fs=1&to=care@shreefinance.com"
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="flex items-center gap-6 group hover:opacity-90 transition-all cursor-pointer"
+                                    className="flex items-center gap-4 group hover:opacity-90 transition-all cursor-pointer p-3 rounded-2xl bg-slate-50 border border-slate-200"
                                 >
-                                    <div className="h-10 w-10 rounded-xl bg-[#00c985]/10 border border-[#00c985]/20 flex items-center justify-center shrink-0 group-hover:bg-[#00c985] group-hover:text-slate-950 transition-all">
-                                        <Mail className="h-5 w-5 text-[#00c985] group-hover:text-slate-950" />
+                                    <div className="h-9 w-9 rounded-xl bg-emerald-50 border border-emerald-200 flex items-center justify-center shrink-0 text-[#00a86b] group-hover:bg-[#00c985] group-hover:text-slate-950 transition-all">
+                                        <Mail className="h-4 w-4" />
                                     </div>
-                                    <span className="text-white font-black text-lg group-hover:text-[#00e699] transition-colors">care@shreefinance.com</span>
+                                    <span className="text-slate-700 font-bold text-xs group-hover:text-[#00a86b] transition-colors">care@shreefinance.com</span>
                                 </a>
                             </li>
                         </ul>
                     </div>
                 </div>
 
-                <div className="mt-20 pt-10 border-t border-slate-800 flex flex-col lg:row justify-between items-center gap-8 text-sm text-slate-500 font-bold">
-                    <p className="text-center lg:text-left">
-                        © {new Date().getFullYear()} ShreeFinance Corporation. RBI Registered Financial Platform. All trade logos belong to respective owners.
-                    </p>
-                    <div className="flex flex-wrap justify-center gap-10">
-                        <Link href="#" className="hover:text-white transition-colors">Privacy</Link>
-                        <Link href="#" className="hover:text-white transition-colors">Terms of Use</Link>
-                        <Link href="#" className="hover:text-white transition-colors">Cookie Policy</Link>
-                        <Link href="#" className="hover:text-white transition-colors">Sitemap</Link>
+                <div className="mt-14 pt-6 border-t border-slate-200 flex flex-col md:flex-row justify-between items-center gap-4 text-xs font-semibold text-slate-500">
+                    <p>© 2026 Shree Finance. All Rights Reserved. India's Premier Multi-Bank Lending Marketplace.</p>
+                    <div className="flex gap-6">
+                        <Link href="/privacy" className="hover:text-emerald-700 transition-colors">Privacy Policy</Link>
+                        <Link href="/terms" className="hover:text-emerald-700 transition-colors">Terms of Service</Link>
+                        <Link href="/security" className="hover:text-emerald-700 transition-colors">RBI Security Standards</Link>
                     </div>
                 </div>
             </div>

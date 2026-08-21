@@ -36,7 +36,7 @@ export function PartnerLogos() {
     const [isModalOpen, setIsModalOpen] = useState(false);
 
     return (
-        <section className="py-20 bg-[#141618] text-white border-t border-slate-800 relative font-sans overflow-hidden">
+        <section className="py-16 md:py-20 bg-white dark:bg-[#141618] text-slate-900 dark:text-white border-t border-slate-200 dark:border-slate-800 relative font-sans overflow-hidden transition-colors duration-300">
             {/* Background Abstract Glowing Lines & Ambient Effect */}
             <div className="absolute top-0 left-0 w-[500px] h-[500px] bg-[#00c985]/10 rounded-full blur-[140px] pointer-events-none" />
             <div className="absolute bottom-0 right-0 w-[600px] h-[600px] bg-emerald-500/5 rounded-full blur-[160px] pointer-events-none" />
@@ -58,6 +58,7 @@ export function PartnerLogos() {
                     d="M-200 450C120 250 320 650 800 450"
                     stroke="#00e699"
                     strokeWidth="1.5"
+                    strokeDasharray="4 4"
                 />
                 <path
                     d="M-200 500C140 300 340 700 800 500"
@@ -67,61 +68,59 @@ export function PartnerLogos() {
                 />
             </svg>
 
-            <div className="container mx-auto px-6 md:px-10 relative z-10">
-                <div className="grid lg:grid-cols-12 gap-12 items-center">
-                    {/* Left Column: Heading & Description */}
-                    <div className="lg:col-span-5 space-y-6">
-                        <div className="inline-flex items-center gap-2 rounded-full border border-emerald-500/40 bg-emerald-500/10 px-4 py-1.5 text-xs font-black text-[#00e699] uppercase tracking-widest">
-                            <Building2 className="h-3.5 w-3.5" />
-                            <span>Institutional Banking Network</span>
+            <div className="container relative z-10 mx-auto px-4 md:px-8">
+                <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
+                    <div className="space-y-3">
+                        <div className="inline-flex items-center gap-2 rounded-full border border-emerald-500/30 bg-emerald-50 dark:bg-emerald-500/10 px-3.5 py-1 text-[11px] font-black text-emerald-700 dark:text-[#00e699] uppercase tracking-widest">
+                            <Building2 className="h-3.5 w-3.5 text-emerald-600 dark:text-[#00e699]" />
+                            <span>Direct Institutional Partners</span>
                         </div>
-
-                        <h2 className="text-4xl md:text-6xl font-black text-white leading-tight tracking-tight">
-                            Our <span className="text-[#00e699]">Banking</span> Partners
+                        <h2 className="text-3xl md:text-4xl font-black text-slate-900 dark:text-white tracking-tight">
+                            Associated with <span className="text-[#00a86b] dark:text-[#00e699]">40+ Leading Banks</span> & NBFCs
                         </h2>
-
-                        <p className="text-base text-slate-300 leading-relaxed font-medium max-w-lg">
-                            Explore our network of top financial institutions and gain valuable insights to support your confident loan and financing choices.
+                        <p className="text-slate-600 dark:text-slate-400 text-sm max-w-xl font-medium">
+                            We work directly with India's most trusted nationalized, private, and global financial institutions to bring you pre-negotiated interest rates and zero processing fee discounts.
                         </p>
-
-                        <div className="pt-2">
-                            <Button
-                                onClick={() => setIsModalOpen(true)}
-                                className="bg-[#00c985] hover:bg-[#00b074] text-slate-950 font-black px-8 h-14 rounded-full text-sm uppercase tracking-wider transition-all shadow-xl hover:scale-105 flex items-center gap-2"
-                            >
-                                View All Banks <ChevronRight className="h-4 w-4" />
-                            </Button>
-                        </div>
                     </div>
 
-                    {/* Right Column: Grid of White Partner Cards */}
-                    <div className="lg:col-span-7">
-                        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3 p-2 rounded-3xl bg-slate-900/40 border border-slate-800/80 backdrop-blur-md">
-                            {banks.map((bank, index) => (
-                                <div
-                                    key={`${bank.name}-${index}`}
-                                    className="bg-white rounded-2xl p-3.5 text-center shadow-md border border-slate-200 hover:border-[#00c985] hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex items-center justify-center min-h-[72px] cursor-pointer group"
-                                    onClick={() => setIsModalOpen(true)}
-                                >
-                                    {bank.logo ? (
-                                        <div className="relative w-full h-10 flex items-center justify-center p-1">
-                                            <Image
-                                                src={bank.logo}
-                                                alt={bank.name}
-                                                width={140}
-                                                height={50}
-                                                className="max-h-9 w-auto object-contain transition-transform group-hover:scale-105"
-                                            />
-                                        </div>
-                                    ) : (
-                                        <span className="font-extrabold text-slate-950 text-xs md:text-sm tracking-tight leading-snug group-hover:text-[#00c985] transition-colors">
-                                            {bank.name}
-                                        </span>
-                                    )}
+                    <Button
+                        onClick={() => setIsModalOpen(true)}
+                        className="bg-[#00c985] hover:bg-[#00b074] text-slate-950 font-black text-xs uppercase tracking-wider px-6 h-11 rounded-full shadow-lg transition-transform active:scale-95 flex items-center gap-2 shrink-0 cursor-pointer"
+                    >
+                        <span>Check Bank Tie-Up Offers</span>
+                        <ChevronRight className="h-4 w-4" />
+                    </Button>
+                </div>
+
+                {/* Bank Tiles Grid */}
+                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3">
+                    {banks.map((bank, index) => (
+                        <div
+                            key={index}
+                            onClick={() => setIsModalOpen(true)}
+                            className="bg-slate-50 dark:bg-[#1e2126] hover:bg-emerald-50/60 dark:hover:bg-[#252a32] border border-slate-200 dark:border-slate-800 hover:border-[#00c985] rounded-xl p-4 flex flex-col items-center justify-center min-h-[90px] text-center transition-all duration-200 shadow-sm hover:shadow-md group cursor-pointer"
+                        >
+                            {bank.logo ? (
+                                <div className="relative w-full h-10 mb-1 flex items-center justify-center">
+                                    <Image
+                                        src={bank.logo}
+                                        alt={bank.name}
+                                        fill
+                                        className="object-contain filter dark:brightness-110 group-hover:scale-105 transition-transform"
+                                    />
                                 </div>
-                            ))}
+                            ) : (
+                                <span className="font-extrabold text-xs text-slate-800 dark:text-slate-200 group-hover:text-emerald-700 dark:group-hover:text-[#00e699] tracking-wide">
+                                    {bank.name}
+                                </span>
+                            )}
+                            {bank.logo && (
+                                <span className="text-[10px] text-slate-500 dark:text-slate-400 font-semibold group-hover:text-slate-700 dark:group-hover:text-white mt-1 truncate max-w-full">
+                                    {bank.name}
+                                </span>
+                            )}
                         </div>
-                    </div>
+                    ))}
                 </div>
             </div>
 
