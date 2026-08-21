@@ -11,6 +11,7 @@ import { cn } from "@/lib/utils";
 import { ContentSection } from "@/components/ui/content-section";
 import { SimpleAccordion } from "@/components/ui/simple-accordion";
 import { DynamicHeroWrapper } from "@/components/dynamic-hero-wrapper";
+import { Deal4LoansDynamicForm } from "@/components/forms/deal4loans-dynamic-form";
 
 export default function CarLoanPage() {
     const { sendEmail, isSubmitting, isSuccess } = useEmailForm();
@@ -30,7 +31,7 @@ export default function CarLoanPage() {
     };
 
     const scrollToForm = () => {
-        document.getElementById('lead-form')?.scrollIntoView({ behavior: 'smooth' });
+        document.getElementById('deal4loans-car-apply')?.scrollIntoView({ behavior: 'smooth' });
     };
 
     return (
@@ -94,6 +95,11 @@ export default function CarLoanPage() {
                     </div>
                 </section>
             </DynamicHeroWrapper>
+
+            {/* Instant Car Loan Deal4Loans Form */}
+            <section className="py-12 container px-4 mx-auto scroll-mt-24" id="deal4loans-car-apply">
+                <Deal4LoansDynamicForm initialLoanType="car" showCategorySwitcher={true} />
+            </section>
 
             {/* Fast Track Process */}
             <section className="py-16 relative z-20">
@@ -178,22 +184,36 @@ export default function CarLoanPage() {
                 <aside className="relative">
                     <div id="lead-form" className="sticky top-28">
                         <Card className="bg-[#24272c] border border-slate-800 shadow-2xl rounded-[2.5rem] overflow-hidden text-white">
-                            <CardHeader className="bg-gradient-to-r from-lime-400 via-emerald-400 to-teal-400 text-slate-950 p-8">
-                                <span className="text-[10px] font-black uppercase tracking-widest bg-slate-950 text-white px-3 py-1 rounded-full w-fit">100% On-Road Quote</span>
-                                <CardTitle className="text-2xl font-black text-slate-950 mt-2">Apply for Car Loan</CardTitle>
-                                <p className="text-slate-900 text-xs font-bold">Fast sanction in 30 minutes</p>
+                            <CardHeader className="bg-gradient-to-r from-lime-400 via-emerald-400 to-teal-400 text-slate-950 p-6 sm:p-8">
+                                <span className="text-[10px] font-black uppercase tracking-widest bg-slate-950 text-white px-3 py-1 rounded-full w-fit">
+                                    Shree Finance Direct Bank Facility
+                                </span>
+                                <CardTitle className="text-2xl font-black text-slate-950 mt-2">Car Loan Application</CardTitle>
+                                <p className="text-slate-900 text-xs font-bold">100% On-Road Sanction • 8.75% p.a. onwards</p>
                             </CardHeader>
-                            <CardContent className="p-8 space-y-4">
+                            <CardContent className="p-6 sm:p-8 space-y-4">
                                 {isSuccess ? (
                                     <div className="text-center py-8 space-y-3">
                                         <div className="h-16 w-16 bg-[#00c985] text-slate-950 rounded-full flex items-center justify-center mx-auto font-black">
                                             <CheckCircle2 className="h-8 w-8" />
                                         </div>
                                         <h4 className="text-xl font-black text-white">Application Received!</h4>
-                                        <p className="text-xs text-slate-400">Our car loan advisor will reach out shortly.</p>
+                                        <p className="text-xs text-slate-400">Our car loan direct bank advisor will reach out shortly.</p>
                                     </div>
                                 ) : (
-                                    <form onSubmit={handleSubmit} className="space-y-4">
+                                    <form onSubmit={handleSubmit} className="space-y-3.5">
+                                        <div className="space-y-1">
+                                            <label className="text-[10px] font-black uppercase text-slate-400">Car Loan Purpose</label>
+                                            <select
+                                                className="w-full h-11 bg-slate-900 border border-slate-700 rounded-xl font-bold text-white px-3 text-xs focus:ring-2 focus:ring-[#00c985]"
+                                                onChange={(e) => setFormData({ ...formData, city: formData.city })}
+                                            >
+                                                <option value="New Passenger Car">🚗 New Passenger Car / SUV Purchase</option>
+                                                <option value="Used / Pre-Owned Car">🚙 Certified Used / Pre-Owned Car</option>
+                                                <option value="Commercial Vehicle">🚐 Commercial Fleet / Taxi Vehicle</option>
+                                                <option value="EV Vehicle">⚡ Electric Vehicle (EV) Special Funding</option>
+                                            </select>
+                                        </div>
                                         <div>
                                             <label className="text-[10px] font-black uppercase text-slate-400">Full Name</label>
                                             <Input
@@ -212,7 +232,7 @@ export default function CarLoanPage() {
                                                 required
                                             />
                                         </div>
-                                        <div className="grid grid-cols-2 gap-4">
+                                        <div className="grid grid-cols-2 gap-3">
                                             <div>
                                                 <label className="text-[10px] font-black uppercase text-slate-400">City</label>
                                                 <Input
@@ -232,8 +252,8 @@ export default function CarLoanPage() {
                                                 />
                                             </div>
                                         </div>
-                                        <Button className="w-full bg-[#00c985] hover:bg-[#00b074] text-slate-950 font-black h-14 text-sm rounded-full uppercase tracking-wider shadow-xl mt-4">
-                                            Get Instant Approval
+                                        <Button className="w-full bg-[#00c985] hover:bg-[#00b074] text-slate-950 font-black h-13 text-xs sm:text-sm rounded-full uppercase tracking-wider shadow-xl mt-3 cursor-pointer">
+                                            Apply Direct Bank Facility 🚀
                                         </Button>
                                     </form>
                                 )}

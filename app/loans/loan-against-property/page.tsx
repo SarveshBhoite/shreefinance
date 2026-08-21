@@ -10,6 +10,7 @@ import { useEmailForm } from "@/hooks/use-email-form";
 import { SimpleAccordion } from "@/components/ui/simple-accordion";
 import { DynamicHeroWrapper } from "@/components/dynamic-hero-wrapper";
 import { ContentSection } from "@/components/ui/content-section";
+import { Deal4LoansDynamicForm } from "@/components/forms/deal4loans-dynamic-form";
 
 export default function LoanAgainstPropertyPage() {
     const { sendEmail, isSubmitting, isSuccess } = useEmailForm();
@@ -29,7 +30,7 @@ export default function LoanAgainstPropertyPage() {
     };
 
     const scrollToForm = () => {
-        document.getElementById('lead-form')?.scrollIntoView({ behavior: 'smooth' });
+        document.getElementById('deal4loans-lap-apply')?.scrollIntoView({ behavior: 'smooth' });
     };
 
     return (
@@ -108,6 +109,11 @@ export default function LoanAgainstPropertyPage() {
                     </div>
                 </section>
             </DynamicHeroWrapper>
+
+            {/* Instant Deal4Loans LAP Application Form */}
+            <section className="py-12 container px-4 mx-auto scroll-mt-24" id="deal4loans-lap-apply">
+                <Deal4LoansDynamicForm initialLoanType="lap" showCategorySwitcher={true} />
+            </section>
 
             {/* Main Content Layout */}
             <div className="container px-8 md:px-10 py-16 grid lg:grid-cols-[1fr_400px] gap-12 mx-auto">

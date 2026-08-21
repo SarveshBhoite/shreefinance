@@ -1,19 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import emailjs from "@emailjs/browser";
 
-interface EmailFormProps {
-    serviceId?: string;
-    templateId?: string;
-    publicKey?: string;
-}
-
-export function useEmailForm({
-    serviceId = "default_service", // Replace with env var in production
-    templateId = "template_id",   // Replace with env var in production
-    publicKey = "public_key"      // Replace with env var in production
-}: EmailFormProps = {}) {
+export function useEmailForm() {
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [isSuccess, setIsSuccess] = useState(false);
     const [error, setError] = useState<string | null>(null);
@@ -23,19 +12,21 @@ export function useEmailForm({
         setError(null);
 
         try {
-            // Simulation mode if keys are default (to prevent crashes during demo)
-            if (serviceId === "default_service") {
-                await new Promise((resolve) => setTimeout(resolve, 1500)); // Simulate network delay
-                console.log("EmailJS Simulation: Form submitted", data);
-                setIsSuccess(true);
-                return;
-            }
+            const res = await fetch("/api/application/submit", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(data)
+            });
 
-            await emailjs.send(serviceId, templateId, data, publicKey);
-            setIsSuccess(true);
+            const result = await res.json();
+            if (res.ok && result.success) {
+                setIsSuccess(true);
+            } else {
+                setError(result.message || "Failed to submit form.");
+            }
         } catch (err: any) {
-            console.error("EmailJS Error:", err);
-            setError(err.text || "Failed to send application. Please try again.");
+            console.error("Form submission error:", err);
+            setError("Failed to send application. Please try again.");
         } finally {
             setIsSubmitting(false);
         }

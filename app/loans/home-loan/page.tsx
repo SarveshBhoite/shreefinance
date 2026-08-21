@@ -5,7 +5,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { EMICalculator } from "@/components/calculators/emi-calculator";
 import { BalanceTransferCalculator } from "@/components/calculators/balance-transfer-calculator";
 import { TaxBenefitCalculator } from "@/components/calculators/tax-benefit-calculator";
-import { QuoteFinderWizard } from "@/components/home/quote-finder-wizard";
+import { Deal4LoansDynamicForm } from "@/components/forms/deal4loans-dynamic-form";
 import { CheckCircle2, Home, ShieldCheck, FileText, Key, Clock } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { useState } from "react";
@@ -116,9 +116,9 @@ export default function HomeLoanPage() {
                 </section>
             </DynamicHeroWrapper>
 
-            {/* Instant Multi-Bank Quote Wizard Container */}
-            <section className="py-12 container px-4 mx-auto">
-                <QuoteFinderWizard />
+            {/* Instant Multi-Bank Deal4Loans Form Container */}
+            <section className="py-12 container px-4 mx-auto scroll-mt-24" id="deal4loans-home-apply">
+                <Deal4LoansDynamicForm initialLoanType="home" showCategorySwitcher={true} />
             </section>
 
             {/* Home Loan Balance Transfer Savings Calculator */}
@@ -249,24 +249,37 @@ export default function HomeLoanPage() {
                 <aside className="relative">
                     <div id="lead-form" className="sticky top-28">
                         <Card className="bg-[#24272c] border border-slate-800 shadow-2xl rounded-[2.5rem] overflow-hidden text-white">
-                            <CardHeader className="bg-gradient-to-r from-lime-400 via-emerald-400 to-teal-400 text-slate-950 p-8">
+                            <CardHeader className="bg-gradient-to-r from-lime-400 via-emerald-400 to-teal-400 text-slate-950 p-6 sm:p-8">
                                 <span className="text-[10px] font-black uppercase tracking-widest bg-slate-950 text-white px-3 py-1 rounded-full w-fit">
-                                    YES Bank & Partner Approval
+                                    Shree Finance Direct Bank Facility
                                 </span>
-                                <CardTitle className="text-2xl font-black mt-3 text-slate-950">Apply for Home Loan</CardTitle>
-                                <p className="text-slate-900 text-xs font-bold mt-1">Get pre-approved offer in 2 minutes</p>
+                                <CardTitle className="text-2xl font-black mt-2 text-slate-950">Home Loan Application</CardTitle>
+                                <p className="text-slate-900 text-xs font-bold mt-1">Multi-bank pre-sanction • 8.35% p.a. onwards</p>
                             </CardHeader>
-                            <CardContent className="p-8 space-y-6">
+                            <CardContent className="p-6 sm:p-8 space-y-4">
                                 {isSuccess ? (
                                     <div className="text-center py-8 space-y-3">
                                         <div className="h-16 w-16 bg-[#00c985] rounded-full flex items-center justify-center mx-auto text-slate-950 font-black">
                                             <CheckCircle2 className="h-8 w-8" />
                                         </div>
                                         <h4 className="text-xl font-black text-white">Application Received!</h4>
-                                        <p className="text-xs text-slate-400">A Shree Finance Home Loan advisor will reach out shortly.</p>
+                                        <p className="text-xs text-slate-400">A Shree Finance Home Loan underwriting officer will reach out shortly.</p>
                                     </div>
                                 ) : (
-                                    <form onSubmit={handleSubmit} className="space-y-4">
+                                    <form onSubmit={handleSubmit} className="space-y-3.5">
+                                        <div className="space-y-1">
+                                            <label className="text-[10px] font-black uppercase text-slate-400">Home Loan Purpose</label>
+                                            <select
+                                                className="w-full h-11 bg-slate-900 border border-slate-700 rounded-xl font-bold text-white px-3 text-xs focus:ring-2 focus:ring-[#00c985]"
+                                                onChange={(e) => setFormData({ ...formData, city: formData.city })}
+                                            >
+                                                <option value="Ready Flat Purchase">🏠 Purchase of Ready-to-Move Flat / Villa</option>
+                                                <option value="Under-Construction">🏗️ Under-Construction Flat / Society Project</option>
+                                                <option value="Plot Construction">🏡 Plot Purchase + House Construction</option>
+                                                <option value="Balance Transfer">🔄 Home Loan Balance Transfer + Top-Up</option>
+                                                <option value="Home Renovation">🔨 Home Extension / Improvement</option>
+                                            </select>
+                                        </div>
                                         <div>
                                             <label className="text-[10px] font-black uppercase text-slate-400">Full Name</label>
                                             <Input
@@ -285,7 +298,7 @@ export default function HomeLoanPage() {
                                                 required
                                             />
                                         </div>
-                                        <div className="grid grid-cols-2 gap-4">
+                                        <div className="grid grid-cols-2 gap-3">
                                             <div>
                                                 <label className="text-[10px] font-black uppercase text-slate-400">City</label>
                                                 <Input
@@ -307,9 +320,9 @@ export default function HomeLoanPage() {
                                         </div>
                                         <Button
                                             disabled={isSubmitting}
-                                            className="w-full bg-[#00c985] hover:bg-[#00b074] text-slate-950 font-black h-14 rounded-full text-sm uppercase tracking-wider shadow-xl"
+                                            className="w-full bg-[#00c985] hover:bg-[#00b074] text-slate-950 font-black h-13 rounded-full text-xs sm:text-sm uppercase tracking-wider shadow-xl mt-3 cursor-pointer"
                                         >
-                                            {isSubmitting ? "Submitting..." : "Get Instant Callback"}
+                                            {isSubmitting ? "Submitting..." : "Apply Direct Bank Facility 🚀"}
                                         </Button>
                                     </form>
                                 )}

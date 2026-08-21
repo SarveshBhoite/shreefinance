@@ -115,13 +115,13 @@ export function SiteFooter() {
                             </li>
                             <li>
                                 <a
-                                    href="tel:+918830434945"
+                                    href="tel:+917709936965"
                                     className="flex items-center gap-6 group hover:opacity-90 transition-all cursor-pointer"
                                 >
                                     <div className="h-10 w-10 rounded-xl bg-amber-400/10 border border-amber-400/20 flex items-center justify-center shrink-0 group-hover:bg-amber-400 group-hover:text-slate-950 transition-all">
                                         <Phone className="h-5 w-5 text-amber-400 group-hover:text-slate-950" />
                                     </div>
-                                    <span className="text-white font-black text-lg group-hover:text-[#00e699] transition-colors">+91 88304 34945</span>
+                                    <span className="text-white font-black text-lg group-hover:text-[#00e699] transition-colors">+91 77099 36965</span>
                                 </a>
                             </li>
                             <li>

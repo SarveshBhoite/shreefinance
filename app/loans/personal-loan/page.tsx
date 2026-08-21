@@ -11,6 +11,7 @@ import { cn } from "@/lib/utils";
 import { ContentSection } from "@/components/ui/content-section";
 import { SimpleAccordion } from "@/components/ui/simple-accordion";
 import { DynamicHeroWrapper } from "@/components/dynamic-hero-wrapper";
+import { Deal4LoansDynamicForm } from "@/components/forms/deal4loans-dynamic-form";
 
 export default function PersonalLoanPage() {
     const { sendEmail, isSubmitting, isSuccess } = useEmailForm();
@@ -30,7 +31,7 @@ export default function PersonalLoanPage() {
     };
 
     const scrollToForm = () => {
-        document.getElementById('lead-form')?.scrollIntoView({ behavior: 'smooth' });
+        document.getElementById('deal4loans-apply-section')?.scrollIntoView({ behavior: 'smooth' });
     };
 
     return (
@@ -72,6 +73,11 @@ export default function PersonalLoanPage() {
                     </div>
                 </section>
             </DynamicHeroWrapper>
+
+            {/* DEAL4LOANS UNIFIED FORM APPLICATION SECTION */}
+            <section id="deal4loans-apply-section" className="py-12 container px-4 mx-auto scroll-mt-24">
+                <Deal4LoansDynamicForm initialLoanType="personal" showCategorySwitcher={true} />
+            </section>
 
             {/* Fast Track Process - Unique Grid */}
             <section className="py-16 relative z-20">
@@ -169,27 +175,47 @@ export default function PersonalLoanPage() {
                 <aside className="relative">
                     <div id="lead-form" className="sticky top-28">
                         <Card className="bg-[#24272c] border border-slate-800 shadow-2xl rounded-[2.5rem] overflow-hidden text-white">
-                            <CardHeader className="bg-gradient-to-r from-lime-400 via-emerald-400 to-teal-400 text-slate-950 p-8">
-                                <div className="flex justify-between items-start mb-4">
-                                    <div className="p-3 bg-slate-950 rounded-2xl text-white">
-                                        <Wallet className="h-6 w-6" />
+                            <CardHeader className="bg-gradient-to-r from-lime-400 via-emerald-400 to-teal-400 text-slate-950 p-6 sm:p-8">
+                                <div className="flex justify-between items-start mb-3">
+                                    <div className="p-2.5 bg-slate-950 rounded-2xl text-white">
+                                        <Wallet className="h-5 w-5" />
                                     </div>
-                                    <span className="text-[10px] font-black uppercase tracking-widest bg-slate-950 text-white px-3 py-1 rounded-full">Instant Approval</span>
+                                    <span className="text-[10px] font-black uppercase tracking-widest bg-slate-950 text-white px-3 py-1 rounded-full">
+                                        40+ Banks Network
+                                    </span>
                                 </div>
-                                <CardTitle className="text-2xl font-black text-slate-950">Check Eligibility</CardTitle>
-                                <p className="text-slate-900 text-xs font-bold mt-1">No credit score impact</p>
+                                <span className="text-[10px] font-black uppercase tracking-widest text-slate-900 block">
+                                    Shree Finance Direct Bank Facility
+                                </span>
+                                <CardTitle className="text-2xl font-black text-slate-950 mt-1">Personal Loan Application</CardTitle>
+                                <p className="text-slate-900 text-xs font-bold mt-1">Instant sanction • 10.25% p.a. onwards</p>
                             </CardHeader>
-                            <CardContent className="p-8 space-y-4">
+                            <CardContent className="p-6 sm:p-8 space-y-4">
                                 {isSuccess ? (
                                     <div className="text-center py-10">
                                         <div className="h-16 w-16 bg-[#00c985] text-slate-950 rounded-full flex items-center justify-center mx-auto mb-4 font-black">
                                             <CheckCircle2 className="h-8 w-8" />
                                         </div>
-                                        <h3 className="text-2xl font-black text-white mb-2">Request Received</h3>
-                                        <p className="text-slate-400 font-bold text-xs">We will contact you shortly.</p>
+                                        <h3 className="text-2xl font-black text-white mb-2">Application Received</h3>
+                                        <p className="text-slate-400 font-bold text-xs">Direct bank underwriting team will contact you shortly.</p>
                                     </div>
                                 ) : (
-                                    <form onSubmit={handleSubmit} className="space-y-4">
+                                    <form onSubmit={handleSubmit} className="space-y-3.5">
+                                        <div className="space-y-1">
+                                            <label className="text-[10px] font-black uppercase text-slate-400">Loan Purpose</label>
+                                            <select
+                                                className="w-full h-11 bg-slate-900 border border-slate-700 rounded-xl font-bold text-white px-3 text-xs focus:ring-2 focus:ring-[#00c985]"
+                                                onChange={(e) => setFormData({ ...formData, city: formData.city })}
+                                            >
+                                                <option value="Marriage / Wedding Expenses">💍 Marriage / Wedding Expenses</option>
+                                                <option value="Medical Emergency">🏥 Medical Emergency</option>
+                                                <option value="Debt Consolidation">💳 Debt Consolidation / Credit Card Payoff</option>
+                                                <option value="Home Renovation">🔨 Home Renovation & Interiors</option>
+                                                <option value="Higher Education">🎓 Higher Education / Studies</option>
+                                                <option value="Travel / Holiday">✈️ Travel & International Holiday</option>
+                                                <option value="General Personal Need">💼 General Personal Requirement</option>
+                                            </select>
+                                        </div>
                                         <div className="space-y-1">
                                             <label className="text-[10px] font-black uppercase text-slate-400">Full Name</label>
                                             <Input
@@ -200,7 +226,7 @@ export default function PersonalLoanPage() {
                                             />
                                         </div>
                                         <div className="space-y-1">
-                                            <label className="text-[10px] font-black uppercase text-slate-400">Mobile Access</label>
+                                            <label className="text-[10px] font-black uppercase text-slate-400">Mobile Number</label>
                                             <Input
                                                 placeholder="10-digit number"
                                                 value={formData.mobile}
@@ -208,7 +234,7 @@ export default function PersonalLoanPage() {
                                                 required
                                             />
                                         </div>
-                                        <div className="grid grid-cols-2 gap-4">
+                                        <div className="grid grid-cols-2 gap-3">
                                             <div className="space-y-1">
                                                 <label className="text-[10px] font-black uppercase text-slate-400">City</label>
                                                 <Input
@@ -219,7 +245,7 @@ export default function PersonalLoanPage() {
                                                 />
                                             </div>
                                             <div className="space-y-1">
-                                                <label className="text-[10px] font-black uppercase text-slate-400">Monthly</label>
+                                                <label className="text-[10px] font-black uppercase text-slate-400">Monthly Salary</label>
                                                 <Input
                                                     placeholder="₹25,000"
                                                     value={formData.income}
@@ -228,7 +254,9 @@ export default function PersonalLoanPage() {
                                                 />
                                             </div>
                                         </div>
-                                        <Button className="w-full bg-[#00c985] hover:bg-[#00b074] text-slate-950 font-black h-14 text-sm rounded-full uppercase tracking-wider shadow-xl mt-4">Get Instant Quote</Button>
+                                        <Button className="w-full bg-[#00c985] hover:bg-[#00b074] text-slate-950 font-black h-13 text-xs sm:text-sm rounded-full uppercase tracking-wider shadow-xl mt-3 cursor-pointer">
+                                            Apply Direct Bank Facility 🚀
+                                        </Button>
                                     </form>
                                 )}
                             </CardContent>

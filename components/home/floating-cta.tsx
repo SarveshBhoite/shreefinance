@@ -34,7 +34,7 @@ export function FloatingCTA() {
                         onClick={() => setModalConfig({ isOpen: true, type: "general" })}
                     >
                         <PhoneCall className="h-3.5 w-3.5 mr-1.5" />
-                        Quick Apply
+                        Apply for Loan 🚀
                     </Button>
                     
                     <Button

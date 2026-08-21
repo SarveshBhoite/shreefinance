@@ -11,6 +11,7 @@ import { cn } from "@/lib/utils";
 import { ContentSection } from "@/components/ui/content-section";
 import { SimpleAccordion } from "@/components/ui/simple-accordion";
 import { DynamicHeroWrapper } from "@/components/dynamic-hero-wrapper";
+import { Deal4LoansDynamicForm } from "@/components/forms/deal4loans-dynamic-form";
 
 export default function BusinessLoanPage() {
     const { sendEmail, isSubmitting, isSuccess } = useEmailForm();
@@ -30,7 +31,7 @@ export default function BusinessLoanPage() {
     };
 
     const scrollToForm = () => {
-        document.getElementById('lead-form')?.scrollIntoView({ behavior: 'smooth' });
+        document.getElementById('deal4loans-business-apply')?.scrollIntoView({ behavior: 'smooth' });
     };
 
     return (
@@ -94,6 +95,11 @@ export default function BusinessLoanPage() {
                     </div>
                 </section>
             </DynamicHeroWrapper>
+
+            {/* Instant Business Loan Deal4Loans Form */}
+            <section className="py-12 container px-4 mx-auto scroll-mt-24" id="deal4loans-business-apply">
+                <Deal4LoansDynamicForm initialLoanType="business" showCategorySwitcher={true} />
+            </section>
 
             {/* Unique Grid Section */}
             <section className="py-16 relative z-20">

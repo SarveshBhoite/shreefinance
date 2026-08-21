@@ -19,11 +19,16 @@ import { LeadFormModal } from "@/components/dialogs/lead-form-modal";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 
+import { HeroLoanCarousel, LoanSlideData, LOAN_SLIDER_ITEMS } from "@/components/home/hero-loan-carousel";
+import { Deal4LoansApplicationModal, Deal4LoanType } from "@/components/dialogs/deal4loans-application-modal";
+
 export function HeroSection() {
     const [modalConfig, setModalConfig] = useState<{ isOpen: boolean; type: "general" | "cibil" }>({
         isOpen: false,
         type: "general"
     });
+    const [selectedLoanType, setSelectedLoanType] = useState<Deal4LoanType>("personal");
+    const [isDeal4LoanModalOpen, setIsDeal4LoanModalOpen] = useState(false);
     const [selectedAmount, setSelectedAmount] = useState(2500000);
 
     const openModal = (type: "general" | "cibil") => {
@@ -32,6 +37,23 @@ export function HeroSection() {
 
     const closeModal = () => {
         setModalConfig(prev => ({ ...prev, isOpen: false }));
+    };
+
+    const handleSelectLoan = (loan: LoanSlideData) => {
+        let type: Deal4LoanType = "personal";
+        if (loan.id.includes("home")) type = "home";
+        else if (loan.id.includes("vehicle") || loan.id.includes("car")) type = "car";
+        else if (loan.id.includes("property")) type = "lap";
+        else if (loan.id.includes("business")) type = "business";
+        else type = "personal";
+
+        setSelectedLoanType(type);
+        setIsDeal4LoanModalOpen(true);
+    };
+
+    const handleOpenLoanType = (type: Deal4LoanType) => {
+        setSelectedLoanType(type);
+        setIsDeal4LoanModalOpen(true);
     };
 
     const loanProducts = [
@@ -89,14 +111,14 @@ export function HeroSection() {
                 <div className="grid lg:grid-cols-12 gap-12 items-center">
                     
                     {/* Left Column: Unique Brand Hero */}
-                    <div className="lg:col-span-6 space-y-8">
-                        <div className="space-y-4">
+                    <div className="lg:col-span-6 space-y-6">
+                        <div className="space-y-3">
                             <motion.div
                                 initial={{ opacity: 0, y: 10 }}
                                 animate={{ opacity: 1, y: 0 }}
-                                className="inline-flex items-center gap-2 rounded-full border border-emerald-500/40 bg-emerald-500/10 px-4 py-1.5 text-xs font-black text-[#00e699] uppercase tracking-widest backdrop-blur-xl"
+                                className="inline-flex items-center gap-2 rounded-full border border-emerald-500/40 bg-emerald-500/10 px-3.5 py-1 text-[11px] font-black text-[#00e699] uppercase tracking-widest backdrop-blur-xl"
                             >
-                                <Sparkles className="h-3.5 w-3.5 text-[#00e699]" />
+                                <Sparkles className="h-3 w-3 text-[#00e699]" />
                                 <span>Shree Finance Digital Hub 2026</span>
                             </motion.div>
 
@@ -104,9 +126,9 @@ export function HeroSection() {
                                 initial={{ opacity: 0, y: 15 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ delay: 0.1 }}
-                                className="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight leading-[1.12] text-white"
+                                className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight leading-[1.15] text-white"
                             >
-                                Smart Digital Loans. <br />
+                                Smart Digital Loans<br />
                                 <span className="text-[#00e699]">40+ Partner Banks.</span>
                             </motion.h1>
 
@@ -114,51 +136,51 @@ export function HeroSection() {
                                 initial={{ opacity: 0, y: 15 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ delay: 0.15 }}
-                                className="text-slate-300 text-base sm:text-lg max-w-xl leading-relaxed font-medium"
+                                className="text-slate-300 text-sm sm:text-base max-w-lg leading-relaxed font-medium"
                             >
                                 Compare live interest rates, check instant loan sanction eligibility, and get paperless disbursal from India's premier banking partners.
                             </motion.p>
                         </div>
 
                         {/* Feature Badges Grid */}
-                        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-2">
-                            <div className="p-4 rounded-2xl bg-[#24272c] border border-slate-800 flex items-center gap-3">
-                                <div className="h-10 w-10 rounded-xl bg-[#00c985]/15 text-[#00c985] flex items-center justify-center shrink-0">
-                                    <Zap className="h-5 w-5" />
+                        <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-1">
+                            <div className="p-3 rounded-xl bg-[#24272c] border border-slate-800 flex items-center gap-2.5">
+                                <div className="h-8 w-8 rounded-lg bg-[#00c985]/15 text-[#00c985] flex items-center justify-center shrink-0">
+                                    <Zap className="h-4 w-4" />
                                 </div>
                                 <div>
-                                    <p className="text-xs font-black text-white">30-Min Approval</p>
-                                    <p className="text-[10px] text-slate-400 font-bold">100% Digital KYC</p>
+                                    <p className="text-[11px] font-black text-white">30-Min Approval</p>
+                                    <p className="text-[9px] text-slate-400 font-bold">100% Digital KYC</p>
                                 </div>
                             </div>
 
-                            <div className="p-4 rounded-2xl bg-[#24272c] border border-slate-800 flex items-center gap-3">
-                                <div className="h-10 w-10 rounded-xl bg-[#00c985]/15 text-[#00c985] flex items-center justify-center shrink-0">
-                                    <TrendingUp className="h-5 w-5" />
+                            <div className="p-3 rounded-xl bg-[#24272c] border border-slate-800 flex items-center gap-2.5">
+                                <div className="h-8 w-8 rounded-lg bg-[#00c985]/15 text-[#00c985] flex items-center justify-center shrink-0">
+                                    <TrendingUp className="h-4 w-4" />
                                 </div>
                                 <div>
-                                    <p className="text-xs font-black text-white">Lowest Rates</p>
-                                    <p className="text-[10px] text-slate-400 font-bold">Starting 8.35% p.a.</p>
+                                    <p className="text-[11px] font-black text-white">Lowest Rates</p>
+                                    <p className="text-[9px] text-slate-400 font-bold">Starting 8.35% p.a.</p>
                                 </div>
                             </div>
 
-                            <div className="p-4 rounded-2xl bg-[#24272c] border border-slate-800 flex items-center gap-3">
-                                <div className="h-10 w-10 rounded-xl bg-[#00c985]/15 text-[#00c985] flex items-center justify-center shrink-0">
-                                    <ShieldCheck className="h-5 w-5" />
+                            <div className="p-3 rounded-xl bg-[#24272c] border border-slate-800 flex items-center gap-2.5">
+                                <div className="h-8 w-8 rounded-lg bg-[#00c985]/15 text-[#00c985] flex items-center justify-center shrink-0">
+                                    <ShieldCheck className="h-4 w-4" />
                                 </div>
                                 <div>
-                                    <p className="text-xs font-black text-white">Zero CIBIL Impact</p>
-                                    <p className="text-[10px] text-slate-400 font-bold">Free Monthly Check</p>
+                                    <p className="text-[11px] font-black text-white">Zero CIBIL Impact</p>
+                                    <p className="text-[9px] text-slate-400 font-bold">Free Monthly Check</p>
                                 </div>
                             </div>
                         </div>
 
                         {/* Action CTA Buttons */}
-                        <div className="flex flex-wrap gap-4 pt-2">
+                        <div className="flex flex-wrap gap-3 pt-1">
                             <Button
                                 size="lg"
                                 onClick={() => openModal("general")}
-                                className="h-14 px-8 text-sm font-black rounded-full bg-[#00c985] hover:bg-[#00b074] text-slate-950 uppercase tracking-wider transition-all hover:scale-105 shadow-xl"
+                                className="h-12 px-6 text-xs sm:text-sm font-black rounded-full bg-[#00c985] hover:bg-[#00b074] text-slate-950 uppercase tracking-wider transition-all hover:scale-105 shadow-xl"
                             >
                                 Get Instant Loan Sanction <ArrowRight className="h-4 w-4 ml-2" />
                             </Button>
@@ -167,87 +189,16 @@ export function HeroSection() {
                                 size="lg"
                                 variant="outline"
                                 onClick={() => openModal("cibil")}
-                                className="h-14 px-7 text-sm font-black rounded-full border-amber-400/50 bg-amber-400/10 text-amber-300 hover:bg-amber-400 hover:text-slate-950 uppercase tracking-wider transition-all"
+                                className="h-12 px-6 text-xs sm:text-sm font-black rounded-full border-amber-400/50 bg-amber-400/10 text-amber-300 hover:bg-amber-400 hover:text-slate-950 uppercase tracking-wider transition-all"
                             >
-                                <Zap className="h-4 w-4 mr-1.5 fill-amber-300" /> Free CIBIL Check
+                                <Zap className="h-3.5 w-3.5 mr-1.5 fill-amber-300" /> Free CIBIL Check
                             </Button>
                         </div>
                     </div>
 
-                    {/* Right Column: Interactive Digital Sanction Preview Card */}
-                    <div className="lg:col-span-6">
-                        <div className="bg-[#24272c] border border-slate-800 rounded-[2.5rem] p-6 sm:p-8 shadow-2xl space-y-6 relative overflow-hidden">
-                            {/* Card Decorative Ambient Light */}
-                            <div className="absolute top-0 right-0 w-64 h-64 bg-[#00c985]/10 rounded-full blur-3xl pointer-events-none" />
-
-                            <div className="flex justify-between items-center border-b border-slate-800 pb-4">
-                                <div className="flex items-center gap-3">
-                                    <div className="h-10 w-10 rounded-2xl bg-[#00c985]/15 border border-[#00c985]/30 flex items-center justify-center text-[#00c985] font-black">
-                                        <Building2 className="h-5 w-5" />
-                                    </div>
-                                    <div>
-                                        <h3 className="font-extrabold text-white text-base">Instant Sanction Preview</h3>
-                                        <p className="text-xs text-slate-400 font-medium">Select your desired loan amount</p>
-                                    </div>
-                                </div>
-                                <span className="text-xs font-black uppercase text-[#00e699] px-3 py-1 rounded-full bg-[#00c985]/15 border border-[#00c985]/30">
-                                    Live Rates
-                                </span>
-                            </div>
-
-                            {/* Loan Amount Quick Selector */}
-                            <div className="space-y-3 bg-slate-900/60 p-5 rounded-2xl border border-slate-800">
-                                <div className="flex justify-between items-center">
-                                    <span className="text-xs font-extrabold text-slate-400 uppercase tracking-wider">Required Loan Capital</span>
-                                    <span className="text-2xl font-black text-[#00e699]">{formatCurrency(selectedAmount)}</span>
-                                </div>
-                                <div className="flex gap-2 pt-2">
-                                    {[500000, 2500000, 5000000, 10000000].map((amt) => (
-                                        <button
-                                            key={amt}
-                                            type="button"
-                                            onClick={() => setSelectedAmount(amt)}
-                                            className={`flex-1 py-2 rounded-xl text-xs font-black transition-all ${
-                                                selectedAmount === amt
-                                                    ? "bg-[#00c985] text-slate-950 shadow-md"
-                                                    : "bg-slate-800 text-slate-300 hover:bg-slate-700"
-                                            }`}
-                                        >
-                                            {amt >= 10000000 ? "1 Cr" : amt >= 100000 ? `${amt / 100000}L` : `${amt}`}
-                                        </button>
-                                    ))}
-                                </div>
-                            </div>
-
-                            {/* Estimated Multi-Bank Rates Box */}
-                            <div className="space-y-2.5">
-                                <p className="text-xs font-black uppercase tracking-wider text-slate-400">Lowest Available EMI Partner Quotes</p>
-                                <div className="grid grid-cols-2 gap-3">
-                                    <div className="p-3.5 rounded-2xl bg-slate-900/80 border border-slate-800 flex justify-between items-center">
-                                        <div>
-                                            <p className="text-xs font-extrabold text-white">Shree Direct</p>
-                                            <p className="text-[10px] text-slate-400">Nil Processing Fee</p>
-                                        </div>
-                                        <span className="text-sm font-black text-[#00e699]">8.35%</span>
-                                    </div>
-                                    <div className="p-3.5 rounded-2xl bg-slate-900/80 border border-slate-800 flex justify-between items-center">
-                                        <div>
-                                            <p className="text-xs font-extrabold text-white">YES Bank</p>
-                                            <p className="text-[10px] text-slate-400">Digital Sanction</p>
-                                        </div>
-                                        <span className="text-sm font-black text-[#00e699]">8.40%</span>
-                                    </div>
-                                </div>
-                            </div>
-
-                            {/* Card Submit Button */}
-                            <Button
-                                className="w-full bg-[#00c985] hover:bg-[#00b074] text-slate-950 font-black h-14 rounded-2xl uppercase tracking-wider text-sm shadow-xl"
-                                onClick={() => openModal("general")}
-                            >
-                                Apply For Pre-Approved Offer <ChevronRight className="h-4 w-4 ml-1" />
-                            </Button>
-                        </div>
+                    {/* Right Column: Hero Loan Card Carousel (Urban Money Style) */}
+                    <div className="lg:col-span-6 lg:-translate-y-8 xl:-translate-y-12 flex flex-col justify-center transition-transform">
+                        <HeroLoanCarousel onSelectLoan={handleSelectLoan} />
                     </div>
                 </div>
 
@@ -256,21 +207,26 @@ export function HeroSection() {
                     {loanProducts.map((prod) => (
                         <div
                             key={prod.id}
-                            className="bg-[#24272c] hover:bg-[#2a2e34] border border-slate-800 hover:border-[#00c985]/50 rounded-2xl p-5 flex flex-col justify-between transition-all duration-300 shadow-xl group cursor-pointer"
-                            onClick={() => openModal(prod.type)}
+                            className="bg-[#24272c] hover:bg-[#2a2e34] border border-slate-800 hover:border-[#ffcd00]/50 rounded-2xl p-5 flex flex-col justify-between transition-all duration-300 shadow-xl group cursor-pointer"
+                            onClick={() => {
+                                if (prod.id.includes("home")) handleOpenLoanType("home");
+                                else if (prod.id.includes("car")) handleOpenLoanType("car");
+                                else if (prod.id.includes("business") || prod.id.includes("property")) handleOpenLoanType("lap");
+                                else handleOpenLoanType("personal");
+                            }}
                         >
                             <div className="space-y-3">
                                 <div className="flex justify-between items-center">
-                                    <div className="h-10 w-10 rounded-xl bg-[#00c985]/15 border border-[#00c985]/30 flex items-center justify-center text-[#00c985]">
+                                    <div className="h-10 w-10 rounded-xl bg-[#ffcd00]/15 border border-[#ffcd00]/30 flex items-center justify-center text-[#ffcd00]">
                                         <prod.icon className="h-5 w-5" />
                                     </div>
-                                    <span className="text-[10px] font-black uppercase text-[#00e699] px-2.5 py-0.5 rounded-full bg-[#00c985]/15 border border-[#00c985]/30">
+                                    <span className="text-[10px] font-black uppercase text-slate-950 px-2.5 py-0.5 rounded-full bg-[#ffcd00] shadow-sm">
                                         {prod.badge}
                                     </span>
                                 </div>
 
                                 <div>
-                                    <h3 className="text-lg font-black text-white group-hover:text-[#00e699] transition-colors">
+                                    <h3 className="text-lg font-black text-white group-hover:text-[#ffcd00] transition-colors">
                                         {prod.title}
                                     </h3>
                                     <p className="text-xs text-slate-400 mt-1 font-medium leading-relaxed">
@@ -279,15 +235,22 @@ export function HeroSection() {
                                 </div>
                             </div>
 
-                            <div className="pt-4 flex items-center text-xs font-black text-[#00e699] group-hover:translate-x-1 transition-transform">
-                                Apply Online <ChevronRight className="h-4 w-4 ml-1" />
+                            <div className="pt-4 flex items-center text-xs font-black text-[#ffcd00] group-hover:translate-x-1 transition-transform">
+                                Apply Direct Bank Facility <ChevronRight className="h-4 w-4 ml-1" />
                             </div>
                         </div>
                     ))}
                 </div>
             </div>
 
-            {/* Lead Modal */}
+            {/* Deal4Loans Direct Bank Facility Interactive Flow Modal */}
+            <Deal4LoansApplicationModal
+                isOpen={isDeal4LoanModalOpen}
+                onClose={() => setIsDeal4LoanModalOpen(false)}
+                initialLoanType={selectedLoanType}
+            />
+
+            {/* General / CIBIL Modal */}
             <LeadFormModal
                 isOpen={modalConfig.isOpen}
                 onClose={closeModal}

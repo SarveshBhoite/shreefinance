@@ -10,6 +10,7 @@ import { useEmailForm } from "@/hooks/use-email-form";
 import { ContentSection } from "@/components/ui/content-section";
 import { SimpleAccordion } from "@/components/ui/simple-accordion";
 import { DynamicHeroWrapper } from "@/components/dynamic-hero-wrapper";
+import { Deal4LoansDynamicForm } from "@/components/forms/deal4loans-dynamic-form";
 
 export default function MudraLoanPage() {
     const { sendEmail, isSubmitting, isSuccess } = useEmailForm();
@@ -29,7 +30,7 @@ export default function MudraLoanPage() {
     };
 
     const scrollToForm = () => {
-        document.getElementById('lead-form')?.scrollIntoView({ behavior: 'smooth' });
+        document.getElementById('deal4loans-mudra-apply')?.scrollIntoView({ behavior: 'smooth' });
     };
 
     return (
@@ -64,6 +65,11 @@ export default function MudraLoanPage() {
                     </div>
                 </section>
             </DynamicHeroWrapper>
+
+            {/* Instant Business & Micro Loan Deal4Loans Form */}
+            <section className="py-12 container px-4 mx-auto scroll-mt-24" id="deal4loans-mudra-apply">
+                <Deal4LoansDynamicForm initialLoanType="business" showCategorySwitcher={true} />
+            </section>
 
             {/* MUDRA Categories */}
             <section className="py-16 relative z-10">
