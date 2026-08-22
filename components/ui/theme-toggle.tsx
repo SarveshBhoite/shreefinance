@@ -19,7 +19,7 @@ export function ThemeToggle({ className = "" }: ThemeToggleProps) {
             className={`relative flex items-center justify-center h-10 w-10 rounded-full border transition-all duration-300 shadow-sm cursor-pointer ${
                 isDark
                     ? "bg-slate-900 border-slate-700 text-amber-300 hover:bg-slate-800 hover:border-amber-400/50"
-                    : "bg-slate-100 border-slate-200 text-slate-700 hover:bg-emerald-50 hover:text-emerald-700 hover:border-emerald-300"
+                    : "bg-slate-100 border-slate-200 text-slate-700 hover:bg-sky-50 hover:text-sky-700 hover:border-sky-300"
             } ${className}`}
             title={isDark ? "Switch to Light Mode" : "Switch to Dark Mode"}
             aria-label="Toggle Theme"

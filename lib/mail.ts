@@ -52,15 +52,15 @@ export async function sendAdminPartnerNotification(application: PartnerNotificat
     const htmlContent = `
     <div style="font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, Helvetica, Arial, sans-serif; max-width: 650px; margin: 0 auto; border: 1px solid #cbd5e1; border-radius: 16px; overflow: hidden; background-color: #ffffff; box-shadow: 0 10px 30px rgba(0,0,0,0.06);">
         <!-- HEADER -->
-        <div style="background-color: #0f172a; padding: 24px 30px; border-bottom: 4px solid #00c985;">
+        <div style="background-color: #0f172a; padding: 24px 30px; border-bottom: 4px solid #0284c7;">
             <table width="100%" border="0" cellspacing="0" cellpadding="0">
                 <tr>
                     <td>
-                        <h1 style="color: #00c985; margin: 0; font-size: 22px; font-weight: 900; letter-spacing: 1px;">SHREE FINANCE</h1>
+                        <h1 style="color: #0284c7; margin: 0; font-size: 22px; font-weight: 900; letter-spacing: 1px;">SHREE FINANCE</h1>
                         <p style="color: #94a3b8; margin: 4px 0 0 0; font-size: 12px; text-transform: uppercase; font-weight: 700;">Partner Onboarding Alert System</p>
                     </td>
                     <td align="right">
-                        <span style="background-color: #00c985; color: #0f172a; padding: 6px 14px; border-radius: 20px; font-size: 11px; font-weight: 900; text-transform: uppercase; letter-spacing: 0.5px;">
+                        <span style="background-color: #0284c7; color: #0f172a; padding: 6px 14px; border-radius: 20px; font-size: 11px; font-weight: 900; text-transform: uppercase; letter-spacing: 0.5px;">
                             #${application.referenceNo}
                         </span>
                     </td>
@@ -70,14 +70,14 @@ export async function sendAdminPartnerNotification(application: PartnerNotificat
 
         <!-- BANNER -->
         <div style="background: linear-gradient(135deg, #f0fdf4 0%, #e2e8f0 100%); padding: 20px 30px; border-bottom: 1px solid #e2e8f0;">
-            <p style="color: #15803d; font-size: 11px; text-transform: uppercase; font-weight: 800; margin: 0 0 4px 0; letter-spacing: 0.5px;">🚀 New Partner Registration</p>
+            <p style="color: #0369a1; font-size: 11px; text-transform: uppercase; font-weight: 800; margin: 0 0 4px 0; letter-spacing: 0.5px;">🚀 New Partner Registration</p>
             <h2 style="color: #0f172a; font-size: 20px; font-weight: 800; margin: 0;">New Partner Application Received: ${businessName}</h2>
             <p style="color: #475569; font-size: 13px; margin: 4px 0 0 0;">Received on: <strong>${formattedDate} (IST)</strong></p>
         </div>
 
         <!-- DETAILS BODY -->
         <div style="padding: 24px 30px;">
-            <h3 style="color: #0f172a; font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px; margin: 0 0 12px 0; padding-bottom: 6px; border-bottom: 2px solid #00c985;">
+            <h3 style="color: #0f172a; font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px; margin: 0 0 12px 0; padding-bottom: 6px; border-bottom: 2px solid #0284c7;">
                 📋 Applicant & Business Key Details
             </h3>
 
@@ -121,7 +121,7 @@ export async function sendAdminPartnerNotification(application: PartnerNotificat
                 <p style="font-size: 14px; font-weight: 700; color: #0f172a; margin: 0 0 12px 0;">
                     Review full application and approve/reject partner credentials:
                 </p>
-                <a href="${reviewUrl}" style="display: inline-block; background-color: #0f172a; color: #00c985; font-size: 14px; font-weight: 800; text-decoration: none; padding: 12px 28px; border-radius: 8px; border: 2px solid #00c985; letter-spacing: 0.5px;">
+                <a href="${reviewUrl}" style="display: inline-block; background-color: #0f172a; color: #0284c7; font-size: 14px; font-weight: 800; text-decoration: none; padding: 12px 28px; border-radius: 8px; border: 2px solid #0284c7; letter-spacing: 0.5px;">
                     👉 Review in Admin Portal
                 </a>
             </div>
@@ -159,15 +159,15 @@ export async function sendPartnerApprovalEmail(application: {
     const htmlContent = `
     <div style="font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, Helvetica, Arial, sans-serif; max-width: 620px; margin: 0 auto; border: 1px solid #cbd5e1; border-radius: 16px; overflow: hidden; background-color: #ffffff; box-shadow: 0 10px 30px rgba(0,0,0,0.06);">
         <!-- BRAND HEADER -->
-        <div style="background-color: #0f172a; padding: 24px 30px; border-bottom: 4px solid #00c985;">
+        <div style="background-color: #0f172a; padding: 24px 30px; border-bottom: 4px solid #0284c7;">
             <table width="100%" border="0" cellspacing="0" cellpadding="0">
                 <tr>
                     <td>
-                        <h1 style="color: #00c985; margin: 0; font-size: 22px; font-weight: 900; letter-spacing: 1px;">SHREE FINANCE</h1>
+                        <h1 style="color: #0284c7; margin: 0; font-size: 22px; font-weight: 900; letter-spacing: 1px;">SHREE FINANCE</h1>
                         <p style="color: #94a3b8; margin: 4px 0 0 0; font-size: 11px; text-transform: uppercase; font-weight: 700;">Partner & Channel Network</p>
                     </td>
                     <td align="right">
-                        <span style="background-color: #00c985; color: #0f172a; padding: 6px 14px; border-radius: 20px; font-size: 11px; font-weight: 900; text-transform: uppercase;">
+                        <span style="background-color: #0284c7; color: #0f172a; padding: 6px 14px; border-radius: 20px; font-size: 11px; font-weight: 900; text-transform: uppercase;">
                             #${application.referenceNo}
                         </span>
                     </td>
@@ -177,7 +177,7 @@ export async function sendPartnerApprovalEmail(application: {
 
         <!-- HERO APPROVAL BANNER -->
         <div style="padding: 30px; background: linear-gradient(135deg, #ecfdf5 0%, #f0fdf4 50%, #f8fafc 100%); border-bottom: 1px solid #d1fae5; text-align: center;">
-            <div style="display: inline-block; background-color: #dcfce7; color: #15803d; padding: 6px 18px; border-radius: 20px; font-size: 12px; font-weight: 900; text-transform: uppercase; border: 1px solid #86efac; margin-bottom: 14px;">
+            <div style="display: inline-block; background-color: #dcfce7; color: #0369a1; padding: 6px 18px; border-radius: 20px; font-size: 12px; font-weight: 900; text-transform: uppercase; border: 1px solid #86efac; margin-bottom: 14px;">
                 🎉 Officially Approved & Accredited
             </div>
             <h2 style="color: #0f172a; font-size: 24px; font-weight: 900; margin: 0 0 8px 0;">
@@ -193,7 +193,7 @@ export async function sendPartnerApprovalEmail(application: {
 
         <!-- LOGIN CREDENTIALS CARD -->
         <div style="padding: 24px 30px; background-color: #f8fafc; border-bottom: 1px solid #e2e8f0;">
-            <div style="background-color: #ffffff; border: 2px solid #00c985; border-radius: 12px; padding: 18px 22px; box-shadow: 0 4px 12px rgba(0,201,133,0.1);">
+            <div style="background-color: #ffffff; border: 2px solid #0284c7; border-radius: 12px; padding: 18px 22px; box-shadow: 0 4px 12px rgba(0,201,133,0.1);">
                 <p style="margin: 0 0 10px 0; font-size: 12px; font-weight: 800; color: #0f172a; text-transform: uppercase; letter-spacing: 0.5px;">
                     🔑 Your Partner Portal Login Credentials:
                 </p>
@@ -206,7 +206,7 @@ export async function sendPartnerApprovalEmail(application: {
                         application.password
                             ? `<tr>
                         <td style="padding: 6px 0; font-weight: 700; color: #64748b;">Password:</td>
-                        <td style="padding: 6px 0; font-weight: 900; color: #059669; font-size: 15px; font-family: monospace; background: #ecfdf5; padding: 4px 8px; border-radius: 6px; display: inline-block;">${application.password}</td>
+                        <td style="padding: 6px 0; font-weight: 900; color: #0284c7; font-size: 15px; font-family: monospace; background: #ecfdf5; padding: 4px 8px; border-radius: 6px; display: inline-block;">${application.password}</td>
                     </tr>`
                             : ""
                     }
@@ -223,7 +223,7 @@ export async function sendPartnerApprovalEmail(application: {
             <p style="font-size: 14px; font-weight: 700; color: #0f172a; margin: 0 0 14px 0;">
                 Click below to log in with your email and password:
             </p>
-            <a href="${portalUrl}" style="display: inline-block; background-color: #00c985; color: #022c22; font-size: 15px; font-weight: 900; text-decoration: none; padding: 14px 34px; border-radius: 30px; text-transform: uppercase; letter-spacing: 0.5px; box-shadow: 0 4px 15px rgba(0,201,133,0.35);">
+            <a href="${portalUrl}" style="display: inline-block; background-color: #0284c7; color: #022c22; font-size: 15px; font-weight: 900; text-decoration: none; padding: 14px 34px; border-radius: 30px; text-transform: uppercase; letter-spacing: 0.5px; box-shadow: 0 4px 15px rgba(0,201,133,0.35);">
                 🔑 Access Partner Workstation
             </a>
             <p style="color: #94a3b8; font-size: 11px; margin: 10px 0 0 0; font-weight: 600;">
@@ -233,7 +233,7 @@ export async function sendPartnerApprovalEmail(application: {
 
         <!-- ONBOARDING BENEFITS -->
         <div style="padding: 24px 30px;">
-            <h3 style="color: #0f172a; font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px; margin: 0 0 12px 0; padding-bottom: 6px; border-bottom: 2px solid #00c985;">
+            <h3 style="color: #0f172a; font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px; margin: 0 0 12px 0; padding-bottom: 6px; border-bottom: 2px solid #0284c7;">
                 🚀 What You Can Do Now
             </h3>
             <div style="background-color: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 14px; margin-bottom: 18px;">
@@ -245,11 +245,11 @@ export async function sendPartnerApprovalEmail(application: {
             </div>
 
             <!-- SUPPORT INFO -->
-            <div style="background-color: #ecfdf5; border: 1px dashed #00c985; border-radius: 8px; padding: 14px; text-align: center;">
+            <div style="background-color: #ecfdf5; border: 1px dashed #0284c7; border-radius: 8px; padding: 14px; text-align: center;">
                 <p style="color: #065f46; font-size: 12px; margin: 0 0 4px 0; font-weight: 700;">
                     Need help getting started or submitting your first loan case?
                 </p>
-                <p style="color: #047857; font-size: 13px; margin: 0; font-weight: 800;">
+                <p style="color: #0369a1; font-size: 13px; margin: 0; font-weight: 800;">
                     📞 Partner Desk: <a href="tel:+917709936965" style="color: #0284c7; text-decoration: none;">+91 77099 36965</a> | ✉️ <a href="mailto:care@shreefinance.com" style="color: #0284c7; text-decoration: none;">care@shreefinance.com</a>
                 </p>
             </div>

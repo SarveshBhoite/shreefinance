@@ -49,15 +49,15 @@ export function LeadFormModal({ isOpen, onClose, type }: LeadFormModalProps) {
             isOpen={isOpen}
             onClose={handleClose}
             title=""
-            className="max-w-md bg-[#1e2126] text-white border-slate-800 p-0 overflow-hidden"
+            className="max-w-md bg-white text-white border-slate-800 p-0 overflow-hidden"
         >
             {/* Header */}
             <div className="bg-slate-950 p-4 border-b border-slate-800 flex items-center gap-3">
-                <div className="h-9 w-9 rounded-xl bg-[#00c985] text-slate-950 flex items-center justify-center font-black shrink-0">
+                <div className="h-9 w-9 rounded-xl bg-[#0284c7] text-slate-950 flex items-center justify-center font-black shrink-0">
                     <Building2 className="h-5 w-5" />
                 </div>
                 <div>
-                    <span className="text-[9px] font-black uppercase tracking-widest text-[#00e699] flex items-center gap-1">
+                    <span className="text-[9px] font-black uppercase tracking-widest text-[#38bdf8] flex items-center gap-1">
                         <Sparkles className="h-2.5 w-2.5" /> 40+ Member Bank Partners
                     </span>
                     <h3 className="text-sm font-black text-white uppercase tracking-tight">
@@ -69,7 +69,7 @@ export function LeadFormModal({ isOpen, onClose, type }: LeadFormModalProps) {
             <div className="p-6">
             {isSuccess ? (
                 <div className="text-center py-6 space-y-4">
-                    <div className="h-16 w-16 bg-[#00c985]/20 text-[#00c985] rounded-full flex items-center justify-center mx-auto border border-[#00c985]/40 animate-in zoom-in spin-in-12">
+                    <div className="h-16 w-16 bg-[#0284c7]/20 text-[#0284c7] rounded-full flex items-center justify-center mx-auto border border-[#0284c7]/40 animate-in zoom-in spin-in-12">
                         <CheckCircle2 className="h-8 w-8" />
                     </div>
                     <div>
@@ -82,7 +82,7 @@ export function LeadFormModal({ isOpen, onClose, type }: LeadFormModalProps) {
                                 : "Our expert bank underwriting officer will call you within 15 minutes with pre-approved sanctions."}
                         </p>
                     </div>
-                    <Button onClick={handleClose} className="w-full mt-4 bg-[#00c985] hover:bg-[#00b074] text-slate-950 font-black" size="lg">
+                    <Button onClick={handleClose} className="w-full mt-4 bg-[#0284c7] hover:bg-[#0369a1] text-slate-950 font-black" size="lg">
                         Done
                     </Button>
                 </div>
@@ -91,11 +91,11 @@ export function LeadFormModal({ isOpen, onClose, type }: LeadFormModalProps) {
                     {/* Visual Header */}
                     <div className={cn(
                         "rounded-xl p-3.5 flex items-center gap-3 border",
-                        isCibil ? "bg-amber-500/10 border-amber-500/30 text-amber-300" : "bg-[#00c985]/10 border-[#00c985]/30 text-[#00e699]"
+                        isCibil ? "bg-amber-500/10 border-amber-500/30 text-amber-300" : "bg-[#0284c7]/10 border-[#0284c7]/30 text-[#38bdf8]"
                     )}>
                         <div className={cn(
                             "h-9 w-9 rounded-full flex items-center justify-center shrink-0",
-                            isCibil ? "bg-amber-500/20 text-amber-400" : "bg-[#00c985]/20 text-[#00c985]"
+                            isCibil ? "bg-amber-500/20 text-amber-400" : "bg-[#0284c7]/20 text-[#0284c7]"
                         )}>
                             {isCibil ? <PieChart className="h-4 w-4" /> : <CreditCard className="h-4 w-4" />}
                         </div>
@@ -115,7 +115,7 @@ export function LeadFormModal({ isOpen, onClose, type }: LeadFormModalProps) {
                             <div className="space-y-1.5">
                                 <label className="text-[10px] font-black uppercase tracking-wider text-slate-400">Select Loan Facility</label>
                                 <select
-                                    className="w-full h-11 rounded-xl border border-slate-700 bg-slate-900 text-white px-3 font-bold text-xs focus:ring-2 focus:ring-[#00c985]"
+                                    className="w-full h-11 rounded-xl border border-slate-700 bg-slate-900 text-white px-3 font-bold text-xs focus:ring-2 focus:ring-[#0284c7]"
                                     value={formData.loanType}
                                     onChange={(e) => setFormData({ ...formData, loanType: e.target.value })}
                                 >
@@ -200,7 +200,7 @@ export function LeadFormModal({ isOpen, onClose, type }: LeadFormModalProps) {
                                     "w-full h-12 text-base font-bold shadow-lg transition-all cursor-pointer",
                                     isCibil
                                         ? "bg-amber-500 hover:bg-amber-600 text-slate-950"
-                                        : "bg-[#00c985] hover:bg-[#00b074] text-slate-950"
+                                        : "bg-[#0284c7] hover:bg-[#0369a1] text-slate-950"
                                 )}
                             >
                                 {isSubmitting ? (
@@ -216,7 +216,7 @@ export function LeadFormModal({ isOpen, onClose, type }: LeadFormModalProps) {
                     </form>
 
                     <div className="flex items-center justify-center gap-2 text-xs text-muted-foreground pt-2 border-t border-slate-200 dark:border-slate-800">
-                        <ShieldCheck className="h-4 w-4 text-[#00c985]" />
+                        <ShieldCheck className="h-4 w-4 text-[#0284c7]" />
                         <span>256-bit SSL Encrypted • 100% Data Protection</span>
                     </div>
                 </div>

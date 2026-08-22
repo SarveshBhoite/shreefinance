@@ -32,73 +32,73 @@ export default function StocksPage() {
     };
 
     return (
-        <div className="pb-20 bg-[#181a1d] text-white font-sans mx-auto">
+        <div className="pb-20 bg-white text-white font-sans mx-auto">
             <DynamicHeroWrapper page="stocks">
                 {/* Hero Section */}
-                <section className="relative pt-12 md:pt-20 pb-20 overflow-hidden bg-[#181a1d] text-white border-b border-slate-800">
-                    <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-[#00c985]/10 rounded-full blur-[120px] pointer-events-none" />
+                <section className="relative pt-12 md:pt-20 pb-20 overflow-hidden bg-white text-white border-b border-slate-200">
+                    <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-[#0284c7]/10 rounded-full blur-[120px] pointer-events-none" />
 
                     <div className="container px-4 md:px-6 grid lg:grid-cols-2 gap-12 items-center relative z-10 mx-auto">
                         <div className="space-y-8">
-                            <div className="inline-flex items-center gap-2 rounded-full border border-emerald-500/40 bg-emerald-500/10 px-4 py-1.5 text-xs font-black text-[#00e699] uppercase tracking-widest">
-                                <ArrowUpRight className="h-4 w-4 text-[#00e699]" />
+                            <div className="inline-flex items-center gap-2 rounded-full border border-sky-500/30 bg-sky-50 px-4 py-1.5 text-xs font-black text-[#0284c7] uppercase tracking-widest">
+                                <ArrowUpRight className="h-4 w-4 text-[#0284c7]" />
                                 <span>Zero Brokerage (Invest in Top Companies)</span>
                             </div>
 
-                            <h1 className="text-5xl md:text-7xl font-black tracking-tight leading-tight text-white">
+                            <h1 className="text-4xl sm:text-5xl md:text-6xl font-black tracking-tight leading-tight text-slate-900">
                                 Master the <br />
-                                <span className="text-[#00e699]">Stock Market.</span>
+                                <span className="text-[#0284c7]">Stock Market.</span>
                             </h1>
 
-                            <p className="text-xl text-slate-300 max-w-lg leading-relaxed font-medium">
+                            <p className="text-xl text-slate-600 max-w-lg leading-relaxed font-medium">
                                 Open a free 2-in-1 Demat & Trading account in 5 minutes. Enjoy zero brokerage on equity delivery & ₹20 flat on F&O trades.
                             </p>
 
                             <div className="flex flex-wrap gap-4">
-                                <Button size="lg" className="h-14 px-8 text-sm font-black rounded-full bg-[#00c985] hover:bg-[#00b074] text-slate-950 uppercase tracking-wider transition-all hover:scale-105" onClick={scrollToForm}>
+                                <Button size="lg" className="h-14 px-8 text-sm font-black rounded-full bg-[#0284c7] hover:bg-[#0369a1] text-white shadow-sm uppercase tracking-wider transition-all hover:scale-105" onClick={scrollToForm}>
                                     Open Free Demat Account
                                 </Button>
                             </div>
 
-                            <div className="grid grid-cols-3 gap-6 pt-6 border-t border-slate-800">
+                            <div className="grid grid-cols-3 gap-6 pt-6 border-t border-slate-200">
                                 <div>
-                                    <p className="text-3xl font-black text-[#00e699]">₹0</p>
-                                    <p className="text-xs text-slate-400 font-bold uppercase tracking-wider mt-1">Delivery Brokerage</p>
+                                    <p className="text-3xl font-black text-[#0284c7]">₹0</p>
+                                    <p className="text-xs text-slate-500 font-bold uppercase tracking-wider mt-1">Delivery Brokerage</p>
                                 </div>
                                 <div>
                                     <p className="text-3xl font-black text-white">5 Mins</p>
-                                    <p className="text-xs text-slate-400 font-bold uppercase tracking-wider mt-1">Paperless Onboarding</p>
+                                    <p className="text-xs text-slate-500 font-bold uppercase tracking-wider mt-1">Paperless Onboarding</p>
                                 </div>
                                 <div>
                                     <p className="text-3xl font-black text-amber-400">₹20</p>
-                                    <p className="text-xs text-slate-400 font-bold uppercase tracking-wider mt-1">Flat F&O Rate</p>
+                                    <p className="text-xs text-slate-500 font-bold uppercase tracking-wider mt-1">Flat F&O Rate</p>
                                 </div>
                             </div>
                         </div>
 
                         {/* Interactive Hero Visual */}
                         <div className="relative hidden lg:flex justify-center items-center h-[450px]">
-                            <Card className="bg-[#24272c] border border-slate-800 rounded-[2.5rem] p-8 text-white shadow-2xl space-y-6 w-full max-w-md">
-                                <div className="flex items-center gap-4 border-b border-slate-800 pb-4">
-                                    <div className="h-12 w-12 rounded-2xl bg-[#00c985]/15 border border-[#00c985]/30 flex items-center justify-center text-[#00c985]">
+                            <Card className="bg-white border border-slate-200 rounded-[2.5rem] p-8 text-white shadow-2xl space-y-6 w-full max-w-md">
+                                <div className="flex items-center gap-4 border-b border-slate-200 pb-4">
+                                    <div className="h-12 w-12 rounded-2xl bg-[#0284c7]/15 border border-[#0284c7]/30 flex items-center justify-center text-[#0284c7]">
                                         <CandlestickChart className="h-6 w-6" />
                                     </div>
                                     <div>
                                         <h3 className="font-extrabold text-white">NSE & BSE Direct Trading</h3>
-                                        <p className="text-xs text-slate-400 font-medium">Lightning Fast Order Execution</p>
+                                        <p className="text-xs text-slate-500 font-medium">Lightning Fast Order Execution</p>
                                     </div>
                                 </div>
                                 <div className="space-y-3">
-                                    <div className="flex justify-between items-center bg-slate-900/60 p-3.5 rounded-2xl border border-slate-800 text-xs">
-                                        <span className="text-slate-400 font-bold">Delivery Brokerage</span>
-                                        <span className="font-black text-[#00e699] text-sm">₹0 Lifetime Free</span>
+                                    <div className="flex justify-between items-center bg-white p-3.5 rounded-2xl border border-slate-200 text-xs">
+                                        <span className="text-slate-500 font-bold">Delivery Brokerage</span>
+                                        <span className="font-black text-[#0284c7] text-sm">₹0 Lifetime Free</span>
                                     </div>
-                                    <div className="flex justify-between items-center bg-slate-900/60 p-3.5 rounded-2xl border border-slate-800 text-xs">
-                                        <span className="text-slate-400 font-bold">Account Maintenance</span>
+                                    <div className="flex justify-between items-center bg-white p-3.5 rounded-2xl border border-slate-200 text-xs">
+                                        <span className="text-slate-500 font-bold">Account Maintenance</span>
                                         <span className="font-black text-white text-sm">First Year Free</span>
                                     </div>
-                                    <div className="flex justify-between items-center bg-slate-900/60 p-3.5 rounded-2xl border border-slate-800 text-xs">
-                                        <span className="text-slate-400 font-bold">IPO Applications</span>
+                                    <div className="flex justify-between items-center bg-white p-3.5 rounded-2xl border border-slate-200 text-xs">
+                                        <span className="text-slate-500 font-bold">IPO Applications</span>
                                         <span className="font-black text-amber-300 text-sm">Instant UPI Application</span>
                                     </div>
                                 </div>
@@ -121,10 +121,10 @@ export default function StocksPage() {
                     <div className="space-y-6">
                         <div className="space-y-4">
                             <div className="flex items-center gap-3 mb-4">
-                                <div className="h-10 w-10 rounded-full bg-[#00c985]/15 border border-[#00c985]/30 flex items-center justify-center text-[#00c985]">
+                                <div className="h-10 w-10 rounded-full bg-[#0284c7]/15 border border-[#0284c7]/30 flex items-center justify-center text-[#0284c7]">
                                     <CheckCircle2 className="h-6 w-6" />
                                 </div>
-                                <h3 className="text-2xl font-black text-white">Why Trade With Us?</h3>
+                                <h3 className="text-2xl font-black text-slate-900">Why Trade With Us?</h3>
                             </div>
                             <SimpleAccordion
                                 items={[
@@ -137,10 +137,10 @@ export default function StocksPage() {
 
                         <div className="space-y-4">
                             <div className="flex items-center gap-3 mb-4">
-                                <div className="h-10 w-10 rounded-full bg-[#00c985]/15 border border-[#00c985]/30 flex items-center justify-center text-[#00c985]">
+                                <div className="h-10 w-10 rounded-full bg-[#0284c7]/15 border border-[#0284c7]/30 flex items-center justify-center text-[#0284c7]">
                                     <FileText className="h-6 w-6" />
                                 </div>
-                                <h3 className="text-2xl font-black text-white">Documents Required</h3>
+                                <h3 className="text-2xl font-black text-slate-900">Documents Required</h3>
                             </div>
                             <SimpleAccordion
                                 items={[
@@ -156,25 +156,25 @@ export default function StocksPage() {
                 {/* Right Form Sidebar */}
                 <aside className="relative">
                     <div id="lead-form" className="sticky top-28">
-                        <Card className="bg-[#24272c] border border-slate-800 shadow-2xl rounded-[2.5rem] overflow-hidden text-white">
-                            <CardHeader className="bg-gradient-to-r from-lime-400 via-emerald-400 to-teal-400 text-slate-950 p-8">
-                                <span className="text-[10px] font-black uppercase tracking-widest bg-slate-950 text-white px-3 py-1 rounded-full w-fit">Zero Brokerage Offer</span>
+                        <Card className="bg-white border border-slate-200 shadow-2xl rounded-[2.5rem] overflow-hidden text-white">
+                            <CardHeader className="bg-gradient-to-r from-sky-700 via-sky-600 to-sky-800 text-slate-950 p-8">
+                                <span className="text-[10px] font-black uppercase tracking-widest bg-[#f8fafc] text-white px-3 py-1 rounded-full w-fit">Zero Brokerage Offer</span>
                                 <CardTitle className="text-2xl font-black text-slate-950 mt-2">Open Free Demat Account</CardTitle>
                                 <p className="text-slate-900 text-xs font-bold">100% paperless onboarding</p>
                             </CardHeader>
                             <CardContent className="p-8 space-y-4">
                                 {isSuccess ? (
                                     <div className="text-center py-8 space-y-3">
-                                        <div className="h-16 w-16 bg-[#00c985] text-slate-950 rounded-full flex items-center justify-center mx-auto font-black">
+                                        <div className="h-16 w-16 bg-[#0284c7] text-white rounded-full flex items-center justify-center mx-auto font-black">
                                             <CheckCircle2 className="h-8 w-8" />
                                         </div>
-                                        <h4 className="text-xl font-black text-white">Account Request Sent!</h4>
-                                        <p className="text-xs text-slate-400">Our demat executive will assist you with e-KYC.</p>
+                                        <h4 className="text-xl font-black text-slate-900">Account Request Sent!</h4>
+                                        <p className="text-xs text-slate-500">Our demat executive will assist you with e-KYC.</p>
                                     </div>
                                 ) : (
                                     <form onSubmit={handleSubmit} className="space-y-4">
                                         <div>
-                                            <label className="text-[10px] font-black uppercase text-slate-400">Full Name</label>
+                                            <label className="text-[10px] font-black uppercase text-slate-500">Full Name</label>
                                             <Input
                                                 placeholder="Enter full name"
                                                 value={formData.name}
@@ -183,7 +183,7 @@ export default function StocksPage() {
                                             />
                                         </div>
                                         <div>
-                                            <label className="text-[10px] font-black uppercase text-slate-400">Mobile Number (Aadhaar linked)</label>
+                                            <label className="text-[10px] font-black uppercase text-slate-500">Mobile Number (Aadhaar linked)</label>
                                             <Input
                                                 placeholder="10-digit mobile"
                                                 value={formData.mobile}
@@ -191,7 +191,7 @@ export default function StocksPage() {
                                                 required
                                             />
                                         </div>
-                                        <Button className="w-full bg-[#00c985] hover:bg-[#00b074] text-slate-950 font-black h-14 text-sm rounded-full uppercase tracking-wider shadow-xl mt-4">
+                                        <Button className="w-full bg-[#0284c7] hover:bg-[#0369a1] text-white shadow-sm font-black h-14 text-sm rounded-full uppercase tracking-wider shadow-sm hover:shadow-md mt-4">
                                             Open Free Demat Now
                                         </Button>
                                     </form>

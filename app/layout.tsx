@@ -26,7 +26,7 @@ export default async function RootLayout({
 
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={cn("antialiased font-sans bg-[#f8fafc] dark:bg-[#121417] text-slate-900 dark:text-white min-h-screen flex flex-col selection:bg-emerald-500/20 selection:text-emerald-800 relative transition-colors duration-300")}>
+      <body className={cn("antialiased font-sans bg-[#f8fafc] dark:bg-[#121417] text-slate-900 dark:text-white min-h-screen flex flex-col selection:bg-sky-500/20 selection:text-sky-800 relative transition-colors duration-300")}>
         <ThemeProvider>
           <ThemeBackground />
           {!isAdmin && <SiteHeader />}

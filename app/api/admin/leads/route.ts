@@ -16,8 +16,16 @@ export async function GET(req: Request) {
         const status = searchParams.get("status");
         const category = searchParams.get("category");
         const search = searchParams.get("search");
+        const partnerId = searchParams.get("partnerId");
+        const partnerRef = searchParams.get("partnerRef");
 
         const query: Record<string, unknown> = {};
+
+        if (partnerId && partnerId !== "ALL") {
+            query.partnerId = partnerId;
+        } else if (partnerRef && partnerRef !== "ALL") {
+            query.partnerReferenceNo = partnerRef;
+        }
 
         if (status && status !== "ALL") {
             query.leadStatus = status;
@@ -42,15 +50,30 @@ export async function GET(req: Request) {
 
         const leads = await PartnerLead.find(query).sort({ createdAt: -1 });
 
-        // Overall Aggregate Metrics
+        // Overall Global Aggregate Metrics (All Partners)
         const allLeads = await PartnerLead.find({});
-        const totalCount = allLeads.length;
-        const inProcessCount = allLeads.filter(l => ["IN_PROCESS", "DOCS_SUBMITTED", "BANK_LOGIN", "SANCTIONED"].includes(l.leadStatus)).length;
-        const disbursedCount = allLeads.filter(l => l.leadStatus === "DISBURSED").length;
-        const totalFiledVolume = allLeads.reduce((sum, l) => sum + (l.applicationAmount || 0), 0);
-        const totalDisbursedVolume = allLeads.filter(l => l.leadStatus === "DISBURSED").reduce((sum, l) => sum + (l.applicationAmount || 0), 0);
-        const totalCommissions = allLeads.filter(l => l.leadStatus === "DISBURSED").reduce((sum, l) => sum + (l.commissionAmount || 0), 0);
-        const pendingPayoutCommissions = allLeads
+        const globalTotalCount = allLeads.length;
+        const globalInProcessCount = allLeads.filter(l => ["IN_PROCESS", "DOCS_SUBMITTED", "BANK_LOGIN", "SANCTIONED"].includes(l.leadStatus)).length;
+        const globalDisbursedCount = allLeads.filter(l => l.leadStatus === "DISBURSED").length;
+        const globalTotalFiledVolume = allLeads.reduce((sum, l) => sum + (l.applicationAmount || 0), 0);
+        const globalTotalDisbursedVolume = allLeads.filter(l => l.leadStatus === "DISBURSED").reduce((sum, l) => sum + (l.applicationAmount || 0), 0);
+        const globalTotalCommissions = allLeads.filter(l => l.leadStatus === "DISBURSED").reduce((sum, l) => sum + (l.commissionAmount || 0), 0);
+        const globalPendingPayoutCommissions = allLeads
+            .filter(l => l.leadStatus === "DISBURSED" && l.payoutStatus !== "PAID")
+            .reduce((sum, l) => sum + (l.commissionAmount || 0), 0);
+
+        // Filtered / Selected Partner Specific Metrics
+        const targetLeads = (partnerId && partnerId !== "ALL") || (partnerRef && partnerRef !== "ALL")
+            ? allLeads.filter(l => (partnerId && partnerId !== "ALL" ? l.partnerId === partnerId : l.partnerReferenceNo === partnerRef))
+            : allLeads;
+
+        const totalCount = targetLeads.length;
+        const inProcessCount = targetLeads.filter(l => ["IN_PROCESS", "DOCS_SUBMITTED", "BANK_LOGIN", "SANCTIONED"].includes(l.leadStatus)).length;
+        const disbursedCount = targetLeads.filter(l => l.leadStatus === "DISBURSED").length;
+        const totalFiledVolume = targetLeads.reduce((sum, l) => sum + (l.applicationAmount || 0), 0);
+        const totalDisbursedVolume = targetLeads.filter(l => l.leadStatus === "DISBURSED").reduce((sum, l) => sum + (l.applicationAmount || 0), 0);
+        const totalCommissions = targetLeads.filter(l => l.leadStatus === "DISBURSED").reduce((sum, l) => sum + (l.commissionAmount || 0), 0);
+        const pendingPayoutCommissions = targetLeads
             .filter(l => l.leadStatus === "DISBURSED" && l.payoutStatus !== "PAID")
             .reduce((sum, l) => sum + (l.commissionAmount || 0), 0);
 
@@ -64,7 +87,14 @@ export async function GET(req: Request) {
                 totalFiledVolume,
                 totalDisbursedVolume,
                 totalCommissions,
-                pendingPayoutCommissions
+                pendingPayoutCommissions,
+                globalTotalCount,
+                globalInProcessCount,
+                globalDisbursedCount,
+                globalTotalFiledVolume,
+                globalTotalDisbursedVolume,
+                globalTotalCommissions,
+                globalPendingPayoutCommissions
             }
         });
     } catch (error) {

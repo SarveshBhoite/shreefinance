@@ -50,7 +50,7 @@ export function BusinessLoanInnerForm({ data, onChange }: Props) {
                     value={data.businessType}
                     onChange={(e) => onChange({ businessType: e.target.value })}
                     required
-                    className="w-full h-11 bg-white border border-sky-200 rounded-md px-3 text-xs font-bold text-slate-800 focus:ring-2 focus:ring-[#00c985]"
+                    className="w-full h-11 bg-white border border-sky-200 rounded-md px-3 text-xs font-bold text-slate-800 focus:ring-2 focus:ring-[#0284c7]"
                 >
                     <option value="Proprietorship">Sole Proprietorship</option>
                     <option value="Partnership / LLP">Partnership / LLP</option>
@@ -68,7 +68,7 @@ export function BusinessLoanInnerForm({ data, onChange }: Props) {
                     value={data.businessNature}
                     onChange={(e) => onChange({ businessNature: e.target.value })}
                     required
-                    className="w-full h-11 bg-white border border-sky-200 rounded-md px-3 text-xs font-bold text-slate-800 focus:ring-2 focus:ring-[#00c985]"
+                    className="w-full h-11 bg-white border border-sky-200 rounded-md px-3 text-xs font-bold text-slate-800 focus:ring-2 focus:ring-[#0284c7]"
                 >
                     <option value="Manufacturing / Industrial">Manufacturing / Industrial</option>
                     <option value="Trading / Wholesale / Retail">Trading / Wholesale / Retail</option>

@@ -89,11 +89,11 @@ export function UrbanMoneyLoanModal({ isOpen, onClose, initialLoan }: UrbanMoney
             isOpen={isOpen}
             onClose={handleClose}
             title={`Instant ${activeLoan.category} Sanction Check`}
-            className="max-w-xl bg-[#1e2126] text-white border-slate-800"
+            className="max-w-xl bg-white text-white border-slate-800"
         >
             {isSuccess ? (
                 <div className="text-center py-8 space-y-5">
-                    <div className="h-20 w-20 bg-[#00c985]/20 text-[#00c985] rounded-full flex items-center justify-center mx-auto border-2 border-[#00c985]/40 animate-in zoom-in">
+                    <div className="h-20 w-20 bg-[#0284c7]/20 text-[#0284c7] rounded-full flex items-center justify-center mx-auto border-2 border-[#0284c7]/40 animate-in zoom-in">
                         <CheckCircle2 className="h-10 w-10" />
                     </div>
                     <div className="space-y-2">
@@ -101,7 +101,7 @@ export function UrbanMoneyLoanModal({ isOpen, onClose, initialLoan }: UrbanMoney
                             Sanction Pre-Approval In Progress!
                         </h3>
                         <p className="text-slate-300 text-sm max-w-md mx-auto">
-                            Thank you, <strong className="text-white">{formData.name || "Customer"}</strong>. Your application for <strong className="text-[#00e699]">{activeLoan.category}</strong> of <strong className="text-[#00e699]">{formatCurrency(loanAmount)}</strong> has been fast-tracked.
+                            Thank you, <strong className="text-white">{formData.name || "Customer"}</strong>. Your application for <strong className="text-[#38bdf8]">{activeLoan.category}</strong> of <strong className="text-[#38bdf8]">{formatCurrency(loanAmount)}</strong> has been fast-tracked.
                         </p>
                     </div>
 
@@ -112,7 +112,7 @@ export function UrbanMoneyLoanModal({ isOpen, onClose, initialLoan }: UrbanMoney
                         </div>
                         <div className="flex justify-between text-slate-400">
                             <span>Starting Interest Rate:</span>
-                            <span className="text-[#00e699] font-black">{activeLoan.rate} p.a.</span>
+                            <span className="text-[#38bdf8] font-black">{activeLoan.rate} p.a.</span>
                         </div>
                         <div className="flex justify-between text-slate-400">
                             <span>Estimated Monthly EMI:</span>
@@ -126,7 +126,7 @@ export function UrbanMoneyLoanModal({ isOpen, onClose, initialLoan }: UrbanMoney
 
                     <Button 
                         onClick={handleClose} 
-                        className="w-full bg-[#00c985] hover:bg-[#00b074] text-slate-950 font-black h-12 rounded-xl"
+                        className="w-full bg-[#0284c7] hover:bg-[#0369a1] text-slate-950 font-black h-12 rounded-xl"
                     >
                         Done
                     </Button>
@@ -160,7 +160,7 @@ export function UrbanMoneyLoanModal({ isOpen, onClose, initialLoan }: UrbanMoney
                             <span className="text-[10px] font-black uppercase tracking-wider text-slate-400">
                                 Live Lowest Market Rate
                             </span>
-                            <p className="text-xl font-black text-[#00e699] flex items-center gap-1">
+                            <p className="text-xl font-black text-[#38bdf8] flex items-center gap-1">
                                 <span>{activeLoan.rate}</span>
                                 <span className="text-xs text-slate-400 font-bold">p.a. onwards</span>
                             </p>
@@ -179,7 +179,7 @@ export function UrbanMoneyLoanModal({ isOpen, onClose, initialLoan }: UrbanMoney
                     <div className="space-y-2 bg-slate-900/60 p-4 rounded-2xl border border-slate-800">
                         <div className="flex justify-between items-center text-xs">
                             <span className="font-extrabold text-slate-400 uppercase">Desired Loan Amount</span>
-                            <span className="text-base font-black text-[#00e699]">{formatCurrency(loanAmount)}</span>
+                            <span className="text-base font-black text-[#38bdf8]">{formatCurrency(loanAmount)}</span>
                         </div>
 
                         <div className="grid grid-cols-4 gap-2 pt-1">
@@ -211,7 +211,7 @@ export function UrbanMoneyLoanModal({ isOpen, onClose, initialLoan }: UrbanMoney
                                     onClick={() => setEmploymentType("salaried")}
                                     className={`py-2 rounded-xl text-xs font-black transition-all ${
                                         employmentType === "salaried"
-                                            ? "bg-[#00c985] text-slate-950 shadow-md"
+                                            ? "bg-[#0284c7] text-slate-950 shadow-md"
                                             : "bg-slate-800 text-slate-300 hover:bg-slate-700"
                                     }`}
                                 >
@@ -222,7 +222,7 @@ export function UrbanMoneyLoanModal({ isOpen, onClose, initialLoan }: UrbanMoney
                                     onClick={() => setEmploymentType("self-employed")}
                                     className={`py-2 rounded-xl text-xs font-black transition-all ${
                                         employmentType === "self-employed"
-                                            ? "bg-[#00c985] text-slate-950 shadow-md"
+                                            ? "bg-[#0284c7] text-slate-950 shadow-md"
                                             : "bg-slate-800 text-slate-300 hover:bg-slate-700"
                                     }`}
                                 >
@@ -296,7 +296,7 @@ export function UrbanMoneyLoanModal({ isOpen, onClose, initialLoan }: UrbanMoney
                         </Button>
 
                         <div className="flex items-center justify-center gap-2 text-[11px] text-slate-400 pt-1">
-                            <ShieldCheck className="h-3.5 w-3.5 text-[#00e699]" />
+                            <ShieldCheck className="h-3.5 w-3.5 text-[#38bdf8]" />
                             <span>100% Safe & Confidential • No impact on CIBIL score</span>
                         </div>
                     </form>

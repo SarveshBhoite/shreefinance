@@ -50,7 +50,7 @@ export function EducationLoanInnerForm({ data, onChange }: Props) {
                     value={data.studyCountry}
                     onChange={(e) => onChange({ studyCountry: e.target.value })}
                     required
-                    className="w-full h-11 bg-white border border-sky-200 rounded-md px-3 text-xs font-bold text-slate-800 focus:ring-2 focus:ring-[#00c985]"
+                    className="w-full h-11 bg-white border border-sky-200 rounded-md px-3 text-xs font-bold text-slate-800 focus:ring-2 focus:ring-[#0284c7]"
                 >
                     <option value="United States (USA)">United States (USA)</option>
                     <option value="United Kingdom (UK)">United Kingdom (UK)</option>
@@ -71,7 +71,7 @@ export function EducationLoanInnerForm({ data, onChange }: Props) {
                     value={data.courseLevel}
                     onChange={(e) => onChange({ courseLevel: e.target.value })}
                     required
-                    className="w-full h-11 bg-white border border-sky-200 rounded-md px-3 text-xs font-bold text-slate-800 focus:ring-2 focus:ring-[#00c985]"
+                    className="w-full h-11 bg-white border border-sky-200 rounded-md px-3 text-xs font-bold text-slate-800 focus:ring-2 focus:ring-[#0284c7]"
                 >
                     <option value="Post-Graduate / Master's / MS">Post-Graduate / Master's / MS</option>
                     <option value="MBA / PGDM">MBA / PGDM</option>
@@ -104,7 +104,7 @@ export function EducationLoanInnerForm({ data, onChange }: Props) {
                     value={data.coBorrowerRelation}
                     onChange={(e) => onChange({ coBorrowerRelation: e.target.value })}
                     required
-                    className="w-full h-11 bg-white border border-sky-200 rounded-md px-3 text-xs font-bold text-slate-800 focus:ring-2 focus:ring-[#00c985]"
+                    className="w-full h-11 bg-white border border-sky-200 rounded-md px-3 text-xs font-bold text-slate-800 focus:ring-2 focus:ring-[#0284c7]"
                 >
                     <option value="Father">Father</option>
                     <option value="Mother">Mother</option>

@@ -118,15 +118,15 @@ export async function POST(req: Request) {
         const htmlTemplate = `
         <div style="font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, Helvetica, Arial, sans-serif; max-width: 650px; margin: 0 auto; border: 1px solid #cbd5e1; border-radius: 16px; overflow: hidden; background-color: #ffffff; box-shadow: 0 10px 30px rgba(0,0,0,0.06);">
             <!-- HEADER -->
-            <div style="background-color: #0f172a; padding: 24px 30px; border-bottom: 4px solid #00c985;">
+            <div style="background-color: #0f172a; padding: 24px 30px; border-bottom: 4px solid #0284c7;">
                 <table width="100%" border="0" cellspacing="0" cellpadding="0">
                     <tr>
                         <td>
-                            <h1 style="color: #00c985; margin: 0; font-size: 22px; font-weight: 900; letter-spacing: 1px;">SHREE FINANCE</h1>
+                            <h1 style="color: #0284c7; margin: 0; font-size: 22px; font-weight: 900; letter-spacing: 1px;">SHREE FINANCE</h1>
                             <p style="color: #94a3b8; margin: 4px 0 0 0; font-size: 12px; text-transform: uppercase; font-weight: 700;">Online Customer Form Submission</p>
                         </td>
                         <td align="right">
-                            <span style="background-color: #00c985; color: #0f172a; padding: 6px 14px; border-radius: 20px; font-size: 11px; font-weight: 900; text-transform: uppercase; letter-spacing: 0.5px;">
+                            <span style="background-color: #0284c7; color: #0f172a; padding: 6px 14px; border-radius: 20px; font-size: 11px; font-weight: 900; text-transform: uppercase; letter-spacing: 0.5px;">
                                 #${refNo}
                             </span>
                         </td>
@@ -136,7 +136,7 @@ export async function POST(req: Request) {
 
             <!-- FORM BANNER -->
             <div style="background: linear-gradient(135deg, #f0fdf4 0%, #e2e8f0 100%); padding: 20px 30px; border-bottom: 1px solid #e2e8f0;">
-                <p style="color: #15803d; font-size: 11px; text-transform: uppercase; font-weight: 800; margin: 0 0 4px 0; letter-spacing: 0.5px;">📬 New Form Received</p>
+                <p style="color: #0369a1; font-size: 11px; text-transform: uppercase; font-weight: 800; margin: 0 0 4px 0; letter-spacing: 0.5px;">📬 New Form Received</p>
                 <h2 style="color: #0f172a; font-size: 20px; font-weight: 800; margin: 0;">${formTitle}</h2>
                 <p style="color: #475569; font-size: 13px; margin: 4px 0 0 0;">Received on: <strong>${timestamp} (IST)</strong></p>
             </div>
@@ -145,7 +145,7 @@ export async function POST(req: Request) {
             <div style="padding: 24px 30px;">
                 
                 <!-- CONTACT SECTION -->
-                <h3 style="color: #0f172a; font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px; margin: 0 0 12px 0; padding-bottom: 6px; border-bottom: 2px solid #00c985;">
+                <h3 style="color: #0f172a; font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px; margin: 0 0 12px 0; padding-bottom: 6px; border-bottom: 2px solid #0284c7;">
                     👤 Applicant Contact Information
                 </h3>
                 <table width="100%" border="0" cellspacing="0" cellpadding="0" style="font-size: 13px; margin-bottom: 24px; border: 1px solid #e2e8f0; border-radius: 8px; overflow: hidden;">
@@ -173,7 +173,7 @@ export async function POST(req: Request) {
 
                 <!-- SUBMITTED APPLICATION DETAILS -->
                 ${additionalRows ? `
-                <h3 style="color: #0f172a; font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px; margin: 0 0 12px 0; padding-bottom: 6px; border-bottom: 2px solid #00c985;">
+                <h3 style="color: #0f172a; font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px; margin: 0 0 12px 0; padding-bottom: 6px; border-bottom: 2px solid #0284c7;">
                     📋 Submitted Application / Financial Data
                 </h3>
                 <table width="100%" border="0" cellspacing="0" cellpadding="0" style="font-size: 13px; margin-bottom: 24px; border: 1px solid #e2e8f0; border-radius: 8px; overflow: hidden;">
@@ -182,8 +182,8 @@ export async function POST(req: Request) {
                 ` : ""}
 
                 <!-- ACTION NOTICE BOX -->
-                <div style="background-color: #f0fdf4; border: 1px dashed #00c985; border-radius: 8px; padding: 14px; text-align: center;">
-                    <p style="color: #15803d; font-size: 12px; font-weight: 700; margin: 0;">
+                <div style="background-color: #f0fdf4; border: 1px dashed #0284c7; border-radius: 8px; padding: 14px; text-align: center;">
+                    <p style="color: #0369a1; font-size: 12px; font-weight: 700; margin: 0;">
                         ✅ Instant Lead Capture • Sent via Verified Brevo SMTP Gateway
                     </p>
                 </div>
@@ -217,15 +217,15 @@ export async function POST(req: Request) {
             const customerHtmlTemplate = `
             <div style="font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, Helvetica, Arial, sans-serif; max-width: 620px; margin: 0 auto; border: 1px solid #cbd5e1; border-radius: 16px; overflow: hidden; background-color: #ffffff; box-shadow: 0 10px 30px rgba(0,0,0,0.06);">
                 <!-- BRAND HEADER -->
-                <div style="background-color: #0f172a; padding: 24px 30px; border-bottom: 4px solid #00c985;">
+                <div style="background-color: #0f172a; padding: 24px 30px; border-bottom: 4px solid #0284c7;">
                     <table width="100%" border="0" cellspacing="0" cellpadding="0">
                         <tr>
                             <td>
-                                <h1 style="color: #00c985; margin: 0; font-size: 22px; font-weight: 900; letter-spacing: 1px;">SHREE FINANCE</h1>
+                                <h1 style="color: #0284c7; margin: 0; font-size: 22px; font-weight: 900; letter-spacing: 1px;">SHREE FINANCE</h1>
                                 <p style="color: #94a3b8; margin: 4px 0 0 0; font-size: 11px; text-transform: uppercase; font-weight: 700;">Direct Bank Facility • 40+ Partner Banks</p>
                             </td>
                             <td align="right">
-                                <span style="background-color: #00c985; color: #0f172a; padding: 6px 14px; border-radius: 20px; font-size: 11px; font-weight: 900; text-transform: uppercase;">
+                                <span style="background-color: #0284c7; color: #0f172a; padding: 6px 14px; border-radius: 20px; font-size: 11px; font-weight: 900; text-transform: uppercase;">
                                     #${refNo}
                                 </span>
                             </td>
@@ -235,7 +235,7 @@ export async function POST(req: Request) {
 
                 <!-- ELIGIBILITY CELEBRATION BANNER -->
                 <div style="padding: 26px 30px; background: linear-gradient(135deg, #ecfdf5 0%, #f0fdf4 50%, #f8fafc 100%); border-bottom: 1px solid #d1fae5; text-align: center;">
-                    <div style="display: inline-block; background-color: #dcfce7; color: #15803d; padding: 6px 16px; border-radius: 20px; font-size: 12px; font-weight: 900; text-transform: uppercase; border: 1px solid #86efac; margin-bottom: 12px;">
+                    <div style="display: inline-block; background-color: #dcfce7; color: #0369a1; padding: 6px 16px; border-radius: 20px; font-size: 12px; font-weight: 900; text-transform: uppercase; border: 1px solid #86efac; margin-bottom: 12px;">
                         🎉 Pre-Approved Eligibility Verified
                     </div>
                     <h2 style="color: #0f172a; font-size: 22px; font-weight: 900; margin: 0 0 8px 0;">
@@ -254,7 +254,7 @@ export async function POST(req: Request) {
                     <p style="font-size: 14px; font-weight: 700; color: #0f172a; margin: 0 0 14px 0;">
                         Click below to apply for loan and compare live bank offers:
                     </p>
-                    <a href="${applyLink}" style="display: inline-block; background-color: #00c985; color: #022c22; font-size: 15px; font-weight: 900; text-decoration: none; padding: 14px 32px; border-radius: 30px; text-transform: uppercase; letter-spacing: 0.5px; box-shadow: 0 4px 15px rgba(0,201,133,0.35);">
+                    <a href="${applyLink}" style="display: inline-block; background-color: #0284c7; color: #022c22; font-size: 15px; font-weight: 900; text-decoration: none; padding: 14px 32px; border-radius: 30px; text-transform: uppercase; letter-spacing: 0.5px; box-shadow: 0 4px 15px rgba(0,201,133,0.35);">
                         👉 Apply For Loan Online (Click Here)
                     </a>
                     <p style="color: #94a3b8; font-size: 11px; margin: 10px 0 0 0; font-weight: 600;">
@@ -264,7 +264,7 @@ export async function POST(req: Request) {
 
                 <!-- SUBMITTED DETAILS SUMMARY -->
                 <div style="padding: 24px 30px;">
-                    <h3 style="color: #0f172a; font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px; margin: 0 0 12px 0; padding-bottom: 6px; border-bottom: 2px solid #00c985;">
+                    <h3 style="color: #0f172a; font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px; margin: 0 0 12px 0; padding-bottom: 6px; border-bottom: 2px solid #0284c7;">
                         📑 Your Registered Profile Details
                     </h3>
                     <table width="100%" border="0" cellspacing="0" cellpadding="0" style="font-size: 13px; margin-bottom: 20px; border: 1px solid #e2e8f0; border-radius: 8px; overflow: hidden;">
@@ -282,14 +282,14 @@ export async function POST(req: Request) {
                         </tr>
                         <tr>
                             <td style="font-weight: 700; color: #475569; padding: 10px 12px;">Pre-Approval Status:</td>
-                            <td style="font-weight: 800; color: #16a34a; padding: 10px 12px;">✅ Eligible • In Review with 40+ Partner Banks</td>
+                            <td style="font-weight: 800; color: #0284c7; padding: 10px 12px;">✅ Eligible • In Review with 40+ Partner Banks</td>
                         </tr>
                     </table>
 
                     <!-- NEXT STEPS -->
-                    <div style="background-color: #ecfdf5; border-left: 4px solid #00c985; padding: 14px 18px; border-radius: 6px; margin-bottom: 20px;">
+                    <div style="background-color: #ecfdf5; border-left: 4px solid #0284c7; padding: 14px 18px; border-radius: 6px; margin-bottom: 20px;">
                         <h4 style="margin: 0 0 4px 0; color: #065f46; font-size: 13px; font-weight: 800;">What happens next?</h4>
-                        <p style="margin: 0; color: #047857; font-size: 12px; line-height: 1.5;">
+                        <p style="margin: 0; color: #0369a1; font-size: 12px; line-height: 1.5;">
                             • A senior underwriting executive will call you shortly on <strong>+91 ${applicantPhone}</strong>.<br/>
                             • We compare quotes from SBI, HDFC Bank, ICICI Bank, Axis Bank, and Bank of Baroda to sanction your funds at lowest ROI.
                         </p>

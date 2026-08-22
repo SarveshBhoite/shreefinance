@@ -102,11 +102,11 @@ export function HeroSection() {
     return (
         <section className="relative w-full bg-[#f8fafc] dark:bg-[#15171a] text-slate-900 dark:text-white font-sans overflow-hidden pt-8 pb-14 md:pt-14 md:pb-20 border-b border-slate-200 dark:border-slate-800 transition-colors duration-300">
             {/* Background Ambient Radial Lights */}
-            <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-[#00c985]/10 rounded-full blur-[140px] pointer-events-none" />
-            <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-emerald-500/10 rounded-full blur-[120px] pointer-events-none" />
+            <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-[#0284c7]/10 rounded-full blur-[140px] pointer-events-none" />
+            <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-sky-500/10 rounded-full blur-[120px] pointer-events-none" />
             
             {/* Geometric Grid Overlay */}
-            <div className="absolute inset-0 bg-[linear-gradient(to_right,#0596690a_1px,transparent_1px),linear-gradient(to_bottom,#0596690a_1px,transparent_1px)] dark:bg-[linear-gradient(to_right,#ffffff05_1px,transparent_1px),linear-gradient(to_bottom,#ffffff05_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] pointer-events-none" />
+            <div className="absolute inset-0 bg-[linear-gradient(to_right,#0284c70a_1px,transparent_1px),linear-gradient(to_bottom,#0284c70a_1px,transparent_1px)] dark:bg-[linear-gradient(to_right,#ffffff05_1px,transparent_1px),linear-gradient(to_bottom,#ffffff05_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] pointer-events-none" />
 
             <div className="container px-4 md:px-6 lg:px-8 mx-auto relative z-10 space-y-12">
                 {/* 1. Main Hero Grid */}
@@ -118,9 +118,9 @@ export function HeroSection() {
                             <motion.div
                                 initial={{ opacity: 0, y: 10 }}
                                 animate={{ opacity: 1, y: 0 }}
-                                className="inline-flex items-center gap-2 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-3.5 py-1 text-[11px] font-black text-emerald-700 dark:text-[#00e699] uppercase tracking-widest backdrop-blur-xl"
+                                className="inline-flex items-center gap-2 rounded-full border border-sky-500/30 bg-sky-50 dark:bg-sky-500/10 px-3.5 py-1 text-[11px] font-black text-[#0284c7] uppercase tracking-widest backdrop-blur-xl"
                             >
-                                <Sparkles className="h-3 w-3 text-emerald-600 dark:text-[#00e699]" />
+                                <Sparkles className="h-3 w-3 text-[#0284c7]" />
                                 <span>Shree Finance Digital Hub 2026</span>
                             </motion.div>
 
@@ -131,7 +131,7 @@ export function HeroSection() {
                                 className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight leading-[1.15] text-slate-900 dark:text-white"
                             >
                                 Smart Digital Loans<br />
-                                <span className="text-[#00a86b] dark:text-[#00e699]">40+ Partner Banks.</span>
+                                <span className="text-[#0284c7]">40+ Partner Banks.</span>
                             </motion.h1>
 
                             <motion.p
@@ -146,8 +146,8 @@ export function HeroSection() {
 
                         {/* Feature Badges Grid */}
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1">
-                            <div className="p-3 rounded-xl bg-white dark:bg-[#1e2126] border border-slate-200/80 dark:border-slate-800 shadow-sm flex items-center gap-2.5">
-                                <div className="h-8 w-8 rounded-lg bg-emerald-500/15 text-[#00a86b] dark:text-[#00c985] flex items-center justify-center shrink-0">
+                            <div className="p-3 rounded-xl bg-white dark:bg-white border border-slate-200/80 dark:border-slate-800 shadow-sm flex items-center gap-2.5">
+                                <div className="h-8 w-8 rounded-lg bg-sky-500/15 text-[#0284c7] flex items-center justify-center shrink-0">
                                     <Zap className="h-4 w-4" />
                                 </div>
                                 <div>
@@ -156,8 +156,8 @@ export function HeroSection() {
                                 </div>
                             </div>
 
-                            <div className="p-3 rounded-xl bg-white dark:bg-[#1e2126] border border-slate-200/80 dark:border-slate-800 shadow-sm flex items-center gap-2.5">
-                                <div className="h-8 w-8 rounded-lg bg-emerald-500/15 text-[#00a86b] dark:text-[#00c985] flex items-center justify-center shrink-0">
+                            <div className="p-3 rounded-xl bg-white dark:bg-white border border-slate-200/80 dark:border-slate-800 shadow-sm flex items-center gap-2.5">
+                                <div className="h-8 w-8 rounded-lg bg-sky-500/15 text-[#0284c7] flex items-center justify-center shrink-0">
                                     <TrendingUp className="h-4 w-4" />
                                 </div>
                                 <div>
@@ -172,7 +172,7 @@ export function HeroSection() {
                             <Button
                                 size="lg"
                                 onClick={() => openModal("general")}
-                                className="h-12 px-6 text-xs sm:text-sm font-black rounded-full bg-[#00c985] hover:bg-[#00b074] text-slate-950 uppercase tracking-wider transition-all hover:scale-105 shadow-xl cursor-pointer"
+                                className="h-12 px-6 text-xs sm:text-sm font-black rounded-full bg-[#0284c7] hover:bg-[#0369a1] text-white uppercase tracking-wider transition-all hover:scale-105 shadow-xl cursor-pointer"
                             >
                                 Get Instant Loan Sanction <ArrowRight className="h-4 w-4 ml-2" />
                             </Button>
@@ -181,15 +181,15 @@ export function HeroSection() {
                                 size="lg"
                                 variant="outline"
                                 onClick={() => openModal("cibil")}
-                                className="h-12 px-6 text-xs sm:text-sm font-black rounded-full border-emerald-600/30 dark:border-emerald-500/40 bg-emerald-50 dark:bg-emerald-950/40 text-emerald-800 dark:text-emerald-300 hover:bg-emerald-100 dark:hover:bg-emerald-900/60 uppercase tracking-wider transition-all cursor-pointer"
+                                className="h-12 px-6 text-xs sm:text-sm font-black rounded-full border-sky-600/30 dark:border-sky-500/40 bg-sky-50 dark:bg-sky-950/40 text-sky-800 dark:text-sky-300 hover:bg-sky-100 uppercase tracking-wider transition-all cursor-pointer"
                             >
-                                <Zap className="h-3.5 w-3.5 mr-1.5 fill-emerald-600 text-emerald-600 dark:fill-emerald-400 dark:text-emerald-400" /> Free CIBIL Check
+                                <Zap className="h-3.5 w-3.5 mr-1.5 fill-sky-600 text-sky-600 dark:fill-sky-400 dark:text-sky-400" /> Free CIBIL Check
                             </Button>
 
                             <Link href="/become-a-partner">
                                 <Button
                                     size="lg"
-                                    className="h-12 px-6 text-xs sm:text-sm font-black rounded-full bg-[#00c985] hover:bg-[#00b074] text-slate-950 uppercase tracking-wider transition-all hover:scale-105 shadow-xl cursor-pointer flex items-center gap-1.5"
+                                    className="h-12 px-6 text-xs sm:text-sm font-black rounded-full bg-[#0284c7] hover:bg-[#0369a1] text-white uppercase tracking-wider transition-all hover:scale-105 shadow-xl cursor-pointer flex items-center gap-1.5"
                                 >
                                     <Users className="h-4 w-4" />
                                     <span>Become a Partner</span>
@@ -209,7 +209,7 @@ export function HeroSection() {
                     {loanProducts.map((prod) => (
                         <div
                             key={prod.id}
-                            className="relative overflow-hidden bg-white dark:bg-[#1e2126] hover:bg-emerald-50/50 dark:hover:bg-[#252a32] border border-slate-200 dark:border-slate-800 hover:border-[#00c985] rounded-2xl p-5 flex flex-col justify-between transition-all duration-300 shadow-md hover:shadow-xl hover:shadow-emerald-500/10 group cursor-pointer"
+                            className="relative overflow-hidden bg-white dark:bg-white hover:bg-sky-50/50 dark:hover:bg-[#252a32] border border-slate-200 dark:border-slate-800 hover:border-[#0284c7] rounded-2xl p-5 flex flex-col justify-between transition-all duration-300 shadow-md hover:shadow-xl hover:shadow-sky-500/10 group cursor-pointer"
                             onClick={() => {
                                 if (prod.id.includes("home")) handleOpenLoanType("home");
                                 else if (prod.id.includes("car")) handleOpenLoanType("car");
@@ -217,21 +217,21 @@ export function HeroSection() {
                                 else handleOpenLoanType("personal");
                             }}
                         >
-                            {/* Subtle Green Ambient Glow on Hover */}
-                            <div className="absolute top-0 right-0 w-24 h-24 bg-emerald-400/10 rounded-full blur-xl pointer-events-none group-hover:bg-emerald-400/20 transition-all" />
+                            {/* Subtle Ambient Glow on Hover */}
+                            <div className="absolute top-0 right-0 w-24 h-24 bg-sky-400/10 rounded-full blur-xl pointer-events-none group-hover:bg-sky-400/20 transition-all" />
 
                             <div className="space-y-3 relative z-10">
                                 <div className="flex justify-between items-center">
-                                    <div className="h-10 w-10 rounded-xl bg-emerald-50 dark:bg-emerald-950/60 border border-emerald-200 dark:border-emerald-800/40 text-[#00a86b] dark:text-[#00c985] flex items-center justify-center group-hover:bg-[#00c985] group-hover:text-slate-950 transition-all">
+                                    <div className="h-10 w-10 rounded-xl bg-sky-50 dark:bg-sky-950/60 border border-sky-200 dark:border-sky-800/40 text-[#0284c7] flex items-center justify-center group-hover:bg-[#0284c7] group-hover:text-white transition-all">
                                         <prod.icon className="h-5 w-5" />
                                     </div>
-                                    <span className="text-[10px] font-black uppercase text-emerald-900 dark:text-slate-950 px-2.5 py-0.5 rounded-full bg-emerald-100 dark:bg-emerald-400 border border-emerald-200 dark:border-emerald-400 shadow-sm">
+                                    <span className="text-[10px] font-black uppercase text-sky-900 dark:text-white px-2.5 py-0.5 rounded-full bg-sky-100 dark:bg-sky-800 border border-sky-200 dark:border-sky-700 shadow-sm">
                                         {prod.badge}
                                     </span>
                                 </div>
 
                                 <div>
-                                    <h3 className="text-lg font-black text-slate-900 dark:text-white group-hover:text-[#00a86b] dark:group-hover:text-[#00e699] transition-colors">
+                                    <h3 className="text-lg font-black text-slate-900 dark:text-white group-hover:text-[#0284c7] transition-colors">
                                         {prod.title}
                                     </h3>
                                     <p className="text-xs text-slate-500 dark:text-slate-400 mt-1 font-medium leading-relaxed">
@@ -240,7 +240,7 @@ export function HeroSection() {
                                 </div>
                             </div>
 
-                            <div className="pt-4 flex items-center text-xs font-black text-[#00a86b] dark:text-[#00e699] group-hover:text-emerald-700 dark:group-hover:text-emerald-300 group-hover:translate-x-1 transition-transform relative z-10">
+                            <div className="pt-4 flex items-center text-xs font-black text-[#0284c7] group-hover:translate-x-1 transition-transform relative z-10">
                                 Apply Direct Bank Facility <ChevronRight className="h-4 w-4 ml-1" />
                             </div>
                         </div>

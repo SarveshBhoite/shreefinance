@@ -261,8 +261,8 @@ export function Deal4LoansDynamicForm({
             <div className="border-b border-sky-200 pb-5 mb-8">
                 <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-2">
                     <div>
-                        <div className="inline-flex items-center gap-1.5 px-3 py-0.5 rounded-full bg-emerald-100 text-emerald-800 text-[11px] font-extrabold uppercase tracking-wider mb-2 border border-emerald-300">
-                            <Sparkles className="h-3 w-3 text-emerald-600" /> Shree Finance Direct Bank Facility
+                        <div className="inline-flex items-center gap-1.5 px-3 py-0.5 rounded-full bg-sky-100 text-sky-800 text-[11px] font-extrabold uppercase tracking-wider mb-2 border border-sky-300">
+                            <Sparkles className="h-3 w-3 text-sky-600" /> Shree Finance Direct Bank Facility
                         </div>
                         <h2 className="text-xl sm:text-2xl font-bold text-slate-900 tracking-tight">
                             {titleOverride || activeConfig.headline}
@@ -279,7 +279,7 @@ export function Deal4LoansDynamicForm({
                 <div className="mb-6 space-y-2">
                     <div className="flex justify-between items-center text-xs font-bold text-slate-600 uppercase">
                         <span>Select Loan Type</span>
-                        <span className="text-emerald-700 font-black">{activeConfig.rate} p.a. starting</span>
+                        <span className="text-sky-700 font-black">{activeConfig.rate} p.a. starting</span>
                     </div>
                     <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-2 p-1.5 bg-sky-100/70 rounded-2xl border border-sky-200">
                         {(Object.keys(LOAN_CATEGORIES) as LoanCategoryType[]).map((key) => {
@@ -423,13 +423,13 @@ export function Deal4LoansDynamicForm({
                 >
                     <div className="border-b border-slate-200 pb-4 flex justify-between items-start">
                         <div>
-                            <div className="inline-flex items-center gap-1.5 px-3 py-0.5 rounded-full bg-emerald-100 text-emerald-800 text-[11px] font-extrabold uppercase mb-1">
-                                <Check className="h-3 w-3 text-emerald-600" /> Pre-Approval In Progress
+                            <div className="inline-flex items-center gap-1.5 px-3 py-0.5 rounded-full bg-sky-100 text-sky-800 text-[11px] font-extrabold uppercase mb-1">
+                                <Check className="h-3 w-3 text-sky-600" /> Pre-Approval In Progress
                             </div>
                             <h3 className="text-xl font-bold text-slate-900">{activeConfig.name} Application Acknowledgement</h3>
                             <p className="text-xs text-slate-500 font-medium">Shree Finance Direct Bank Facility • Reference #SF-BANK-{Math.floor(100000 + Math.random() * 900000)}</p>
                         </div>
-                        <div className="h-12 w-12 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center font-black shrink-0">
+                        <div className="h-12 w-12 bg-sky-100 text-sky-600 rounded-full flex items-center justify-center font-black shrink-0">
                             <CheckCircle2 className="h-7 w-7" />
                         </div>
                     </div>
@@ -449,7 +449,7 @@ export function Deal4LoansDynamicForm({
                         </div>
                         <div>
                             <span className="text-[10px] text-slate-400 uppercase font-semibold block">Benchmark Rate</span>
-                            <span className="font-black text-emerald-600">{activeConfig.rate} p.a.</span>
+                            <span className="font-black text-sky-600">{activeConfig.rate} p.a.</span>
                         </div>
                         <div>
                             <span className="text-[10px] text-slate-400 uppercase font-semibold block">Status</span>
@@ -457,8 +457,8 @@ export function Deal4LoansDynamicForm({
                         </div>
                     </div>
 
-                    <div className="p-3.5 bg-emerald-50 border border-emerald-200 rounded-xl flex items-center gap-2.5 text-xs text-emerald-900 font-bold">
-                        <ShieldCheck className="h-5 w-5 text-emerald-600 shrink-0" />
+                    <div className="p-3.5 bg-sky-50 border border-sky-200 rounded-xl flex items-center gap-2.5 text-xs text-emerald-900 font-bold">
+                        <ShieldCheck className="h-5 w-5 text-sky-600 shrink-0" />
                         <span>Your application has been successfully routed. A senior loan officer will call you within 15 minutes to review bank sanction quotes.</span>
                     </div>
 

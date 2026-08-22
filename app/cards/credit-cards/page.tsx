@@ -32,29 +32,29 @@ export default function CreditCardsPage() {
     };
 
     return (
-        <div className="pb-20 bg-[#181a1d] text-white font-sans mx-auto">
+        <div className="pb-20 bg-white text-white font-sans mx-auto">
             <DynamicHeroWrapper page="credit-cards">
                 {/* Hero Section */}
-                <section className="relative pt-12 md:pt-20 pb-20 overflow-hidden bg-[#181a1d] text-white border-b border-slate-800 mx-auto">
-                    <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[600px] bg-[#00c985]/10 rounded-full blur-[120px] pointer-events-none"></div>
+                <section className="relative pt-12 md:pt-20 pb-20 overflow-hidden bg-white text-white border-b border-slate-200 mx-auto">
+                    <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[600px] bg-[#0284c7]/10 rounded-full blur-[120px] pointer-events-none"></div>
 
                     <div className="container relative z-10 px-4 md:px-6 text-center mx-auto space-y-6">
-                        <div className="inline-flex items-center gap-2 rounded-full border border-emerald-500/40 bg-emerald-500/10 px-4 py-1.5 text-xs font-black text-[#00e699] uppercase tracking-widest">
+                        <div className="inline-flex items-center gap-2 rounded-full border border-sky-500/30 bg-sky-50 px-4 py-1.5 text-xs font-black text-[#0284c7] uppercase tracking-widest">
                             <Crown className="h-4 w-4 fill-amber-300 text-amber-300" />
                             <span>Experience True Privilege</span>
                         </div>
 
-                        <h1 className="text-5xl md:text-7xl font-black tracking-tight leading-tight text-white">
+                        <h1 className="text-4xl sm:text-5xl md:text-6xl font-black tracking-tight leading-tight text-slate-900">
                             Unlock a World of <br />
-                            <span className="text-[#00e699]">Privileges.</span>
+                            <span className="text-[#0284c7]">Privileges.</span>
                         </h1>
 
-                        <p className="text-lg md:text-xl text-slate-300 max-w-2xl mx-auto leading-relaxed font-medium">
+                        <p className="text-lg md:text-xl text-slate-600 max-w-2xl mx-auto leading-relaxed font-medium">
                             From exclusive airport lounges to accelerated reward points, our credit cards are designed to complement your lifestyle.
                         </p>
 
                         <div className="flex justify-center flex-wrap gap-4 pt-4">
-                            <Button size="lg" className="h-14 px-10 text-sm font-black rounded-full bg-[#00c985] hover:bg-[#00b074] text-slate-950 uppercase tracking-wider transition-all hover:scale-105" onClick={scrollToForm}>
+                            <Button size="lg" className="h-14 px-10 text-sm font-black rounded-full bg-[#0284c7] hover:bg-[#0369a1] text-white shadow-sm uppercase tracking-wider transition-all hover:scale-105" onClick={scrollToForm}>
                                 Apply For Instant Card
                             </Button>
                         </div>
@@ -67,17 +67,17 @@ export default function CreditCardsPage() {
                 <div className="container px-4 mx-auto">
                     <div className="grid md:grid-cols-3 gap-6 text-center">
                         {[
-                            { title: "Travel & Airport Lounge", desc: "Complimentary lounge passes & 0% forex fee", icon: Plane, color: "text-[#00c985]" },
+                            { title: "Travel & Airport Lounge", desc: "Complimentary lounge passes & 0% forex fee", icon: Plane, color: "text-[#0284c7]" },
                             { title: "Shopping & Cashback", desc: "Unlimited 5% cashback on top merchants", icon: Gift, color: "text-amber-400" },
-                            { title: "Elite Rewards", desc: "10x reward points on all daily spends", icon: Sparkles, color: "text-[#00e699]" }
+                            { title: "Elite Rewards", desc: "10x reward points on all daily spends", icon: Sparkles, color: "text-[#0284c7]" }
                         ].map((item, i) => (
-                            <Card key={i} className="bg-[#24272c] border border-slate-800 shadow-xl hover:-translate-y-1.5 transition-all duration-300 rounded-3xl p-6 text-white">
+                            <Card key={i} className="bg-white border border-slate-200 shadow-sm hover:shadow-md hover:-translate-y-1.5 transition-all duration-300 rounded-3xl p-6 text-white">
                                 <CardContent className="p-4 flex flex-col items-center">
-                                    <div className={cn("h-16 w-16 rounded-full bg-[#00c985]/15 border border-[#00c985]/30 flex items-center justify-center mb-4", item.color)}>
+                                    <div className={cn("h-16 w-16 rounded-full bg-[#0284c7]/15 border border-[#0284c7]/30 flex items-center justify-center mb-4", item.color)}>
                                         <item.icon className="h-8 w-8" />
                                     </div>
                                     <h3 className="text-xl font-black mb-2 text-white">{item.title}</h3>
-                                    <p className="text-slate-400 font-medium text-xs">{item.desc}</p>
+                                    <p className="text-slate-500 font-medium text-xs">{item.desc}</p>
                                 </CardContent>
                             </Card>
                         ))}
@@ -99,13 +99,13 @@ export default function CreditCardsPage() {
                 {/* Right Form Sidebar */}
                 <aside className="relative">
                     <div id="lead-form" className="sticky top-28">
-                        <Card className="bg-[#24272c] border border-slate-800 shadow-2xl rounded-[2.5rem] overflow-hidden text-white">
-                            <CardHeader className="bg-gradient-to-r from-lime-400 via-emerald-400 to-teal-400 text-slate-950 p-8">
+                        <Card className="bg-white border border-slate-200 shadow-2xl rounded-[2.5rem] overflow-hidden text-white">
+                            <CardHeader className="bg-gradient-to-r from-sky-700 via-sky-600 to-sky-800 text-slate-950 p-8">
                                 <div className="flex justify-between items-start mb-4">
-                                    <div className="p-3 bg-slate-950 rounded-2xl text-white">
+                                    <div className="p-3 bg-[#f8fafc] rounded-2xl text-white">
                                         <CreditCard className="h-6 w-6" />
                                     </div>
-                                    <span className="text-[10px] font-black uppercase tracking-widest bg-slate-950 text-white px-3 py-1 rounded-full">Instant Digital Approval</span>
+                                    <span className="text-[10px] font-black uppercase tracking-widest bg-[#f8fafc] text-white px-3 py-1 rounded-full">Instant Digital Approval</span>
                                 </div>
                                 <CardTitle className="text-2xl font-black text-slate-950">Apply For Credit Card</CardTitle>
                                 <p className="text-slate-900 text-xs font-bold mt-1">Zero impact on credit score</p>
@@ -113,16 +113,16 @@ export default function CreditCardsPage() {
                             <CardContent className="p-8 space-y-4">
                                 {isSuccess ? (
                                     <div className="text-center py-8 space-y-3">
-                                        <div className="h-16 w-16 bg-[#00c985] text-slate-950 rounded-full flex items-center justify-center mx-auto font-black">
+                                        <div className="h-16 w-16 bg-[#0284c7] text-white rounded-full flex items-center justify-center mx-auto font-black">
                                             <CheckCircle2 className="h-8 w-8" />
                                         </div>
-                                        <h4 className="text-xl font-black text-white">Application Received!</h4>
-                                        <p className="text-xs text-slate-400">Our card specialist will reach out shortly.</p>
+                                        <h4 className="text-xl font-black text-slate-900">Application Received!</h4>
+                                        <p className="text-xs text-slate-500">Our card specialist will reach out shortly.</p>
                                     </div>
                                 ) : (
                                     <form onSubmit={handleSubmit} className="space-y-4">
                                         <div>
-                                            <label className="text-[10px] font-black uppercase text-slate-400">Full Name</label>
+                                            <label className="text-[10px] font-black uppercase text-slate-500">Full Name</label>
                                             <Input
                                                 placeholder="Enter full name"
                                                 value={formData.name}
@@ -131,7 +131,7 @@ export default function CreditCardsPage() {
                                             />
                                         </div>
                                         <div>
-                                            <label className="text-[10px] font-black uppercase text-slate-400">Mobile Number</label>
+                                            <label className="text-[10px] font-black uppercase text-slate-500">Mobile Number</label>
                                             <Input
                                                 placeholder="10-digit mobile"
                                                 value={formData.mobile}
@@ -141,7 +141,7 @@ export default function CreditCardsPage() {
                                         </div>
                                         <div className="grid grid-cols-2 gap-4">
                                             <div>
-                                                <label className="text-[10px] font-black uppercase text-slate-400">City</label>
+                                                <label className="text-[10px] font-black uppercase text-slate-500">City</label>
                                                 <Input
                                                     placeholder="City"
                                                     value={formData.city}
@@ -150,7 +150,7 @@ export default function CreditCardsPage() {
                                                 />
                                             </div>
                                             <div>
-                                                <label className="text-[10px] font-black uppercase text-slate-400">Monthly Salary</label>
+                                                <label className="text-[10px] font-black uppercase text-slate-500">Monthly Salary</label>
                                                 <Input
                                                     placeholder="₹ Salary"
                                                     value={formData.income}
@@ -159,7 +159,7 @@ export default function CreditCardsPage() {
                                                 />
                                             </div>
                                         </div>
-                                        <Button className="w-full bg-[#00c985] hover:bg-[#00b074] text-slate-950 font-black h-14 text-sm rounded-full uppercase tracking-wider shadow-xl mt-4">
+                                        <Button className="w-full bg-[#0284c7] hover:bg-[#0369a1] text-white shadow-sm font-black h-14 text-sm rounded-full uppercase tracking-wider shadow-sm hover:shadow-md mt-4">
                                             Get Instant Pre-Approval
                                         </Button>
                                     </form>

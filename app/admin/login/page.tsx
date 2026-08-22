@@ -41,10 +41,10 @@ export default function AdminLoginPage() {
     };
 
     return (
-        <div className="min-h-screen flex items-center justify-center bg-[#181a1d] text-white relative overflow-hidden px-4 font-sans">
+        <div className="min-h-screen flex items-center justify-center bg-white text-white relative overflow-hidden px-4 font-sans">
             {/* Background effects */}
             <div className="absolute inset-0 pointer-events-none">
-                <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-[#00c985]/10 rounded-full blur-[120px]" />
+                <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-[#0284c7]/10 rounded-full blur-[120px]" />
                 <div className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] bg-amber-400/5 rounded-full blur-[120px]" />
             </div>
 
@@ -54,10 +54,10 @@ export default function AdminLoginPage() {
                 transition={{ duration: 0.5 }}
                 className="relative z-10 w-full max-w-md mx-auto"
             >
-                <div className="bg-[#24272c] border border-slate-800 rounded-3xl p-8 md:p-10 shadow-2xl">
+                <div className="bg-white border border-slate-800 rounded-3xl p-8 md:p-10 shadow-2xl">
                     {/* Logo / Title */}
                     <div className="text-center mb-8">
-                        <div className="inline-flex items-center justify-center h-16 w-16 rounded-2xl bg-[#00c985]/15 border border-[#00c985]/30 text-[#00c985] shadow-lg mb-4">
+                        <div className="inline-flex items-center justify-center h-16 w-16 rounded-2xl bg-[#0284c7]/15 border border-[#0284c7]/30 text-[#0284c7] shadow-lg mb-4">
                             <Lock className="h-8 w-8" />
                         </div>
                         <h1 className="text-2xl font-black text-white uppercase tracking-tight">Admin Dashboard</h1>
@@ -76,7 +76,7 @@ export default function AdminLoginPage() {
                                     onChange={(e) => setUsername(e.target.value)}
                                     placeholder="Enter username"
                                     required
-                                    className="w-full h-12 pl-10 pr-4 bg-slate-900 border border-slate-700 rounded-xl text-white placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-[#00c985] transition-all"
+                                    className="w-full h-12 pl-10 pr-4 bg-slate-900 border border-slate-700 rounded-xl text-white placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-[#0284c7] transition-all"
                                 />
                             </div>
                         </div>
@@ -92,7 +92,7 @@ export default function AdminLoginPage() {
                                     onChange={(e) => setPassword(e.target.value)}
                                     placeholder="Enter password"
                                     required
-                                    className="w-full h-12 pl-10 pr-12 bg-slate-900 border border-slate-700 rounded-xl text-white placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-[#00c985] transition-all"
+                                    className="w-full h-12 pl-10 pr-12 bg-slate-900 border border-slate-700 rounded-xl text-white placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-[#0284c7] transition-all"
                                 />
                                 <button
                                     type="button"
@@ -119,7 +119,7 @@ export default function AdminLoginPage() {
                         <button
                             type="submit"
                             disabled={loading}
-                            className="w-full h-12 bg-[#00c985] hover:bg-[#00b074] text-slate-950 font-black rounded-full uppercase tracking-wider shadow-lg transition-all flex items-center justify-center gap-2"
+                            className="w-full h-12 bg-[#0284c7] hover:bg-[#0369a1] text-slate-950 font-black rounded-full uppercase tracking-wider shadow-lg transition-all flex items-center justify-center gap-2"
                         >
                             {loading ? (
                                 <>

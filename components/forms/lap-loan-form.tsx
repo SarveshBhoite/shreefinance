@@ -49,7 +49,7 @@ export function LAPInnerForm({ data, onChange }: Props) {
                     value={data.propertyType}
                     onChange={(e) => onChange({ propertyType: e.target.value })}
                     required
-                    className="w-full h-11 bg-white border border-sky-200 rounded-md px-3 text-xs font-bold text-slate-800 focus:ring-2 focus:ring-[#00c985]"
+                    className="w-full h-11 bg-white border border-sky-200 rounded-md px-3 text-xs font-bold text-slate-800 focus:ring-2 focus:ring-[#0284c7]"
                 >
                     <option value="Residential House / Flat">Residential House / Flat</option>
                     <option value="Commercial Shop / Office Space">Commercial Shop / Office Space</option>
@@ -81,7 +81,7 @@ export function LAPInnerForm({ data, onChange }: Props) {
                     value={data.propertyOccupancy}
                     onChange={(e) => onChange({ propertyOccupancy: e.target.value })}
                     required
-                    className="w-full h-11 bg-white border border-sky-200 rounded-md px-3 text-xs font-bold text-slate-800 focus:ring-2 focus:ring-[#00c985]"
+                    className="w-full h-11 bg-white border border-sky-200 rounded-md px-3 text-xs font-bold text-slate-800 focus:ring-2 focus:ring-[#0284c7]"
                 >
                     <option value="Self Occupied (Living / Running Business)">Self Occupied (Living / Running Business)</option>
                     <option value="Rented Out (Generating Rental Income)">Rented Out (Generating Rental Income)</option>

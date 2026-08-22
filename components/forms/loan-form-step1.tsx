@@ -24,7 +24,7 @@ export function LoanFormStep1({ config, data, onChange, onProceed, error }: Step
                     <span className="text-xs font-black uppercase text-slate-700 tracking-wider">
                         Step 1: Quick Eligibility & Basic Information ({config.name})
                     </span>
-                    <span className="text-xs font-bold text-[#00c985] bg-emerald-50 px-2.5 py-0.5 rounded-full border border-emerald-200">
+                    <span className="text-xs font-bold text-[#0284c7] bg-sky-50 px-2.5 py-0.5 rounded-full border border-sky-200">
                         {config.rate} starting APR
                     </span>
                 </div>
@@ -87,7 +87,7 @@ export function LoanFormStep1({ config, data, onChange, onProceed, error }: Step
                             value={data.city}
                             onChange={(e) => onChange({ city: e.target.value })}
                             required
-                            className="w-full h-11 bg-white border border-sky-200 rounded-lg px-3 text-xs font-bold text-slate-800 focus:ring-2 focus:ring-[#00c985]"
+                            className="w-full h-11 bg-white border border-sky-200 rounded-lg px-3 text-xs font-bold text-slate-800 focus:ring-2 focus:ring-[#0284c7]"
                         >
                             <option value="">Please Select</option>
                             <option value="Mumbai">Mumbai</option>

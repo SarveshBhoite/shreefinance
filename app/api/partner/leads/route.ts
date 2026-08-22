@@ -135,8 +135,8 @@ export async function POST(req: Request) {
                 subject: `💼 [Partner File Filed] ${partner.name} submitted ${subProduct} to ${bankName} (₹${amountNum.toLocaleString("en-IN")})`,
                 html: `
                 <div style="font-family: sans-serif; max-width: 600px; margin: 0 auto; border: 1px solid #e2e8f0; border-radius: 12px; overflow: hidden; background: #ffffff;">
-                    <div style="background: #0f172a; padding: 20px 24px; border-bottom: 4px solid #00c985;">
-                        <h2 style="color: #00c985; margin: 0;">SHREE FINANCE - NEW PARTNER FILE FILED</h2>
+                    <div style="background: #0f172a; padding: 20px 24px; border-bottom: 4px solid #0284c7;">
+                        <h2 style="color: #0284c7; margin: 0;">SHREE FINANCE - NEW PARTNER FILE FILED</h2>
                         <p style="color: #94a3b8; font-size: 12px; margin: 4px 0 0 0;">File Ref: #${refNo} • Category: ${category.toUpperCase()}</p>
                     </div>
                     <div style="padding: 24px;">
@@ -146,8 +146,8 @@ export async function POST(req: Request) {
                             <tr><td style="padding: 8px 12px; font-weight: 700;">Client Mobile:</td><td style="padding: 8px 12px;">+91 ${customerMobile}</td></tr>
                             <tr style="background: #f8fafc;"><td style="padding: 8px 12px; font-weight: 700;">Product / File Type:</td><td style="padding: 8px 12px;">${subProduct}</td></tr>
                             <tr><td style="padding: 8px 12px; font-weight: 700;">Bank / Entity Submitted To:</td><td style="padding: 8px 12px; font-weight: 700; color: #0369a1;">${bankName}</td></tr>
-                            <tr style="background: #f8fafc;"><td style="padding: 8px 12px; font-weight: 700;">Filed Amount:</td><td style="padding: 8px 12px; font-weight: 800; color: #16a34a;">₹${amountNum.toLocaleString("en-IN")}</td></tr>
-                            <tr><td style="padding: 8px 12px; font-weight: 700;">Commission Rate / Amount:</td><td style="padding: 8px 12px; font-weight: 800; color: #059669;">${applicableRate}% (₹${calculatedCommission.toLocaleString("en-IN")})</td></tr>
+                            <tr style="background: #f8fafc;"><td style="padding: 8px 12px; font-weight: 700;">Filed Amount:</td><td style="padding: 8px 12px; font-weight: 800; color: #0284c7;">₹${amountNum.toLocaleString("en-IN")}</td></tr>
+                            <tr><td style="padding: 8px 12px; font-weight: 700;">Commission Rate / Amount:</td><td style="padding: 8px 12px; font-weight: 800; color: #0284c7;">${applicableRate}% (₹${calculatedCommission.toLocaleString("en-IN")})</td></tr>
                             <tr style="background: #f8fafc;"><td style="padding: 8px 12px; font-weight: 700;">Status:</td><td style="padding: 8px 12px;"><span style="background: #e0f2fe; color: #0369a1; padding: 2px 8px; border-radius: 4px; font-weight: 700;">IN PROCESS</span></td></tr>
                         </table>
                     </div>

@@ -12,8 +12,8 @@ const services = [
         icon: Wallet,
         href: "/loans/personal-loan",
         features: ["Low Rates", "Quick Disbursal"],
-        color: "bg-[#00c985]",
-        lightColor: "bg-[#00c985]/15 text-[#00c985]",
+        color: "bg-[#0284c7]",
+        lightColor: "bg-[#0284c7]/15 text-[#0284c7]",
     },
     {
         title: "Premium Cards",
@@ -30,8 +30,8 @@ const services = [
         icon: ShieldCheck,
         href: "/insurance/health",
         features: ["Cashless Claims", "Tax Benefits"],
-        color: "bg-[#00c985]",
-        lightColor: "bg-[#00c985]/15 text-[#00c985]",
+        color: "bg-[#0284c7]",
+        lightColor: "bg-[#0284c7]/15 text-[#0284c7]",
     },
     {
         title: "Investments",
@@ -46,33 +46,21 @@ const services = [
 
 export function ServicesSnapshot() {
     return (
-        <section className="py-20 md:py-24 relative font-sans overflow-hidden bg-[#181a1d] text-white border-t border-slate-800">
-            {/* Background Ambient Glow */}
-            <div className="absolute inset-0 pointer-events-none opacity-40">
-                <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-[#00c985]/5 rounded-full blur-[120px]"></div>
-                <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-teal-500/5 rounded-full blur-[100px]"></div>
-            </div>
-
+        <section className="py-20 md:py-24 relative font-sans overflow-hidden bg-[#f8fafc] text-slate-900 border-t border-slate-200">
             <div className="container px-4 md:px-6 relative z-10 mx-auto">
                 <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-16 gap-6">
-                    <div className="space-y-4">
-                        <div className="inline-flex items-center gap-2 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-4 py-1.5 text-xs font-black text-[#00e699] uppercase tracking-widest">
-                            <Zap className="h-3.5 w-3.5 fill-[#00e699]" />
-                            Comprehensive Suite
+                    <div className="space-y-3">
+                        <div className="inline-flex items-center gap-2 rounded-full border border-sky-500/30 bg-sky-50 px-4 py-1.5 text-xs font-black text-sky-800 uppercase tracking-wider">
+                            <Zap className="h-3.5 w-3.5 text-[#0284c7]" />
+                            Complete Financial Portfolio
                         </div>
-                        <h2 className="text-3xl md:text-5xl font-black tracking-tight text-white">
-                            All-in-One <span className="text-[#00e699]">Financial Ecosystem</span>
+                        <h2 className="text-3xl md:text-5xl font-black tracking-tight text-slate-900">
+                            Our Core <span className="text-[#0284c7]">Financial Offerings</span>
                         </h2>
-                        <p className="text-slate-300 text-base max-w-xl font-medium">
-                            Choose from loans, credit cards, insurance policies, and wealth investments tailored for your lifestyle.
+                        <p className="text-slate-600 text-sm md:text-base max-w-xl">
+                            From instant personal loans to high-yield investment options, we provide end-to-end financial solutions.
                         </p>
                     </div>
-
-                    <Link href="/loans/personal-loan">
-                        <button className="bg-[#00c985] hover:bg-[#00b074] text-slate-950 px-6 py-3 rounded-full font-black text-xs uppercase tracking-wider shadow-lg flex items-center gap-2 transition-transform hover:scale-105 active:scale-95">
-                            View All Products <ChevronRight className="h-4 w-4" />
-                        </button>
-                    </Link>
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -84,40 +72,33 @@ export function ServicesSnapshot() {
                                 initial={{ opacity: 0, y: 20 }}
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true }}
-                                transition={{ delay: index * 0.1 }}
+                                transition={{ delay: index * 0.08 }}
                             >
-                                <Card className="bg-[#24272c] border border-slate-800 hover:border-slate-700 transition-all duration-300 hover:-translate-y-1.5 shadow-xl flex flex-col justify-between h-full group p-6 rounded-3xl">
-                                    <CardHeader className="p-0 space-y-4">
-                                        <div className="flex justify-between items-start">
-                                            <div className={`h-12 w-12 rounded-2xl flex items-center justify-center border border-white/10 ${service.lightColor}`}>
-                                                <Icon className="h-6 w-6" />
-                                            </div>
+                                <Card className="rounded-2xl border border-slate-200 bg-white shadow-sm hover:shadow-md hover:border-sky-500/40 transition-all duration-300 flex flex-col justify-between h-full group">
+                                    <CardHeader className="space-y-4">
+                                        <div className="h-12 w-12 rounded-xl flex items-center justify-center bg-sky-50 text-[#0284c7] border border-sky-200 shadow-xs group-hover:bg-[#0284c7] group-hover:text-white transition-colors">
+                                            <Icon className="h-6 w-6" />
                                         </div>
-                                        <div>
-                                            <CardTitle className="text-xl font-black text-white group-hover:text-[#00e699] transition-colors">
-                                                {service.title}
-                                            </CardTitle>
-                                            <CardDescription className="text-xs text-slate-400 mt-2 leading-relaxed font-medium">
-                                                {service.description}
-                                            </CardDescription>
-                                        </div>
+                                        <CardTitle className="text-xl font-bold text-slate-900 group-hover:text-[#0284c7] transition-colors">
+                                            {service.title}
+                                        </CardTitle>
+                                        <CardDescription className="text-slate-600 text-xs leading-relaxed font-normal">
+                                            {service.description}
+                                        </CardDescription>
                                     </CardHeader>
-
-                                    <CardContent className="p-0 my-6">
-                                        <div className="flex flex-wrap gap-2">
-                                            {service.features.map((feat, i) => (
-                                                <span key={i} className="text-[10px] font-black uppercase tracking-wider px-2.5 py-1 rounded-full bg-slate-800 text-slate-300 border border-slate-700">
-                                                    {feat}
+                                    <CardContent className="space-y-2">
+                                        <div className="flex flex-wrap gap-1.5">
+                                            {service.features.map((feature, i) => (
+                                                <span key={i} className="text-[10px] font-bold px-2.5 py-1 rounded-md bg-slate-100 text-slate-700">
+                                                    {feature}
                                                 </span>
                                             ))}
                                         </div>
                                     </CardContent>
-
-                                    <CardFooter className="p-0 pt-4 border-t border-slate-800">
-                                        <Link href={service.href} className="w-full">
-                                            <button className="w-full py-2.5 rounded-full border border-white/30 text-white hover:bg-white hover:text-slate-950 font-bold text-xs flex items-center justify-center gap-1.5 transition-all">
-                                                Explore Offers <ChevronRight className="h-3.5 w-3.5" />
-                                            </button>
+                                    <CardFooter className="pt-4 border-t border-slate-100">
+                                        <Link href={service.href} className="w-full flex items-center justify-between text-xs font-bold text-[#0284c7] group-hover:translate-x-1 transition-transform">
+                                            <span>Explore Options</span>
+                                            <ChevronRight className="h-4 w-4" />
                                         </Link>
                                     </CardFooter>
                                 </Card>

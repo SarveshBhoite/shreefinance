@@ -53,7 +53,7 @@ export default function RewardsAndOffersPage() {
             subtitle: "Get a ₹1,500 instant digital voucher on Personal Loan disbursal.",
             badge: "Popular Claim",
             icon: Briefcase,
-            gradient: "from-emerald-500 to-teal-600",
+            gradient: "from-sky-500 to-sky-700",
             expires: "15 Aug 2026",
             details: [
                 "Voucher dispatched within 24 hours of loan disbursal",
@@ -143,10 +143,10 @@ export default function RewardsAndOffersPage() {
     };
 
     return (
-        <div className="pb-20 bg-[#181a1d] text-white font-sans min-h-screen relative overflow-hidden">
+        <div className="pb-20 bg-white text-white font-sans min-h-screen relative overflow-hidden">
             {/* Background Glows */}
             <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-primary/20 rounded-full blur-[140px] pointer-events-none" />
-            <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-emerald-500/10 rounded-full blur-[120px] pointer-events-none" />
+            <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-sky-50 rounded-full blur-[120px] pointer-events-none" />
 
             {/* Header Hero Section */}
             <section className="pt-16 pb-14 border-b border-white/10 relative z-10 text-center">
@@ -158,21 +158,21 @@ export default function RewardsAndOffersPage() {
                     <h1 className="text-4xl md:text-6xl font-black text-white tracking-tight">
                         Rewards, Vouchers & Cashbacks
                     </h1>
-                    <p className="text-slate-300 text-base md:text-lg">
+                    <p className="text-slate-600 text-base md:text-lg">
                         Claim processing fee waivers, Amazon gift vouchers, rate discounts, and cashback perks when you apply with Shree Finance.
                     </p>
 
                     {/* Filter Tabs */}
                     <div className="flex justify-center pt-6">
-                        <div className="inline-flex p-1.5 bg-white/5 backdrop-blur-xl rounded-2xl border border-white/10">
+                        <div className="inline-flex p-1.5 bg-white backdrop-blur-xl rounded-2xl border border-white/10">
                             {(["All", "Loans", "Cards", "Cashback"] as const).map((cat) => (
                                 <button
                                     key={cat}
                                     onClick={() => setSelectedCategory(cat)}
                                     className={`px-6 py-2.5 rounded-xl text-xs font-black uppercase tracking-wider transition-all ${
                                         selectedCategory === cat
-                                            ? "bg-primary text-white shadow-xl shadow-primary/20 scale-105"
-                                            : "text-slate-400 hover:text-white"
+                                            ? "bg-primary text-white shadow-sm hover:shadow-md shadow-primary/20 scale-105"
+                                            : "text-slate-500 hover:text-white"
                                     }`}
                                 >
                                     {cat}
@@ -195,7 +195,7 @@ export default function RewardsAndOffersPage() {
                                 exit={{ opacity: 0, scale: 0.9 }}
                                 className="group relative"
                             >
-                                <Card className="bg-slate-900/90 border border-sky-800/50 backdrop-blur-xl rounded-[2.5rem] p-6 text-white shadow-2xl flex flex-col justify-between h-full hover:border-primary/50 transition-all duration-300">
+                                <Card className="bg-white/90 border border-sky-800/50 backdrop-blur-xl rounded-[2.5rem] p-6 text-white shadow-2xl flex flex-col justify-between h-full hover:border-primary/50 transition-all duration-300">
                                     <div className="space-y-4">
                                         <div className="flex justify-between items-start">
                                             <div className={`h-12 w-12 rounded-2xl bg-gradient-to-tr ${offer.gradient} text-white flex items-center justify-center shadow-lg`}>
@@ -210,7 +210,7 @@ export default function RewardsAndOffersPage() {
                                             <h3 className="text-xl font-extrabold text-white group-hover:text-primary transition-colors">
                                                 {offer.title}
                                             </h3>
-                                            <p className="text-xs text-slate-300 mt-1 font-medium leading-relaxed">
+                                            <p className="text-xs text-slate-600 mt-1 font-medium leading-relaxed">
                                                 {offer.subtitle}
                                             </p>
                                         </div>
@@ -218,8 +218,8 @@ export default function RewardsAndOffersPage() {
                                         {/* Offer Details List */}
                                         <ul className="space-y-2 pt-2 border-t border-white/10">
                                             {offer.details.map((d, i) => (
-                                                <li key={i} className="flex items-center gap-2 text-[11px] font-bold text-slate-300">
-                                                    <CheckCircle2 className="h-3.5 w-3.5 text-emerald-400 shrink-0" />
+                                                <li key={i} className="flex items-center gap-2 text-[11px] font-bold text-slate-600">
+                                                    <CheckCircle2 className="h-3.5 w-3.5 text-sky-400 shrink-0" />
                                                     <span>{d}</span>
                                                 </li>
                                             ))}
@@ -237,14 +237,14 @@ export default function RewardsAndOffersPage() {
                                             </div>
                                             <button
                                                 onClick={() => handleCopy(offer.code)}
-                                                className="p-2 rounded-xl bg-white/10 hover:bg-white/20 text-slate-300 hover:text-white transition-colors"
+                                                className="p-2 rounded-xl bg-white/10 hover:bg-white/20 text-slate-600 hover:text-white transition-colors"
                                                 title="Copy Coupon Code"
                                             >
-                                                {copiedCode === offer.code ? <Check className="h-4 w-4 text-emerald-400" /> : <Copy className="h-4 w-4" />}
+                                                {copiedCode === offer.code ? <Check className="h-4 w-4 text-sky-400" /> : <Copy className="h-4 w-4" />}
                                             </button>
                                         </div>
 
-                                        <div className="flex items-center justify-between text-[10px] text-slate-400 font-bold uppercase tracking-wider">
+                                        <div className="flex items-center justify-between text-[10px] text-slate-500 font-bold uppercase tracking-wider">
                                             <span className="flex items-center gap-1">
                                                 <Clock className="h-3 w-3" /> Valid till {offer.expires}
                                             </span>

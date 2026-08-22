@@ -53,10 +53,10 @@ export default function TrackStatusPage() {
     };
 
     return (
-        <div className="min-h-screen bg-[#181a1d] text-white font-sans py-16 px-4 md:px-6 relative overflow-hidden">
+        <div className="min-h-screen bg-white text-white font-sans py-16 px-4 md:px-6 relative overflow-hidden">
             {/* Ambient Background Lights */}
             <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-primary/20 rounded-full blur-[120px] pointer-events-none" />
-            <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-emerald-500/10 rounded-full blur-[100px] pointer-events-none" />
+            <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-sky-500/10 rounded-full blur-[100px] pointer-events-none" />
 
             <div className="container max-w-4xl mx-auto space-y-12 relative z-10">
                 {/* Header */}
@@ -115,13 +115,13 @@ export default function TrackStatusPage() {
                                     </div>
                                     <div>
                                         <p className="text-[10px] text-slate-400 font-black uppercase tracking-widest">Loan Type & Amount</p>
-                                        <p className="text-lg font-black text-emerald-400 mt-1">{statusResult.loanAmount}</p>
+                                        <p className="text-lg font-black text-sky-400 mt-1">{statusResult.loanAmount}</p>
                                         <p className="text-[10px] text-slate-300 font-bold">{statusResult.loanType}</p>
                                     </div>
                                     <div>
                                         <p className="text-[10px] text-slate-400 font-black uppercase tracking-widest">Current Status</p>
-                                        <span className="inline-flex items-center gap-1.5 mt-1 px-3 py-1 rounded-full text-xs font-black bg-emerald-500/20 border border-emerald-500/40 text-emerald-400 uppercase tracking-wider">
-                                            <CheckCircle2 className="h-3.5 w-3.5 text-emerald-400" />
+                                        <span className="inline-flex items-center gap-1.5 mt-1 px-3 py-1 rounded-full text-xs font-black bg-sky-500/20 border border-sky-500/40 text-sky-400 uppercase tracking-wider">
+                                            <CheckCircle2 className="h-3.5 w-3.5 text-sky-400" />
                                             Sanction Letter Issued
                                         </span>
                                     </div>
@@ -135,7 +135,7 @@ export default function TrackStatusPage() {
                                             <div key={idx} className="relative flex items-start gap-4 pl-10">
                                                 <div className={`absolute left-1 top-1 h-6 w-6 rounded-full flex items-center justify-center font-bold text-xs ${
                                                     stage.status === 'completed'
-                                                        ? 'bg-emerald-500 text-slate-950 ring-4 ring-emerald-500/20'
+                                                        ? 'bg-emerald-500 text-slate-950 ring-4 ring-sky-500/20'
                                                         : 'bg-slate-800 text-slate-400 border border-white/20'
                                                 }`}>
                                                     {stage.status === 'completed' ? <CheckCircle2 className="h-4 w-4" /> : idx + 1}

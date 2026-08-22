@@ -58,7 +58,7 @@ export function BalanceTransferCalculator() {
                             Switch your existing home loan to Shree Finance & save lakhs over your remaining tenure.
                         </p>
                     </div>
-                    <div className="flex items-center gap-2 bg-emerald-500/10 border border-emerald-500/30 px-4 py-2 rounded-2xl text-emerald-400 font-extrabold text-xs uppercase tracking-wider">
+                    <div className="flex items-center gap-2 bg-sky-500/10 border border-sky-500/30 px-4 py-2 rounded-2xl text-sky-400 font-extrabold text-xs uppercase tracking-wider">
                         <TrendingDown className="h-4 w-4" />
                         Top-up Loan up to ₹50 Lakhs Available
                     </div>
@@ -111,7 +111,7 @@ export function BalanceTransferCalculator() {
                         <div className="space-y-3">
                             <div className="flex justify-between items-center text-sm font-bold">
                                 <span className="text-slate-300">Shree Finance Offered Rate</span>
-                                <span className="text-xl font-black text-emerald-400">{newRate.toFixed(2)}% p.a.</span>
+                                <span className="text-xl font-black text-sky-400">{newRate.toFixed(2)}% p.a.</span>
                             </div>
                             <Slider
                                 value={[newRate]}
@@ -156,14 +156,14 @@ export function BalanceTransferCalculator() {
                             </div>
                             <CardContent className="p-0 space-y-6 relative z-10">
                                 <div className="text-center pb-6 border-b border-white/10">
-                                    <p className="text-xs font-black text-emerald-300 uppercase tracking-widest mb-1">
+                                    <p className="text-xs font-black text-sky-300 uppercase tracking-widest mb-1">
                                         Estimated Total Interest Savings
                                     </p>
                                     <motion.div
                                         key={totalSavings}
                                         initial={{ scale: 0.95, opacity: 0.8 }}
                                         animate={{ scale: 1, opacity: 1 }}
-                                        className="text-4xl md:text-5xl font-black text-emerald-400 tracking-tight"
+                                        className="text-4xl md:text-5xl font-black text-sky-400 tracking-tight"
                                     >
                                         {formatCurrency(totalSavings)}
                                     </motion.div>
@@ -178,25 +178,25 @@ export function BalanceTransferCalculator() {
                                         <p className="text-lg font-black text-rose-200 mt-1">₹{currentEMI.toLocaleString('en-IN')}</p>
                                     </div>
                                     <div className="bg-black/30 p-4 rounded-2xl border border-white/10">
-                                        <p className="text-[10px] text-emerald-300 font-extrabold uppercase tracking-wider">New Monthly EMI</p>
-                                        <p className="text-lg font-black text-emerald-300 mt-1">₹{newEMI.toLocaleString('en-IN')}</p>
+                                        <p className="text-[10px] text-sky-300 font-extrabold uppercase tracking-wider">New Monthly EMI</p>
+                                        <p className="text-lg font-black text-sky-300 mt-1">₹{newEMI.toLocaleString('en-IN')}</p>
                                     </div>
                                 </div>
 
-                                <div className="bg-emerald-500/20 border border-emerald-400/30 p-4 rounded-2xl flex items-center justify-between">
+                                <div className="bg-sky-500/20 border border-emerald-400/30 p-4 rounded-2xl flex items-center justify-between">
                                     <span className="text-xs font-bold text-white">Monthly Savings:</span>
-                                    <span className="text-lg font-black text-emerald-300">₹{monthlySavings.toLocaleString('en-IN')} / month</span>
+                                    <span className="text-lg font-black text-sky-300">₹{monthlySavings.toLocaleString('en-IN')} / month</span>
                                 </div>
 
                                 <Button
                                     onClick={() => setIsModalOpen(true)}
-                                    className="w-full bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-black h-14 text-base rounded-2xl shadow-xl shadow-emerald-500/20 transition-all hover:scale-[1.02] active:scale-95 uppercase tracking-wider flex items-center justify-center gap-2"
+                                    className="w-full bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-black h-14 text-base rounded-2xl shadow-xl shadow-sky-500/20 transition-all hover:scale-[1.02] active:scale-95 uppercase tracking-wider flex items-center justify-center gap-2"
                                 >
                                     Instant Balance Transfer <ArrowRight className="h-5 w-5" />
                                 </Button>
 
                                 <div className="flex items-center justify-center gap-2 text-[10px] text-slate-300 font-bold uppercase tracking-widest text-center">
-                                    <ShieldCheck className="h-3.5 w-3.5 text-emerald-400" />
+                                    <ShieldCheck className="h-3.5 w-3.5 text-sky-400" />
                                     Zero Processing Fee Offers & Instant Top-up Disbursal
                                 </div>
                             </CardContent>

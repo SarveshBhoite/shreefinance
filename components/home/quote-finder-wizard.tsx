@@ -183,7 +183,7 @@ export function QuoteFinderWizard() {
             {/* Top Bank Watermark / Header Bar */}
             <div className="bg-slate-900 text-white p-5 rounded-2xl flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-8 shadow-md">
                 <div className="flex items-center gap-3">
-                    <div className="h-10 w-10 rounded-xl bg-[#00c985] text-slate-950 flex items-center justify-center font-black">
+                    <div className="h-10 w-10 rounded-xl bg-[#0284c7] text-slate-950 flex items-center justify-center font-black">
                         <Building2 className="h-6 w-6" />
                     </div>
                     <div>
@@ -214,9 +214,9 @@ export function QuoteFinderWizard() {
                     <div className="space-y-3 bg-white p-6 rounded-2xl border border-slate-200 shadow-sm">
                         <div className="border-b border-slate-200 pb-2 mb-4 flex justify-between items-center">
                             <h3 className="text-sm font-black uppercase text-slate-700 tracking-wider flex items-center gap-2">
-                                <FileText className="h-4 w-4 text-[#00c985]" /> Section 1: Loan Facility Selection
+                                <FileText className="h-4 w-4 text-[#0284c7]" /> Section 1: Loan Facility Selection
                             </h3>
-                            <span className="text-xs font-bold text-[#00c985] bg-emerald-50 px-2.5 py-1 rounded-md border border-emerald-200">
+                            <span className="text-xs font-bold text-[#0284c7] bg-sky-50 px-2.5 py-1 rounded-md border border-sky-200">
                                 Benchmark Interest Rates Included
                             </span>
                         </div>
@@ -232,12 +232,12 @@ export function QuoteFinderWizard() {
                                     }}
                                     className={`p-4 rounded-xl border text-left transition-all flex flex-col justify-between cursor-pointer ${
                                         loanCategory === cat.id
-                                            ? "border-[#00c985] bg-emerald-50/80 ring-2 ring-[#00c985] font-black"
+                                            ? "border-[#0284c7] bg-sky-50/80 ring-2 ring-[#0284c7] font-black"
                                             : "border-slate-300 bg-slate-50 hover:bg-slate-100"
                                     }`}
                                 >
                                     <span className="text-xs font-bold text-slate-800">{cat.label}</span>
-                                    <span className="text-xs font-black text-[#00c985] mt-2 block">{cat.rate}% p.a.</span>
+                                    <span className="text-xs font-black text-[#0284c7] mt-2 block">{cat.rate}% p.a.</span>
                                 </button>
                             ))}
                         </div>
@@ -314,7 +314,7 @@ export function QuoteFinderWizard() {
                     <div className="flex justify-end pt-2">
                         <Button
                             type="submit"
-                            className="w-full sm:w-auto bg-[#00c985] hover:bg-[#00b074] text-slate-950 font-black h-14 px-10 rounded-xl shadow-lg text-sm uppercase tracking-wider cursor-pointer"
+                            className="w-full sm:w-auto bg-[#0284c7] hover:bg-[#0369a1] text-slate-950 font-black h-14 px-10 rounded-xl shadow-lg text-sm uppercase tracking-wider cursor-pointer"
                         >
                             Apply for Loan →
                         </Button>
@@ -334,21 +334,21 @@ export function QuoteFinderWizard() {
                     <div className="space-y-4 bg-white p-6 rounded-2xl border border-slate-200 shadow-sm">
                         <div className="border-b border-slate-200 pb-2 mb-2 flex justify-between items-center">
                             <h3 className="text-sm font-black uppercase text-slate-700 tracking-wider flex items-center gap-2">
-                                <Building className="h-4 w-4 text-[#00c985]" /> Section 3: Financial & Income Parameters
+                                <Building className="h-4 w-4 text-[#0284c7]" /> Section 3: Financial & Income Parameters
                             </h3>
                             <span className="text-xs font-bold text-slate-500">Applicant: {name} ({city})</span>
                         </div>
 
                         <div className="grid md:grid-cols-2 gap-5">
                             {/* Loan Purpose / End-Use */}
-                            <div className="space-y-1.5 md:col-span-2 bg-emerald-50/50 p-4 rounded-xl border border-emerald-200">
+                            <div className="space-y-1.5 md:col-span-2 bg-sky-50/50 p-4 rounded-xl border border-sky-200">
                                 <label className="text-xs font-black uppercase text-emerald-900 flex items-center gap-1.5">
-                                    <Target className="h-4 w-4 text-[#00c985]" /> Loan Purpose / Specific End-Use of Funds
+                                    <Target className="h-4 w-4 text-[#0284c7]" /> Loan Purpose / Specific End-Use of Funds
                                 </label>
                                 <select
                                     value={loanPurpose}
                                     onChange={(e) => setLoanPurpose(e.target.value)}
-                                    className="w-full h-12 bg-white border border-emerald-300 rounded-xl font-bold text-slate-900 px-3 text-sm focus:ring-2 focus:ring-[#00c985]"
+                                    className="w-full h-12 bg-white border border-sky-300 rounded-xl font-bold text-slate-900 px-3 text-sm focus:ring-2 focus:ring-[#0284c7]"
                                 >
                                     {availablePurposes.map((purpose, idx) => (
                                         <option key={idx} value={purpose}>
@@ -356,7 +356,7 @@ export function QuoteFinderWizard() {
                                         </option>
                                     ))}
                                 </select>
-                                <span className="text-[11px] font-medium text-emerald-800 block">
+                                <span className="text-[11px] font-medium text-sky-800 block">
                                     Selecting precise loan end-use speeds up bank underwriting & interest concession approval.
                                 </span>
                             </div>
@@ -383,7 +383,7 @@ export function QuoteFinderWizard() {
                                 <select
                                     value={tenureYears}
                                     onChange={(e) => setTenureYears(Number(e.target.value))}
-                                    className="w-full h-12 bg-slate-50 border border-slate-300 rounded-xl font-bold text-slate-900 px-3 text-sm focus:ring-2 focus:ring-[#00c985]"
+                                    className="w-full h-12 bg-slate-50 border border-slate-300 rounded-xl font-bold text-slate-900 px-3 text-sm focus:ring-2 focus:ring-[#0284c7]"
                                 >
                                     <option value={3}>3 Years (36 Months)</option>
                                     <option value={5}>5 Years (60 Months)</option>
@@ -402,7 +402,7 @@ export function QuoteFinderWizard() {
                                 <select
                                     value={employmentType}
                                     onChange={(e) => setEmploymentType(e.target.value as any)}
-                                    className="w-full h-12 bg-slate-50 border border-slate-300 rounded-xl font-bold text-slate-900 px-3 text-sm focus:ring-2 focus:ring-[#00c985]"
+                                    className="w-full h-12 bg-slate-50 border border-slate-300 rounded-xl font-bold text-slate-900 px-3 text-sm focus:ring-2 focus:ring-[#0284c7]"
                                 >
                                     <option value="Salaried">Salaried (Private Ltd / MNC / Govt)</option>
                                     <option value="Self-Employed">Self-Employed (Business Owner / Professional)</option>
@@ -433,7 +433,7 @@ export function QuoteFinderWizard() {
                                     min={100000}
                                     className="h-12 bg-slate-50 border-slate-300 rounded-xl font-bold text-slate-900"
                                 />
-                                <span className="text-[11px] font-bold text-emerald-700 block">Monthly equivalent: <strong>₹{monthlyIncome.toLocaleString('en-IN')}/mo</strong></span>
+                                <span className="text-[11px] font-bold text-sky-700 block">Monthly equivalent: <strong>₹{monthlyIncome.toLocaleString('en-IN')}/mo</strong></span>
                             </div>
 
                             {/* Existing EMI Obligations */}
@@ -457,9 +457,9 @@ export function QuoteFinderWizard() {
                     <div className="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-4">
                         <div className="border-b border-slate-200 pb-2 flex justify-between items-center">
                             <h3 className="text-sm font-black uppercase text-slate-800 tracking-wider flex items-center gap-2">
-                                <Award className="h-4 w-4 text-[#00c985]" /> Section 4: Formal Bank Interest Rate & Sanction Schedule
+                                <Award className="h-4 w-4 text-[#0284c7]" /> Section 4: Formal Bank Interest Rate & Sanction Schedule
                             </h3>
-                            <span className="text-xs font-black text-emerald-800 bg-emerald-100 px-3 py-1 rounded-md border border-emerald-300">
+                            <span className="text-xs font-black text-sky-800 bg-sky-100 px-3 py-1 rounded-md border border-sky-300">
                                 Pre-Sanction Estimate
                             </span>
                         </div>
@@ -480,7 +480,7 @@ export function QuoteFinderWizard() {
                                 <tbody className="divide-y divide-slate-200 font-bold text-slate-900">
                                     <tr className="bg-white hover:bg-slate-50">
                                         <td className="p-3 font-black text-slate-900">{selectedCategory.label}</td>
-                                        <td className="p-3 text-[#00c985] font-black">{selectedCategory.rate}% p.a.</td>
+                                        <td className="p-3 text-[#0284c7] font-black">{selectedCategory.rate}% p.a.</td>
                                         <td className="p-3">{tenureYears} Years ({totalMonths} Mo)</td>
                                         <td className="p-3 font-black text-slate-900">₹{calculatedEMI.toLocaleString('en-IN')}/mo</td>
                                         <td className="p-3 text-amber-600 font-black">{formatCurrency(estimatedMaxLoan)}</td>
@@ -491,8 +491,8 @@ export function QuoteFinderWizard() {
                         </div>
                     </div>
 
-                    <div className="p-4 bg-emerald-50 border border-emerald-200 rounded-xl flex items-center gap-3 text-xs font-bold text-emerald-900">
-                        <ShieldCheck className="h-5 w-5 shrink-0 text-[#00c985]" />
+                    <div className="p-4 bg-sky-50 border border-sky-200 rounded-xl flex items-center gap-3 text-xs font-bold text-emerald-900">
+                        <ShieldCheck className="h-5 w-5 shrink-0 text-[#0284c7]" />
                         <span>Data is 256-bit SSL encrypted & processed under strict RBI privacy norms.</span>
                     </div>
 
@@ -510,7 +510,7 @@ export function QuoteFinderWizard() {
                         <Button
                             type="submit"
                             disabled={isSubmitting}
-                            className="w-full sm:w-auto bg-[#00c985] hover:bg-[#00b074] text-slate-950 font-black h-14 px-8 rounded-xl shadow-lg text-sm uppercase tracking-wider cursor-pointer"
+                            className="w-full sm:w-auto bg-[#0284c7] hover:bg-[#0369a1] text-slate-950 font-black h-14 px-8 rounded-xl shadow-lg text-sm uppercase tracking-wider cursor-pointer"
                         >
                             {isSubmitting ? "Submitting Application..." : "Submit Formal Bank Application 📄"}
                         </Button>
@@ -533,7 +533,7 @@ export function QuoteFinderWizard() {
                                 <p className="text-xs font-bold text-slate-500 uppercase tracking-widest mt-0.5">Loan Facility Application Acknowledgement</p>
                             </div>
                             <div className="text-right">
-                                <span className="text-xs font-black text-emerald-800 bg-emerald-100 px-3 py-1 rounded-md border border-emerald-300 block">
+                                <span className="text-xs font-black text-sky-800 bg-sky-100 px-3 py-1 rounded-md border border-sky-300 block">
                                     REF #SHREE-BANK-2026-{Math.floor(1000 + Math.random() * 9000)}
                                 </span>
                                 <span className="text-[10px] text-slate-400 font-semibold block mt-1">Status: Registered</span>
@@ -558,7 +558,7 @@ export function QuoteFinderWizard() {
                                 </div>
                                 <div>
                                     <span className="text-[10px] text-slate-400 uppercase block font-semibold">Facility Category</span>
-                                    <span className="text-[#00c985] font-black">{selectedCategory.label}</span>
+                                    <span className="text-[#0284c7] font-black">{selectedCategory.label}</span>
                                 </div>
                                 <div className="col-span-2">
                                     <span className="text-[10px] text-slate-400 uppercase block font-semibold">Loan Purpose / End-Use</span>
@@ -589,7 +589,7 @@ export function QuoteFinderWizard() {
                                 </div>
                                 <div>
                                     <span className="text-[10px] text-slate-400 uppercase block font-semibold">Benchmark Interest</span>
-                                    <span className="text-[#00c985] font-black">{selectedCategory.rate}% p.a.</span>
+                                    <span className="text-[#0284c7] font-black">{selectedCategory.rate}% p.a.</span>
                                 </div>
                                 <div>
                                     <span className="text-[10px] text-slate-400 uppercase block font-semibold">Calculated Monthly EMI</span>
@@ -602,8 +602,8 @@ export function QuoteFinderWizard() {
                             </div>
                         </div>
 
-                        <div className="p-3 bg-emerald-50 border border-emerald-200 rounded-xl flex items-center gap-2 text-xs font-bold text-emerald-900">
-                            <Check className="h-4 w-4 text-[#00c985] shrink-0" />
+                        <div className="p-3 bg-sky-50 border border-sky-200 rounded-xl flex items-center gap-2 text-xs font-bold text-emerald-900">
+                            <Check className="h-4 w-4 text-[#0284c7] shrink-0" />
                             <span>Application forwarded to Bank Underwriting Pool. Advisor call scheduled within 15 minutes.</span>
                         </div>
 

@@ -12,7 +12,7 @@ const features = [
         title: "15-Minute Instant Approval",
         description: "Powered by AI-based automated underwriting. Sanction letters delivered directly to your email in minutes.",
         badge: "Fastest in Industry",
-        color: "text-[#00c985] bg-[#00c985]/15 border-[#00c985]/30",
+        color: "text-[#0284c7] bg-[#0284c7]/15 border-[#0284c7]/30",
     },
     {
         icon: Percent,
@@ -26,7 +26,7 @@ const features = [
         title: "Zero Hidden Charges",
         description: "100% transparent terms with zero processing fee options and no surprise pre-closure penalties.",
         badge: "100% Transparent",
-        color: "text-[#00c985] bg-[#00c985]/15 border-[#00c985]/30",
+        color: "text-[#0284c7] bg-[#0284c7]/15 border-[#0284c7]/30",
     },
     {
         icon: Lock,
@@ -41,29 +41,25 @@ export function WhyChooseUs() {
     const [isModalOpen, setIsModalOpen] = useState(false);
 
     return (
-        <section className="py-20 md:py-24 relative font-sans overflow-hidden bg-[#181a1d] text-white border-t border-slate-800">
-            {/* Background Ambient Glow */}
-            <div className="absolute top-1/4 left-10 w-96 h-96 bg-[#00c985]/5 rounded-full blur-[140px] pointer-events-none" />
-            <div className="absolute bottom-10 right-10 w-96 h-96 bg-amber-400/5 rounded-full blur-[140px] pointer-events-none" />
-
+        <section className="py-20 md:py-24 relative font-sans overflow-hidden bg-[#f8fafc] text-slate-900 border-t border-slate-200">
             <div className="container relative z-10 px-4 md:px-6 mx-auto">
                 {/* Header */}
-                <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
+                <div className="text-center max-w-3xl mx-auto mb-16 space-y-3">
                     <motion.div
                         initial={{ opacity: 0, y: 15 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
-                        className="inline-flex items-center gap-2 rounded-full border border-amber-400/40 bg-amber-400/10 px-4 py-1.5 text-xs font-black text-amber-300 tracking-widest uppercase shadow-sm"
+                        className="inline-flex items-center gap-2 rounded-full border border-sky-500/30 bg-sky-50 px-4 py-1.5 text-xs font-black text-sky-800 tracking-wider uppercase"
                     >
-                        <Sparkles className="h-3.5 w-3.5 fill-amber-300" />
-                        The ShreeFinance Edge
+                        <Sparkles className="h-3.5 w-3.5 text-[#0284c7]" />
+                        The Shree Finance Advantage
                     </motion.div>
 
-                    <h2 className="text-3xl md:text-5xl font-black tracking-tight text-white">
-                        Why Millions <span className="text-[#00e699]">Trust ShreeFinance</span>
+                    <h2 className="text-3xl md:text-5xl font-black tracking-tight text-slate-900">
+                        Why Millions <span className="text-[#0284c7]">Trust Our Platform</span>
                     </h2>
 
-                    <p className="text-slate-300 text-base md:text-lg leading-relaxed font-medium">
+                    <p className="text-slate-600 text-base md:text-lg leading-relaxed font-normal">
                         We streamline complex financial procedures into a seamless, digital-first experience tailored for your individual needs.
                     </p>
                 </div>
@@ -75,33 +71,33 @@ export function WhyChooseUs() {
                         return (
                             <motion.div
                                 key={index}
-                                initial={{ opacity: 0, y: 25 }}
+                                initial={{ opacity: 0, y: 20 }}
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true }}
-                                transition={{ delay: index * 0.1 }}
-                                className="group relative rounded-3xl p-7 bg-[#24272c] border border-slate-800 hover:border-slate-700 shadow-xl transition-all duration-300 hover:-translate-y-1.5 flex flex-col justify-between"
+                                transition={{ delay: index * 0.08 }}
+                                className="group relative rounded-2xl p-7 bg-white border border-slate-200 shadow-sm hover:shadow-md hover:border-sky-500/40 transition-all duration-300 flex flex-col justify-between"
                             >
-                                <div className="space-y-6">
+                                <div className="space-y-5">
                                     <div className="flex items-center justify-between">
-                                        <div className={`h-12 w-12 rounded-2xl flex items-center justify-center border ${item.color} shadow-inner`}>
+                                        <div className="h-12 w-12 rounded-xl flex items-center justify-center bg-sky-50 text-[#0284c7] border border-sky-200 shadow-xs">
                                             <Icon className="h-6 w-6" />
                                         </div>
-                                        <span className="text-[10px] font-black uppercase px-3 py-1 rounded-full bg-slate-800 text-slate-300 tracking-wider">
+                                        <span className="text-[10px] font-black uppercase px-2.5 py-1 rounded-full bg-slate-100 text-slate-700 tracking-wider">
                                             {item.badge}
                                         </span>
                                     </div>
 
                                     <div className="space-y-2">
-                                        <h3 className="text-xl font-extrabold text-white group-hover:text-[#00e699] transition-colors">
+                                        <h3 className="text-lg font-bold text-slate-900 group-hover:text-[#0284c7] transition-colors">
                                             {item.title}
                                         </h3>
-                                        <p className="text-slate-400 text-xs leading-relaxed font-medium">
+                                        <p className="text-slate-600 text-xs leading-relaxed font-normal">
                                             {item.description}
                                         </p>
                                     </div>
                                 </div>
 
-                                <div className="pt-6 mt-6 border-t border-slate-800 flex items-center justify-between text-xs font-bold text-[#00e699] group-hover:translate-x-1 transition-transform">
+                                <div className="pt-5 mt-5 border-t border-slate-100 flex items-center justify-between text-xs font-bold text-[#0284c7] group-hover:translate-x-1 transition-transform">
                                     <span>Learn Details</span>
                                     <ArrowUpRight className="h-4 w-4" />
                                 </div>
@@ -111,25 +107,23 @@ export function WhyChooseUs() {
                 </div>
 
                 {/* Trust Banner Callout */}
-                <div className="mt-16 rounded-3xl bg-gradient-to-r from-lime-400 via-emerald-400 to-teal-400 p-0.5 shadow-2xl">
-                    <div className="rounded-[22px] bg-[#181a1d] p-8 md:p-10 text-white flex flex-col md:flex-row items-center justify-between gap-8">
-                        <div className="flex items-center gap-6">
-                            <div className="h-16 w-16 rounded-2xl bg-[#00c985]/15 border border-[#00c985]/30 flex items-center justify-center shrink-0 text-[#00c985]">
-                                <UserCheck className="h-8 w-8" />
-                            </div>
-                            <div>
-                                <h4 className="text-2xl font-black tracking-tight text-white">Need Expert Financial Advice?</h4>
-                                <p className="text-slate-400 text-sm font-medium mt-1">Our certified loan advisors help you pick the best loan offer with maximum tax benefits.</p>
-                            </div>
+                <div className="mt-16 rounded-2xl bg-white border border-slate-200 shadow-md p-8 md:p-10 flex flex-col md:flex-row items-center justify-between gap-8">
+                    <div className="flex items-center gap-5">
+                        <div className="h-14 w-14 rounded-2xl bg-sky-50 border border-sky-200 flex items-center justify-center shrink-0 text-[#0284c7]">
+                            <UserCheck className="h-7 w-7" />
                         </div>
-                        <Button
-                            size="lg"
-                            onClick={() => setIsModalOpen(true)}
-                            className="bg-[#00c985] hover:bg-[#00b074] text-slate-950 font-black rounded-full px-8 h-14 text-sm uppercase tracking-wider shrink-0 shadow-xl transition-transform hover:scale-105 active:scale-95"
-                        >
-                            Talk to Financial Advisor
-                        </Button>
+                        <div>
+                            <h4 className="text-2xl font-extrabold tracking-tight text-slate-900">Need Expert Financial Guidance?</h4>
+                            <p className="text-slate-600 text-sm font-normal mt-1">Our certified loan advisors help you pick the best loan offer with maximum tax benefits.</p>
+                        </div>
                     </div>
+                    <Button
+                        size="lg"
+                        onClick={() => setIsModalOpen(true)}
+                        className="bg-[#0284c7] hover:bg-[#0369a1] text-white font-bold rounded-xl px-8 h-12 text-xs uppercase tracking-wider shrink-0 shadow-sm transition-all hover:shadow cursor-pointer"
+                    >
+                        Talk to Financial Advisor
+                    </Button>
                 </div>
             </div>
 

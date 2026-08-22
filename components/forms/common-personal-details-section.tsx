@@ -128,7 +128,7 @@ export function CommonPersonalDetailsSection({
                         value={data.education}
                         onChange={(e) => onChange({ education: e.target.value })}
                         required
-                        className="w-full h-11 bg-white border border-sky-200 rounded-md px-3 text-xs font-bold text-slate-800 focus:ring-2 focus:ring-[#00c985]"
+                        className="w-full h-11 bg-white border border-sky-200 rounded-md px-3 text-xs font-bold text-slate-800 focus:ring-2 focus:ring-[#0284c7]"
                     >
                         <option value="">Please Select</option>
                         <option value="Undergraduate">Undergraduate / High School</option>
@@ -175,7 +175,7 @@ export function CommonPersonalDetailsSection({
                         value={data.residenceOwnership}
                         onChange={(e) => onChange({ residenceOwnership: e.target.value })}
                         required
-                        className="w-full h-11 bg-white border border-sky-200 rounded-md px-3 text-xs font-bold text-slate-800 focus:ring-2 focus:ring-[#00c985]"
+                        className="w-full h-11 bg-white border border-sky-200 rounded-md px-3 text-xs font-bold text-slate-800 focus:ring-2 focus:ring-[#0284c7]"
                     >
                         <option value="">Please Select</option>
                         <option value="Owned by Self / Spouse">Owned by Self / Spouse</option>
@@ -240,7 +240,7 @@ export function CommonPersonalDetailsSection({
                         value={data.gender}
                         onChange={(e) => onChange({ gender: e.target.value })}
                         required
-                        className="w-full h-11 bg-white border border-sky-200 rounded-md px-3 text-xs font-bold text-slate-800 focus:ring-2 focus:ring-[#00c985]"
+                        className="w-full h-11 bg-white border border-sky-200 rounded-md px-3 text-xs font-bold text-slate-800 focus:ring-2 focus:ring-[#0284c7]"
                     >
                         <option value="">Please Select</option>
                         <option value="Male">Male</option>

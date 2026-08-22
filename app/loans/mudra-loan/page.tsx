@@ -34,30 +34,30 @@ export default function MudraLoanPage() {
     };
 
     return (
-        <div className="pb-20 bg-[#181a1d] text-white font-sans mx-auto">
+        <div className="pb-20 bg-white text-white font-sans mx-auto">
             <DynamicHeroWrapper page="mudra-loan">
                 {/* Hero Section */}
-                <section className="relative pt-12 md:pt-20 pb-20 overflow-hidden bg-[#181a1d] text-white border-b border-slate-800">
-                    <div className="absolute top-0 left-0 w-[600px] h-[600px] bg-[#00c985]/10 rounded-full blur-[100px] pointer-events-none"></div>
+                <section className="relative pt-12 md:pt-20 pb-20 overflow-hidden bg-white text-white border-b border-slate-200">
+                    <div className="absolute top-0 left-0 w-[600px] h-[600px] bg-[#0284c7]/10 rounded-full blur-[100px] pointer-events-none"></div>
 
                     <div className="container relative z-10 px-4 md:px-6 mx-auto">
                         <div className="flex flex-col items-center text-center max-w-4xl mx-auto space-y-8">
-                            <div className="inline-flex items-center gap-2 rounded-full border border-emerald-500/40 bg-emerald-500/10 px-4 py-1.5 text-xs font-black text-[#00e699] uppercase tracking-widest">
-                                <BadgeIndianRupee className="h-4 w-4 text-[#00e699]" />
+                            <div className="inline-flex items-center gap-2 rounded-full border border-sky-500/30 bg-sky-50 px-4 py-1.5 text-xs font-black text-[#0284c7] uppercase tracking-widest">
+                                <BadgeIndianRupee className="h-4 w-4 text-[#0284c7]" />
                                 <span>Empowering Micro Enterprises (Collateral-Free)</span>
                             </div>
 
                             <h1 className="text-4xl md:text-6xl font-black tracking-tight leading-tight text-white">
                                 Pradhan Mantri <br />
-                                <span className="text-[#00e699]">MUDRA Yojana</span>
+                                <span className="text-[#0284c7]">MUDRA Yojana</span>
                             </h1>
 
-                            <p className="text-xl text-slate-300 max-w-2xl leading-relaxed font-medium">
+                            <p className="text-xl text-slate-600 max-w-2xl leading-relaxed font-medium">
                                 Fuel your business dreams with collateral-free loans up to ₹10 Lakhs. Tailored support for Shishu, Kishor, and Tarun stages.
                             </p>
 
                             <div className="flex flex-wrap justify-center gap-4">
-                                <Button size="lg" className="h-14 px-8 text-sm font-black rounded-full bg-[#00c985] hover:bg-[#00b074] text-slate-950 uppercase tracking-wider transition-all hover:scale-105" onClick={scrollToForm}>
+                                <Button size="lg" className="h-14 px-8 text-sm font-black rounded-full bg-[#0284c7] hover:bg-[#0369a1] text-white shadow-sm uppercase tracking-wider transition-all hover:scale-105" onClick={scrollToForm}>
                                     Apply For MUDRA Loan
                                 </Button>
                             </div>
@@ -76,17 +76,17 @@ export default function MudraLoanPage() {
                 <div className="container px-4 mx-auto">
                     <div className="grid md:grid-cols-3 gap-6 text-center">
                         {[
-                            { title: "Shishu Stage", desc: "Loans up to ₹50,000 for new micro startups", color: "text-[#00c985]" },
+                            { title: "Shishu Stage", desc: "Loans up to ₹50,000 for new micro startups", color: "text-[#0284c7]" },
                             { title: "Kishor Stage", desc: "Loans above ₹50,000 up to ₹5 Lakhs", color: "text-amber-400" },
-                            { title: "Tarun Stage", desc: "Loans above ₹5 Lakhs up to ₹10 Lakhs", color: "text-[#00e699]" }
+                            { title: "Tarun Stage", desc: "Loans above ₹5 Lakhs up to ₹10 Lakhs", color: "text-[#0284c7]" }
                         ].map((item, i) => (
-                            <Card key={i} className="bg-[#24272c] border border-slate-800 shadow-xl hover:-translate-y-1.5 transition-all duration-300 rounded-3xl p-6 text-white">
+                            <Card key={i} className="bg-white border border-slate-200 shadow-sm hover:shadow-md hover:-translate-y-1.5 transition-all duration-300 rounded-3xl p-6 text-white">
                                 <CardContent className="p-4 flex flex-col items-center">
-                                    <div className="h-14 w-14 rounded-full bg-[#00c985]/15 border border-[#00c985]/30 flex items-center justify-center mb-4 text-[#00c985]">
+                                    <div className="h-14 w-14 rounded-full bg-[#0284c7]/15 border border-[#0284c7]/30 flex items-center justify-center mb-4 text-[#0284c7]">
                                         <BadgeIndianRupee className="h-7 w-7" />
                                     </div>
                                     <h3 className="text-xl font-black mb-2 text-white">{item.title}</h3>
-                                    <p className="text-slate-400 font-medium text-xs">{item.desc}</p>
+                                    <p className="text-slate-500 font-medium text-xs">{item.desc}</p>
                                 </CardContent>
                             </Card>
                         ))}
@@ -98,8 +98,8 @@ export default function MudraLoanPage() {
             <div className="container px-8 md:px-10 py-12 grid lg:grid-cols-[1fr_400px] gap-12 mx-auto">
                 <div className="space-y-12">
                     {/* Calculator Section */}
-                    <div className="p-8 rounded-3xl bg-[#24272c] border border-slate-800 shadow-xl text-white">
-                        <h3 className="text-2xl font-black text-white mb-6">Calculate MUDRA Loan EMI</h3>
+                    <div className="p-8 rounded-3xl bg-white border border-slate-200 shadow-sm hover:shadow-md text-white">
+                        <h3 className="text-2xl font-black text-slate-900 mb-6">Calculate MUDRA Loan EMI</h3>
                         <EMICalculator defaultAmount={500000} defaultRate={9.95} defaultTenure={5} />
                     </div>
 
@@ -113,10 +113,10 @@ export default function MudraLoanPage() {
                     <div className="space-y-6">
                         <div className="space-y-4">
                             <div className="flex items-center gap-3 mb-4">
-                                <div className="h-10 w-10 rounded-full bg-[#00c985]/15 border border-[#00c985]/30 flex items-center justify-center text-[#00c985]">
+                                <div className="h-10 w-10 rounded-full bg-[#0284c7]/15 border border-[#0284c7]/30 flex items-center justify-center text-[#0284c7]">
                                     <CheckCircle2 className="h-6 w-6" />
                                 </div>
-                                <h3 className="text-2xl font-black text-white">Eligibility Criteria</h3>
+                                <h3 className="text-2xl font-black text-slate-900">Eligibility Criteria</h3>
                             </div>
                             <SimpleAccordion
                                 items={[
@@ -129,10 +129,10 @@ export default function MudraLoanPage() {
 
                         <div className="space-y-4">
                             <div className="flex items-center gap-3 mb-4">
-                                <div className="h-10 w-10 rounded-full bg-[#00c985]/15 border border-[#00c985]/30 flex items-center justify-center text-[#00c985]">
+                                <div className="h-10 w-10 rounded-full bg-[#0284c7]/15 border border-[#0284c7]/30 flex items-center justify-center text-[#0284c7]">
                                     <FileText className="h-6 w-6" />
                                 </div>
-                                <h3 className="text-2xl font-black text-white">Documents Required</h3>
+                                <h3 className="text-2xl font-black text-slate-900">Documents Required</h3>
                             </div>
                             <SimpleAccordion
                                 items={[
@@ -148,25 +148,25 @@ export default function MudraLoanPage() {
                 {/* Right Form Sidebar */}
                 <aside className="relative">
                     <div id="lead-form" className="sticky top-28">
-                        <Card className="bg-[#24272c] border border-slate-800 shadow-2xl rounded-[2.5rem] overflow-hidden text-white">
-                            <CardHeader className="bg-gradient-to-r from-lime-400 via-emerald-400 to-teal-400 text-slate-950 p-8">
-                                <span className="text-[10px] font-black uppercase tracking-widest bg-slate-950 text-white px-3 py-1 rounded-full w-fit">PMMY Govt Scheme</span>
+                        <Card className="bg-white border border-slate-200 shadow-2xl rounded-[2.5rem] overflow-hidden text-white">
+                            <CardHeader className="bg-gradient-to-r from-sky-700 via-sky-600 to-sky-800 text-slate-950 p-8">
+                                <span className="text-[10px] font-black uppercase tracking-widest bg-[#f8fafc] text-white px-3 py-1 rounded-full w-fit">PMMY Govt Scheme</span>
                                 <CardTitle className="text-2xl font-black text-slate-950 mt-2">Apply for MUDRA Loan</CardTitle>
                                 <p className="text-slate-900 text-xs font-bold">Zero collateral required</p>
                             </CardHeader>
                             <CardContent className="p-8 space-y-4">
                                 {isSuccess ? (
                                     <div className="text-center py-8 space-y-3">
-                                        <div className="h-16 w-16 bg-[#00c985] text-slate-950 rounded-full flex items-center justify-center mx-auto font-black">
+                                        <div className="h-16 w-16 bg-[#0284c7] text-white rounded-full flex items-center justify-center mx-auto font-black">
                                             <CheckCircle2 className="h-8 w-8" />
                                         </div>
-                                        <h4 className="text-xl font-black text-white">Inquiry Received!</h4>
-                                        <p className="text-xs text-slate-400">Our MUDRA loan specialist will reach out shortly.</p>
+                                        <h4 className="text-xl font-black text-slate-900">Inquiry Received!</h4>
+                                        <p className="text-xs text-slate-500">Our MUDRA loan specialist will reach out shortly.</p>
                                     </div>
                                 ) : (
                                     <form onSubmit={handleSubmit} className="space-y-4">
                                         <div>
-                                            <label className="text-[10px] font-black uppercase text-slate-400">Applicant Name</label>
+                                            <label className="text-[10px] font-black uppercase text-slate-500">Applicant Name</label>
                                             <Input
                                                 placeholder="Full Name"
                                                 value={formData.name}
@@ -175,7 +175,7 @@ export default function MudraLoanPage() {
                                             />
                                         </div>
                                         <div>
-                                            <label className="text-[10px] font-black uppercase text-slate-400">Mobile Number</label>
+                                            <label className="text-[10px] font-black uppercase text-slate-500">Mobile Number</label>
                                             <Input
                                                 placeholder="10-digit mobile"
                                                 value={formData.mobile}
@@ -184,7 +184,7 @@ export default function MudraLoanPage() {
                                             />
                                         </div>
                                         <div>
-                                            <label className="text-[10px] font-black uppercase text-slate-400">Business Activity</label>
+                                            <label className="text-[10px] font-black uppercase text-slate-500">Business Activity</label>
                                             <Input
                                                 placeholder="e.g. Retail Shop / Manufacturing"
                                                 value={formData.businessType}
@@ -193,7 +193,7 @@ export default function MudraLoanPage() {
                                             />
                                         </div>
                                         <div>
-                                            <label className="text-[10px] font-black uppercase text-slate-400">Loan Amount Needed</label>
+                                            <label className="text-[10px] font-black uppercase text-slate-500">Loan Amount Needed</label>
                                             <Input
                                                 placeholder="₹ Amount (Up to ₹10 Lakhs)"
                                                 value={formData.loanAmount}
@@ -201,7 +201,7 @@ export default function MudraLoanPage() {
                                                 required
                                             />
                                         </div>
-                                        <Button className="w-full bg-[#00c985] hover:bg-[#00b074] text-slate-950 font-black h-14 text-sm rounded-full uppercase tracking-wider shadow-xl mt-4">
+                                        <Button className="w-full bg-[#0284c7] hover:bg-[#0369a1] text-white shadow-sm font-black h-14 text-sm rounded-full uppercase tracking-wider shadow-sm hover:shadow-md mt-4">
                                             Apply For MUDRA Scheme
                                         </Button>
                                     </form>

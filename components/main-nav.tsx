@@ -21,7 +21,7 @@ export function MainNav() {
         <nav className="hidden md:flex items-center gap-4 lg:gap-6 whitespace-nowrap" onMouseLeave={handleMouseLeave}>
             <Link
                 href="/"
-                className="text-sm font-extrabold text-slate-800 hover:text-[#00c985] py-2 transition-colors whitespace-nowrap"
+                className="text-sm font-extrabold text-slate-800 hover:text-[#0284c7] py-2 transition-colors whitespace-nowrap"
             >
                 Home
             </Link>
@@ -34,17 +34,17 @@ export function MainNav() {
                 <button
                     className={cn(
                         "flex items-center gap-1 text-sm font-extrabold transition-colors py-2 whitespace-nowrap",
-                        activeMenu === "loans" ? "text-[#00c985]" : "text-slate-800 hover:text-[#00c985]"
+                        activeMenu === "loans" ? "text-[#0284c7]" : "text-slate-800 hover:text-[#0284c7]"
                     )}
                 >
                     {megaMenuData.loans.title}
-                    <ChevronDown className={cn("h-4 w-4 transition-transform duration-200 shrink-0", activeMenu === "loans" ? "rotate-180 text-[#00c985]" : "text-slate-500 group-hover:text-[#00c985]")} />
+                    <ChevronDown className={cn("h-4 w-4 transition-transform duration-200 shrink-0", activeMenu === "loans" ? "rotate-180 text-[#0284c7]" : "text-slate-500 group-hover:text-[#0284c7]")} />
                 </button>
 
                 {/* Mega Menu Dropdown */}
                 <div
                     className={cn(
-                        "absolute top-full left-0 w-[600px] bg-[#24272c] text-white rounded-2xl shadow-2xl border border-slate-800 p-4 grid grid-cols-2 gap-3 transition-all duration-200 origin-top-left z-50",
+                        "absolute top-full left-0 w-[600px] bg-white text-slate-900 rounded-2xl shadow-2xl border border-slate-200 p-4 grid grid-cols-2 gap-3 transition-all duration-200 origin-top-left z-50",
                         activeMenu === "loans" ? "opacity-100 scale-100 translate-y-0 visible" : "opacity-0 scale-95 -translate-y-2 invisible"
                     )}
                     onMouseEnter={() => handleMouseEnter("loans")}
@@ -53,24 +53,24 @@ export function MainNav() {
                         <Link
                             key={item.title}
                             href={item.href}
-                            className="group/item flex items-start gap-3 p-3 rounded-xl hover:bg-slate-800/80 transition-all border border-transparent hover:border-slate-700"
+                            className="group/item flex items-start gap-3 p-3 rounded-xl hover:bg-slate-50 transition-all border border-transparent hover:border-slate-200"
                         >
-                            <div className="p-2 bg-[#00c985]/15 border border-[#00c985]/30 rounded-xl text-[#00c985] group-hover/item:bg-[#00c985] group-hover/item:text-slate-950 transition-colors shrink-0">
+                            <div className="p-2 bg-sky-50 border border-sky-200 rounded-xl text-[#0284c7] group-hover/item:bg-[#0284c7] group-hover/item:text-white transition-colors shrink-0">
                                 <item.icon className="h-5 w-5" />
                             </div>
                             <div>
-                                <div className="font-extrabold text-white text-sm flex items-center gap-2">
+                                <div className="font-extrabold text-slate-900 text-sm flex items-center gap-2">
                                     {item.title}
                                     {item.rate && (
-                                        <span className="text-[10px] px-2 py-0.5 rounded-full bg-[#00c985]/20 text-[#00e699] font-black border border-[#00c985]/40 whitespace-nowrap">
+                                        <span className="text-[10px] px-2 py-0.5 rounded-full bg-sky-100 text-sky-800 font-black border border-sky-300 whitespace-nowrap">
                                             {item.rate}
                                         </span>
                                     )}
                                 </div>
-                                <p className="text-xs text-slate-400 mt-0.5 line-clamp-1 font-medium">
+                                <p className="text-xs text-slate-500 mt-0.5 line-clamp-1 font-medium">
                                     {item.desc}
                                 </p>
-                                <div className="mt-2 flex gap-3 text-[10px] font-black text-[#00e699] opacity-0 group-hover/item:opacity-100 transition-opacity">
+                                <div className="mt-2 flex gap-3 text-[10px] font-black text-[#0284c7] opacity-0 group-hover/item:opacity-100 transition-opacity">
                                     <span className="hover:underline">Check Eligibility</span>
                                     <span className="hover:underline">Calculate EMI</span>
                                 </div>
@@ -83,7 +83,7 @@ export function MainNav() {
             {/* Direct "Become a Partner" page link right after Loans */}
             <Link
                 href="/become-a-partner"
-                className="text-sm font-extrabold text-slate-800 hover:text-[#00c985] py-2 transition-colors whitespace-nowrap flex items-center gap-1"
+                className="text-sm font-extrabold text-slate-800 hover:text-[#0284c7] py-2 transition-colors whitespace-nowrap flex items-center gap-1"
             >
                 Become a Partner
             </Link>
@@ -100,17 +100,17 @@ export function MainNav() {
                         <button
                             className={cn(
                                 "flex items-center gap-1 text-sm font-extrabold transition-colors py-2 whitespace-nowrap",
-                                activeMenu === key ? "text-[#00c985]" : "text-slate-800 hover:text-[#00c985]"
+                                activeMenu === key ? "text-[#0284c7]" : "text-slate-800 hover:text-[#0284c7]"
                             )}
                         >
                             {section.title}
-                            <ChevronDown className={cn("h-4 w-4 transition-transform duration-200 shrink-0", activeMenu === key ? "rotate-180 text-[#00c985]" : "text-slate-500 group-hover:text-[#00c985]")} />
+                            <ChevronDown className={cn("h-4 w-4 transition-transform duration-200 shrink-0", activeMenu === key ? "rotate-180 text-[#0284c7]" : "text-slate-500 group-hover:text-[#0284c7]")} />
                         </button>
 
                         {/* Mega Menu Dropdown */}
                         <div
                             className={cn(
-                                "absolute top-full left-0 w-[600px] bg-[#24272c] text-white rounded-2xl shadow-2xl border border-slate-800 p-4 grid grid-cols-2 gap-3 transition-all duration-200 origin-top-left z-50",
+                                "absolute top-full left-0 w-[600px] bg-white text-slate-900 rounded-2xl shadow-2xl border border-slate-200 p-4 grid grid-cols-2 gap-3 transition-all duration-200 origin-top-left z-50",
                                 activeMenu === key ? "opacity-100 scale-100 translate-y-0 visible" : "opacity-0 scale-95 -translate-y-2 invisible"
                             )}
                             onMouseEnter={() => handleMouseEnter(key)}
@@ -119,24 +119,24 @@ export function MainNav() {
                                 <Link
                                     key={item.title}
                                     href={item.href}
-                                    className="group/item flex items-start gap-3 p-3 rounded-xl hover:bg-slate-800/80 transition-all border border-transparent hover:border-slate-700"
+                                    className="group/item flex items-start gap-3 p-3 rounded-xl hover:bg-slate-50 transition-all border border-transparent hover:border-slate-200"
                                 >
-                                    <div className="p-2 bg-[#00c985]/15 border border-[#00c985]/30 rounded-xl text-[#00c985] group-hover/item:bg-[#00c985] group-hover/item:text-slate-950 transition-colors shrink-0">
+                                    <div className="p-2 bg-sky-50 border border-sky-200 rounded-xl text-[#0284c7] group-hover/item:bg-[#0284c7] group-hover/item:text-white transition-colors shrink-0">
                                         <item.icon className="h-5 w-5" />
                                     </div>
                                     <div>
-                                        <div className="font-extrabold text-white text-sm flex items-center gap-2">
+                                        <div className="font-extrabold text-slate-900 text-sm flex items-center gap-2">
                                             {item.title}
                                             {item.rate && (
-                                                <span className="text-[10px] px-2 py-0.5 rounded-full bg-[#00c985]/20 text-[#00e699] font-black border border-[#00c985]/40 whitespace-nowrap">
+                                                <span className="text-[10px] px-2 py-0.5 rounded-full bg-sky-100 text-sky-800 font-black border border-sky-300 whitespace-nowrap">
                                                     {item.rate}
                                                 </span>
                                             )}
                                         </div>
-                                        <p className="text-xs text-slate-400 mt-0.5 line-clamp-1 font-medium">
+                                        <p className="text-xs text-slate-500 mt-0.5 line-clamp-1 font-medium">
                                             {item.desc}
                                         </p>
-                                        <div className="mt-2 flex gap-3 text-[10px] font-black text-[#00e699] opacity-0 group-hover/item:opacity-100 transition-opacity">
+                                        <div className="mt-2 flex gap-3 text-[10px] font-black text-[#0284c7] opacity-0 group-hover/item:opacity-100 transition-opacity">
                                             <span className="hover:underline">Check Eligibility</span>
                                             <span className="hover:underline">Calculate EMI</span>
                                         </div>

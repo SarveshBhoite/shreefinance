@@ -77,9 +77,9 @@ const CATEGORY_CONFIG = {
     loans: {
         title: "Loans",
         icon: Banknote,
-        color: "text-emerald-400",
-        bgColor: "bg-emerald-500/15",
-        borderColor: "border-emerald-500/30",
+        color: "text-[#0284c7]",
+        bgColor: "bg-sky-50",
+        borderColor: "border-sky-200",
         products: [
             "Home Loan",
             "Personal Loan",
@@ -106,9 +106,9 @@ const CATEGORY_CONFIG = {
     cards: {
         title: "Credit & Business Cards",
         icon: CreditCard,
-        color: "text-sky-400",
-        bgColor: "bg-sky-500/15",
-        borderColor: "border-sky-500/30",
+        color: "text-[#0284c7]",
+        bgColor: "bg-sky-50",
+        borderColor: "border-sky-200",
         products: [
             "HDFC Regalia / Millennia",
             "SBI SimplyCLICK / Prime",
@@ -397,15 +397,15 @@ export default function PartnerDashboardPage() {
 
     if (loading) {
         return (
-            <div className="min-h-screen bg-[#181a1d] text-white flex flex-col items-center justify-center gap-4">
-                <Loader2 className="h-10 w-10 text-[#00c985] animate-spin" />
-                <p className="text-sm font-bold text-slate-400 uppercase tracking-wider">Accessing Partner Workstation...</p>
+            <div className="min-h-screen bg-white text-slate-900 flex flex-col items-center justify-center gap-4">
+                <Loader2 className="h-10 w-10 text-[#0284c7] animate-spin" />
+                <p className="text-sm font-bold text-slate-500 uppercase tracking-wider">Accessing Partner Workstation...</p>
             </div>
         );
     }
 
     return (
-        <div className="min-h-screen bg-[#181a1d] text-white font-sans pb-20">
+        <div className="min-h-screen bg-white text-slate-900 font-sans pb-20">
             {/* Toast Notification */}
             <AnimatePresence>
                 {toast && (
@@ -415,11 +415,11 @@ export default function PartnerDashboardPage() {
                         exit={{ opacity: 0, y: -40 }}
                         className={`fixed top-6 right-6 z-50 flex items-center gap-3 px-5 py-3.5 rounded-2xl shadow-2xl border ${
                             toast.type === "success"
-                                ? "bg-emerald-950/90 border-emerald-500 text-emerald-100"
+                                ? "bg-emerald-950/90 border-emerald-500 text-sky-900"
                                 : "bg-rose-950/90 border-rose-500 text-rose-100"
                         } backdrop-blur-xl`}
                     >
-                        {toast.type === "success" ? <CheckCircle2 className="h-5 w-5 text-emerald-400" /> : <AlertCircle className="h-5 w-5 text-rose-400" />}
+                        {toast.type === "success" ? <CheckCircle2 className="h-5 w-5 text-[#0284c7]" /> : <AlertCircle className="h-5 w-5 text-rose-400" />}
                         <span className="text-sm font-bold">{toast.message}</span>
                         <button onClick={() => setToast(null)} className="ml-2 hover:opacity-70">
                             <X className="h-4 w-4" />
@@ -429,22 +429,22 @@ export default function PartnerDashboardPage() {
             </AnimatePresence>
 
             {/* Partner Top Navigation Bar */}
-            <header className="bg-slate-900/90 border-b border-slate-800 sticky top-0 z-40 backdrop-blur-xl">
+            <header className="bg-white border-b border-slate-200 sticky top-0 z-40 backdrop-blur-xl">
                 <div className="container mx-auto px-4 md:px-6 h-20 flex items-center justify-between">
                     <div className="flex items-center gap-4">
-                        <div className="h-11 w-11 rounded-2xl bg-gradient-to-br from-emerald-500 to-teal-700 flex items-center justify-center shadow-lg shadow-emerald-900/30">
-                            <Building2 className="h-6 w-6 text-slate-950" />
+                        <div className="h-11 w-11 rounded-2xl bg-gradient-to-br from-sky-600 to-sky-800 flex items-center justify-center shadow-lg shadow-sky-500/20">
+                            <Building2 className="h-6 w-6 text-slate-900" />
                         </div>
                         <div>
                             <div className="flex items-center gap-2">
-                                <h1 className="font-black text-lg text-white">
+                                <h1 className="font-black text-lg text-slate-900">
                                     {partner?.companyName || partner?.name}
                                 </h1>
-                                <span className="bg-emerald-500/20 text-[#00e699] border border-emerald-500/40 px-2.5 py-0.5 rounded-full text-[10px] font-black uppercase tracking-wider">
+                                <span className="bg-sky-100 text-sky-800 border border-sky-300 px-2.5 py-0.5 rounded-full text-[10px] font-black uppercase tracking-wider">
                                     ✓ Verified Partner
                                 </span>
                             </div>
-                            <p className="text-xs text-slate-400 font-mono">
+                            <p className="text-xs text-slate-500 font-mono">
                                 Partner ID: #{partner?.referenceNo} • {partner?.city}
                             </p>
                         </div>
@@ -453,7 +453,7 @@ export default function PartnerDashboardPage() {
                     <div className="flex items-center gap-3">
                         <Button
                             onClick={() => setIsFileModalOpen(true)}
-                            className="bg-[#00c985] hover:bg-[#00b074] text-slate-950 font-black h-11 px-5 rounded-xl uppercase tracking-wider text-xs shadow-lg shadow-emerald-500/20 cursor-pointer flex items-center gap-2"
+                            className="bg-[#0284c7] hover:bg-[#0369a1] text-slate-900 font-black h-11 px-5 rounded-xl uppercase tracking-wider text-xs shadow-lg shadow-sky-500/20 cursor-pointer flex items-center gap-2"
                         >
                             <PlusCircle className="h-4 w-4" />
                             <span>Submit New File Info</span>
@@ -461,7 +461,7 @@ export default function PartnerDashboardPage() {
 
                         <button
                             onClick={handleLogout}
-                            className="p-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white transition-all cursor-pointer"
+                            className="p-2.5 rounded-xl bg-slate-100 hover:bg-slate-700 text-slate-600 hover:text-slate-900 transition-all cursor-pointer"
                             title="Logout"
                         >
                             <LogOut className="h-4 w-4" />
@@ -472,27 +472,27 @@ export default function PartnerDashboardPage() {
 
             <div className="container mx-auto px-4 md:px-6 py-8 space-y-8">
                 {/* Partner Welcome Banner */}
-                <div className="p-6 md:p-8 rounded-3xl bg-gradient-to-r from-slate-900 via-[#1c2229] to-slate-900 border border-slate-800 shadow-xl relative overflow-hidden flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+                <div className="p-6 md:p-8 rounded-3xl bg-white border border-slate-200 shadow-sm relative overflow-hidden flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
                     <div className="space-y-2 z-10">
-                        <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-500/20 text-[#00e699] text-xs font-bold uppercase tracking-wider">
-                            <Sparkles className="h-3.5 w-3.5" /> Shree Finance Direct DSA Partner Desk
+                        <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-sky-50 text-[#0284c7] border border-sky-300 text-xs font-black uppercase tracking-wider">
+                            <Sparkles className="h-3.5 w-3.5 text-[#0284c7]" /> Shree Finance Direct DSA Partner Desk
                         </span>
-                        <h2 className="text-2xl md:text-3xl font-black text-white">
+                        <h2 className="text-2xl md:text-3xl font-black text-slate-900">
                             Welcome back, {partner?.name}!
                         </h2>
-                        <p className="text-slate-300 text-sm max-w-xl">
+                        <p className="text-slate-600 text-sm max-w-xl">
                             Submit client files for <strong>Loans, Cards, Insurance, and Investments</strong>. Track status from <strong>In Process</strong> to <strong>Disbursed</strong> and view your commission earnings in real-time.
                         </p>
                     </div>
 
-                    <div className="flex items-center gap-3 bg-slate-950/80 p-3.5 rounded-2xl border border-slate-800 shrink-0 z-10">
-                        <div className="p-2.5 bg-emerald-500/15 rounded-xl text-[#00e699]">
+                    <div className="flex items-center gap-3 bg-[#f8fafc] p-3.5 rounded-2xl border border-slate-200 shrink-0 z-10">
+                        <div className="p-2.5 bg-sky-50 border border-sky-200 rounded-xl text-[#0284c7]">
                             <DollarSign className="h-6 w-6" />
                         </div>
                         <div>
-                            <p className="text-[10px] text-slate-400 uppercase font-bold">Admin Synced Payouts</p>
-                            <p className="text-sm font-black text-[#00e699]">Weekly Direct Bank Transfer</p>
-                            <p className="text-[10px] text-slate-400">GST / TDS Compliant Settlement</p>
+                            <p className="text-[10px] text-slate-500 uppercase font-bold">Admin Synced Payouts</p>
+                            <p className="text-sm font-black text-[#0284c7]">Weekly Direct Bank Transfer</p>
+                            <p className="text-[10px] text-slate-500">GST / TDS Compliant Settlement</p>
                         </div>
                     </div>
                 </div>
@@ -502,11 +502,11 @@ export default function PartnerDashboardPage() {
                 {/* ========================================================================= */}
                 <div className="space-y-3">
                     <div className="flex items-center justify-between">
-                        <h3 className="text-base font-black text-white flex items-center gap-2">
-                            <Sparkles className="h-4 w-4 text-[#00c985]" />
+                        <h3 className="text-base font-black text-slate-900 flex items-center gap-2">
+                            <Sparkles className="h-4 w-4 text-[#0284c7]" />
                             Active Commission Rate Cards (Updated Live by Admin)
                         </h3>
-                        <span className="text-[11px] text-emerald-400 font-bold bg-emerald-950/60 px-3 py-1 rounded-full border border-emerald-800">
+                        <span className="text-[11px] text-[#0284c7] font-bold bg-sky-50 px-3 py-1 rounded-full border border-sky-300">
                             ● Live Rates Active
                         </span>
                     </div>
@@ -518,19 +518,19 @@ export default function PartnerDashboardPage() {
                                 handleCategoryChange("loans");
                                 setIsFileModalOpen(true);
                             }}
-                            className="p-5 rounded-2xl bg-slate-900/90 border border-emerald-500/30 hover:border-emerald-500 transition-all cursor-pointer group shadow-lg"
+                            className="p-5 rounded-2xl bg-white border border-slate-200 hover:border-[#0284c7] transition-all cursor-pointer group shadow-sm hover:shadow-md"
                         >
                             <div className="flex items-center justify-between">
-                                <span className="text-xs font-bold text-slate-400 uppercase">Loans</span>
-                                <div className="p-2 rounded-xl bg-emerald-500/15 text-emerald-400 group-hover:scale-110 transition-transform">
+                                <span className="text-xs font-bold text-slate-500 uppercase">Loans</span>
+                                <div className="p-2 rounded-xl bg-sky-50 text-[#0284c7] group-hover:scale-110 transition-transform">
                                     <Banknote className="h-4 w-4" />
                                 </div>
                             </div>
                             <div className="mt-2">
-                                <p className="text-3xl font-black text-[#00e699]">{commissionRates.loans}%</p>
-                                <p className="text-[11px] text-slate-400 mt-1">Home, Personal & Business Loans</p>
+                                <p className="text-3xl font-black text-black">{commissionRates.loans}%</p>
+                                <p className="text-[11px] text-slate-500 mt-1">Home, Personal & Business Loans</p>
                             </div>
-                            <div className="mt-3 flex items-center text-[10px] font-black text-emerald-400 group-hover:translate-x-1 transition-transform">
+                            <div className="mt-3 flex items-center text-[10px] font-black text-[#0284c7] group-hover:translate-x-1 transition-transform">
                                 <span>Submit Loan File ➔</span>
                             </div>
                         </div>
@@ -541,19 +541,19 @@ export default function PartnerDashboardPage() {
                                 handleCategoryChange("cards");
                                 setIsFileModalOpen(true);
                             }}
-                            className="p-5 rounded-2xl bg-slate-900/90 border border-sky-500/30 hover:border-sky-500 transition-all cursor-pointer group shadow-lg"
+                            className="p-5 rounded-2xl bg-white border border-slate-200 hover:border-sky-500 transition-all cursor-pointer group shadow-sm hover:shadow-md"
                         >
                             <div className="flex items-center justify-between">
-                                <span className="text-xs font-bold text-slate-400 uppercase">Cards</span>
-                                <div className="p-2 rounded-xl bg-sky-500/15 text-sky-400 group-hover:scale-110 transition-transform">
+                                <span className="text-xs font-bold text-slate-500 uppercase">Cards</span>
+                                <div className="p-2 rounded-xl bg-sky-50 text-[#0284c7] group-hover:scale-110 transition-transform">
                                     <CreditCard className="h-4 w-4" />
                                 </div>
                             </div>
                             <div className="mt-2">
-                                <p className="text-3xl font-black text-sky-400">{commissionRates.cards}%</p>
-                                <p className="text-[11px] text-slate-400 mt-1">Credit Cards & Corporate Cards</p>
+                                <p className="text-3xl font-black text-black">{commissionRates.cards}%</p>
+                                <p className="text-[11px] text-slate-500 mt-1">Credit Cards & Corporate Cards</p>
                             </div>
-                            <div className="mt-3 flex items-center text-[10px] font-black text-sky-400 group-hover:translate-x-1 transition-transform">
+                            <div className="mt-3 flex items-center text-[10px] font-black text-[#0284c7] group-hover:translate-x-1 transition-transform">
                                 <span>Submit Card File ➔</span>
                             </div>
                         </div>
@@ -564,19 +564,19 @@ export default function PartnerDashboardPage() {
                                 handleCategoryChange("insurance");
                                 setIsFileModalOpen(true);
                             }}
-                            className="p-5 rounded-2xl bg-slate-900/90 border border-purple-500/30 hover:border-purple-500 transition-all cursor-pointer group shadow-lg"
+                            className="p-5 rounded-2xl bg-white border border-slate-200 hover:border-[#0284c7] transition-all cursor-pointer group shadow-sm hover:shadow-md"
                         >
                             <div className="flex items-center justify-between">
-                                <span className="text-xs font-bold text-slate-400 uppercase">Insurance</span>
-                                <div className="p-2 rounded-xl bg-purple-500/15 text-purple-400 group-hover:scale-110 transition-transform">
+                                <span className="text-xs font-bold text-slate-500 uppercase">Insurance</span>
+                                <div className="p-2 rounded-xl bg-sky-50 text-[#0284c7] group-hover:scale-110 transition-transform">
                                     <Shield className="h-4 w-4" />
                                 </div>
                             </div>
                             <div className="mt-2">
-                                <p className="text-3xl font-black text-purple-400">{commissionRates.insurance}%</p>
-                                <p className="text-[11px] text-slate-400 mt-1">Health, Life & Motor Policies</p>
+                                <p className="text-3xl font-black text-black">{commissionRates.insurance}%</p>
+                                <p className="text-[11px] text-slate-500 mt-1">Health, Life & Motor Policies</p>
                             </div>
-                            <div className="mt-3 flex items-center text-[10px] font-black text-purple-400 group-hover:translate-x-1 transition-transform">
+                            <div className="mt-3 flex items-center text-[10px] font-black text-[#0284c7] group-hover:translate-x-1 transition-transform">
                                 <span>Submit Insurance File ➔</span>
                             </div>
                         </div>
@@ -587,19 +587,19 @@ export default function PartnerDashboardPage() {
                                 handleCategoryChange("investments");
                                 setIsFileModalOpen(true);
                             }}
-                            className="p-5 rounded-2xl bg-slate-900/90 border border-amber-500/30 hover:border-amber-500 transition-all cursor-pointer group shadow-lg"
+                            className="p-5 rounded-2xl bg-white border border-slate-200 hover:border-[#0284c7] transition-all cursor-pointer group shadow-sm hover:shadow-md"
                         >
                             <div className="flex items-center justify-between">
-                                <span className="text-xs font-bold text-slate-400 uppercase">Investments</span>
-                                <div className="p-2 rounded-xl bg-amber-500/15 text-amber-400 group-hover:scale-110 transition-transform">
+                                <span className="text-xs font-bold text-slate-500 uppercase">Investments</span>
+                                <div className="p-2 rounded-xl bg-sky-50 text-[#0284c7] group-hover:scale-110 transition-transform">
                                     <PieChart className="h-4 w-4" />
                                 </div>
                             </div>
                             <div className="mt-2">
-                                <p className="text-3xl font-black text-amber-400">{commissionRates.investments}%</p>
-                                <p className="text-[11px] text-slate-400 mt-1">Mutual Funds, Corporate FDs, Pre-IPO</p>
+                                <p className="text-3xl font-black text-black">{commissionRates.investments}%</p>
+                                <p className="text-[11px] text-slate-500 mt-1">Mutual Funds, Corporate FDs, Pre-IPO</p>
                             </div>
-                            <div className="mt-3 flex items-center text-[10px] font-black text-amber-400 group-hover:translate-x-1 transition-transform">
+                            <div className="mt-3 flex items-center text-[10px] font-black text-[#0284c7] group-hover:translate-x-1 transition-transform">
                                 <span>Submit Investment File ➔</span>
                             </div>
                         </div>
@@ -608,40 +608,40 @@ export default function PartnerDashboardPage() {
 
                 {/* Pipeline Metrics Overview */}
                 <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-                    <div className="p-5 rounded-2xl bg-slate-900/80 border border-slate-800 space-y-1">
-                        <span className="text-slate-400 text-xs font-bold uppercase flex items-center justify-between">
-                            Total Files Submitted <FileText className="h-4 w-4 text-slate-400" />
+                    <div className="p-5 rounded-2xl bg-white border border-slate-200 shadow-sm space-y-1">
+                        <span className="text-slate-500 text-xs font-bold uppercase flex items-center justify-between">
+                            Total Files Submitted <FileText className="h-4 w-4 text-slate-500" />
                         </span>
-                        <p className="text-3xl font-black text-white">{metrics.totalLeads}</p>
+                        <p className="text-3xl font-black text-black">{metrics.totalLeads}</p>
                         <p className="text-[11px] text-slate-500 font-medium">All registered submissions</p>
                     </div>
 
-                    <div className="p-5 rounded-2xl bg-slate-900/80 border border-slate-800 space-y-1">
-                        <span className="text-sky-400 text-xs font-bold uppercase flex items-center justify-between">
-                            In Process Files <Clock className="h-4 w-4 text-sky-400" />
+                    <div className="p-5 rounded-2xl bg-white border border-slate-200 shadow-sm space-y-1">
+                        <span className="text-sky-800 text-xs font-bold uppercase flex items-center justify-between">
+                            In Process Files <Clock className="h-4 w-4 text-sky-800" />
                         </span>
-                        <p className="text-3xl font-black text-sky-300">{metrics.inProcessCount}</p>
-                        <p className="text-[11px] text-sky-400/80 font-medium">Under active bank review</p>
+                        <p className="text-3xl font-black text-black">{metrics.inProcessCount}</p>
+                        <p className="text-[11px] text-slate-500 font-medium">Under active bank review</p>
                     </div>
 
-                    <div className="p-5 rounded-2xl bg-slate-900/80 border border-slate-800 space-y-1">
-                        <span className="text-[#00e699] text-xs font-bold uppercase flex items-center justify-between">
-                            Total Disbursed Volume <TrendingUp className="h-4 w-4 text-[#00e699]" />
+                    <div className="p-5 rounded-2xl bg-white border border-slate-200 shadow-sm space-y-1">
+                        <span className="text-[#0284c7] text-xs font-bold uppercase flex items-center justify-between">
+                            Total Disbursed Volume <TrendingUp className="h-4 w-4 text-[#0284c7]" />
                         </span>
-                        <p className="text-3xl font-black text-[#00e699]">
+                        <p className="text-3xl font-black text-black">
                             ₹{metrics.totalDisbursed > 0 ? (metrics.totalDisbursed / 100000).toFixed(2) + " L" : "0"}
                         </p>
-                        <p className="text-[11px] text-emerald-400/80 font-medium">Successfully disbursed cases</p>
+                        <p className="text-[11px] text-slate-500 font-medium">Successfully disbursed cases</p>
                     </div>
 
-                    <div className="p-5 rounded-2xl bg-slate-900/80 border border-slate-800 space-y-1">
-                        <span className="text-emerald-400 text-xs font-bold uppercase flex items-center justify-between">
-                            Total Commission Earned <DollarSign className="h-4 w-4 text-emerald-400" />
+                    <div className="p-5 rounded-2xl bg-white border border-slate-200 shadow-sm space-y-1">
+                        <span className="text-[#0284c7] text-xs font-bold uppercase flex items-center justify-between">
+                            Total Commission Earned <DollarSign className="h-4 w-4 text-[#0284c7]" />
                         </span>
-                        <p className="text-3xl font-black text-white">
+                        <p className="text-3xl font-black text-black">
                             ₹{metrics.totalCommissionsEarned.toLocaleString("en-IN")}
                         </p>
-                        <p className="text-[11px] text-emerald-400/80 font-medium">Earned on disbursed files</p>
+                        <p className="text-[11px] text-slate-500 font-medium">Earned on disbursed files</p>
                     </div>
                 </div>
 
@@ -649,11 +649,11 @@ export default function PartnerDashboardPage() {
                 <div className="space-y-4">
                     <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-4">
                         <div>
-                            <h3 className="text-xl font-black text-white flex items-center gap-2">
-                                <Briefcase className="h-5 w-5 text-[#00c985]" />
+                            <h3 className="text-xl font-black text-slate-900 flex items-center gap-2">
+                                <Briefcase className="h-5 w-5 text-[#0284c7]" />
                                 Your Submitted Files Pipeline & Commission Records
                             </h3>
-                            <p className="text-xs text-slate-400">
+                            <p className="text-xs text-slate-500">
                                 View file progress, update status when bank disburses, and track exact calculated commissions.
                             </p>
                         </div>
@@ -661,13 +661,13 @@ export default function PartnerDashboardPage() {
                         <div className="flex flex-wrap items-center gap-3 w-full lg:w-auto">
                             {/* Search */}
                             <div className="relative flex-1 sm:w-60">
-                                <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-3.5 w-3.5 text-slate-400" />
+                                <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-3.5 w-3.5 text-slate-500" />
                                 <input
                                     type="text"
                                     placeholder="Search client, bank, ref..."
                                     value={searchQuery}
                                     onChange={e => setSearchQuery(e.target.value)}
-                                    className="w-full h-10 pl-9 pr-3 rounded-xl bg-slate-900 border border-slate-800 text-xs text-white placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-[#00c985]"
+                                    className="w-full h-10 pl-9 pr-3 rounded-xl bg-white border border-slate-200 text-xs text-slate-900 placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-[#0284c7]"
                                 />
                             </div>
 
@@ -675,7 +675,7 @@ export default function PartnerDashboardPage() {
                             <select
                                 value={categoryFilter}
                                 onChange={e => setCategoryFilter(e.target.value)}
-                                className="h-10 px-3 bg-slate-900 border border-slate-800 rounded-xl text-xs font-bold text-white focus:outline-none focus:ring-2 focus:ring-[#00c985]"
+                                className="h-10 px-3 bg-white border border-slate-200 rounded-xl text-xs font-bold text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#0284c7]"
                             >
                                 <option value="ALL">All Categories</option>
                                 <option value="loans">Loans</option>
@@ -688,7 +688,7 @@ export default function PartnerDashboardPage() {
                             <select
                                 value={statusFilter}
                                 onChange={e => setStatusFilter(e.target.value)}
-                                className="h-10 px-3 bg-slate-900 border border-slate-800 rounded-xl text-xs font-bold text-white focus:outline-none focus:ring-2 focus:ring-[#00c985]"
+                                className="h-10 px-3 bg-white border border-slate-200 rounded-xl text-xs font-bold text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#0284c7]"
                             >
                                 <option value="ALL">All Statuses</option>
                                 <option value="IN_PROCESS">In Process</option>
@@ -702,19 +702,19 @@ export default function PartnerDashboardPage() {
                     </div>
 
                     {/* Files Table */}
-                    <div className="bg-slate-900/60 border border-slate-800 rounded-3xl overflow-hidden shadow-xl">
+                    <div className="bg-slate-50 border border-slate-200 rounded-3xl overflow-hidden shadow-xl">
                         {filteredFiles.length === 0 ? (
                             <div className="text-center py-16 space-y-4">
                                 <FileText className="h-12 w-12 mx-auto text-slate-600" />
                                 <div className="space-y-1">
-                                    <h4 className="text-base font-bold text-white">No files submitted in this filter</h4>
-                                    <p className="text-xs text-slate-400 max-w-md mx-auto">
+                                    <h4 className="text-base font-bold text-slate-900">No files submitted in this filter</h4>
+                                    <p className="text-xs text-slate-500 max-w-md mx-auto">
                                         Click &quot;Submit New File Info&quot; above to submit cases for Loans, Cards, Insurance, or Investments to your partner banks.
                                     </p>
                                 </div>
                                 <Button
                                     onClick={() => setIsFileModalOpen(true)}
-                                    className="bg-[#00c985] hover:bg-[#00b074] text-slate-950 font-bold text-xs h-10 px-4 rounded-xl cursor-pointer"
+                                    className="bg-[#0284c7] hover:bg-[#0369a1] text-slate-900 font-bold text-xs h-10 px-4 rounded-xl cursor-pointer"
                                 >
                                     <PlusCircle className="h-3.5 w-3.5 mr-1.5" /> Submit First File Info
                                 </Button>
@@ -723,7 +723,7 @@ export default function PartnerDashboardPage() {
                             <div className="overflow-x-auto">
                                 <table className="w-full text-left text-xs border-collapse">
                                     <thead>
-                                        <tr className="border-b border-slate-800 bg-slate-950/60 text-slate-400 uppercase font-black tracking-wider text-[10px]">
+                                        <tr className="border-b border-slate-200 bg-[#f8fafc]/60 text-slate-500 uppercase font-black tracking-wider text-[10px]">
                                             <th className="py-4 px-5">File Ref / Date</th>
                                             <th className="py-4 px-5">Client Acquire Details</th>
                                             <th className="py-4 px-5">Type & Bank Submitted To</th>
@@ -739,9 +739,9 @@ export default function PartnerDashboardPage() {
                                             const catConfig = CATEGORY_CONFIG[file.category] || CATEGORY_CONFIG.loans;
 
                                             return (
-                                                <tr key={file._id} className="hover:bg-slate-800/30 transition-colors">
+                                                <tr key={file._id} className="hover:bg-slate-100/30 transition-colors">
                                                     <td className="py-4 px-5 align-top">
-                                                        <span className="font-mono text-[#00e699] font-bold block">
+                                                        <span className="font-mono text-[#0284c7] font-bold block">
                                                             #{file.referenceNo}
                                                         </span>
                                                         <span className="text-[10px] text-slate-500 mt-0.5 block">
@@ -754,9 +754,9 @@ export default function PartnerDashboardPage() {
                                                     </td>
 
                                                     <td className="py-4 px-5 align-top">
-                                                        <p className="font-bold text-white">{file.customerName}</p>
-                                                        <p className="text-slate-400 text-xs flex items-center gap-1 mt-0.5">
-                                                            <Phone className="h-3 w-3 text-emerald-400" />
+                                                        <p className="font-bold text-slate-900">{file.customerName}</p>
+                                                        <p className="text-slate-500 text-xs flex items-center gap-1 mt-0.5">
+                                                            <Phone className="h-3 w-3 text-[#0284c7]" />
                                                             +91 {file.customerMobile}
                                                         </p>
                                                         <p className="text-slate-500 text-[11px] flex items-center gap-1">
@@ -769,8 +769,8 @@ export default function PartnerDashboardPage() {
                                                         <span className={`px-2 py-0.5 rounded-md text-[10px] font-black uppercase inline-block mb-1 ${catConfig.bgColor} ${catConfig.color} border ${catConfig.borderColor}`}>
                                                             {catConfig.title}
                                                         </span>
-                                                        <p className="font-bold text-slate-200">{file.subProduct}</p>
-                                                        <p className="text-sky-400 text-[11px] font-medium mt-0.5">
+                                                        <p className="font-bold text-slate-700">{file.subProduct}</p>
+                                                        <p className="text-[#0284c7] text-[11px] font-medium mt-0.5">
                                                             🏦 {file.bankName}
                                                         </p>
                                                         {file.bankReferenceNo && (
@@ -781,7 +781,7 @@ export default function PartnerDashboardPage() {
                                                     </td>
 
                                                     <td className="py-4 px-5 align-top">
-                                                        <span className="font-black text-sm text-white block">
+                                                        <span className="font-black text-sm text-slate-900 block">
                                                             ₹{file.applicationAmount.toLocaleString("en-IN")}
                                                         </span>
                                                         <span className="text-[10px] text-slate-500">
@@ -790,17 +790,17 @@ export default function PartnerDashboardPage() {
                                                     </td>
 
                                                     <td className="py-4 px-5 align-top">
-                                                        <span className="font-black text-[#00e699] text-sm block">
+                                                        <span className="font-black text-[#0284c7] text-sm block">
                                                             ₹{file.commissionAmount ? file.commissionAmount.toLocaleString("en-IN") : "0"}
                                                         </span>
-                                                        <span className="text-[10px] text-slate-400">
+                                                        <span className="text-[10px] text-slate-500">
                                                             ({file.commissionRate}% Commission Rate)
                                                         </span>
                                                     </td>
 
                                                     <td className="py-4 px-5 align-top">
                                                         {file.leadStatus === "IN_PROCESS" && (
-                                                            <span className="px-2.5 py-1 rounded-full bg-sky-500/20 text-sky-300 border border-sky-500/30 text-[10px] font-black uppercase">
+                                                            <span className="px-2.5 py-1 rounded-full bg-sky-100 text-sky-800 border border-sky-200 text-[10px] font-black uppercase">
                                                                 In Process
                                                             </span>
                                                         )}
@@ -815,12 +815,12 @@ export default function PartnerDashboardPage() {
                                                             </span>
                                                         )}
                                                         {file.leadStatus === "SANCTIONED" && (
-                                                            <span className="px-2.5 py-1 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 text-[10px] font-black uppercase">
+                                                            <span className="px-2.5 py-1 rounded-full bg-sky-100 text-sky-800 border border-sky-200 text-[10px] font-black uppercase">
                                                                 🎉 Sanction Issued
                                                             </span>
                                                         )}
                                                         {isDisbursed && (
-                                                            <span className="px-2.5 py-1 rounded-full bg-[#00c985] text-slate-950 text-[10px] font-black uppercase font-black">
+                                                            <span className="px-2.5 py-1 rounded-full bg-[#0284c7] text-white text-[10px] font-black uppercase font-black">
                                                                 ✅ Disbursed
                                                             </span>
                                                         )}
@@ -839,7 +839,7 @@ export default function PartnerDashboardPage() {
                                                                 setStatusModalFile(file);
                                                                 setNewStatus(file.leadStatus === "DISBURSED" ? "DISBURSED" : "DISBURSED");
                                                             }}
-                                                            className="h-8 px-3 rounded-lg border-[#00c985]/40 text-[#00e699] hover:bg-[#00c985] hover:text-slate-950 font-bold text-xs cursor-pointer"
+                                                            className="h-8 px-3 rounded-lg border-[#0284c7]/40 text-[#0284c7] hover:bg-[#0284c7] hover:text-slate-900 font-bold text-xs cursor-pointer"
                                                         >
                                                             <Edit3 className="h-3 w-3 mr-1" /> Update Status
                                                         </Button>
@@ -860,23 +860,23 @@ export default function PartnerDashboardPage() {
             {/* ========================================================================= */}
             <AnimatePresence>
                 {isFileModalOpen && (
-                    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-md overflow-y-auto">
+                    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-[#f8fafc]/80 backdrop-blur-md overflow-y-auto">
                         <motion.div
                             initial={{ opacity: 0, scale: 0.95 }}
                             animate={{ opacity: 1, scale: 1 }}
                             exit={{ opacity: 0, scale: 0.95 }}
-                            className="bg-[#1f2328] border border-slate-700 rounded-3xl p-6 sm:p-8 max-w-2xl w-full shadow-2xl space-y-6 max-h-[90vh] overflow-y-auto"
+                            className="bg-[#1f2328] border border-slate-300 rounded-3xl p-6 sm:p-8 max-w-2xl w-full shadow-2xl space-y-6 max-h-[90vh] overflow-y-auto"
                         >
-                            <div className="flex items-center justify-between pb-4 border-b border-slate-800">
+                            <div className="flex items-center justify-between pb-4 border-b border-slate-200">
                                 <div>
-                                    <h3 className="text-xl font-black text-white flex items-center gap-2">
-                                        <PlusCircle className="h-5 w-5 text-[#00c985]" /> Submit File Info to Bank
+                                    <h3 className="text-xl font-black text-slate-900 flex items-center gap-2">
+                                        <PlusCircle className="h-5 w-5 text-[#0284c7]" /> Submit File Info to Bank
                                     </h3>
-                                    <p className="text-xs text-slate-400">Directly submit details for Loans, Cards, Insurance, or Investments</p>
+                                    <p className="text-xs text-slate-500">Directly submit details for Loans, Cards, Insurance, or Investments</p>
                                 </div>
                                 <button
                                     onClick={() => setIsFileModalOpen(false)}
-                                    className="p-2 rounded-xl bg-slate-800 text-slate-400 hover:text-white cursor-pointer"
+                                    className="p-2 rounded-xl bg-slate-100 text-slate-500 hover:text-slate-900 cursor-pointer"
                                 >
                                     <X className="h-5 w-5" />
                                 </button>
@@ -885,7 +885,7 @@ export default function PartnerDashboardPage() {
                             <form onSubmit={handleCreateFile} className="space-y-5">
                                 {/* Category Selection Pills */}
                                 <div className="space-y-2">
-                                    <label className="text-[10px] font-black uppercase text-slate-400">
+                                    <label className="text-[10px] font-black uppercase text-slate-500">
                                         Select File Category *
                                     </label>
                                     <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
@@ -901,15 +901,15 @@ export default function PartnerDashboardPage() {
                                                     onClick={() => handleCategoryChange(cat)}
                                                     className={`p-3 rounded-2xl border text-left transition-all cursor-pointer ${
                                                         isSelected
-                                                            ? "bg-[#00c985]/15 border-[#00c985] text-white shadow-lg"
-                                                            : "bg-slate-900 border-slate-800 text-slate-400 hover:border-slate-700"
+                                                            ? "bg-[#0284c7]/15 border-[#0284c7] text-slate-900 shadow-lg"
+                                                            : "bg-white border-slate-200 text-slate-500 hover:border-slate-300"
                                                     }`}
                                                 >
                                                     <div className="flex items-center justify-between">
-                                                        <config.icon className={`h-4 w-4 ${isSelected ? "text-[#00e699]" : "text-slate-400"}`} />
-                                                        <span className="text-[10px] font-black text-[#00e699]">{rate}% Comm</span>
+                                                        <config.icon className={`h-4 w-4 ${isSelected ? "text-[#0284c7]" : "text-slate-500"}`} />
+                                                        <span className="text-[10px] font-black text-[#0284c7]">{rate}% Comm</span>
                                                     </div>
-                                                    <p className="font-bold text-xs mt-1 text-white">{config.title}</p>
+                                                    <p className="font-bold text-xs mt-1 text-slate-900">{config.title}</p>
                                                 </button>
                                             );
                                         })}
@@ -919,12 +919,12 @@ export default function PartnerDashboardPage() {
                                 {/* Product Type & Bank Submitted To */}
                                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                                     <div>
-                                        <label className="text-[10px] font-black uppercase text-slate-400">Specific Product Type *</label>
+                                        <label className="text-[10px] font-black uppercase text-slate-500">Specific Product Type *</label>
                                         <select
                                             value={fileForm.subProduct}
                                             onChange={e => setFileForm({ ...fileForm, subProduct: e.target.value })}
                                             required
-                                            className="w-full h-11 bg-[#15171a] border border-white/10 rounded-xl px-3 text-xs font-bold text-white focus:ring-2 focus:ring-[#00c985]"
+                                            className="w-full h-11 bg-[#15171a] border border-slate-300 rounded-xl px-3 text-xs font-bold text-slate-900 focus:ring-2 focus:ring-[#0284c7]"
                                         >
                                             {CATEGORY_CONFIG[selectedCategory].products.map(p => (
                                                 <option key={p} value={p}>{p}</option>
@@ -933,12 +933,12 @@ export default function PartnerDashboardPage() {
                                     </div>
 
                                     <div>
-                                        <label className="text-[10px] font-black uppercase text-slate-400">Bank / Entity Submitted To *</label>
+                                        <label className="text-[10px] font-black uppercase text-slate-500">Bank / Entity Submitted To *</label>
                                         <select
                                             value={fileForm.bankName}
                                             onChange={e => setFileForm({ ...fileForm, bankName: e.target.value })}
                                             required
-                                            className="w-full h-11 bg-[#15171a] border border-white/10 rounded-xl px-3 text-xs font-bold text-white focus:ring-2 focus:ring-[#00c985]"
+                                            className="w-full h-11 bg-[#15171a] border border-slate-300 rounded-xl px-3 text-xs font-bold text-slate-900 focus:ring-2 focus:ring-[#0284c7]"
                                         >
                                             {CATEGORY_CONFIG[selectedCategory].banks.map(b => (
                                                 <option key={b} value={b}>{b}</option>
@@ -948,22 +948,22 @@ export default function PartnerDashboardPage() {
                                 </div>
 
                                 {/* Customer Acquire Details */}
-                                <div className="p-4 rounded-2xl bg-slate-900/80 border border-slate-800 space-y-3">
-                                    <p className="text-[11px] font-black text-emerald-400 uppercase tracking-wider">Client / Borrower Acquire Details</p>
+                                <div className="p-4 rounded-2xl bg-white/95 border border-slate-200 space-y-3">
+                                    <p className="text-[11px] font-black text-[#0284c7] uppercase tracking-wider">Client / Borrower Acquire Details</p>
                                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                                         <div>
-                                            <label className="text-[10px] font-black uppercase text-slate-400">Client Full Name *</label>
+                                            <label className="text-[10px] font-black uppercase text-slate-500">Client Full Name *</label>
                                             <Input
                                                 placeholder="e.g. Rahul Patil"
                                                 value={fileForm.customerName}
                                                 onChange={e => setFileForm({ ...fileForm, customerName: e.target.value })}
                                                 required
-                                                className="h-11 rounded-xl font-bold bg-white/5 border-white/10 text-white placeholder:text-slate-500 text-xs"
+                                                className="h-11 rounded-xl font-bold bg-white border-slate-300 text-slate-900 placeholder:text-slate-500 text-xs"
                                             />
                                         </div>
 
                                         <div>
-                                            <label className="text-[10px] font-black uppercase text-slate-400">Client Mobile Number *</label>
+                                            <label className="text-[10px] font-black uppercase text-slate-500">Client Mobile Number *</label>
                                             <Input
                                                 type="tel"
                                                 maxLength={10}
@@ -971,30 +971,30 @@ export default function PartnerDashboardPage() {
                                                 value={fileForm.customerMobile}
                                                 onChange={e => setFileForm({ ...fileForm, customerMobile: e.target.value.replace(/\D/g, "").slice(0, 10) })}
                                                 required
-                                                className="h-11 rounded-xl font-bold bg-white/5 border-white/10 text-white placeholder:text-slate-500 text-xs"
+                                                className="h-11 rounded-xl font-bold bg-white border-slate-300 text-slate-900 placeholder:text-slate-500 text-xs"
                                             />
                                         </div>
                                     </div>
 
                                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                                         <div>
-                                            <label className="text-[10px] font-black uppercase text-slate-400">City / Location *</label>
+                                            <label className="text-[10px] font-black uppercase text-slate-500">City / Location *</label>
                                             <Input
                                                 placeholder="e.g. Pune, Mumbai, PCMC"
                                                 value={fileForm.customerCity}
                                                 onChange={e => setFileForm({ ...fileForm, customerCity: e.target.value })}
                                                 required
-                                                className="h-11 rounded-xl font-bold bg-white/5 border-white/10 text-white placeholder:text-slate-500 text-xs"
+                                                className="h-11 rounded-xl font-bold bg-white border-slate-300 text-slate-900 placeholder:text-slate-500 text-xs"
                                             />
                                         </div>
 
                                         <div>
-                                            <label className="text-[10px] font-black uppercase text-slate-400">Bank LAN / Ref # (Optional)</label>
+                                            <label className="text-[10px] font-black uppercase text-slate-500">Bank LAN / Ref # (Optional)</label>
                                             <Input
                                                 placeholder="e.g. HDFC-APP-998811"
                                                 value={fileForm.bankReferenceNo}
                                                 onChange={e => setFileForm({ ...fileForm, bankReferenceNo: e.target.value })}
-                                                className="h-11 rounded-xl font-bold bg-white/5 border-white/10 text-white placeholder:text-slate-500 text-xs font-mono"
+                                                className="h-11 rounded-xl font-bold bg-white border-slate-300 text-slate-900 placeholder:text-slate-500 text-xs font-mono"
                                             />
                                         </div>
                                     </div>
@@ -1002,40 +1002,40 @@ export default function PartnerDashboardPage() {
 
                                 {/* Application Amount & Live Commission Calculation */}
                                 <div>
-                                    <label className="text-[10px] font-black uppercase text-slate-400">Filed / Application Amount (₹) *</label>
+                                    <label className="text-[10px] font-black uppercase text-slate-500">Filed / Application Amount (₹) *</label>
                                     <Input
                                         type="number"
                                         placeholder="e.g. 2500000 (25 Lakhs)"
                                         value={fileForm.applicationAmount}
                                         onChange={e => setFileForm({ ...fileForm, applicationAmount: e.target.value })}
                                         required
-                                        className="h-12 rounded-xl font-black text-sm bg-white/5 border-white/10 text-white placeholder:text-slate-500"
+                                        className="h-12 rounded-xl font-black text-sm bg-white border-slate-300 text-slate-900 placeholder:text-slate-500"
                                     />
                                 </div>
 
                                 {/* Live Calculated Commission Preview Card */}
-                                <div className="p-4 rounded-2xl bg-gradient-to-r from-emerald-950/40 via-slate-900 to-slate-900 border border-emerald-500/40 flex items-center justify-between">
+                                <div className="p-4 rounded-2xl bg-gradient-to-r from-emerald-950/40 via-slate-900 to-slate-900 border border-sky-300 flex items-center justify-between">
                                     <div>
-                                        <p className="text-[10px] text-emerald-400 uppercase font-black tracking-wider">Estimated Payout on Disbursal</p>
-                                        <p className="text-xl font-black text-[#00e699]">
+                                        <p className="text-[10px] text-[#0284c7] uppercase font-black tracking-wider">Estimated Payout on Disbursal</p>
+                                        <p className="text-xl font-black text-[#0284c7]">
                                             ₹{estimatedCommission.toLocaleString("en-IN")}
                                         </p>
-                                        <p className="text-[10px] text-slate-400">
+                                        <p className="text-[10px] text-slate-500">
                                             Calculated at {activeFormRate}% commission rate on filed amount
                                         </p>
                                     </div>
-                                    <span className="px-3 py-1 bg-emerald-500/20 text-[#00e699] border border-emerald-500/40 rounded-full text-xs font-black">
+                                    <span className="px-3 py-1 bg-sky-100 text-sky-800 border border-sky-300 rounded-full text-xs font-black">
                                         Status: In Process
                                     </span>
                                 </div>
 
                                 <div>
-                                    <label className="text-[10px] font-black uppercase text-slate-400">Remarks / Specific Notes (Optional)</label>
+                                    <label className="text-[10px] font-black uppercase text-slate-500">Remarks / Specific Notes (Optional)</label>
                                     <Input
                                         placeholder="e.g. 80% LTV sanction requested, urgent login required"
                                         value={fileForm.leadNotes}
                                         onChange={e => setFileForm({ ...fileForm, leadNotes: e.target.value })}
-                                        className="h-11 rounded-xl font-bold bg-white/5 border-white/10 text-white placeholder:text-slate-500 text-xs"
+                                        className="h-11 rounded-xl font-bold bg-white border-slate-300 text-slate-900 placeholder:text-slate-500 text-xs"
                                     />
                                 </div>
 
@@ -1044,7 +1044,7 @@ export default function PartnerDashboardPage() {
                                         type="button"
                                         variant="outline"
                                         onClick={() => setIsFileModalOpen(false)}
-                                        className="h-11 px-5 rounded-xl border-slate-700 bg-slate-800 text-white text-xs cursor-pointer font-bold"
+                                        className="h-11 px-5 rounded-xl border-slate-300 bg-slate-100 text-slate-900 text-xs cursor-pointer font-bold"
                                     >
                                         Cancel
                                     </Button>
@@ -1052,7 +1052,7 @@ export default function PartnerDashboardPage() {
                                     <Button
                                         type="submit"
                                         disabled={submittingFile}
-                                        className="h-11 px-6 rounded-xl bg-[#00c985] hover:bg-[#00b074] text-slate-950 font-black text-xs uppercase tracking-wider shadow-lg shadow-emerald-500/20 cursor-pointer flex items-center gap-2"
+                                        className="h-11 px-6 rounded-xl bg-[#0284c7] hover:bg-[#0369a1] text-slate-900 font-black text-xs uppercase tracking-wider shadow-lg shadow-sky-500/20 cursor-pointer flex items-center gap-2"
                                     >
                                         {submittingFile ? (
                                             <>
@@ -1077,55 +1077,55 @@ export default function PartnerDashboardPage() {
             {/* ========================================================================= */}
             <AnimatePresence>
                 {statusModalFile && (
-                    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-md">
+                    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-[#f8fafc]/80 backdrop-blur-md">
                         <motion.div
                             initial={{ opacity: 0, scale: 0.95 }}
                             animate={{ opacity: 1, scale: 1 }}
                             exit={{ opacity: 0, scale: 0.95 }}
-                            className="bg-[#1f2328] border border-slate-700 rounded-3xl p-6 sm:p-8 max-w-lg w-full shadow-2xl space-y-6"
+                            className="bg-[#1f2328] border border-slate-300 rounded-3xl p-6 sm:p-8 max-w-lg w-full shadow-2xl space-y-6"
                         >
-                            <div className="flex items-center justify-between pb-3 border-b border-slate-800">
+                            <div className="flex items-center justify-between pb-3 border-b border-slate-200">
                                 <div>
-                                    <h3 className="text-lg font-black text-white flex items-center gap-2">
-                                        <Edit3 className="h-5 w-5 text-[#00c985]" /> Update File Status
+                                    <h3 className="text-lg font-black text-slate-900 flex items-center gap-2">
+                                        <Edit3 className="h-5 w-5 text-[#0284c7]" /> Update File Status
                                     </h3>
-                                    <p className="text-xs text-slate-400">File Ref: #{statusModalFile.referenceNo}</p>
+                                    <p className="text-xs text-slate-500">File Ref: #{statusModalFile.referenceNo}</p>
                                 </div>
                                 <button
                                     onClick={() => setStatusModalFile(null)}
-                                    className="p-2 rounded-xl bg-slate-800 text-slate-400 hover:text-white cursor-pointer"
+                                    className="p-2 rounded-xl bg-slate-100 text-slate-500 hover:text-slate-900 cursor-pointer"
                                 >
                                     <X className="h-5 w-5" />
                                 </button>
                             </div>
 
-                            <div className="p-4 rounded-2xl bg-slate-900 border border-slate-800 space-y-2">
+                            <div className="p-4 rounded-2xl bg-white border border-slate-200 space-y-2">
                                 <div className="flex justify-between text-xs">
-                                    <span className="text-slate-400 font-bold">Client:</span>
-                                    <span className="text-white font-bold">{statusModalFile.customerName}</span>
+                                    <span className="text-slate-500 font-bold">Client:</span>
+                                    <span className="text-slate-900 font-bold">{statusModalFile.customerName}</span>
                                 </div>
                                 <div className="flex justify-between text-xs">
-                                    <span className="text-slate-400 font-bold">Bank:</span>
-                                    <span className="text-sky-400 font-bold">{statusModalFile.bankName}</span>
+                                    <span className="text-slate-500 font-bold">Bank:</span>
+                                    <span className="text-[#0284c7] font-bold">{statusModalFile.bankName}</span>
                                 </div>
                                 <div className="flex justify-between text-xs">
-                                    <span className="text-slate-400 font-bold">Filed Amount:</span>
-                                    <span className="text-white font-black">₹{statusModalFile.applicationAmount.toLocaleString("en-IN")}</span>
+                                    <span className="text-slate-500 font-bold">Filed Amount:</span>
+                                    <span className="text-slate-900 font-black">₹{statusModalFile.applicationAmount.toLocaleString("en-IN")}</span>
                                 </div>
-                                <div className="flex justify-between text-xs border-t border-slate-800 pt-2">
-                                    <span className="text-emerald-400 font-bold">Calculated Commission:</span>
-                                    <span className="text-[#00e699] font-black">
+                                <div className="flex justify-between text-xs border-t border-slate-200 pt-2">
+                                    <span className="text-[#0284c7] font-bold">Calculated Commission:</span>
+                                    <span className="text-[#0284c7] font-black">
                                         {statusModalFile.commissionRate}% (₹{statusModalFile.commissionAmount.toLocaleString("en-IN")})
                                     </span>
                                 </div>
                             </div>
 
                             <div className="space-y-2">
-                                <label className="text-[10px] font-black uppercase text-slate-400">Select New Status *</label>
+                                <label className="text-[10px] font-black uppercase text-slate-500">Select New Status *</label>
                                 <select
                                     value={newStatus}
                                     onChange={e => setNewStatus(e.target.value)}
-                                    className="w-full h-12 bg-[#15171a] border border-white/10 rounded-xl px-4 text-xs font-bold text-white focus:ring-2 focus:ring-[#00c985]"
+                                    className="w-full h-12 bg-[#15171a] border border-slate-300 rounded-xl px-4 text-xs font-bold text-slate-900 focus:ring-2 focus:ring-[#0284c7]"
                                 >
                                     <option value="IN_PROCESS">In Process (Under Review)</option>
                                     <option value="DOCS_SUBMITTED">Docs Submitted to Bank</option>
@@ -1137,7 +1137,7 @@ export default function PartnerDashboardPage() {
                             </div>
 
                             {newStatus === "DISBURSED" && (
-                                <div className="p-3 bg-emerald-950/40 border border-emerald-500/40 rounded-xl text-xs text-emerald-300">
+                                <div className="p-3 bg-sky-50 border border-sky-300 rounded-xl text-xs text-sky-800">
                                     ✓ Marking this file as <strong>DISBURSED</strong> will credit <strong>₹{statusModalFile.commissionAmount.toLocaleString("en-IN")}</strong> to your active commission earnings balance.
                                 </div>
                             )}
@@ -1147,7 +1147,7 @@ export default function PartnerDashboardPage() {
                                     type="button"
                                     variant="outline"
                                     onClick={() => setStatusModalFile(null)}
-                                    className="h-11 px-5 rounded-xl border-slate-700 bg-slate-800 text-white text-xs cursor-pointer font-bold"
+                                    className="h-11 px-5 rounded-xl border-slate-300 bg-slate-100 text-slate-900 text-xs cursor-pointer font-bold"
                                 >
                                     Cancel
                                 </Button>
@@ -1156,7 +1156,7 @@ export default function PartnerDashboardPage() {
                                     type="button"
                                     disabled={statusUpdateLoading}
                                     onClick={handleUpdateStatus}
-                                    className="h-11 px-6 rounded-xl bg-[#00c985] hover:bg-[#00b074] text-slate-950 font-black text-xs uppercase tracking-wider cursor-pointer shadow-lg shadow-emerald-500/20"
+                                    className="h-11 px-6 rounded-xl bg-[#0284c7] hover:bg-[#0369a1] text-slate-900 font-black text-xs uppercase tracking-wider cursor-pointer shadow-lg shadow-sky-500/20"
                                 >
                                     {statusUpdateLoading ? <Loader2 className="h-4 w-4 animate-spin" /> : "Save Status"}
                                 </Button>

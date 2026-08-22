@@ -59,12 +59,12 @@ export async function POST(req: Request) {
                 html: `
                 <div style="font-family: sans-serif; max-width: 500px; margin: 0 auto; border: 1px solid #e2e8f0; border-radius: 12px; padding: 24px; background: #ffffff;">
                     <div style="background: #0f172a; padding: 16px; border-radius: 8px; text-align: center;">
-                        <h2 style="color: #00c985; margin: 0;">SHREE FINANCE PARTNER PORTAL</h2>
+                        <h2 style="color: #0284c7; margin: 0;">SHREE FINANCE PARTNER PORTAL</h2>
                     </div>
                     <div style="padding: 20px 0; text-align: center;">
                         <p style="font-size: 14px; color: #475569;">Hello <strong>${partner.name}</strong>,</p>
                         <p style="font-size: 13px; color: #475569;">Use the one-time passcode below to log in to your Channel Partner Dashboard:</p>
-                        <div style="background: #f0fdf4; border: 2px dashed #00c985; padding: 14px; border-radius: 8px; margin: 20px auto; display: inline-block;">
+                        <div style="background: #f0fdf4; border: 2px dashed #0284c7; padding: 14px; border-radius: 8px; margin: 20px auto; display: inline-block;">
                             <span style="font-size: 28px; font-weight: 900; letter-spacing: 6px; color: #0f172a;">${otp}</span>
                         </div>
                         <p style="font-size: 11px; color: #94a3b8; margin: 0;">This OTP is valid for 10 minutes. Do not share this with anyone.</p>

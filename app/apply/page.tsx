@@ -13,7 +13,7 @@ export default function ApplyPage() {
             <div className="container px-4 sm:px-6 mx-auto max-w-5xl space-y-8">
                 {/* Top Banner Header */}
                 <div className="text-center space-y-3">
-                    <div className="inline-flex items-center gap-2 px-4 py-1 rounded-full bg-emerald-500/10 text-[#00e699] text-xs font-black uppercase tracking-wider border border-emerald-500/30">
+                    <div className="inline-flex items-center gap-2 px-4 py-1 rounded-full bg-sky-500/10 text-[#38bdf8] text-xs font-black uppercase tracking-wider border border-sky-500/30">
                         <Sparkles className="h-4 w-4" /> Official Bank Underwriting Portal
                     </div>
                     <h1 className="text-3xl sm:text-4xl md:text-5xl font-black text-white tracking-tight">
@@ -35,7 +35,7 @@ export default function ApplyPage() {
                 {/* Bottom Trust & Security Features */}
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-6 text-slate-400 text-xs">
                     <div className="p-4 rounded-2xl bg-slate-900/60 border border-slate-800 flex items-center gap-3">
-                        <ShieldCheck className="h-6 w-6 text-[#00c985] shrink-0" />
+                        <ShieldCheck className="h-6 w-6 text-[#0284c7] shrink-0" />
                         <div>
                             <p className="font-bold text-white">256-Bit SSL Encrypted</p>
                             <p className="text-[11px]">Bank-grade 100% data protection</p>

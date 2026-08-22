@@ -427,45 +427,37 @@ function SliderField({
 /* ─── Main Universal Calculator ─── */
 export function UniversalCalculator() {
     const [active, setActive] = useState<CalcType>("emi");
-    const activeTab = CALC_TABS.find((t) => t.id === active)!;
-
     return (
-        <section className="py-16 md:py-24 bg-white dark:bg-black relative overflow-hidden font-sans">
-            {/* Decorative BG */}
-            <div className="absolute inset-0 pointer-events-none">
-                <div className="absolute top-0 left-1/3 w-[600px] h-[600px] bg-primary/5 rounded-full blur-[120px]" />
-                <div className="absolute bottom-0 right-1/4 w-[500px] h-[500px] bg-accent/5 rounded-full blur-[120px]" />
-            </div>
-
+        <section className="py-16 md:py-24 bg-[#f8fafc] relative overflow-hidden font-sans border-t border-slate-200">
             <div className="container relative z-10 px-4 md:px-6 mx-auto">
                 {/* Header */}
-                <div className="text-center mb-12 space-y-4">
+                <div className="text-center mb-12 space-y-3">
                     <motion.div
-                        initial={{ opacity: 0, y: 20 }}
+                        initial={{ opacity: 0, y: 15 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
-                        className="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/5 px-3 py-1 text-sm font-bold text-primary dark:border-primary/50 dark:bg-primary/20 dark:text-sky-200 backdrop-blur-md"
+                        className="inline-flex items-center gap-2 rounded-full border border-sky-500/30 bg-sky-50 px-3.5 py-1 text-xs font-black text-sky-800 tracking-wider uppercase"
                     >
-                        <Calculator className="h-4 w-4 text-accent" />
-                        Financial Calculators
+                        <Calculator className="h-3.5 w-3.5 text-[#0284c7]" />
+                        Interactive Loan & Wealth Calculator
                     </motion.div>
-                    <h2 className="text-3xl md:text-5xl font-extrabold tracking-tight">
-                        Plan Your <span className="text-gradient">Finances</span> Smartly
+                    <h2 className="text-3xl md:text-5xl font-black text-slate-900 tracking-tight">
+                        Calculate EMI & <span className="text-[#0284c7]">Repayment Schedule</span>
                     </h2>
-                    <p className="text-muted-foreground text-lg max-w-2xl mx-auto leading-relaxed">
-                        Precision planning for your wealth. Choose a calculator and visualize your financial goals with real-time analytics.
+                    <p className="text-slate-600 text-sm md:text-base max-w-2xl mx-auto leading-relaxed">
+                        Slide to adjust your loan amount and tenure to instantly preview estimated monthly payments and total interest breakdown.
                     </p>
                 </div>
 
                 {/* Tab Selector */}
-                <div className="flex flex-wrap justify-center gap-3 mb-12">
+                <div className="flex flex-wrap justify-center gap-2.5 mb-10">
                     {CALC_TABS.map((tab) => (
                         <button
                             key={tab.id}
                             onClick={() => setActive(tab.id)}
-                            className={`flex items-center gap-2 px-6 py-4 rounded-2xl text-sm font-extrabold transition-all duration-300 ${active === tab.id
-                                    ? `bg-gradient-to-r ${tab.color} text-white shadow-xl scale-105 shadow-primary/25 border border-white/10`
-                                    : "bg-slate-50 dark:bg-sky-950/40 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-sky-900/60 hover:scale-[1.02] border border-transparent shadow-sm"
+                            className={`flex items-center gap-2 px-5 py-3 rounded-xl text-xs sm:text-sm font-bold transition-all cursor-pointer ${active === tab.id
+                                    ? "bg-[#0284c7] text-white shadow-sm"
+                                    : "bg-white text-slate-600 hover:text-slate-900 border border-slate-200 hover:bg-slate-100/70"
                                 }`}
                         >
                             {tab.icon}
@@ -475,8 +467,7 @@ export function UniversalCalculator() {
                 </div>
 
                 {/* Calculator Card */}
-                <Card className="glass-card max-w-5xl mx-auto border-t-8 shadow-2xl relative overflow-hidden ring-1 ring-primary/10" style={{ borderTopColor: "hsl(199 89% 48%)" }}>
-                    <div className="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-full -mr-16 -mt-16 pointer-events-none"></div>
+                <Card className="max-w-5xl mx-auto bg-white border border-slate-200 shadow-sm rounded-3xl relative overflow-hidden">
                     <CardContent className="p-6 md:p-10 relative z-10">
                         <AnimatePresence mode="wait">
                             <motion.div
@@ -484,7 +475,7 @@ export function UniversalCalculator() {
                                 initial={{ opacity: 0, y: 10 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 exit={{ opacity: 0, y: -10 }}
-                                transition={{ duration: 0.3 }}
+                                transition={{ duration: 0.2 }}
                             >
                                 {active === "emi" && <EMISection />}
                                 {active === "sip" && <SIPSection />}

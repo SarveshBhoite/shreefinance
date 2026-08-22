@@ -130,7 +130,7 @@ export function StampDutyCalculator() {
                                 key={totalGovernmentFee}
                                 initial={{ scale: 0.9, opacity: 0.8 }}
                                 animate={{ scale: 1, opacity: 1 }}
-                                className="text-4xl font-black text-emerald-400 tracking-tight"
+                                className="text-4xl font-black text-sky-400 tracking-tight"
                             >
                                 {formatCurrency(totalGovernmentFee)}
                             </motion.div>
@@ -140,11 +140,11 @@ export function StampDutyCalculator() {
 
                             <div className="bg-white/5 p-4 rounded-2xl border border-white/10 text-left space-y-2 text-xs text-slate-300">
                                 <div className="flex items-center gap-2">
-                                    <CheckCircle2 className="h-4 w-4 text-emerald-400 shrink-0" />
+                                    <CheckCircle2 className="h-4 w-4 text-sky-400 shrink-0" />
                                     <span>Female buyers save up to 1% stamp duty in {state}</span>
                                 </div>
                                 <div className="flex items-center gap-2">
-                                    <CheckCircle2 className="h-4 w-4 text-emerald-400 shrink-0" />
+                                    <CheckCircle2 className="h-4 w-4 text-sky-400 shrink-0" />
                                     <span>Registration fee capped at statutory max limits</span>
                                 </div>
                             </div>

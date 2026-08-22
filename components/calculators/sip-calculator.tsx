@@ -56,19 +56,19 @@ export function SIPCalculator({
 
     return (
         <div className="w-full max-w-md mx-auto space-y-6">
-            <Card className="glass-card bg-white/10 dark:bg-slate-900/50 border-white/20 dark:border-white/10 overflow-hidden">
-                <CardHeader className="bg-gradient-to-r from-green-600 to-emerald-600 p-6">
-                    <CardTitle className="text-white flex items-center gap-2">
-                        <TrendingUp className="h-5 w-5" />
-                        SIP Calculator
+            <Card className="bg-white border border-slate-200 shadow-lg rounded-[2rem] overflow-hidden">
+                <CardHeader className="bg-gradient-to-r from-sky-700 via-sky-600 to-sky-800 p-6 text-white">
+                    <CardTitle className="text-white flex items-center gap-2 font-black text-xl">
+                        <TrendingUp className="h-5 w-5 text-white" />
+                        SIP Investment Calculator
                     </CardTitle>
                 </CardHeader>
-                <CardContent className="p-6 space-y-8">
+                <CardContent className="p-6 space-y-8 bg-white">
                     {/* Monthly Investment */}
                     <div className="space-y-4">
-                        <div className="flex justify-between items-center text-sm font-medium text-slate-700 dark:text-slate-300">
+                        <div className="flex justify-between items-center text-sm font-bold text-slate-700">
                             <span>Monthly Investment</span>
-                            <span className="bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300 px-3 py-1 rounded-full font-bold">
+                            <span className="bg-sky-50 text-[#0284c7] border border-sky-200 px-3 py-1 rounded-full font-black">
                                 {formatCurrency(monthly)}
                             </span>
                         </div>
@@ -80,7 +80,7 @@ export function SIPCalculator({
                             onValueChange={(val) => setMonthly(val[0])}
                             className="py-2"
                         />
-                        <div className="flex justify-between text-xs text-slate-500">
+                        <div className="flex justify-between text-xs font-bold text-slate-500">
                             <span>₹500</span>
                             <span>₹1L</span>
                         </div>
@@ -88,9 +88,9 @@ export function SIPCalculator({
 
                     {/* Interest Rate */}
                     <div className="space-y-4">
-                        <div className="flex justify-between items-center text-sm font-medium text-slate-700 dark:text-slate-300">
+                        <div className="flex justify-between items-center text-sm font-bold text-slate-700">
                             <span>Expected Return (p.a)</span>
-                            <span className="bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300 px-3 py-1 rounded-full font-bold">
+                            <span className="bg-sky-50 text-[#0284c7] border border-sky-200 px-3 py-1 rounded-full font-black">
                                 {rate}%
                             </span>
                         </div>
@@ -102,7 +102,7 @@ export function SIPCalculator({
                             onValueChange={(val) => setRate(val[0])}
                             className="py-2"
                         />
-                        <div className="flex justify-between text-xs text-slate-500">
+                        <div className="flex justify-between text-xs font-bold text-slate-500">
                             <span>5%</span>
                             <span>30%</span>
                         </div>
@@ -110,9 +110,9 @@ export function SIPCalculator({
 
                     {/* Time Period */}
                     <div className="space-y-4">
-                        <div className="flex justify-between items-center text-sm font-medium text-slate-700 dark:text-slate-300">
+                        <div className="flex justify-between items-center text-sm font-bold text-slate-700">
                             <span>Time Period</span>
-                            <span className="bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300 px-3 py-1 rounded-full font-bold">
+                            <span className="bg-sky-50 text-[#0284c7] border border-sky-200 px-3 py-1 rounded-full font-black">
                                 {years} Years
                             </span>
                         </div>
@@ -124,25 +124,25 @@ export function SIPCalculator({
                             onValueChange={(val) => setYears(val[0])}
                             className="py-2"
                         />
-                        <div className="flex justify-between text-xs text-slate-500">
+                        <div className="flex justify-between text-xs font-bold text-slate-500">
                             <span>1 Yr</span>
                             <span>30 Yrs</span>
                         </div>
                     </div>
 
                     {/* Results */}
-                    <div className="mt-8 pt-6 border-t border-slate-200 dark:border-slate-800 space-y-3">
-                        <div className="flex justify-between items-center">
-                            <span className="text-slate-500 dark:text-slate-400 text-sm">Invested Amount</span>
-                            <span className="font-bold text-slate-900 dark:text-white">{formatCurrency(result.invested)}</span>
+                    <div className="mt-8 pt-6 border-t border-slate-200 space-y-3">
+                        <div className="flex justify-between items-center text-sm">
+                            <span className="text-slate-500 font-bold">Invested Amount</span>
+                            <span className="font-black text-slate-900">{formatCurrency(result.invested)}</span>
                         </div>
-                        <div className="flex justify-between items-center">
-                            <span className="text-slate-500 dark:text-slate-400 text-sm">Est. Returns</span>
-                            <span className="font-bold text-green-600 dark:text-green-400">+{formatCurrency(result.returns)}</span>
+                        <div className="flex justify-between items-center text-sm">
+                            <span className="text-slate-500 font-bold">Est. Returns</span>
+                            <span className="font-black text-[#0284c7]">+{formatCurrency(result.returns)}</span>
                         </div>
-                        <div className="flex justify-between items-center bg-green-50 dark:bg-green-900/20 p-4 rounded-xl mt-4">
-                            <span className="font-bold text-slate-900 dark:text-white">Total Value</span>
-                            <span className="font-extrabold text-xl text-green-700 dark:text-green-300">{formatCurrency(result.total)}</span>
+                        <div className="flex justify-between items-center bg-sky-50 border border-sky-200 p-4 rounded-2xl mt-4">
+                            <span className="font-black text-slate-900">Total Future Value</span>
+                            <span className="font-black text-2xl text-[#0284c7]">{formatCurrency(result.total)}</span>
                         </div>
                     </div>
                 </CardContent>

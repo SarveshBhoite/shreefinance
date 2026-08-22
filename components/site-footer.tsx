@@ -6,11 +6,11 @@ export function SiteFooter() {
     return (
         <footer className="relative bg-white dark:bg-[#141618] text-slate-700 dark:text-slate-300 border-t border-slate-200 dark:border-slate-800 pt-16 pb-10 font-sans overflow-hidden transition-colors duration-300">
             {/* Top Emerald Gradient Accent Line */}
-            <div className="absolute top-0 inset-x-0 h-1.5 bg-gradient-to-r from-emerald-400 via-[#00e699] to-teal-500 shadow-[0_2px_12px_rgba(0,230,153,0.3)]"></div>
+            <div className="absolute top-0 inset-x-0 h-1.5 bg-gradient-to-r from-emerald-400 via-[#38bdf8] to-teal-500 shadow-[0_2px_12px_rgba(0,230,153,0.3)]"></div>
             
             {/* Background Ambient Glow */}
             <div className="absolute inset-0 pointer-events-none opacity-5">
-                <div className="absolute -bottom-48 -left-48 w-[600px] h-[600px] bg-[#00c985] rounded-full blur-[120px]"></div>
+                <div className="absolute -bottom-48 -left-48 w-[600px] h-[600px] bg-[#0284c7] rounded-full blur-[120px]"></div>
                 <div className="absolute -top-48 -right-48 w-[500px] h-[500px] bg-emerald-400 rounded-full blur-[100px]"></div>
             </div>
 
@@ -28,8 +28,8 @@ export function SiteFooter() {
                                 />
                             </Link>
                             <div>
-                                <div className="inline-flex items-center gap-2 rounded-full border border-emerald-500/30 bg-emerald-50 dark:bg-emerald-500/10 px-3.5 py-1 text-xs font-black text-emerald-700 dark:text-[#00e699] tracking-widest uppercase">
-                                    <Zap className="h-3.5 w-3.5 fill-emerald-600 dark:fill-[#00e699] text-emerald-600 dark:text-[#00e699]" />
+                                <div className="inline-flex items-center gap-2 rounded-full border border-sky-500/30 bg-sky-50 dark:bg-sky-500/10 px-3.5 py-1 text-xs font-black text-sky-700 dark:text-[#38bdf8] tracking-widest uppercase">
+                                    <Zap className="h-3.5 w-3.5 fill-emerald-600 dark:fill-[#38bdf8] text-sky-600 dark:text-[#38bdf8]" />
                                     Elite Financial Partner
                                 </div>
                             </div>
@@ -39,7 +39,7 @@ export function SiteFooter() {
                         </p>
                         <div className="flex gap-3 pt-2">
                             {[Facebook, Twitter, Instagram, Linkedin].map((Icon, i) => (
-                                <Link key={i} href="#" className="h-10 w-10 rounded-xl bg-slate-100 dark:bg-white/5 border border-slate-200 dark:border-white/10 flex items-center justify-center text-slate-600 dark:text-slate-400 hover:bg-[#00c985] hover:text-slate-950 hover:-translate-y-1 hover:shadow-lg transition-all duration-200">
+                                <Link key={i} href="#" className="h-10 w-10 rounded-xl bg-slate-100 dark:bg-white/5 border border-slate-200 dark:border-white/10 flex items-center justify-center text-slate-600 dark:text-slate-400 hover:bg-[#0284c7] hover:text-slate-950 hover:-translate-y-1 hover:shadow-lg transition-all duration-200">
                                     <Icon className="h-4 w-4" />
                                 </Link>
                             ))}
@@ -61,7 +61,7 @@ export function SiteFooter() {
                                 { name: "Education Loan", href: "/loans/education-loan" },
                             ].map((item, i) => (
                                 <li key={i}>
-                                    <Link href={item.href} className="text-slate-600 font-semibold hover:text-[#00a86b] hover:translate-x-1.5 transition-all inline-flex items-center gap-2 group text-sm">
+                                    <Link href={item.href} className="text-slate-600 font-semibold hover:text-[#0284c7] hover:translate-x-1.5 transition-all inline-flex items-center gap-2 group text-sm">
                                         <div className="h-1.5 w-1.5 rounded-full bg-emerald-400 group-hover:w-3 transition-all" />
                                         {item.name}
                                     </Link>
@@ -85,7 +85,7 @@ export function SiteFooter() {
                                 { name: "Rewards & Cashback", href: "/rewards-and-offers" },
                             ].map((item, i) => (
                                 <li key={i}>
-                                    <Link href={item.href} className="text-slate-600 font-semibold hover:text-[#00a86b] hover:translate-x-1.5 transition-all inline-flex items-center gap-2 group text-sm">
+                                    <Link href={item.href} className="text-slate-600 font-semibold hover:text-[#0284c7] hover:translate-x-1.5 transition-all inline-flex items-center gap-2 group text-sm">
                                         <div className="h-1.5 w-1.5 rounded-full bg-emerald-400 group-hover:w-3 transition-all" />
                                         {item.name}
                                     </Link>
@@ -104,9 +104,9 @@ export function SiteFooter() {
                                     href="https://maps.google.com/?q=Office+No.+D/201,+Siddhivinayak+Angan+Society,+Behind+Shree+Ji+Pure+Veg,+Near+Navale+Bridge,+Narhe,+Pune+-+411041"
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="flex items-start gap-4 p-4 rounded-2xl bg-slate-50 border border-slate-200 shadow-sm hover:border-[#00c985] transition-all group cursor-pointer"
+                                    className="flex items-start gap-4 p-4 rounded-2xl bg-slate-50 border border-slate-200 shadow-sm hover:border-[#0284c7] transition-all group cursor-pointer"
                                 >
-                                    <div className="h-10 w-10 rounded-xl bg-emerald-50 border border-emerald-200 flex items-center justify-center shrink-0 text-[#00a86b] group-hover:bg-[#00c985] group-hover:text-slate-950 transition-colors">
+                                    <div className="h-10 w-10 rounded-xl bg-sky-50 border border-sky-200 flex items-center justify-center shrink-0 text-[#0284c7] group-hover:bg-[#0284c7] group-hover:text-slate-950 transition-colors">
                                         <MapPin className="h-5 w-5" />
                                     </div>
                                     <span className="text-slate-600 font-semibold leading-relaxed text-xs group-hover:text-slate-900 transition-colors">
@@ -121,10 +121,10 @@ export function SiteFooter() {
                                     href="tel:+917709936965"
                                     className="flex items-center gap-4 group hover:opacity-90 transition-all cursor-pointer p-3 rounded-2xl bg-slate-50 border border-slate-200"
                                 >
-                                    <div className="h-9 w-9 rounded-xl bg-emerald-50 border border-emerald-200 flex items-center justify-center shrink-0 text-[#00a86b] group-hover:bg-[#00c985] group-hover:text-slate-950 transition-all">
+                                    <div className="h-9 w-9 rounded-xl bg-sky-50 border border-sky-200 flex items-center justify-center shrink-0 text-[#0284c7] group-hover:bg-[#0284c7] group-hover:text-slate-950 transition-all">
                                         <Phone className="h-4 w-4" />
                                     </div>
-                                    <span className="text-slate-900 font-black text-base group-hover:text-[#00a86b] transition-colors">+91 77099 36965</span>
+                                    <span className="text-slate-900 font-black text-base group-hover:text-[#0284c7] transition-colors">+91 77099 36965</span>
                                 </a>
                             </li>
                             <li>
@@ -134,10 +134,10 @@ export function SiteFooter() {
                                     rel="noopener noreferrer"
                                     className="flex items-center gap-4 group hover:opacity-90 transition-all cursor-pointer p-3 rounded-2xl bg-slate-50 border border-slate-200"
                                 >
-                                    <div className="h-9 w-9 rounded-xl bg-emerald-50 border border-emerald-200 flex items-center justify-center shrink-0 text-[#00a86b] group-hover:bg-[#00c985] group-hover:text-slate-950 transition-all">
+                                    <div className="h-9 w-9 rounded-xl bg-sky-50 border border-sky-200 flex items-center justify-center shrink-0 text-[#0284c7] group-hover:bg-[#0284c7] group-hover:text-slate-950 transition-all">
                                         <Mail className="h-4 w-4" />
                                     </div>
-                                    <span className="text-slate-700 font-bold text-xs group-hover:text-[#00a86b] transition-colors">care@shreefinance.com</span>
+                                    <span className="text-slate-700 font-bold text-xs group-hover:text-[#0284c7] transition-colors">care@shreefinance.com</span>
                                 </a>
                             </li>
                         </ul>
@@ -147,9 +147,9 @@ export function SiteFooter() {
                 <div className="mt-14 pt-6 border-t border-slate-200 flex flex-col md:flex-row justify-between items-center gap-4 text-xs font-semibold text-slate-500">
                     <p>© 2026 Shree Finance. All Rights Reserved. India's Premier Multi-Bank Lending Marketplace.</p>
                     <div className="flex gap-6">
-                        <Link href="/privacy" className="hover:text-emerald-700 transition-colors">Privacy Policy</Link>
-                        <Link href="/terms" className="hover:text-emerald-700 transition-colors">Terms of Service</Link>
-                        <Link href="/security" className="hover:text-emerald-700 transition-colors">RBI Security Standards</Link>
+                        <Link href="/privacy" className="hover:text-sky-700 transition-colors">Privacy Policy</Link>
+                        <Link href="/terms" className="hover:text-sky-700 transition-colors">Terms of Service</Link>
+                        <Link href="/security" className="hover:text-sky-700 transition-colors">RBI Security Standards</Link>
                     </div>
                 </div>
             </div>

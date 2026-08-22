@@ -124,15 +124,15 @@ export function TaxBenefitCalculator() {
 
                             <div className="bg-white/10 p-4 rounded-2xl border border-white/20 text-left space-y-2 text-xs">
                                 <div className="flex items-center gap-2">
-                                    <CheckCircle2 className="h-4 w-4 text-emerald-300 shrink-0" />
+                                    <CheckCircle2 className="h-4 w-4 text-sky-300 shrink-0" />
                                     <span>Interest deduction up to ₹2,00,000 under Sec 24b</span>
                                 </div>
                                 <div className="flex items-center gap-2">
-                                    <CheckCircle2 className="h-4 w-4 text-emerald-300 shrink-0" />
+                                    <CheckCircle2 className="h-4 w-4 text-sky-300 shrink-0" />
                                     <span>Principal deduction up to ₹1,50,000 under Sec 80C</span>
                                 </div>
                                 <div className="flex items-center gap-2">
-                                    <CheckCircle2 className="h-4 w-4 text-emerald-300 shrink-0" />
+                                    <CheckCircle2 className="h-4 w-4 text-sky-300 shrink-0" />
                                     <span>Stamp Duty & Registration fee tax exemption</span>
                                 </div>
                             </div>

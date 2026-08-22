@@ -158,9 +158,17 @@ export default function AdminDashboardPage() {
         totalFiledVolume: 0,
         totalDisbursedVolume: 0,
         totalCommissions: 0,
-        pendingPayoutCommissions: 0
+        pendingPayoutCommissions: 0,
+        globalTotalCount: 0,
+        globalInProcessCount: 0,
+        globalDisbursedCount: 0,
+        globalTotalFiledVolume: 0,
+        globalTotalDisbursedVolume: 0,
+        globalTotalCommissions: 0,
+        globalPendingPayoutCommissions: 0
     });
     const [filesLoading, setFilesLoading] = useState(false);
+    const [selectedPartnerFilterId, setSelectedPartnerFilterId] = useState<string>("ALL");
     const [fileCategoryFilter, setFileCategoryFilter] = useState("ALL");
     const [fileStatusFilter, setFileStatusFilter] = useState("ALL");
     const [fileSearch, setFileSearch] = useState("");
@@ -249,6 +257,7 @@ export default function AdminDashboardPage() {
         setFilesLoading(true);
         try {
             const queryParams = new URLSearchParams();
+            if (selectedPartnerFilterId !== "ALL") queryParams.append("partnerId", selectedPartnerFilterId);
             if (fileCategoryFilter !== "ALL") queryParams.append("category", fileCategoryFilter);
             if (fileStatusFilter !== "ALL") queryParams.append("status", fileStatusFilter);
             if (fileSearch.trim()) queryParams.append("search", fileSearch.trim());
@@ -264,7 +273,7 @@ export default function AdminDashboardPage() {
         } finally {
             setFilesLoading(false);
         }
-    }, [fileCategoryFilter, fileStatusFilter, fileSearch]);
+    }, [selectedPartnerFilterId, fileCategoryFilter, fileStatusFilter, fileSearch]);
 
     // Fetch Commission Rates
     const fetchCommissionRates = async () => {
@@ -528,7 +537,7 @@ export default function AdminDashboardPage() {
     };
 
     return (
-        <div className="min-h-screen bg-slate-950 text-white font-sans">
+        <div className="min-h-screen bg-[#f8fafc] text-slate-900 font-sans">
             {/* Toast Notification */}
             <AnimatePresence>
                 {toast && (
@@ -538,11 +547,11 @@ export default function AdminDashboardPage() {
                         exit={{ opacity: 0, y: -40 }}
                         className={`fixed top-6 right-6 z-50 flex items-center gap-3 px-5 py-3.5 rounded-2xl shadow-2xl border ${
                             toast.type === "success"
-                                ? "bg-emerald-950/90 border-emerald-500 text-emerald-100"
+                                ? "bg-emerald-950/90 border-emerald-500 text-sky-900"
                                 : "bg-rose-950/90 border-rose-500 text-rose-100"
                         } backdrop-blur-xl`}
                     >
-                        {toast.type === "success" ? <CheckCircle2 className="h-5 w-5 text-emerald-400" /> : <AlertCircle className="h-5 w-5 text-rose-400" />}
+                        {toast.type === "success" ? <CheckCircle2 className="h-5 w-5 text-[#0284c7]" /> : <AlertCircle className="h-5 w-5 text-rose-400" />}
                         <span className="text-sm font-bold">{toast.message}</span>
                         <button onClick={() => setToast(null)} className="ml-2 hover:opacity-70">
                             <X className="h-4 w-4" />
@@ -552,38 +561,38 @@ export default function AdminDashboardPage() {
             </AnimatePresence>
 
             {/* Header */}
-            <header className="border-b border-slate-800 bg-slate-900/80 backdrop-blur-xl sticky top-0 z-40">
+            <header className="border-b border-slate-200 bg-white/95 backdrop-blur-xl sticky top-0 z-40">
                 <div className="container mx-auto px-4 md:px-6 h-20 flex items-center justify-between">
                     <div className="flex items-center gap-4">
-                        <div className="h-11 w-11 rounded-2xl bg-gradient-to-br from-emerald-500 to-sky-600 flex items-center justify-center shadow-lg shadow-emerald-500/20">
-                            <LayoutDashboard className="h-6 w-6 text-slate-950" />
+                        <div className="h-11 w-11 rounded-2xl bg-gradient-to-br from-emerald-500 to-sky-600 flex items-center justify-center shadow-lg shadow-sky-500/20">
+                            <LayoutDashboard className="h-6 w-6 text-slate-900" />
                         </div>
                         <div>
                             <div className="flex items-center gap-2">
-                                <h1 className="text-lg font-black text-white">Shree Finance Admin Desk</h1>
-                                <span className="bg-emerald-500/20 text-[#00e699] text-[10px] font-black px-2 py-0.5 rounded-full border border-emerald-500/30 uppercase">
+                                <h1 className="text-lg font-black text-slate-900">Shree Finance Admin Desk</h1>
+                                <span className="bg-sky-100 text-sky-800 text-[10px] font-black px-2 py-0.5 rounded-full border border-sky-200 uppercase">
                                     Live Master Portal
                                 </span>
                             </div>
-                            <p className="text-xs text-slate-400">Partner Approvals • Submitted Files • Dynamic Commissions • Banners</p>
+                            <p className="text-xs text-slate-500">Partner Approvals • Submitted Files • Dynamic Commissions • Banners</p>
                         </div>
                     </div>
 
                     <div className="flex items-center gap-2">
                         {/* Tab Switchers */}
-                        <div className="hidden lg:flex items-center bg-slate-950/80 p-1 rounded-xl border border-slate-800">
+                        <div className="hidden lg:flex items-center bg-[#f8fafc]/80 p-1 rounded-xl border border-slate-200">
                             <button
                                 onClick={() => setActiveTab("partners")}
                                 className={`px-4 py-2 rounded-lg text-xs font-black transition-all cursor-pointer flex items-center gap-1.5 ${
                                     activeTab === "partners"
-                                        ? "bg-[#00c985] text-slate-950 shadow-md"
-                                        : "text-slate-400 hover:text-white"
+                                        ? "bg-[#0284c7] text-white shadow-md"
+                                        : "text-slate-500 hover:text-slate-900"
                                 }`}
                             >
                                 <Users className="h-3.5 w-3.5" />
                                 <span>Partner Approvals</span>
                                 {partnerCounts.pending > 0 && (
-                                    <span className="ml-1 bg-amber-400 text-slate-950 px-1.5 py-0.2 rounded-full text-[10px] font-black">
+                                    <span className="ml-1 bg-amber-400 text-slate-900 px-1.5 py-0.2 rounded-full text-[10px] font-black">
                                         {partnerCounts.pending}
                                     </span>
                                 )}
@@ -593,8 +602,8 @@ export default function AdminDashboardPage() {
                                 onClick={() => setActiveTab("files")}
                                 className={`px-4 py-2 rounded-lg text-xs font-black transition-all cursor-pointer flex items-center gap-1.5 ${
                                     activeTab === "files"
-                                        ? "bg-[#00c985] text-slate-950 shadow-md"
-                                        : "text-slate-400 hover:text-white"
+                                        ? "bg-[#0284c7] text-white shadow-md"
+                                        : "text-slate-500 hover:text-slate-900"
                                 }`}
                             >
                                 <Briefcase className="h-3.5 w-3.5" />
@@ -605,8 +614,8 @@ export default function AdminDashboardPage() {
                                 onClick={() => setActiveTab("rates")}
                                 className={`px-4 py-2 rounded-lg text-xs font-black transition-all cursor-pointer flex items-center gap-1.5 ${
                                     activeTab === "rates"
-                                        ? "bg-[#00c985] text-slate-950 shadow-md"
-                                        : "text-slate-400 hover:text-white"
+                                        ? "bg-[#0284c7] text-white shadow-md"
+                                        : "text-slate-500 hover:text-slate-900"
                                 }`}
                             >
                                 <Percent className="h-3.5 w-3.5" />
@@ -617,8 +626,8 @@ export default function AdminDashboardPage() {
                                 onClick={() => setActiveTab("banners")}
                                 className={`px-4 py-2 rounded-lg text-xs font-black transition-all cursor-pointer flex items-center gap-1.5 ${
                                     activeTab === "banners"
-                                        ? "bg-[#00c985] text-slate-950 shadow-md"
-                                        : "text-slate-400 hover:text-white"
+                                        ? "bg-[#0284c7] text-white shadow-md"
+                                        : "text-slate-500 hover:text-slate-900"
                                 }`}
                             >
                                 <ImagePlus className="h-3.5 w-3.5" />
@@ -628,7 +637,7 @@ export default function AdminDashboardPage() {
 
                         <button
                             onClick={handleLogout}
-                            className="p-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white transition-all cursor-pointer"
+                            className="p-2.5 rounded-xl bg-slate-100 hover:bg-slate-700 text-slate-600 hover:text-slate-900 transition-all cursor-pointer"
                             title="Logout"
                         >
                             <LogOut className="h-4 w-4" />
@@ -637,11 +646,11 @@ export default function AdminDashboardPage() {
                 </div>
 
                 {/* Mobile / Tablet Tab Switcher */}
-                <div className="lg:hidden flex overflow-x-auto gap-2 p-2 bg-slate-950/60 border-t border-slate-800">
+                <div className="lg:hidden flex overflow-x-auto gap-2 p-2 bg-[#f8fafc]/60 border-t border-slate-200">
                     <button
                         onClick={() => setActiveTab("partners")}
                         className={`px-3 py-1.5 rounded-lg text-xs font-bold whitespace-nowrap ${
-                            activeTab === "partners" ? "bg-[#00c985] text-slate-950" : "text-slate-400"
+                            activeTab === "partners" ? "bg-[#0284c7] text-white" : "text-slate-500"
                         }`}
                     >
                         Partner Approvals ({partnerCounts.pending})
@@ -649,7 +658,7 @@ export default function AdminDashboardPage() {
                     <button
                         onClick={() => setActiveTab("files")}
                         className={`px-3 py-1.5 rounded-lg text-xs font-bold whitespace-nowrap ${
-                            activeTab === "files" ? "bg-[#00c985] text-slate-950" : "text-slate-400"
+                            activeTab === "files" ? "bg-[#0284c7] text-white" : "text-slate-500"
                         }`}
                     >
                         Submitted Files
@@ -657,7 +666,7 @@ export default function AdminDashboardPage() {
                     <button
                         onClick={() => setActiveTab("rates")}
                         className={`px-3 py-1.5 rounded-lg text-xs font-bold whitespace-nowrap ${
-                            activeTab === "rates" ? "bg-[#00c985] text-slate-950" : "text-slate-400"
+                            activeTab === "rates" ? "bg-[#0284c7] text-white" : "text-slate-500"
                         }`}
                     >
                         Commission Rates
@@ -665,7 +674,7 @@ export default function AdminDashboardPage() {
                     <button
                         onClick={() => setActiveTab("banners")}
                         className={`px-3 py-1.5 rounded-lg text-xs font-bold whitespace-nowrap ${
-                            activeTab === "banners" ? "bg-[#00c985] text-slate-950" : "text-slate-400"
+                            activeTab === "banners" ? "bg-[#0284c7] text-white" : "text-slate-500"
                         }`}
                     >
                         Banners
@@ -681,21 +690,21 @@ export default function AdminDashboardPage() {
                     <div className="space-y-6">
                         {/* Summary Metrics */}
                         <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
-                            <div className="p-4 rounded-2xl bg-slate-900/80 border border-slate-800 space-y-1">
-                                <span className="text-xs font-bold text-slate-400 uppercase">Total Applications</span>
-                                <p className="text-2xl font-black text-white">{partnerCounts.total}</p>
+                            <div className="p-4 rounded-2xl bg-white border border-slate-200 shadow-sm space-y-1">
+                                <span className="text-xs font-bold text-slate-500 uppercase">Total Applications</span>
+                                <p className="text-3xl font-black text-black">{partnerCounts.total}</p>
                             </div>
-                            <div className="p-4 rounded-2xl bg-amber-950/30 border border-amber-500/40 space-y-1">
-                                <span className="text-xs font-bold text-amber-300 uppercase">Pending Review</span>
-                                <p className="text-2xl font-black text-amber-400">{partnerCounts.pending}</p>
+                            <div className="p-4 rounded-2xl bg-white border border-slate-200 shadow-sm space-y-1">
+                                <span className="text-xs font-bold text-amber-600 uppercase">Pending Review</span>
+                                <p className="text-3xl font-black text-black">{partnerCounts.pending}</p>
                             </div>
-                            <div className="p-4 rounded-2xl bg-emerald-950/30 border border-emerald-500/40 space-y-1">
-                                <span className="text-xs font-bold text-emerald-300 uppercase">Approved Partners</span>
-                                <p className="text-2xl font-black text-[#00e699]">{partnerCounts.approved}</p>
+                            <div className="p-4 rounded-2xl bg-white border border-slate-200 shadow-sm space-y-1">
+                                <span className="text-xs font-bold text-[#0284c7] uppercase">Approved Partners</span>
+                                <p className="text-3xl font-black text-black">{partnerCounts.approved}</p>
                             </div>
-                            <div className="p-4 rounded-2xl bg-rose-950/30 border border-rose-500/40 space-y-1">
-                                <span className="text-xs font-bold text-rose-300 uppercase">Declined</span>
-                                <p className="text-2xl font-black text-rose-400">{partnerCounts.rejected}</p>
+                            <div className="p-4 rounded-2xl bg-white border border-slate-200 shadow-sm space-y-1">
+                                <span className="text-xs font-bold text-rose-600 uppercase">Declined</span>
+                                <p className="text-3xl font-black text-black">{partnerCounts.rejected}</p>
                             </div>
                         </div>
 
@@ -708,8 +717,8 @@ export default function AdminDashboardPage() {
                                         onClick={() => setPartnerFilter(status)}
                                         className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all cursor-pointer ${
                                             partnerFilter === status
-                                                ? "bg-[#00c985] text-slate-950"
-                                                : "bg-slate-900 border border-slate-800 text-slate-400 hover:text-white"
+                                                ? "bg-[#0284c7] text-white"
+                                                : "bg-white border border-slate-200 text-slate-500 hover:text-slate-900"
                                         }`}
                                     >
                                         {status === "ALL" ? "All" : status}
@@ -719,20 +728,20 @@ export default function AdminDashboardPage() {
 
                             <div className="flex items-center gap-2 w-full sm:w-auto">
                                 <div className="relative flex-1 sm:w-72">
-                                    <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-3.5 w-3.5 text-slate-400" />
+                                    <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-3.5 w-3.5 text-slate-500" />
                                     <input
                                         type="text"
                                         placeholder="Search by name, email, phone, ref..."
                                         value={partnerSearch}
                                         onChange={e => setPartnerSearch(e.target.value)}
-                                        className="w-full h-10 pl-9 pr-3 rounded-xl bg-slate-900 border border-slate-800 text-xs text-white placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-[#00c985]"
+                                        className="w-full h-10 pl-9 pr-3 rounded-xl bg-white border border-slate-200 text-xs text-slate-900 placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-[#0284c7]"
                                     />
                                 </div>
                                 <Button
                                     size="sm"
                                     variant="outline"
                                     onClick={fetchPartners}
-                                    className="h-10 px-3 bg-slate-900 border-slate-800 text-slate-300 hover:text-white cursor-pointer"
+                                    className="h-10 px-3 bg-white border-slate-200 text-slate-600 hover:text-slate-900 cursor-pointer"
                                 >
                                     <RefreshCw className={`h-3.5 w-3.5 ${partnerLoading ? "animate-spin" : ""}`} />
                                 </Button>
@@ -740,11 +749,11 @@ export default function AdminDashboardPage() {
                         </div>
 
                         {/* Partner List Table */}
-                        <div className="bg-slate-900/80 border border-slate-800 rounded-3xl overflow-hidden shadow-xl">
+                        <div className="bg-white/95 border border-slate-200 rounded-3xl overflow-hidden shadow-xl">
                             {partnerLoading ? (
                                 <div className="py-20 text-center space-y-3">
-                                    <Loader2 className="h-8 w-8 text-[#00c985] animate-spin mx-auto" />
-                                    <p className="text-xs text-slate-400">Loading partner applications...</p>
+                                    <Loader2 className="h-8 w-8 text-[#0284c7] animate-spin mx-auto" />
+                                    <p className="text-xs text-slate-500">Loading partner applications...</p>
                                 </div>
                             ) : partners.length === 0 ? (
                                 <div className="py-16 text-center text-slate-500 text-xs space-y-2">
@@ -755,7 +764,7 @@ export default function AdminDashboardPage() {
                                 <div className="overflow-x-auto">
                                     <table className="w-full text-left text-xs border-collapse">
                                         <thead>
-                                            <tr className="border-b border-slate-800 bg-slate-950/60 text-slate-400 uppercase font-black tracking-wider text-[10px]">
+                                            <tr className="border-b border-slate-200 bg-[#f8fafc]/60 text-slate-500 uppercase font-black tracking-wider text-[10px]">
                                                 <th className="py-4 px-5">Ref # / Date</th>
                                                 <th className="py-4 px-5">Applicant Details</th>
                                                 <th className="py-4 px-5">Company / Profession</th>
@@ -772,9 +781,9 @@ export default function AdminDashboardPage() {
                                                 const isLoading = actionLoadingId === p._id;
 
                                                 return (
-                                                    <tr key={p._id} className="hover:bg-slate-800/30 transition-colors">
+                                                    <tr key={p._id} className="hover:bg-slate-100/30 transition-colors">
                                                         <td className="py-4 px-5 align-top">
-                                                            <span className="font-mono text-[#00e699] font-bold block">
+                                                            <span className="font-mono text-[#0284c7] font-bold block">
                                                                 #{p.referenceNo}
                                                             </span>
                                                             <span className="text-[10px] text-slate-500 block mt-0.5">
@@ -787,28 +796,28 @@ export default function AdminDashboardPage() {
                                                         </td>
 
                                                         <td className="py-4 px-5 align-top">
-                                                            <p className="font-bold text-white text-sm">{p.name}</p>
-                                                            <p className="text-slate-400 text-xs flex items-center gap-1 mt-0.5">
-                                                                <Mail className="h-3 w-3 text-slate-400" />
+                                                            <p className="font-bold text-slate-900 text-sm">{p.name}</p>
+                                                            <p className="text-slate-500 text-xs flex items-center gap-1 mt-0.5">
+                                                                <Mail className="h-3 w-3 text-slate-500" />
                                                                 {p.email}
                                                             </p>
-                                                            <p className="text-slate-400 text-xs flex items-center gap-1 mt-0.5">
-                                                                <Phone className="h-3 w-3 text-emerald-400" />
+                                                            <p className="text-slate-500 text-xs flex items-center gap-1 mt-0.5">
+                                                                <Phone className="h-3 w-3 text-[#0284c7]" />
                                                                 +91 {p.mobile}
                                                             </p>
                                                         </td>
 
                                                         <td className="py-4 px-5 align-top">
-                                                            <p className="font-bold text-slate-200">{p.companyName || "Individual DSA"}</p>
-                                                            <p className="text-slate-400 text-[11px] mt-0.5">{p.profession}</p>
+                                                            <p className="font-bold text-slate-700">{p.companyName || "Individual DSA"}</p>
+                                                            <p className="text-slate-500 text-[11px] mt-0.5">{p.profession}</p>
                                                             {p.experienceYears && (
                                                                 <span className="text-[10px] text-slate-500">Exp: {p.experienceYears}</span>
                                                             )}
                                                         </td>
 
                                                         <td className="py-4 px-5 align-top">
-                                                            <p className="font-bold text-slate-300">{p.city}</p>
-                                                            <p className="text-slate-400 text-[11px] line-clamp-1 mt-0.5">{p.fullAddress || p.location || "N/A"}</p>
+                                                            <p className="font-bold text-slate-600">{p.city}</p>
+                                                            <p className="text-slate-500 text-[11px] line-clamp-1 mt-0.5">{p.fullAddress || p.location || "N/A"}</p>
                                                         </td>
 
                                                         <td className="py-4 px-5 align-top">
@@ -818,7 +827,7 @@ export default function AdminDashboardPage() {
                                                                 </span>
                                                             )}
                                                             {isApproved && (
-                                                                <span className="px-2.5 py-1 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 text-[10px] font-black uppercase flex items-center gap-1 w-fit">
+                                                                <span className="px-2.5 py-1 rounded-full bg-sky-100 text-sky-800 border border-sky-200 text-[10px] font-black uppercase flex items-center gap-1 w-fit">
                                                                     <Check className="h-3 w-3" /> Approved
                                                                 </span>
                                                             )}
@@ -834,7 +843,7 @@ export default function AdminDashboardPage() {
                                                                 size="sm"
                                                                 variant="outline"
                                                                 onClick={() => setSelectedPartner(p)}
-                                                                className="h-8 px-2.5 rounded-lg border-slate-700 bg-slate-800 text-slate-300 hover:text-white text-xs cursor-pointer"
+                                                                className="h-8 px-2.5 rounded-lg border-slate-300 bg-slate-100 text-slate-600 hover:text-slate-900 text-xs cursor-pointer"
                                                             >
                                                                 View KYC
                                                             </Button>
@@ -845,7 +854,7 @@ export default function AdminDashboardPage() {
                                                                         size="sm"
                                                                         disabled={isLoading}
                                                                         onClick={() => handleApprovePartner(p._id)}
-                                                                        className="h-8 px-3 rounded-lg bg-[#00c985] hover:bg-[#00b074] text-slate-950 font-black text-xs uppercase cursor-pointer"
+                                                                        className="h-8 px-3 rounded-lg bg-[#0284c7] hover:bg-[#0369a1] text-slate-900 font-black text-xs uppercase cursor-pointer"
                                                                     >
                                                                         {isLoading ? <Loader2 className="h-3 w-3 animate-spin" /> : "✓ Approve"}
                                                                     </Button>
@@ -857,7 +866,7 @@ export default function AdminDashboardPage() {
                                                                             setRejectingPartnerId(p._id);
                                                                             setRejectionModalOpen(true);
                                                                         }}
-                                                                        className="h-8 px-2.5 rounded-lg border-rose-500/40 text-rose-300 hover:bg-rose-950 hover:text-white text-xs cursor-pointer"
+                                                                        className="h-8 px-2.5 rounded-lg border-rose-500/40 text-rose-300 hover:bg-rose-950 hover:text-slate-900 text-xs cursor-pointer"
                                                                     >
                                                                         Decline
                                                                     </Button>
@@ -888,100 +897,216 @@ export default function AdminDashboardPage() {
                 {/* ========================================================================= */}
                 {/* TAB 2: PARTNER SUBMITTED FILES & PIPELINE */}
                 {/* ========================================================================= */}
-                {activeTab === "files" && (
-                    <div className="space-y-6">
-                        {/* Files Overview Metrics */}
-                        <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
-                            <div className="p-4 rounded-2xl bg-slate-900/80 border border-slate-800 space-y-1">
-                                <span className="text-xs font-bold text-slate-400 uppercase">Total Files Filed</span>
-                                <p className="text-2xl font-black text-white">{filesMetrics.totalCount}</p>
-                                <p className="text-[10px] text-slate-500">Volume: ₹{(filesMetrics.totalFiledVolume / 100000).toFixed(1)}L</p>
-                            </div>
+                {activeTab === "files" && (() => {
+                    // Find active selected partner if any
+                    const currentSelectedPartner = partners.find(p => p._id === selectedPartnerFilterId || p.referenceNo === selectedPartnerFilterId);
 
-                            <div className="p-4 rounded-2xl bg-sky-950/30 border border-sky-500/40 space-y-1">
-                                <span className="text-xs font-bold text-sky-300 uppercase">In Process Cases</span>
-                                <p className="text-2xl font-black text-sky-400">{filesMetrics.inProcessCount}</p>
-                                <p className="text-[10px] text-sky-300/80">Active in bank underwriting</p>
-                            </div>
-
-                            <div className="p-4 rounded-2xl bg-emerald-950/30 border border-emerald-500/40 space-y-1">
-                                <span className="text-xs font-bold text-emerald-300 uppercase">Disbursed Volume</span>
-                                <p className="text-2xl font-black text-[#00e699]">
-                                    ₹{(filesMetrics.totalDisbursedVolume / 100000).toFixed(1)} Lakhs
-                                </p>
-                                <p className="text-[10px] text-emerald-300/80">{filesMetrics.disbursedCount} cases completed</p>
-                            </div>
-
-                            <div className="p-4 rounded-2xl bg-gradient-to-br from-emerald-950/40 to-slate-900 border border-emerald-500/40 space-y-1">
-                                <span className="text-xs font-bold text-emerald-400 uppercase">Total Commissions</span>
-                                <p className="text-2xl font-black text-[#00e699]">
-                                    ₹{filesMetrics.totalCommissions.toLocaleString("en-IN")}
-                                </p>
-                                <p className="text-[10px] text-slate-400">Calculated on disbursed amounts</p>
-                            </div>
-                        </div>
-
-                        {/* Search & Category Filter */}
-                        <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-4">
-                            <div className="flex flex-wrap items-center gap-2">
-                                {(["ALL", "loans", "cards", "insurance", "investments"] as const).map(cat => (
-                                    <button
-                                        key={cat}
-                                        onClick={() => setFileCategoryFilter(cat)}
-                                        className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all cursor-pointer uppercase ${
-                                            fileCategoryFilter === cat
-                                                ? "bg-[#00c985] text-slate-950"
-                                                : "bg-slate-900 border border-slate-800 text-slate-400 hover:text-white"
-                                        }`}
-                                    >
-                                        {cat === "ALL" ? "All Categories" : cat}
-                                    </button>
-                                ))}
-                            </div>
-
-                            <div className="flex items-center gap-3 w-full lg:w-auto">
-                                <select
-                                    value={fileStatusFilter}
-                                    onChange={e => setFileStatusFilter(e.target.value)}
-                                    className="h-10 px-3 bg-slate-900 border border-slate-800 rounded-xl text-xs font-bold text-white focus:ring-2 focus:ring-[#00c985]"
-                                >
-                                    <option value="ALL">All File Statuses</option>
-                                    <option value="IN_PROCESS">In Process</option>
-                                    <option value="DOCS_SUBMITTED">Docs Submitted</option>
-                                    <option value="BANK_LOGIN">Bank Login</option>
-                                    <option value="SANCTIONED">Sanctioned</option>
-                                    <option value="DISBURSED">Disbursed</option>
-                                    <option value="REJECTED">Declined</option>
-                                </select>
-
-                                <div className="relative flex-1 sm:w-64">
-                                    <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-3.5 w-3.5 text-slate-400" />
-                                    <input
-                                        type="text"
-                                        placeholder="Search partner, bank, client..."
-                                        value={fileSearch}
-                                        onChange={e => setFileSearch(e.target.value)}
-                                        className="w-full h-10 pl-9 pr-3 rounded-xl bg-slate-900 border border-slate-800 text-xs text-white placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-[#00c985]"
-                                    />
+                    return (
+                        <div className="space-y-6">
+                            {/* Partner Selection Dropdown Bar */}
+                            <div className="p-5 rounded-3xl bg-white border border-slate-200 shadow-xl flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+                                <div className="space-y-1">
+                                    <div className="flex items-center gap-2">
+                                        <Users className="h-4 w-4 text-[#0284c7]" />
+                                        <span className="text-xs font-black uppercase tracking-wider text-slate-600">
+                                            Partner File Management & Scope
+                                        </span>
+                                    </div>
+                                    <p className="text-xs text-slate-500">
+                                        Select an individual partner to inspect their personal performance, filed cases, and earned payouts.
+                                    </p>
                                 </div>
 
-                                <Button
-                                    size="sm"
-                                    variant="outline"
-                                    onClick={fetchPartnerFiles}
-                                    className="h-10 px-3 bg-slate-900 border-slate-800 text-slate-300 hover:text-white cursor-pointer"
-                                >
-                                    <RefreshCw className={`h-3.5 w-3.5 ${filesLoading ? "animate-spin" : ""}`} />
-                                </Button>
+                                <div className="flex items-center gap-3 w-full md:w-auto">
+                                    <label htmlFor="partnerSelectFilter" className="text-xs font-bold text-slate-500 whitespace-nowrap hidden sm:inline">
+                                        Filter Partner:
+                                    </label>
+                                    <select
+                                        id="partnerSelectFilter"
+                                        value={selectedPartnerFilterId}
+                                        onChange={(e) => setSelectedPartnerFilterId(e.target.value)}
+                                        className="h-11 px-4 rounded-xl bg-[#f8fafc] border border-sky-300 text-slate-900 font-bold text-xs focus:ring-2 focus:ring-[#0284c7] focus:outline-none w-full md:w-80 cursor-pointer"
+                                    >
+                                        <option value="ALL">🌐 All Partners ({partners.length} registered partners)</option>
+                                        {partners.map(p => (
+                                            <option key={p._id} value={p._id}>
+                                                👤 {p.name} ({p.referenceNo}) • {p.city || "India"}
+                                            </option>
+                                        ))}
+                                    </select>
+
+                                    {selectedPartnerFilterId !== "ALL" && (
+                                        <Button
+                                            size="sm"
+                                            variant="outline"
+                                            onClick={() => setSelectedPartnerFilterId("ALL")}
+                                            className="h-11 px-3 border-slate-300 bg-slate-100 text-xs font-bold text-slate-600 hover:text-slate-900 cursor-pointer"
+                                        >
+                                            Reset
+                                        </Button>
+                                    )}
+                                </div>
                             </div>
-                        </div>
+
+                            {/* Active Selected Partner Header Card (Shown when a partner is selected) */}
+                            {currentSelectedPartner && (
+                                <motion.div
+                                    initial={{ opacity: 0, y: -10 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    className="p-6 rounded-3xl bg-gradient-to-r from-slate-900 via-sky-950/30 to-slate-900 border border-sky-300 shadow-xl space-y-4"
+                                >
+                                    <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 border-b border-slate-200/80 pb-4">
+                                        <div className="flex items-center gap-4">
+                                            <div className="h-12 w-12 rounded-2xl bg-sky-100 border border-sky-300 flex items-center justify-center text-[#0284c7] font-black text-lg">
+                                                {currentSelectedPartner.name.charAt(0).toUpperCase()}
+                                            </div>
+                                            <div>
+                                                <div className="flex items-center gap-2">
+                                                    <h3 className="text-lg font-black text-slate-900">{currentSelectedPartner.name}</h3>
+                                                    <span className="px-2 py-0.5 rounded-full text-[10px] font-mono font-bold bg-sky-100 text-sky-800 border border-sky-200">
+                                                        #{currentSelectedPartner.referenceNo}
+                                                    </span>
+                                                    <span className={`px-2 py-0.5 rounded-full text-[10px] font-bold uppercase ${
+                                                        currentSelectedPartner.status === "APPROVED"
+                                                            ? "bg-sky-100 text-sky-800 border border-sky-200"
+                                                            : "bg-amber-500/20 text-amber-300 border border-amber-500/30"
+                                                    }`}>
+                                                        {currentSelectedPartner.status}
+                                                    </span>
+                                                </div>
+                                                <p className="text-xs text-slate-500 mt-0.5 flex flex-wrap items-center gap-3">
+                                                    <span className="flex items-center gap-1"><Mail className="h-3 w-3 text-slate-500" /> {currentSelectedPartner.email}</span>
+                                                    <span className="flex items-center gap-1"><Phone className="h-3 w-3 text-slate-500" /> +91 {currentSelectedPartner.mobile}</span>
+                                                    <span className="flex items-center gap-1"><MapPin className="h-3 w-3 text-slate-500" /> {currentSelectedPartner.city || "Location N/A"}</span>
+                                                </p>
+                                            </div>
+                                        </div>
+
+                                        <div className="text-right">
+                                            <span className="text-[10px] uppercase font-bold text-slate-500">Partner Total Payout</span>
+                                            <p className="text-xl font-black text-[#0284c7]">
+                                                ₹{filesMetrics.totalCommissions.toLocaleString("en-IN")}
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 text-xs">
+                                        <div className="p-3 bg-[#f8fafc]/60 rounded-xl border border-slate-200/80">
+                                            <span className="text-slate-500 block text-[10px] uppercase font-bold">Profession</span>
+                                            <span className="text-slate-900 font-bold">{currentSelectedPartner.profession || "DSA / Loan Agent"}</span>
+                                        </div>
+                                        <div className="p-3 bg-[#f8fafc]/60 rounded-xl border border-slate-200/80">
+                                            <span className="text-slate-500 block text-[10px] uppercase font-bold">Company / Agency</span>
+                                            <span className="text-slate-900 font-bold">{currentSelectedPartner.companyName || "Independent Partner"}</span>
+                                        </div>
+                                        <div className="p-3 bg-[#f8fafc]/60 rounded-xl border border-slate-200/80">
+                                            <span className="text-slate-500 block text-[10px] uppercase font-bold">Account Type</span>
+                                            <span className="text-slate-900 font-bold">{currentSelectedPartner.bankAccountType || "Savings / Current"}</span>
+                                        </div>
+                                        <div className="p-3 bg-[#f8fafc]/60 rounded-xl border border-slate-200/80">
+                                            <span className="text-slate-500 block text-[10px] uppercase font-bold">Registration Date</span>
+                                            <span className="text-slate-900 font-bold">
+                                                {currentSelectedPartner.createdAt ? new Date(currentSelectedPartner.createdAt).toLocaleDateString("en-IN") : "N/A"}
+                                            </span>
+                                        </div>
+                                    </div>
+                                </motion.div>
+                            )}
+
+                            {/* Files Overview Metrics (Dynamic according to partner selection) */}
+                            <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
+                                <div className="p-4 rounded-2xl bg-white border border-slate-200 shadow-sm space-y-1">
+                                    <span className="text-xs font-bold text-slate-500 uppercase">
+                                        {selectedPartnerFilterId === "ALL" ? "Total Files Filed" : "Partner Filed Files"}
+                                    </span>
+                                    <p className="text-3xl font-black text-black">{filesMetrics.totalCount}</p>
+                                    <p className="text-[10px] text-slate-500">Volume: ₹{(filesMetrics.totalFiledVolume / 100000).toFixed(1)}L</p>
+                                </div>
+
+                                <div className="p-4 rounded-2xl bg-white border border-slate-200 shadow-sm space-y-1">
+                                    <span className="text-xs font-bold text-sky-800 uppercase">In Process Cases</span>
+                                    <p className="text-3xl font-black text-black">{filesMetrics.inProcessCount}</p>
+                                    <p className="text-[10px] text-slate-500">Active in bank underwriting</p>
+                                </div>
+
+                                <div className="p-4 rounded-2xl bg-white border border-slate-200 shadow-sm space-y-1">
+                                    <span className="text-xs font-bold text-[#0284c7] uppercase">Disbursed Volume</span>
+                                    <p className="text-3xl font-black text-black">
+                                        ₹{(filesMetrics.totalDisbursedVolume / 100000).toFixed(1)} Lakhs
+                                    </p>
+                                    <p className="text-[10px] text-slate-500">{filesMetrics.disbursedCount} cases completed</p>
+                                </div>
+
+                                <div className="p-4 rounded-2xl bg-white border border-slate-200 shadow-sm space-y-1">
+                                    <span className="text-xs font-bold text-[#0284c7] uppercase">Total Commissions</span>
+                                    <p className="text-3xl font-black text-black">
+                                        ₹{filesMetrics.totalCommissions.toLocaleString("en-IN")}
+                                    </p>
+                                    <p className="text-[10px] text-slate-500">Calculated on disbursed amounts</p>
+                                </div>
+                            </div>
+
+                            {/* Search & Category Filter */}
+                            <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-4">
+                                <div className="flex flex-wrap items-center gap-2">
+                                    {(["ALL", "loans", "cards", "insurance", "investments"] as const).map(cat => (
+                                        <button
+                                            key={cat}
+                                            onClick={() => setFileCategoryFilter(cat)}
+                                            className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all cursor-pointer uppercase ${
+                                                fileCategoryFilter === cat
+                                                    ? "bg-[#0284c7] text-white"
+                                                    : "bg-white border border-slate-200 text-slate-500 hover:text-slate-900"
+                                            }`}
+                                        >
+                                            {cat === "ALL" ? "All Categories" : cat}
+                                        </button>
+                                    ))}
+                                </div>
+
+                                <div className="flex items-center gap-3 w-full lg:w-auto">
+                                    <select
+                                        value={fileStatusFilter}
+                                        onChange={e => setFileStatusFilter(e.target.value)}
+                                        className="h-10 px-3 bg-white border border-slate-200 rounded-xl text-xs font-bold text-slate-900 focus:ring-2 focus:ring-[#0284c7]"
+                                    >
+                                        <option value="ALL">All File Statuses</option>
+                                        <option value="IN_PROCESS">In Process</option>
+                                        <option value="DOCS_SUBMITTED">Docs Submitted</option>
+                                        <option value="BANK_LOGIN">Bank Login</option>
+                                        <option value="SANCTIONED">Sanctioned</option>
+                                        <option value="DISBURSED">Disbursed</option>
+                                        <option value="REJECTED">Declined</option>
+                                    </select>
+
+                                    <div className="relative flex-1 sm:w-64">
+                                        <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-3.5 w-3.5 text-slate-500" />
+                                        <input
+                                            type="text"
+                                            placeholder="Search partner, bank, client..."
+                                            value={fileSearch}
+                                            onChange={e => setFileSearch(e.target.value)}
+                                            className="w-full h-10 pl-9 pr-3 rounded-xl bg-white border border-slate-200 text-xs text-slate-900 placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-[#0284c7]"
+                                        />
+                                    </div>
+
+                                    <Button
+                                        size="sm"
+                                        variant="outline"
+                                        onClick={fetchPartnerFiles}
+                                        className="h-10 px-3 bg-white border-slate-200 text-slate-600 hover:text-slate-900 cursor-pointer"
+                                    >
+                                        <RefreshCw className={`h-3.5 w-3.5 ${filesLoading ? "animate-spin" : ""}`} />
+                                    </Button>
+                                </div>
+                            </div>
 
                         {/* Files Table */}
-                        <div className="bg-slate-900/80 border border-slate-800 rounded-3xl overflow-hidden shadow-xl">
+                        <div className="bg-white/95 border border-slate-200 rounded-3xl overflow-hidden shadow-xl">
                             {filesLoading ? (
                                 <div className="py-20 text-center space-y-3">
-                                    <Loader2 className="h-8 w-8 text-[#00c985] animate-spin mx-auto" />
-                                    <p className="text-xs text-slate-400">Loading partner submitted files...</p>
+                                    <Loader2 className="h-8 w-8 text-[#0284c7] animate-spin mx-auto" />
+                                    <p className="text-xs text-slate-500">Loading partner submitted files...</p>
                                 </div>
                             ) : partnerFiles.length === 0 ? (
                                 <div className="py-16 text-center text-slate-500 text-xs space-y-2">
@@ -992,7 +1117,7 @@ export default function AdminDashboardPage() {
                                 <div className="overflow-x-auto">
                                     <table className="w-full text-left text-xs border-collapse">
                                         <thead>
-                                            <tr className="border-b border-slate-800 bg-slate-950/60 text-slate-400 uppercase font-black tracking-wider text-[10px]">
+                                            <tr className="border-b border-slate-200 bg-[#f8fafc]/60 text-slate-500 uppercase font-black tracking-wider text-[10px]">
                                                 <th className="py-4 px-5">File Ref / Partner</th>
                                                 <th className="py-4 px-5">Client Acquire Details</th>
                                                 <th className="py-4 px-5">Category & Bank</th>
@@ -1007,51 +1132,51 @@ export default function AdminDashboardPage() {
                                                 const isDisbursed = file.leadStatus === "DISBURSED";
 
                                                 return (
-                                                    <tr key={file._id} className="hover:bg-slate-800/30 transition-colors">
+                                                    <tr key={file._id} className="hover:bg-slate-100/30 transition-colors">
                                                         <td className="py-4 px-5 align-top">
-                                                            <span className="font-mono text-[#00e699] font-bold block">
+                                                            <span className="font-mono text-[#0284c7] font-bold block">
                                                                 #{file.referenceNo}
                                                             </span>
-                                                            <p className="text-white font-bold text-xs mt-0.5">{file.partnerName}</p>
-                                                            <span className="text-[10px] text-slate-400 font-mono">#{file.partnerReferenceNo}</span>
+                                                            <p className="text-slate-900 font-bold text-xs mt-0.5">{file.partnerName}</p>
+                                                            <span className="text-[10px] text-slate-500 font-mono">#{file.partnerReferenceNo}</span>
                                                         </td>
 
                                                         <td className="py-4 px-5 align-top">
-                                                            <p className="font-bold text-white text-sm">{file.customerName}</p>
-                                                            <p className="text-slate-400 text-xs flex items-center gap-1 mt-0.5">
-                                                                <Phone className="h-3 w-3 text-emerald-400" />
+                                                            <p className="font-bold text-slate-900 text-sm">{file.customerName}</p>
+                                                            <p className="text-slate-500 text-xs flex items-center gap-1 mt-0.5">
+                                                                <Phone className="h-3 w-3 text-[#0284c7]" />
                                                                 +91 {file.customerMobile}
                                                             </p>
                                                             <p className="text-slate-500 text-[11px]">{file.customerCity}</p>
                                                         </td>
 
                                                         <td className="py-4 px-5 align-top">
-                                                            <span className="px-2 py-0.5 rounded text-[10px] font-black uppercase bg-slate-800 text-sky-300 border border-slate-700 inline-block mb-1">
+                                                            <span className="px-2 py-0.5 rounded text-[10px] font-black uppercase bg-slate-100 text-sky-800 border border-slate-300 inline-block mb-1">
                                                                 {file.category}
                                                             </span>
-                                                            <p className="font-bold text-slate-200">{file.subProduct}</p>
-                                                            <p className="text-sky-400 text-[11px] mt-0.5 font-medium">🏦 {file.bankName}</p>
+                                                            <p className="font-bold text-slate-700">{file.subProduct}</p>
+                                                            <p className="text-[#0284c7] text-[11px] mt-0.5 font-medium">🏦 {file.bankName}</p>
                                                         </td>
 
                                                         <td className="py-4 px-5 align-top">
-                                                            <span className="font-black text-sm text-white block">
+                                                            <span className="font-black text-sm text-slate-900 block">
                                                                 ₹{file.applicationAmount.toLocaleString("en-IN")}
                                                             </span>
                                                             <span className="text-[10px] text-slate-500">Filed to Bank</span>
                                                         </td>
 
                                                         <td className="py-4 px-5 align-top">
-                                                            <span className="font-black text-[#00e699] text-sm block">
+                                                            <span className="font-black text-[#0284c7] text-sm block">
                                                                 ₹{file.commissionAmount ? file.commissionAmount.toLocaleString("en-IN") : "0"}
                                                             </span>
-                                                            <span className="text-[10px] text-slate-400 font-medium">
+                                                            <span className="text-[10px] text-slate-500 font-medium">
                                                                 ({file.commissionRate}% of ₹{(file.applicationAmount / 100000).toFixed(1)}L)
                                                             </span>
                                                         </td>
 
                                                         <td className="py-4 px-5 align-top">
                                                             {file.leadStatus === "IN_PROCESS" && (
-                                                                <span className="px-2.5 py-1 rounded-full bg-sky-500/20 text-sky-300 border border-sky-500/30 text-[10px] font-black uppercase">
+                                                                <span className="px-2.5 py-1 rounded-full bg-sky-100 text-sky-800 border border-sky-200 text-[10px] font-black uppercase">
                                                                     In Process
                                                                 </span>
                                                             )}
@@ -1066,12 +1191,12 @@ export default function AdminDashboardPage() {
                                                                 </span>
                                                             )}
                                                             {file.leadStatus === "SANCTIONED" && (
-                                                                <span className="px-2.5 py-1 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 text-[10px] font-black uppercase">
+                                                                <span className="px-2.5 py-1 rounded-full bg-sky-100 text-sky-800 border border-sky-200 text-[10px] font-black uppercase">
                                                                     Sanction Issued
                                                                 </span>
                                                             )}
                                                             {isDisbursed && (
-                                                                <span className="px-2.5 py-1 rounded-full bg-[#00c985] text-slate-950 text-[10px] font-black uppercase">
+                                                                <span className="px-2.5 py-1 rounded-full bg-[#0284c7] text-white text-[10px] font-black uppercase">
                                                                     ✅ Disbursed
                                                                 </span>
                                                             )}
@@ -1093,7 +1218,7 @@ export default function AdminDashboardPage() {
                                                                     setUpdateCommissionRate(file.commissionRate || 2.0);
                                                                     setFileUpdateModalOpen(true);
                                                                 }}
-                                                                className="h-8 px-2.5 rounded-lg border-slate-700 bg-slate-800 text-slate-300 hover:text-white text-xs cursor-pointer"
+                                                                className="h-8 px-2.5 rounded-lg border-slate-300 bg-slate-100 text-slate-600 hover:text-slate-900 text-xs cursor-pointer"
                                                             >
                                                                 <Edit3 className="h-3 w-3 mr-1" /> Edit / Status
                                                             </Button>
@@ -1116,24 +1241,25 @@ export default function AdminDashboardPage() {
                             )}
                         </div>
                     </div>
-                )}
+                    );
+                })()}
 
                 {/* ========================================================================= */}
                 {/* TAB 3: COMMISSION RATES & SETTINGS */}
                 {/* ========================================================================= */}
                 {activeTab === "rates" && (
                     <div className="max-w-4xl mx-auto space-y-6">
-                        <div className="p-6 rounded-3xl bg-slate-900 border border-slate-800 space-y-6 shadow-xl">
-                            <div className="flex items-center justify-between pb-4 border-b border-slate-800">
+                        <div className="p-6 rounded-3xl bg-white border border-slate-200 space-y-6 shadow-xl">
+                            <div className="flex items-center justify-between pb-4 border-b border-slate-200">
                                 <div>
-                                    <h3 className="text-xl font-black text-white flex items-center gap-2">
-                                        <Percent className="h-5 w-5 text-[#00c985]" /> Master Partner Commission Rates Configuration
+                                    <h3 className="text-xl font-black text-slate-900 flex items-center gap-2">
+                                        <Percent className="h-5 w-5 text-[#0284c7]" /> Master Partner Commission Rates Configuration
                                     </h3>
-                                    <p className="text-xs text-slate-400 mt-1">
+                                    <p className="text-xs text-slate-500 mt-1">
                                         Rates defined here will dynamically update across all partner dashboards, file submission calculations, and disbursal payouts.
                                     </p>
                                 </div>
-                                <span className="text-xs font-black text-[#00e699] bg-emerald-950/60 px-3 py-1 rounded-full border border-emerald-800">
+                                <span className="text-xs font-black text-[#0284c7] bg-sky-50 px-3 py-1 rounded-full border border-sky-300">
                                     Instant Sync
                                 </span>
                             </div>
@@ -1141,12 +1267,12 @@ export default function AdminDashboardPage() {
                             <form onSubmit={handleSaveCommissionRates} className="space-y-6">
                                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                                     {/* Loans Rate */}
-                                    <div className="p-5 rounded-2xl bg-slate-950/60 border border-emerald-500/30 space-y-2">
+                                    <div className="p-5 rounded-2xl bg-[#f8fafc]/60 border border-sky-200 space-y-2">
                                         <div className="flex items-center justify-between">
-                                            <span className="text-xs font-black text-emerald-400 uppercase flex items-center gap-1.5">
+                                            <span className="text-xs font-black text-[#0284c7] uppercase flex items-center gap-1.5">
                                                 <Banknote className="h-4 w-4" /> 1. Loans Commission Rate (%)
                                             </span>
-                                            <span className="text-xs font-bold text-slate-400">Default: 2.0%</span>
+                                            <span className="text-xs font-bold text-slate-500">Default: 2.0%</span>
                                         </div>
                                         <div className="flex items-center gap-2">
                                             <input
@@ -1154,21 +1280,21 @@ export default function AdminDashboardPage() {
                                                 step="0.05"
                                                 value={commissionRates.loansCommissionRate}
                                                 onChange={e => setCommissionRates({ ...commissionRates, loansCommissionRate: parseFloat(e.target.value) || 0 })}
-                                                className="w-full h-12 bg-slate-900 border border-slate-700 rounded-xl px-4 text-lg font-black text-white focus:ring-2 focus:ring-[#00c985]"
+                                                className="w-full h-12 bg-white border border-slate-300 rounded-xl px-4 text-lg font-black text-slate-900 focus:ring-2 focus:ring-[#0284c7]"
                                                 required
                                             />
-                                            <span className="text-lg font-black text-slate-400">%</span>
+                                            <span className="text-lg font-black text-slate-500">%</span>
                                         </div>
-                                        <p className="text-[11px] text-slate-400">Applied to Home Loans, Personal Loans, Business Loans & LAP</p>
+                                        <p className="text-[11px] text-slate-500">Applied to Home Loans, Personal Loans, Business Loans & LAP</p>
                                     </div>
 
                                     {/* Cards Rate */}
-                                    <div className="p-5 rounded-2xl bg-slate-950/60 border border-sky-500/30 space-y-2">
+                                    <div className="p-5 rounded-2xl bg-[#f8fafc]/60 border border-sky-200 space-y-2">
                                         <div className="flex items-center justify-between">
-                                            <span className="text-xs font-black text-sky-400 uppercase flex items-center gap-1.5">
+                                            <span className="text-xs font-black text-[#0284c7] uppercase flex items-center gap-1.5">
                                                 <CreditCard className="h-4 w-4" /> 2. Cards Commission Rate (%)
                                             </span>
-                                            <span className="text-xs font-bold text-slate-400">Default: 3.0%</span>
+                                            <span className="text-xs font-bold text-slate-500">Default: 3.0%</span>
                                         </div>
                                         <div className="flex items-center gap-2">
                                             <input
@@ -1176,21 +1302,21 @@ export default function AdminDashboardPage() {
                                                 step="0.05"
                                                 value={commissionRates.cardsCommissionRate}
                                                 onChange={e => setCommissionRates({ ...commissionRates, cardsCommissionRate: parseFloat(e.target.value) || 0 })}
-                                                className="w-full h-12 bg-slate-900 border border-slate-700 rounded-xl px-4 text-lg font-black text-white focus:ring-2 focus:ring-sky-500"
+                                                className="w-full h-12 bg-white border border-slate-300 rounded-xl px-4 text-lg font-black text-slate-900 focus:ring-2 focus:ring-sky-500"
                                                 required
                                             />
-                                            <span className="text-lg font-black text-slate-400">%</span>
+                                            <span className="text-lg font-black text-slate-500">%</span>
                                         </div>
-                                        <p className="text-[11px] text-slate-400">Applied to Retail & Corporate Credit Cards</p>
+                                        <p className="text-[11px] text-slate-500">Applied to Retail & Corporate Credit Cards</p>
                                     </div>
 
                                     {/* Insurance Rate */}
-                                    <div className="p-5 rounded-2xl bg-slate-950/60 border border-purple-500/30 space-y-2">
+                                    <div className="p-5 rounded-2xl bg-[#f8fafc]/60 border border-purple-500/30 space-y-2">
                                         <div className="flex items-center justify-between">
                                             <span className="text-xs font-black text-purple-400 uppercase flex items-center gap-1.5">
                                                 <Shield className="h-4 w-4" /> 3. Insurance Commission Rate (%)
                                             </span>
-                                            <span className="text-xs font-bold text-slate-400">Default: 5.0%</span>
+                                            <span className="text-xs font-bold text-slate-500">Default: 5.0%</span>
                                         </div>
                                         <div className="flex items-center gap-2">
                                             <input
@@ -1198,21 +1324,21 @@ export default function AdminDashboardPage() {
                                                 step="0.05"
                                                 value={commissionRates.insuranceCommissionRate}
                                                 onChange={e => setCommissionRates({ ...commissionRates, insuranceCommissionRate: parseFloat(e.target.value) || 0 })}
-                                                className="w-full h-12 bg-slate-900 border border-slate-700 rounded-xl px-4 text-lg font-black text-white focus:ring-2 focus:ring-purple-500"
+                                                className="w-full h-12 bg-white border border-slate-300 rounded-xl px-4 text-lg font-black text-slate-900 focus:ring-2 focus:ring-purple-500"
                                                 required
                                             />
-                                            <span className="text-lg font-black text-slate-400">%</span>
+                                            <span className="text-lg font-black text-slate-500">%</span>
                                         </div>
-                                        <p className="text-[11px] text-slate-400">Applied to Health, Life, and Vehicle Insurance policies</p>
+                                        <p className="text-[11px] text-slate-500">Applied to Health, Life, and Vehicle Insurance policies</p>
                                     </div>
 
                                     {/* Investments Rate */}
-                                    <div className="p-5 rounded-2xl bg-slate-950/60 border border-amber-500/30 space-y-2">
+                                    <div className="p-5 rounded-2xl bg-[#f8fafc]/60 border border-amber-500/30 space-y-2">
                                         <div className="flex items-center justify-between">
                                             <span className="text-xs font-black text-amber-400 uppercase flex items-center gap-1.5">
                                                 <PieChart className="h-4 w-4" /> 4. Investments Commission Rate (%)
                                             </span>
-                                            <span className="text-xs font-bold text-slate-400">Default: 1.5%</span>
+                                            <span className="text-xs font-bold text-slate-500">Default: 1.5%</span>
                                         </div>
                                         <div className="flex items-center gap-2">
                                             <input
@@ -1220,20 +1346,20 @@ export default function AdminDashboardPage() {
                                                 step="0.05"
                                                 value={commissionRates.investmentsCommissionRate}
                                                 onChange={e => setCommissionRates({ ...commissionRates, investmentsCommissionRate: parseFloat(e.target.value) || 0 })}
-                                                className="w-full h-12 bg-slate-900 border border-slate-700 rounded-xl px-4 text-lg font-black text-white focus:ring-2 focus:ring-amber-500"
+                                                className="w-full h-12 bg-white border border-slate-300 rounded-xl px-4 text-lg font-black text-slate-900 focus:ring-2 focus:ring-amber-500"
                                                 required
                                             />
-                                            <span className="text-lg font-black text-slate-400">%</span>
+                                            <span className="text-lg font-black text-slate-500">%</span>
                                         </div>
-                                        <p className="text-[11px] text-slate-400">Applied to Mutual Funds, Corporate Fixed Deposits & Pre-IPO</p>
+                                        <p className="text-[11px] text-slate-500">Applied to Mutual Funds, Corporate Fixed Deposits & Pre-IPO</p>
                                     </div>
                                 </div>
 
-                                <div className="flex items-center justify-end pt-4 border-t border-slate-800">
+                                <div className="flex items-center justify-end pt-4 border-t border-slate-200">
                                     <Button
                                         type="submit"
                                         disabled={ratesSaving}
-                                        className="h-12 px-8 rounded-2xl bg-[#00c985] hover:bg-[#00b074] text-slate-950 font-black text-xs uppercase tracking-wider cursor-pointer shadow-xl shadow-emerald-500/20 flex items-center gap-2"
+                                        className="h-12 px-8 rounded-2xl bg-[#0284c7] hover:bg-[#0369a1] text-slate-900 font-black text-xs uppercase tracking-wider cursor-pointer shadow-xl shadow-sky-500/20 flex items-center gap-2"
                                     >
                                         {ratesSaving ? (
                                             <>
@@ -1259,33 +1385,33 @@ export default function AdminDashboardPage() {
                 {activeTab === "banners" && (
                     <div className="grid lg:grid-cols-3 gap-8 items-start">
                         {/* Upload Form */}
-                        <div className="lg:col-span-1 bg-slate-900/80 border border-slate-800 rounded-3xl p-6 space-y-6 shadow-xl">
+                        <div className="lg:col-span-1 bg-white/95 border border-slate-200 rounded-3xl p-6 space-y-6 shadow-xl">
                             <div>
-                                <h3 className="text-lg font-black text-white flex items-center gap-2">
-                                    <ImagePlus className="h-5 w-5 text-[#00c985]" /> Upload Dynamic Banner
+                                <h3 className="text-lg font-black text-slate-900 flex items-center gap-2">
+                                    <ImagePlus className="h-5 w-5 text-[#0284c7]" /> Upload Dynamic Banner
                                 </h3>
-                                <p className="text-xs text-slate-400 mt-1">Upload high-res promotional banners for any page</p>
+                                <p className="text-xs text-slate-500 mt-1">Upload high-res promotional banners for any page</p>
                             </div>
 
                             <form onSubmit={handleUpload} className="space-y-4">
                                 <div className="space-y-1.5">
-                                    <label className="text-[10px] font-black uppercase text-slate-400">Banner Title *</label>
+                                    <label className="text-[10px] font-black uppercase text-slate-500">Banner Title *</label>
                                     <input
                                         type="text"
                                         placeholder="e.g. Lowest Home Loan 8.35%"
                                         value={title}
                                         onChange={e => setTitle(e.target.value)}
                                         required
-                                        className="w-full h-11 bg-slate-950 border border-slate-800 rounded-xl px-3 text-xs text-white placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-[#00c985]"
+                                        className="w-full h-11 bg-[#f8fafc] border border-slate-200 rounded-xl px-3 text-xs text-slate-900 placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-[#0284c7]"
                                     />
                                 </div>
 
                                 <div className="space-y-1.5">
-                                    <label className="text-[10px] font-black uppercase text-slate-400">Target Page *</label>
+                                    <label className="text-[10px] font-black uppercase text-slate-500">Target Page *</label>
                                     <select
                                         value={page}
                                         onChange={e => setPage(e.target.value)}
-                                        className="w-full h-11 bg-slate-950 border border-slate-800 rounded-xl px-3 text-xs text-white focus:outline-none focus:ring-2 focus:ring-[#00c985]"
+                                        className="w-full h-11 bg-[#f8fafc] border border-slate-200 rounded-xl px-3 text-xs text-slate-900 focus:outline-none focus:ring-2 focus:ring-[#0284c7]"
                                     >
                                         {PAGE_OPTIONS.map(opt => (
                                             <option key={opt.value} value={opt.value}>{opt.label}</option>
@@ -1294,18 +1420,18 @@ export default function AdminDashboardPage() {
                                 </div>
 
                                 <div className="space-y-1.5">
-                                    <label className="text-[10px] font-black uppercase text-slate-400">CTA Link (Optional)</label>
+                                    <label className="text-[10px] font-black uppercase text-slate-500">CTA Link (Optional)</label>
                                     <input
                                         type="text"
                                         placeholder="e.g. /home-loan"
                                         value={link}
                                         onChange={e => setLink(e.target.value)}
-                                        className="w-full h-11 bg-slate-950 border border-slate-800 rounded-xl px-3 text-xs text-white placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-[#00c985]"
+                                        className="w-full h-11 bg-[#f8fafc] border border-slate-200 rounded-xl px-3 text-xs text-slate-900 placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-[#0284c7]"
                                     />
                                 </div>
 
                                 <div className="space-y-1.5">
-                                    <label className="text-[10px] font-black uppercase text-slate-400">Banner Image (JPG, PNG, WebP) *</label>
+                                    <label className="text-[10px] font-black uppercase text-slate-500">Banner Image (JPG, PNG, WebP) *</label>
                                     <input
                                         ref={fileInputRef}
                                         type="file"
@@ -1315,7 +1441,7 @@ export default function AdminDashboardPage() {
                                     />
                                     <div
                                         onClick={() => fileInputRef.current?.click()}
-                                        className="border-2 border-dashed border-slate-700 hover:border-[#00c985] rounded-2xl p-4 text-center cursor-pointer transition-colors bg-slate-950/60 space-y-2"
+                                        className="border-2 border-dashed border-slate-300 hover:border-[#0284c7] rounded-2xl p-4 text-center cursor-pointer transition-colors bg-[#f8fafc]/60 space-y-2"
                                     >
                                         {preview ? (
                                             <div className="relative aspect-[16/9] w-full rounded-xl overflow-hidden">
@@ -1324,7 +1450,7 @@ export default function AdminDashboardPage() {
                                         ) : (
                                             <div className="py-4 space-y-2">
                                                 <Upload className="h-8 w-8 mx-auto text-slate-500" />
-                                                <p className="text-xs text-slate-400">Click to select banner image</p>
+                                                <p className="text-xs text-slate-500">Click to select banner image</p>
                                             </div>
                                         )}
                                     </div>
@@ -1333,7 +1459,7 @@ export default function AdminDashboardPage() {
                                 <Button
                                     type="submit"
                                     disabled={uploading || !selectedFile || !title.trim()}
-                                    className="w-full h-12 rounded-xl bg-[#00c985] hover:bg-[#00b074] text-slate-950 font-black text-xs uppercase tracking-wider cursor-pointer shadow-lg shadow-emerald-500/20"
+                                    className="w-full h-12 rounded-xl bg-[#0284c7] hover:bg-[#0369a1] text-slate-900 font-black text-xs uppercase tracking-wider cursor-pointer shadow-lg shadow-sky-500/20"
                                 >
                                     {uploading ? <Loader2 className="h-4 w-4 animate-spin mx-auto" /> : "Upload Banner"}
                                 </Button>
@@ -1343,19 +1469,19 @@ export default function AdminDashboardPage() {
                         {/* Banner Grid */}
                         <div className="lg:col-span-2 space-y-4">
                             <div className="flex items-center justify-between">
-                                <h3 className="text-lg font-black text-white">Active Banners ({banners.length})</h3>
+                                <h3 className="text-lg font-black text-slate-900">Active Banners ({banners.length})</h3>
                                 <Button
                                     size="sm"
                                     variant="outline"
                                     onClick={fetchBanners}
-                                    className="h-8 px-3 bg-slate-900 border-slate-800 text-slate-300 hover:text-white cursor-pointer"
+                                    className="h-8 px-3 bg-white border-slate-200 text-slate-600 hover:text-slate-900 cursor-pointer"
                                 >
                                     <RefreshCw className={`h-3 w-3 ${bannerLoading ? "animate-spin" : ""}`} />
                                 </Button>
                             </div>
 
                             {banners.length === 0 ? (
-                                <div className="p-12 text-center text-slate-500 bg-slate-900/40 rounded-3xl border border-slate-800 text-xs">
+                                <div className="p-12 text-center text-slate-500 bg-white/40 rounded-3xl border border-slate-200 text-xs">
                                     No banners uploaded yet.
                                 </div>
                             ) : (
@@ -1363,9 +1489,9 @@ export default function AdminDashboardPage() {
                                     {banners.map(banner => (
                                         <div
                                             key={banner._id}
-                                            className="bg-slate-900/80 border border-slate-800 rounded-2xl overflow-hidden shadow-lg space-y-3 p-3 group"
+                                            className="bg-white/95 border border-slate-200 rounded-2xl overflow-hidden shadow-lg space-y-3 p-3 group"
                                         >
-                                            <div className="relative aspect-[16/9] w-full rounded-xl overflow-hidden bg-slate-950">
+                                            <div className="relative aspect-[16/9] w-full rounded-xl overflow-hidden bg-[#f8fafc]">
                                                 <Image src={banner.imageUrl} alt={banner.title} fill className="object-cover" />
                                                 <button
                                                     onClick={() => handleDeleteBanner(banner._id)}
@@ -1376,8 +1502,8 @@ export default function AdminDashboardPage() {
                                                 </button>
                                             </div>
                                             <div>
-                                                <p className="font-bold text-white text-xs truncate">{banner.title}</p>
-                                                <p className="text-[10px] text-emerald-400 uppercase font-black">Page: {banner.page}</p>
+                                                <p className="font-bold text-slate-900 text-xs truncate">{banner.title}</p>
+                                                <p className="text-[10px] text-[#0284c7] uppercase font-black">Page: {banner.page}</p>
                                             </div>
                                         </div>
                                     ))}
@@ -1393,55 +1519,55 @@ export default function AdminDashboardPage() {
             {/* ========================================================================= */}
             <AnimatePresence>
                 {selectedPartner && (
-                    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-md overflow-y-auto">
+                    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-[#f8fafc]/80 backdrop-blur-md overflow-y-auto">
                         <motion.div
                             initial={{ opacity: 0, scale: 0.95 }}
                             animate={{ opacity: 1, scale: 1 }}
                             exit={{ opacity: 0, scale: 0.95 }}
-                            className="bg-[#1f2328] border border-slate-700 rounded-3xl p-6 sm:p-8 max-w-2xl w-full shadow-2xl space-y-6 max-h-[90vh] overflow-y-auto"
+                            className="bg-[#1f2328] border border-slate-300 rounded-3xl p-6 sm:p-8 max-w-2xl w-full shadow-2xl space-y-6 max-h-[90vh] overflow-y-auto"
                         >
-                            <div className="flex items-center justify-between pb-3 border-b border-slate-800">
+                            <div className="flex items-center justify-between pb-3 border-b border-slate-200">
                                 <div>
-                                    <h3 className="text-xl font-black text-white">{selectedPartner.name}</h3>
-                                    <p className="text-xs text-slate-400 font-mono">Ref: #{selectedPartner.referenceNo}</p>
+                                    <h3 className="text-xl font-black text-slate-900">{selectedPartner.name}</h3>
+                                    <p className="text-xs text-slate-500 font-mono">Ref: #{selectedPartner.referenceNo}</p>
                                 </div>
                                 <button
                                     onClick={() => setSelectedPartner(null)}
-                                    className="p-2 rounded-xl bg-slate-800 text-slate-400 hover:text-white cursor-pointer"
+                                    className="p-2 rounded-xl bg-slate-100 text-slate-500 hover:text-slate-900 cursor-pointer"
                                 >
                                     <X className="h-5 w-5" />
                                 </button>
                             </div>
 
                             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs">
-                                <div className="p-3.5 bg-slate-900 rounded-xl border border-slate-800 space-y-1">
-                                    <span className="text-slate-400 font-bold uppercase text-[10px]">Email Address</span>
-                                    <p className="font-bold text-white">{selectedPartner.email}</p>
+                                <div className="p-3.5 bg-white rounded-xl border border-slate-200 space-y-1">
+                                    <span className="text-slate-500 font-bold uppercase text-[10px]">Email Address</span>
+                                    <p className="font-bold text-slate-900">{selectedPartner.email}</p>
                                 </div>
-                                <div className="p-3.5 bg-slate-900 rounded-xl border border-slate-800 space-y-1">
-                                    <span className="text-slate-400 font-bold uppercase text-[10px]">Mobile</span>
-                                    <p className="font-bold text-white">+91 {selectedPartner.mobile}</p>
+                                <div className="p-3.5 bg-white rounded-xl border border-slate-200 space-y-1">
+                                    <span className="text-slate-500 font-bold uppercase text-[10px]">Mobile</span>
+                                    <p className="font-bold text-slate-900">+91 {selectedPartner.mobile}</p>
                                 </div>
-                                <div className="p-3.5 bg-slate-900 rounded-xl border border-slate-800 space-y-1">
-                                    <span className="text-slate-400 font-bold uppercase text-[10px]">Company / Firm</span>
-                                    <p className="font-bold text-white">{selectedPartner.companyName || "Individual DSA"}</p>
+                                <div className="p-3.5 bg-white rounded-xl border border-slate-200 space-y-1">
+                                    <span className="text-slate-500 font-bold uppercase text-[10px]">Company / Firm</span>
+                                    <p className="font-bold text-slate-900">{selectedPartner.companyName || "Individual DSA"}</p>
                                 </div>
-                                <div className="p-3.5 bg-slate-900 rounded-xl border border-slate-800 space-y-1">
-                                    <span className="text-slate-400 font-bold uppercase text-[10px]">Profession & Exp</span>
-                                    <p className="font-bold text-white">{selectedPartner.profession} ({selectedPartner.experienceYears || "N/A"})</p>
+                                <div className="p-3.5 bg-white rounded-xl border border-slate-200 space-y-1">
+                                    <span className="text-slate-500 font-bold uppercase text-[10px]">Profession & Exp</span>
+                                    <p className="font-bold text-slate-900">{selectedPartner.profession} ({selectedPartner.experienceYears || "N/A"})</p>
                                 </div>
                             </div>
 
-                            <div className="p-4 bg-slate-900 rounded-2xl border border-slate-800 space-y-2 text-xs">
-                                <p className="font-black text-emerald-400 uppercase text-[10px]">Operating & Address Details</p>
-                                <p className="text-slate-300"><strong>City:</strong> {selectedPartner.city}</p>
-                                <p className="text-slate-300"><strong>Full Address:</strong> {selectedPartner.fullAddress || selectedPartner.location || "N/A"}</p>
-                                <p className="text-slate-300"><strong>Address Proof Type:</strong> {selectedPartner.addressProofType || "Aadhaar"}</p>
+                            <div className="p-4 bg-white rounded-2xl border border-slate-200 space-y-2 text-xs">
+                                <p className="font-black text-[#0284c7] uppercase text-[10px]">Operating & Address Details</p>
+                                <p className="text-slate-600"><strong>City:</strong> {selectedPartner.city}</p>
+                                <p className="text-slate-600"><strong>Full Address:</strong> {selectedPartner.fullAddress || selectedPartner.location || "N/A"}</p>
+                                <p className="text-slate-600"><strong>Address Proof Type:</strong> {selectedPartner.addressProofType || "Aadhaar"}</p>
                             </div>
 
-                            <div className="p-4 bg-slate-900 rounded-2xl border border-slate-800 space-y-2 text-xs">
-                                <p className="font-black text-emerald-400 uppercase text-[10px]">Uploaded Documents Summary</p>
-                                <p className="text-slate-300 font-mono text-[11px] leading-relaxed">
+                            <div className="p-4 bg-white rounded-2xl border border-slate-200 space-y-2 text-xs">
+                                <p className="font-black text-[#0284c7] uppercase text-[10px]">Uploaded Documents Summary</p>
+                                <p className="text-slate-600 font-mono text-[11px] leading-relaxed">
                                     {typeof selectedPartner.uploadedDocuments === "string"
                                         ? selectedPartner.uploadedDocuments
                                         : JSON.stringify(selectedPartner.uploadedDocuments || "Standard KYC documents submitted")}
@@ -1452,14 +1578,14 @@ export default function AdminDashboardPage() {
                                 <Button
                                     variant="outline"
                                     onClick={() => setSelectedPartner(null)}
-                                    className="h-10 px-4 rounded-xl border-slate-700 bg-slate-800 text-white text-xs cursor-pointer"
+                                    className="h-10 px-4 rounded-xl border-slate-300 bg-slate-100 text-slate-900 text-xs cursor-pointer"
                                 >
                                     Close
                                 </Button>
                                 {selectedPartner.status === "PENDING" && (
                                     <Button
                                         onClick={() => handleApprovePartner(selectedPartner._id)}
-                                        className="h-10 px-5 rounded-xl bg-[#00c985] hover:bg-[#00b074] text-slate-950 font-black text-xs uppercase cursor-pointer"
+                                        className="h-10 px-5 rounded-xl bg-[#0284c7] hover:bg-[#0369a1] text-slate-900 font-black text-xs uppercase cursor-pointer"
                                     >
                                         ✓ Approve & Issue Password
                                     </Button>
@@ -1475,46 +1601,46 @@ export default function AdminDashboardPage() {
             {/* ========================================================================= */}
             <AnimatePresence>
                 {fileUpdateModalOpen && selectedFileItem && (
-                    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-md">
+                    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-[#f8fafc]/80 backdrop-blur-md">
                         <motion.div
                             initial={{ opacity: 0, scale: 0.95 }}
                             animate={{ opacity: 1, scale: 1 }}
                             exit={{ opacity: 0, scale: 0.95 }}
-                            className="bg-[#1f2328] border border-slate-700 rounded-3xl p-6 sm:p-8 max-w-lg w-full shadow-2xl space-y-6"
+                            className="bg-[#1f2328] border border-slate-300 rounded-3xl p-6 sm:p-8 max-w-lg w-full shadow-2xl space-y-6"
                         >
-                            <div className="flex items-center justify-between pb-3 border-b border-slate-800">
+                            <div className="flex items-center justify-between pb-3 border-b border-slate-200">
                                 <div>
-                                    <h3 className="text-lg font-black text-white">Edit File Status & Commission</h3>
-                                    <p className="text-xs text-slate-400">File Ref: #{selectedFileItem.referenceNo}</p>
+                                    <h3 className="text-lg font-black text-slate-900">Edit File Status & Commission</h3>
+                                    <p className="text-xs text-slate-500">File Ref: #{selectedFileItem.referenceNo}</p>
                                 </div>
                                 <button
                                     onClick={() => setFileUpdateModalOpen(false)}
-                                    className="p-2 rounded-xl bg-slate-800 text-slate-400 hover:text-white cursor-pointer"
+                                    className="p-2 rounded-xl bg-slate-100 text-slate-500 hover:text-slate-900 cursor-pointer"
                                 >
                                     <X className="h-5 w-5" />
                                 </button>
                             </div>
 
-                            <div className="p-4 rounded-2xl bg-slate-900 border border-slate-800 space-y-2 text-xs">
+                            <div className="p-4 rounded-2xl bg-white border border-slate-200 space-y-2 text-xs">
                                 <div className="flex justify-between">
-                                    <span className="text-slate-400 font-bold">Partner:</span>
-                                    <span className="text-white font-bold">{selectedFileItem.partnerName}</span>
+                                    <span className="text-slate-500 font-bold">Partner:</span>
+                                    <span className="text-slate-900 font-bold">{selectedFileItem.partnerName}</span>
                                 </div>
                                 <div className="flex justify-between">
-                                    <span className="text-slate-400 font-bold">Client:</span>
-                                    <span className="text-white font-bold">{selectedFileItem.customerName}</span>
+                                    <span className="text-slate-500 font-bold">Client:</span>
+                                    <span className="text-slate-900 font-bold">{selectedFileItem.customerName}</span>
                                 </div>
                                 <div className="flex justify-between">
-                                    <span className="text-slate-400 font-bold">Bank Submitted To:</span>
-                                    <span className="text-sky-400 font-bold">{selectedFileItem.bankName}</span>
+                                    <span className="text-slate-500 font-bold">Bank Submitted To:</span>
+                                    <span className="text-[#0284c7] font-bold">{selectedFileItem.bankName}</span>
                                 </div>
                                 <div className="flex justify-between">
-                                    <span className="text-slate-400 font-bold">Filed Amount:</span>
-                                    <span className="text-white font-black">₹{selectedFileItem.applicationAmount.toLocaleString("en-IN")}</span>
+                                    <span className="text-slate-500 font-bold">Filed Amount:</span>
+                                    <span className="text-slate-900 font-black">₹{selectedFileItem.applicationAmount.toLocaleString("en-IN")}</span>
                                 </div>
-                                <div className="flex justify-between border-t border-slate-800 pt-2">
-                                    <span className="text-emerald-400 font-bold">Calculated Commission:</span>
-                                    <span className="text-[#00e699] font-black">
+                                <div className="flex justify-between border-t border-slate-200 pt-2">
+                                    <span className="text-[#0284c7] font-bold">Calculated Commission:</span>
+                                    <span className="text-[#0284c7] font-black">
                                         ₹{Math.round(selectedFileItem.applicationAmount * (updateCommissionRate / 100)).toLocaleString("en-IN")}
                                     </span>
                                 </div>
@@ -1522,11 +1648,11 @@ export default function AdminDashboardPage() {
 
                             <div className="space-y-4">
                                 <div>
-                                    <label className="text-[10px] font-black uppercase text-slate-400">File Workflow Status *</label>
+                                    <label className="text-[10px] font-black uppercase text-slate-500">File Workflow Status *</label>
                                     <select
                                         value={updateFileStatus}
                                         onChange={e => setUpdateFileStatus(e.target.value)}
-                                        className="w-full h-11 bg-[#15171a] border border-white/10 rounded-xl px-3 text-xs font-bold text-white focus:ring-2 focus:ring-[#00c985]"
+                                        className="w-full h-11 bg-[#15171a] border border-slate-300 rounded-xl px-3 text-xs font-bold text-slate-900 focus:ring-2 focus:ring-[#0284c7]"
                                     >
                                         <option value="IN_PROCESS">In Process (Under Review)</option>
                                         <option value="DOCS_SUBMITTED">Docs Submitted to Bank</option>
@@ -1539,22 +1665,22 @@ export default function AdminDashboardPage() {
 
                                 <div className="grid grid-cols-2 gap-3">
                                     <div>
-                                        <label className="text-[10px] font-black uppercase text-slate-400">Commission Rate (%) *</label>
+                                        <label className="text-[10px] font-black uppercase text-slate-500">Commission Rate (%) *</label>
                                         <input
                                             type="number"
                                             step="0.05"
                                             value={updateCommissionRate}
                                             onChange={e => setUpdateCommissionRate(parseFloat(e.target.value) || 0)}
-                                            className="w-full h-11 bg-[#15171a] border border-white/10 rounded-xl px-3 text-xs font-bold text-white focus:ring-2 focus:ring-[#00c985]"
+                                            className="w-full h-11 bg-[#15171a] border border-slate-300 rounded-xl px-3 text-xs font-bold text-slate-900 focus:ring-2 focus:ring-[#0284c7]"
                                         />
                                     </div>
 
                                     <div>
-                                        <label className="text-[10px] font-black uppercase text-slate-400">Partner Payout Status *</label>
+                                        <label className="text-[10px] font-black uppercase text-slate-500">Partner Payout Status *</label>
                                         <select
                                             value={updatePayoutStatus}
                                             onChange={e => setUpdatePayoutStatus(e.target.value)}
-                                            className="w-full h-11 bg-[#15171a] border border-white/10 rounded-xl px-3 text-xs font-bold text-white focus:ring-2 focus:ring-[#00c985]"
+                                            className="w-full h-11 bg-[#15171a] border border-slate-300 rounded-xl px-3 text-xs font-bold text-slate-900 focus:ring-2 focus:ring-[#0284c7]"
                                         >
                                             <option value="PENDING">Pending Settlement</option>
                                             <option value="PROCESSED">Processed / In Queue</option>
@@ -1568,13 +1694,13 @@ export default function AdminDashboardPage() {
                                 <Button
                                     variant="outline"
                                     onClick={() => setFileUpdateModalOpen(false)}
-                                    className="h-10 px-4 rounded-xl border-slate-700 bg-slate-800 text-white text-xs cursor-pointer"
+                                    className="h-10 px-4 rounded-xl border-slate-300 bg-slate-100 text-slate-900 text-xs cursor-pointer"
                                 >
                                     Cancel
                                 </Button>
                                 <Button
                                     onClick={handleSaveFileUpdate}
-                                    className="h-10 px-5 rounded-xl bg-[#00c985] hover:bg-[#00b074] text-slate-950 font-black text-xs uppercase cursor-pointer"
+                                    className="h-10 px-5 rounded-xl bg-[#0284c7] hover:bg-[#0369a1] text-slate-900 font-black text-xs uppercase cursor-pointer"
                                 >
                                     Save Changes
                                 </Button>
@@ -1589,15 +1715,15 @@ export default function AdminDashboardPage() {
             {/* ========================================================================= */}
             <AnimatePresence>
                 {rejectionModalOpen && (
-                    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-md">
+                    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-[#f8fafc]/80 backdrop-blur-md">
                         <motion.div
                             initial={{ opacity: 0, scale: 0.95 }}
                             animate={{ opacity: 1, scale: 1 }}
                             exit={{ opacity: 0, scale: 0.95 }}
-                            className="bg-[#1f2328] border border-slate-700 rounded-3xl p-6 max-w-md w-full shadow-2xl space-y-4"
+                            className="bg-[#1f2328] border border-slate-300 rounded-3xl p-6 max-w-md w-full shadow-2xl space-y-4"
                         >
-                            <h3 className="text-lg font-black text-white">Decline Partner Application</h3>
-                            <p className="text-xs text-slate-400">
+                            <h3 className="text-lg font-black text-slate-900">Decline Partner Application</h3>
+                            <p className="text-xs text-slate-500">
                                 Provide an optional feedback reason. An email notification will be dispatched to the applicant.
                             </p>
                             <textarea
@@ -1605,19 +1731,19 @@ export default function AdminDashboardPage() {
                                 placeholder="e.g. Incomplete KYC documentation or unverified contact number..."
                                 value={rejectionReason}
                                 onChange={e => setRejectionReason(e.target.value)}
-                                className="w-full bg-slate-900 border border-slate-700 rounded-xl p-3 text-xs text-white placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-rose-500"
+                                className="w-full bg-white border border-slate-300 rounded-xl p-3 text-xs text-slate-900 placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-rose-500"
                             />
                             <div className="flex items-center justify-end gap-3">
                                 <Button
                                     variant="outline"
                                     onClick={() => setRejectionModalOpen(false)}
-                                    className="h-10 px-4 rounded-xl border-slate-700 bg-slate-800 text-white text-xs cursor-pointer"
+                                    className="h-10 px-4 rounded-xl border-slate-300 bg-slate-100 text-slate-900 text-xs cursor-pointer"
                                 >
                                     Cancel
                                 </Button>
                                 <Button
                                     onClick={handleRejectPartner}
-                                    className="h-10 px-5 rounded-xl bg-rose-600 hover:bg-rose-700 text-white font-black text-xs uppercase cursor-pointer"
+                                    className="h-10 px-5 rounded-xl bg-rose-600 hover:bg-rose-700 text-slate-900 font-black text-xs uppercase cursor-pointer"
                                 >
                                     Confirm Decline
                                 </Button>

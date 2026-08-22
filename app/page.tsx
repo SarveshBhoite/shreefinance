@@ -7,6 +7,7 @@ import { WhyChooseUs } from "@/components/home/why-choose-us";
 import { FloatingCTA } from "@/components/home/floating-cta";
 import { HomeEligibilityForm } from "@/components/home/home-eligibility-form";
 import { Deal4LoansQuickHub } from "@/components/home/deal4loans-quick-hub";
+import { TrustSecuritySection } from "@/components/home/trust-security-section";
 
 export default function Home() {
   return (
@@ -15,6 +16,7 @@ export default function Home() {
       <section className="py-12 container px-4 mx-auto scroll-mt-24" id="eligibility-check">
         <HomeEligibilityForm />
       </section>
+      <TrustSecuritySection />
       <UniversalCalculator />
       <Deal4LoansQuickHub />
       <WhyChooseUs />

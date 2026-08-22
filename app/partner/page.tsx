@@ -299,48 +299,48 @@ export default function PartnerProgramPage() {
     ];
 
     return (
-        <div className="pb-20 bg-[#181a1d] text-white font-sans min-h-screen relative overflow-hidden">
+        <div className="pb-20 bg-white text-slate-900 font-sans min-h-screen relative overflow-hidden">
             {/* Background Light Glows */}
-            <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-[#00c985]/10 rounded-full blur-[140px] pointer-events-none" />
-            <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-[#00e699]/5 rounded-full blur-[120px] pointer-events-none" />
+            <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-sky-100/50 rounded-full blur-[140px] pointer-events-none" />
+            <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-sky-50 rounded-full blur-[120px] pointer-events-none" />
 
             {/* Hero Banner */}
-            <section className="pt-16 pb-20 border-b border-slate-800 relative z-10">
+            <section className="pt-16 pb-20 border-b border-slate-200 bg-[#f8fafc] relative z-10">
                 <div className="container px-4 md:px-6 mx-auto grid lg:grid-cols-2 gap-12 items-start">
                     <div className="space-y-6 pt-4">
-                        <div className="inline-flex items-center gap-2 rounded-full border border-emerald-400/40 bg-emerald-400/10 px-4 py-1.5 text-xs font-black text-emerald-300 uppercase tracking-widest">
-                            <Sparkles className="h-3.5 w-3.5" />
+                        <div className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-4 py-1.5 text-xs font-black text-black uppercase tracking-widest shadow-xs">
+                            <Sparkles className="h-3.5 w-3.5 text-black" />
                             ShreeFinance Channel Partner Program
                         </div>
-                        <h1 className="text-4xl md:text-6xl font-black text-white tracking-tight leading-tight">
-                            Partner Portal & <span className="text-[#00e699]">Direct DSA Desk</span>
+                        <h1 className="text-4xl md:text-6xl font-black text-black tracking-tight leading-tight">
+                            Partner Portal & <span className="text-black">Direct DSA Desk</span>
                         </h1>
-                        <p className="text-slate-300 text-base md:text-lg leading-relaxed">
+                        <p className="text-slate-600 text-base md:text-lg leading-relaxed">
                             Join 15,000+ DSAs, Real Estate Brokers, CAs, and Financial Advisors. Refer loan clients, track bank underwriting in real-time, and earn industry-leading payouts across 40+ banks.
                         </p>
 
-                        <div className="grid grid-cols-3 gap-4 pt-4 border-t border-slate-800">
+                        <div className="grid grid-cols-3 gap-4 pt-4 border-t border-slate-200">
                             <div>
-                                <p className="text-3xl font-black text-[#00e699]">₹15 Cr+</p>
-                                <p className="text-xs text-slate-400 font-bold uppercase tracking-wider mt-1">Payouts Credited</p>
+                                <p className="text-3xl font-black text-black">₹15 Cr+</p>
+                                <p className="text-xs text-slate-500 font-bold uppercase tracking-wider mt-1">Payouts Credited</p>
                             </div>
                             <div>
-                                <p className="text-3xl font-black text-white">15,000+</p>
-                                <p className="text-xs text-slate-400 font-bold uppercase tracking-wider mt-1">Active Partners</p>
+                                <p className="text-3xl font-black text-black">15,000+</p>
+                                <p className="text-xs text-slate-500 font-bold uppercase tracking-wider mt-1">Active Partners</p>
                             </div>
                             <div>
-                                <p className="text-3xl font-black text-amber-300">40+</p>
-                                <p className="text-xs text-slate-400 font-bold uppercase tracking-wider mt-1">Lending Partners</p>
+                                <p className="text-3xl font-black text-black">40+</p>
+                                <p className="text-xs text-slate-500 font-bold uppercase tracking-wider mt-1">Lending Partners</p>
                             </div>
                         </div>
 
                         {/* Quick Mode Toggle Info */}
-                        <div className="p-4 bg-slate-900/80 rounded-2xl border border-slate-800 flex items-center justify-between">
+                        <div className="p-4 bg-white rounded-2xl border border-slate-200 shadow-sm flex items-center justify-between">
                             <div>
-                                <p className="text-xs font-bold text-white">
+                                <p className="text-xs font-bold text-slate-900">
                                     {mode === "register" ? "Already approved by Admin?" : "New to Shree Finance?"}
                                 </p>
-                                <p className="text-[11px] text-slate-400">
+                                <p className="text-[11px] text-slate-500">
                                     {mode === "register"
                                         ? "Log in with your registered email or reference ID to access your dashboard."
                                         : "Fill our fast 2-step onboarding form to apply for DSA accreditation."}
@@ -354,7 +354,7 @@ export default function PartnerProgramPage() {
                                     setLoginError(null);
                                     setLoginSuccessMsg(null);
                                 }}
-                                className="h-9 px-4 rounded-xl border-[#00c985]/40 text-[#00e699] hover:bg-[#00c985] hover:text-slate-950 font-bold text-xs shrink-0 cursor-pointer"
+                                className="h-9 px-4 rounded-xl border-sky-500/40 text-[#0284c7] hover:bg-[#0284c7] hover:text-white font-bold text-xs shrink-0 cursor-pointer"
                             >
                                 {mode === "register" ? "Partner Login 🔑" : "New Registration 📝"}
                             </Button>
@@ -366,38 +366,38 @@ export default function PartnerProgramPage() {
                         /* ========================================================================= */
                         /* PARTNER LOGIN FORM */
                         /* ========================================================================= */
-                        <Card className="bg-[#24272c] border border-slate-800 backdrop-blur-xl rounded-[2.5rem] p-6 sm:p-8 text-white shadow-2xl space-y-6">
-                            <CardHeader className="p-0 pb-4 border-b border-white/10 flex flex-row items-center justify-between">
+                        <Card className="bg-white border border-slate-200 rounded-[2.5rem] p-6 sm:p-8 text-slate-900 shadow-md space-y-6">
+                            <CardHeader className="p-0 pb-4 border-b border-slate-200 flex flex-row items-center justify-between">
                                 <div>
-                                    <CardTitle className="text-2xl font-black flex items-center gap-2">
-                                        <Lock className="h-5 w-5 text-[#00c985]" /> Partner Portal Login
+                                    <CardTitle className="text-2xl font-black flex items-center gap-2 text-slate-900">
+                                        <Lock className="h-5 w-5 text-[#0284c7]" /> Partner Portal Login
                                     </CardTitle>
-                                    <p className="text-xs text-slate-400 mt-1">
+                                    <p className="text-xs text-slate-500 mt-1">
                                         Access your active borrower leads, sanction desk & weekly commissions
                                     </p>
                                 </div>
-                                <span className="text-xs font-black px-3 py-1 rounded-full bg-[#00c985]/20 text-[#00e699] border border-[#00c985]/40 uppercase tracking-wider">
+                                <span className="text-xs font-black px-3 py-1 rounded-full bg-sky-100 text-sky-800 border border-sky-300 uppercase tracking-wider">
                                     DSA Login
                                 </span>
                             </CardHeader>
 
                             <CardContent className="p-0 space-y-4">
                                 {loginError && (
-                                    <div className="p-3 bg-rose-950/60 border border-rose-800 text-rose-300 rounded-xl text-xs flex items-center gap-2">
+                                    <div className="p-3 bg-rose-50 border border-rose-200 text-rose-700 rounded-xl text-xs flex items-center gap-2">
                                         <AlertCircle className="h-4 w-4 shrink-0" />
                                         <span>{loginError}</span>
                                     </div>
                                 )}
 
                                 {loginSuccessMsg && (
-                                    <div className="p-3 bg-emerald-950/60 border border-emerald-800 text-emerald-300 rounded-xl text-xs flex items-center gap-2">
-                                        <CheckCircle2 className="h-4 w-4 shrink-0" />
+                                    <div className="p-3 bg-sky-50 border border-sky-200 text-sky-800 rounded-xl text-xs flex items-center gap-2">
+                                        <CheckCircle2 className="h-4 w-4 shrink-0 text-[#0284c7]" />
                                         <span>{loginSuccessMsg}</span>
                                     </div>
                                 )}
 
                                 {/* Login Method Tabs */}
-                                <div className="flex bg-slate-900/90 p-1 rounded-xl border border-slate-800">
+                                <div className="flex bg-slate-100 p-1 rounded-xl border border-slate-200">
                                     <button
                                         type="button"
                                         onClick={() => {
@@ -406,8 +406,8 @@ export default function PartnerProgramPage() {
                                         }}
                                         className={`flex-1 py-2 text-xs font-bold rounded-lg transition-all cursor-pointer ${
                                             loginMethod === "password"
-                                                ? "bg-[#00c985] text-slate-950 shadow-md"
-                                                : "text-slate-400 hover:text-white"
+                                                ? "bg-[#0284c7] text-white shadow-xs"
+                                                : "text-slate-600 hover:text-slate-900"
                                         }`}
                                     >
                                         🔑 Email & Password
@@ -420,8 +420,8 @@ export default function PartnerProgramPage() {
                                         }}
                                         className={`flex-1 py-2 text-xs font-bold rounded-lg transition-all cursor-pointer ${
                                             loginMethod === "otp"
-                                                ? "bg-[#00c985] text-slate-950 shadow-md"
-                                                : "text-slate-400 hover:text-white"
+                                                ? "bg-[#0284c7] text-white shadow-xs"
+                                                : "text-slate-600 hover:text-slate-900"
                                         }`}
                                     >
                                         📲 Email OTP
@@ -431,7 +431,7 @@ export default function PartnerProgramPage() {
                                 {loginMethod === "password" ? (
                                     <form onSubmit={handlePasswordLogin} className="space-y-4">
                                         <div className="space-y-1.5">
-                                            <label className="text-[10px] font-black uppercase text-slate-400">
+                                            <label className="text-[10px] font-black uppercase text-slate-600">
                                                 Registered Email Address or Partner ID *
                                             </label>
                                             <Input
@@ -439,12 +439,12 @@ export default function PartnerProgramPage() {
                                                 value={loginIdentifier}
                                                 onChange={e => setLoginIdentifier(e.target.value)}
                                                 required
-                                                className="h-12 rounded-xl font-bold bg-white/5 border-white/10 text-white placeholder:text-slate-500 text-xs"
+                                                className="h-12 rounded-xl font-bold bg-white border-slate-300 text-slate-900 placeholder:text-slate-400 text-xs focus:ring-2 focus:ring-[#0284c7]"
                                             />
                                         </div>
 
                                         <div className="space-y-1.5">
-                                            <label className="text-[10px] font-black uppercase text-slate-400">
+                                            <label className="text-[10px] font-black uppercase text-slate-600">
                                                 Password (Sent in Approval Email) *
                                             </label>
                                             <Input
@@ -453,18 +453,18 @@ export default function PartnerProgramPage() {
                                                 value={loginPassword}
                                                 onChange={e => setLoginPassword(e.target.value)}
                                                 required
-                                                className="h-12 rounded-xl font-bold bg-white/5 border-white/10 text-white placeholder:text-slate-500 text-xs"
+                                                className="h-12 rounded-xl font-bold bg-white border-slate-300 text-slate-900 placeholder:text-slate-400 text-xs focus:ring-2 focus:ring-[#0284c7]"
                                             />
                                         </div>
 
                                         <Button
                                             type="submit"
                                             disabled={loginLoading || !loginIdentifier.trim() || !loginPassword.trim()}
-                                            className="w-full bg-[#00c985] hover:bg-[#00b074] text-slate-950 font-black h-13 rounded-2xl uppercase tracking-wider text-xs shadow-xl shadow-emerald-500/20 cursor-pointer flex items-center justify-center gap-2"
+                                            className="w-full bg-[#0284c7] hover:bg-[#0369a1] text-white font-black h-13 rounded-2xl uppercase tracking-wider text-xs shadow-md cursor-pointer flex items-center justify-center gap-2"
                                         >
                                             {loginLoading ? (
                                                 <div className="flex items-center gap-2">
-                                                    <Loader2 className="h-4 w-4 animate-spin" />
+                                                    <Loader2 className="h-4 w-4 animate-spin text-white" />
                                                     <span>Logging in...</span>
                                                 </div>
                                             ) : (
@@ -478,7 +478,7 @@ export default function PartnerProgramPage() {
                                 ) : !otpSent ? (
                                     <form onSubmit={handleSendPartnerOtp} className="space-y-4">
                                         <div className="space-y-1.5">
-                                            <label className="text-[10px] font-black uppercase text-slate-400">
+                                            <label className="text-[10px] font-black uppercase text-slate-600">
                                                 Registered Email Address or Application Ref # *
                                             </label>
                                             <Input
@@ -486,18 +486,18 @@ export default function PartnerProgramPage() {
                                                 value={loginIdentifier}
                                                 onChange={e => setLoginIdentifier(e.target.value)}
                                                 required
-                                                className="h-12 rounded-xl font-bold bg-white/5 border-white/10 text-white placeholder:text-slate-500 text-xs"
+                                                className="h-12 rounded-xl font-bold bg-white border-slate-300 text-slate-900 placeholder:text-slate-400 text-xs focus:ring-2 focus:ring-[#0284c7]"
                                             />
                                         </div>
 
                                         <Button
                                             type="submit"
                                             disabled={otpLoading || !loginIdentifier.trim()}
-                                            className="w-full bg-[#00c985] hover:bg-[#00b074] text-slate-950 font-black h-13 rounded-2xl uppercase tracking-wider text-xs shadow-xl shadow-emerald-500/20 cursor-pointer flex items-center justify-center gap-2"
+                                            className="w-full bg-[#0284c7] hover:bg-[#0369a1] text-white font-black h-13 rounded-2xl uppercase tracking-wider text-xs shadow-md cursor-pointer flex items-center justify-center gap-2"
                                         >
                                             {otpLoading ? (
                                                 <div className="flex items-center gap-2">
-                                                    <Loader2 className="h-4 w-4 animate-spin" />
+                                                    <Loader2 className="h-4 w-4 animate-spin text-white" />
                                                     <span>Sending Login OTP...</span>
                                                 </div>
                                             ) : (
@@ -512,13 +512,13 @@ export default function PartnerProgramPage() {
                                     <form onSubmit={handleVerifyPartnerOtp} className="space-y-4">
                                         <div className="space-y-1.5">
                                             <div className="flex items-center justify-between">
-                                                <label className="text-[10px] font-black uppercase text-slate-400">
+                                                <label className="text-[10px] font-black uppercase text-slate-600">
                                                     Enter 6-Digit OTP Code *
                                                 </label>
                                                 <button
                                                     type="button"
                                                     onClick={() => setOtpSent(false)}
-                                                    className="text-[11px] text-emerald-400 hover:underline"
+                                                    className="text-[11px] text-[#0284c7] font-bold hover:underline"
                                                 >
                                                     Change Email
                                                 </button>
@@ -530,18 +530,18 @@ export default function PartnerProgramPage() {
                                                 value={loginOtp}
                                                 onChange={e => setLoginOtp(e.target.value)}
                                                 required
-                                                className="h-13 text-center text-xl tracking-[6px] rounded-xl font-black bg-white/5 border-white/10 text-white placeholder:text-slate-500"
+                                                className="h-13 text-center text-xl tracking-[6px] rounded-xl font-black bg-white border-slate-300 text-slate-900 placeholder:text-slate-400"
                                             />
                                         </div>
 
                                         <Button
                                             type="submit"
                                             disabled={loginLoading || loginOtp.length < 6}
-                                            className="w-full bg-[#00c985] hover:bg-[#00b074] text-slate-950 font-black h-13 rounded-2xl uppercase tracking-wider text-xs shadow-xl shadow-emerald-500/20 cursor-pointer flex items-center justify-center gap-2"
+                                            className="w-full bg-[#0284c7] hover:bg-[#0369a1] text-white font-black h-13 rounded-2xl uppercase tracking-wider text-xs shadow-md cursor-pointer flex items-center justify-center gap-2"
                                         >
                                             {loginLoading ? (
                                                 <div className="flex items-center gap-2">
-                                                    <Loader2 className="h-4 w-4 animate-spin" />
+                                                    <Loader2 className="h-4 w-4 animate-spin text-white" />
                                                     <span>Verifying Access...</span>
                                                 </div>
                                             ) : (
@@ -552,12 +552,12 @@ export default function PartnerProgramPage() {
                                             )}
                                         </Button>
 
-                                        <p className="text-[11px] text-slate-400 text-center">
+                                        <p className="text-[11px] text-slate-500 text-center">
                                             Did not receive OTP? Check spam folder or{" "}
                                             <button
                                                 type="button"
                                                 onClick={handleSendPartnerOtp}
-                                                className="text-emerald-400 font-bold hover:underline"
+                                                className="text-[#0284c7] font-bold hover:underline"
                                             >
                                                 Resend OTP
                                             </button>
@@ -570,17 +570,17 @@ export default function PartnerProgramPage() {
                         /* ========================================================================= */
                         /* REGISTRATION MULTI-STEP CARD */
                         /* ========================================================================= */
-                        <Card className="bg-[#24272c] border border-slate-800 backdrop-blur-xl rounded-[2.5rem] p-6 sm:p-8 text-white shadow-2xl">
-                            <CardHeader className="p-0 pb-5 border-b border-white/10 flex flex-row items-center justify-between">
+                        <Card className="bg-white border border-slate-200 rounded-[2.5rem] p-6 sm:p-8 text-slate-900 shadow-lg">
+                            <CardHeader className="p-0 pb-5 border-b border-slate-200 flex flex-row items-center justify-between">
                                 <div>
-                                    <CardTitle className="text-2xl font-black">
+                                    <CardTitle className="text-2xl font-black text-slate-900">
                                         {isSuccess 
                                             ? "Application Submitted" 
                                             : step === 1 
                                                 ? "Register as DSA Partner" 
                                                 : "Partner Verification & KYC"}
                                     </CardTitle>
-                                    <p className="text-xs text-slate-400 mt-1">
+                                    <p className="text-xs text-slate-500 mt-1">
                                         {isSuccess
                                             ? "Pending Admin Review & Verification"
                                             : step === 1 
@@ -588,7 +588,7 @@ export default function PartnerProgramPage() {
                                                 : "Step 2 of 2: Upload Documents & Company KYC"}
                                     </p>
                                 </div>
-                                <span className="text-xs font-black px-3 py-1 rounded-full bg-[#00c985]/20 text-[#00e699] border border-[#00c985]/40 uppercase tracking-wider">
+                                <span className="text-xs font-black px-3 py-1 rounded-full bg-sky-100 text-sky-800 border border-sky-300 uppercase tracking-wider">
                                     {isSuccess ? "Pending Review" : `Step ${step}/2`}
                                 </span>
                             </CardHeader>
@@ -601,47 +601,47 @@ export default function PartnerProgramPage() {
                                         className="space-y-6"
                                     >
                                         {/* Success Popup Card Notice */}
-                                        <div className="p-6 rounded-3xl bg-gradient-to-b from-emerald-950/40 via-slate-900/90 to-slate-900/90 border-2 border-emerald-500/40 text-center space-y-4 shadow-xl">
-                                            <div className="h-16 w-16 bg-emerald-500/20 text-[#00e699] rounded-3xl flex items-center justify-center mx-auto border border-emerald-500/40 shadow-lg shadow-emerald-500/10">
+                                        <div className="p-6 rounded-3xl bg-sky-50 border-2 border-sky-200 text-center space-y-4 shadow-sm">
+                                            <div className="h-16 w-16 bg-sky-100 text-[#0284c7] rounded-3xl flex items-center justify-center mx-auto border border-sky-300 shadow-sm">
                                                 <CheckCircle2 className="h-9 w-9" />
                                             </div>
 
                                             <div className="space-y-2">
-                                                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-500/20 text-amber-300 border border-amber-500/30 text-[11px] font-black uppercase tracking-wider">
-                                                    <Clock className="h-3 w-3" /> Status: PENDING ADMIN REVIEW
+                                                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-100 text-amber-900 border border-amber-300 text-[11px] font-black uppercase tracking-wider">
+                                                    <Clock className="h-3 w-3 text-amber-700" /> Status: PENDING ADMIN REVIEW
                                                 </span>
-                                                <h3 className="text-xl sm:text-2xl font-black text-white">
+                                                <h3 className="text-xl sm:text-2xl font-black text-slate-900">
                                                     Application Received!
                                                 </h3>
-                                                <p className="text-sm text-slate-200 leading-relaxed font-medium max-w-md mx-auto">
+                                                <p className="text-sm text-slate-600 leading-relaxed font-medium max-w-md mx-auto">
                                                     Thank you for applying! Your partner application has been submitted and is currently pending admin review. You will receive an email once approved.
                                                 </p>
                                             </div>
 
                                             {referenceNo && (
-                                                <div className="inline-block bg-slate-950/80 border border-slate-800 rounded-xl px-4 py-2 text-xs font-mono text-emerald-400 font-bold">
-                                                    Application Ref: <span className="text-white">{referenceNo}</span>
+                                                <div className="inline-block bg-white border border-slate-200 rounded-xl px-4 py-2 text-xs font-mono text-[#0284c7] font-bold shadow-xs">
+                                                    Application Ref: <span className="text-slate-900">{referenceNo}</span>
                                                 </div>
                                             )}
                                         </div>
 
                                         {/* What happens next roadmap */}
-                                        <div className="p-5 rounded-2xl bg-slate-900/80 border border-slate-800 space-y-3 text-xs">
-                                            <p className="font-bold text-white uppercase tracking-wider text-[11px] flex items-center gap-1.5">
-                                                <ShieldCheck className="h-4 w-4 text-[#00c985]" /> What happens next?
+                                        <div className="p-5 rounded-2xl bg-slate-50 border border-slate-200 space-y-3 text-xs">
+                                            <p className="font-bold text-slate-900 uppercase tracking-wider text-[11px] flex items-center gap-1.5">
+                                                <ShieldCheck className="h-4 w-4 text-[#0284c7]" /> What happens next?
                                             </p>
-                                            <div className="space-y-2 text-slate-300 leading-relaxed">
+                                            <div className="space-y-2 text-slate-600 leading-relaxed">
                                                 <div className="flex items-start gap-2.5">
-                                                    <span className="h-5 w-5 rounded-full bg-emerald-500/20 text-emerald-300 font-black text-[10px] flex items-center justify-center shrink-0 mt-0.5">1</span>
+                                                    <span className="h-5 w-5 rounded-full bg-sky-100 text-sky-800 font-black text-[10px] flex items-center justify-center shrink-0 mt-0.5">1</span>
                                                     <p>Admin verification team reviews your company details and KYC documents.</p>
                                                 </div>
                                                 <div className="flex items-start gap-2.5">
-                                                    <span className="h-5 w-5 rounded-full bg-emerald-500/20 text-emerald-300 font-black text-[10px] flex items-center justify-center shrink-0 mt-0.5">2</span>
-                                                    <p>Upon approval, an activation email with your portal access link is dispatched to <strong className="text-white">{basicDetails.email || "your registered email"}</strong>.</p>
+                                                    <span className="h-5 w-5 rounded-full bg-sky-100 text-sky-800 font-black text-[10px] flex items-center justify-center shrink-0 mt-0.5">2</span>
+                                                    <p>Upon approval, an activation email with your portal access link is dispatched to <strong className="text-slate-900">{basicDetails.email || "your registered email"}</strong>.</p>
                                                 </div>
                                                 <div className="flex items-start gap-2.5">
-                                                    <span className="h-5 w-5 rounded-full bg-emerald-500/20 text-emerald-300 font-black text-[10px] flex items-center justify-center shrink-0 mt-0.5">3</span>
-                                                    <p>Our Onboarding Lead will contact you on <strong className="text-white">+91 {basicDetails.mobile}</strong> to assign your Relationship Manager.</p>
+                                                    <span className="h-5 w-5 rounded-full bg-sky-100 text-sky-800 font-black text-[10px] flex items-center justify-center shrink-0 mt-0.5">3</span>
+                                                    <p>Our Onboarding Lead will contact you on <strong className="text-slate-900">+91 {basicDetails.mobile}</strong> to assign your Relationship Manager.</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -650,7 +650,7 @@ export default function PartnerProgramPage() {
                                             <Button
                                                 type="button"
                                                 onClick={() => setMode("login")}
-                                                className="flex-1 bg-[#00c985] hover:bg-[#00b074] text-slate-950 font-bold h-12 rounded-xl text-xs cursor-pointer"
+                                                className="flex-1 bg-[#0284c7] hover:bg-[#0369a1] text-white font-bold h-12 rounded-xl text-xs cursor-pointer shadow-sm"
                                             >
                                                 Go to Partner Login
                                             </Button>
@@ -658,7 +658,7 @@ export default function PartnerProgramPage() {
                                                 type="button"
                                                 variant="outline"
                                                 onClick={handleStartNewApplication}
-                                                className="flex-1 bg-slate-800 hover:bg-slate-700 text-white font-bold h-12 rounded-xl text-xs cursor-pointer border border-slate-700"
+                                                className="flex-1 bg-white hover:bg-slate-100 text-slate-900 font-bold h-12 rounded-xl text-xs cursor-pointer border border-slate-300"
                                             >
                                                 Submit Another
                                             </Button>
@@ -676,19 +676,19 @@ export default function PartnerProgramPage() {
                                                 className="space-y-4"
                                             >
                                                 <div>
-                                                    <label className="text-[10px] font-black uppercase text-slate-400">Full Name *</label>
+                                                    <label className="text-[10px] font-black uppercase text-slate-600">Full Name *</label>
                                                     <Input
                                                         placeholder="Enter your full name"
                                                         value={basicDetails.name}
                                                         onChange={e => setBasicDetails({ ...basicDetails, name: e.target.value })}
                                                         required
-                                                        className="h-12 rounded-xl font-bold bg-white/5 border-white/10 text-white placeholder:text-slate-500 text-xs"
+                                                        className="h-12 rounded-xl font-bold bg-white border-slate-300 text-slate-900 placeholder:text-slate-400 text-xs focus:ring-2 focus:ring-[#0284c7]"
                                                     />
                                                 </div>
 
                                                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                                                     <div>
-                                                        <label className="text-[10px] font-black uppercase text-slate-400">Mobile Number *</label>
+                                                        <label className="text-[10px] font-black uppercase text-slate-600">Mobile Number *</label>
                                                         <Input
                                                             type="tel"
                                                             maxLength={10}
@@ -696,41 +696,41 @@ export default function PartnerProgramPage() {
                                                             value={basicDetails.mobile}
                                                             onChange={e => setBasicDetails({ ...basicDetails, mobile: e.target.value.replace(/\D/g, "").slice(0, 10) })}
                                                             required
-                                                            className="h-12 rounded-xl font-bold bg-white/5 border-white/10 text-white placeholder:text-slate-500 text-xs"
+                                                            className="h-12 rounded-xl font-bold bg-white border-slate-300 text-slate-900 placeholder:text-slate-400 text-xs focus:ring-2 focus:ring-[#0284c7]"
                                                         />
                                                     </div>
                                                     <div>
-                                                        <label className="text-[10px] font-black uppercase text-slate-400">City / Location *</label>
+                                                        <label className="text-[10px] font-black uppercase text-slate-600">City / Location *</label>
                                                         <Input
                                                             placeholder="e.g. Pune, Mumbai, Delhi"
                                                             value={basicDetails.city}
                                                             onChange={e => setBasicDetails({ ...basicDetails, city: e.target.value })}
                                                             required
-                                                            className="h-12 rounded-xl font-bold bg-white/5 border-white/10 text-white placeholder:text-slate-500 text-xs"
+                                                            className="h-12 rounded-xl font-bold bg-white border-slate-300 text-slate-900 placeholder:text-slate-400 text-xs focus:ring-2 focus:ring-[#0284c7]"
                                                         />
                                                     </div>
                                                 </div>
 
                                                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                                                     <div>
-                                                        <label className="text-[10px] font-black uppercase text-slate-400">Email Address *</label>
+                                                        <label className="text-[10px] font-black uppercase text-slate-600">Email Address *</label>
                                                         <Input
                                                             type="email"
                                                             placeholder="partner@example.com"
                                                             value={basicDetails.email}
                                                             onChange={e => setBasicDetails({ ...basicDetails, email: e.target.value })}
                                                             required
-                                                            className="h-12 rounded-xl font-bold bg-white/5 border-white/10 text-white placeholder:text-slate-500 text-xs"
+                                                            className="h-12 rounded-xl font-bold bg-white border-slate-300 text-slate-900 placeholder:text-slate-400 text-xs focus:ring-2 focus:ring-[#0284c7]"
                                                         />
                                                     </div>
 
                                                     <div>
-                                                        <label className="text-[10px] font-black uppercase text-slate-400">Current Profession *</label>
+                                                        <label className="text-[10px] font-black uppercase text-slate-600">Current Profession *</label>
                                                         <select
                                                             value={basicDetails.profession}
                                                             onChange={e => setBasicDetails({ ...basicDetails, profession: e.target.value })}
                                                             required
-                                                            className="w-full h-12 bg-[#1a1d21] border border-white/10 rounded-xl px-3 text-xs font-bold text-white focus:ring-2 focus:ring-[#00c985]"
+                                                            className="w-full h-12 bg-white border border-slate-300 rounded-xl px-3 text-xs font-bold text-slate-900 focus:ring-2 focus:ring-[#0284c7]"
                                                         >
                                                             <option value="Loan Agent / DSA">Loan Agent / DSA</option>
                                                             <option value="Real Estate Consultant / Builder">Real Estate Consultant / Builder</option>
@@ -743,7 +743,7 @@ export default function PartnerProgramPage() {
 
                                                 <Button
                                                     type="submit"
-                                                    className="w-full bg-[#00c985] hover:bg-[#00b074] text-slate-950 font-black h-14 rounded-2xl uppercase tracking-wider text-xs sm:text-sm shadow-xl shadow-emerald-500/20 cursor-pointer flex items-center justify-center gap-2 mt-2"
+                                                    className="w-full bg-[#0284c7] hover:bg-[#0369a1] text-white font-black h-14 rounded-2xl uppercase tracking-wider text-xs sm:text-sm shadow-md cursor-pointer flex items-center justify-center gap-2 mt-2"
                                                 >
                                                     <span>Join Partner Program Now</span>
                                                     <ArrowRight className="h-4 w-4" />
@@ -759,44 +759,44 @@ export default function PartnerProgramPage() {
                                                 className="space-y-5"
                                             >
                                                 {/* Company / Firm Name & Location Fields */}
-                                                <div className="p-4 rounded-2xl bg-slate-900/80 border border-slate-800 space-y-3">
-                                                    <div className="flex items-center gap-2 text-xs font-black text-emerald-400 uppercase tracking-wide">
+                                                <div className="p-4 rounded-2xl bg-slate-50 border border-slate-200 space-y-3">
+                                                    <div className="flex items-center gap-2 text-xs font-black text-[#0284c7] uppercase tracking-wide">
                                                         <Building className="h-4 w-4" />
                                                         <span>Company & Operating Details</span>
                                                     </div>
 
                                                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                                                         <div>
-                                                            <label className="text-[10px] font-black uppercase text-slate-400">Company / Firm Name *</label>
+                                                            <label className="text-[10px] font-black uppercase text-slate-600">Company / Firm Name *</label>
                                                             <Input
                                                                 placeholder="e.g. Apex Financial Solutions Pvt Ltd"
                                                                 value={extendedDetails.companyName}
                                                                 onChange={e => setExtendedDetails({ ...extendedDetails, companyName: e.target.value })}
                                                                 required
-                                                                className="h-11 rounded-xl font-bold bg-white/5 border-white/10 text-white placeholder:text-slate-500 text-xs"
+                                                                className="h-11 rounded-xl font-bold bg-white border-slate-300 text-slate-900 placeholder:text-slate-400 text-xs focus:ring-2 focus:ring-[#0284c7]"
                                                             />
                                                         </div>
 
                                                         <div>
-                                                            <label className="text-[10px] font-black uppercase text-slate-400">Office Location / Area *</label>
+                                                            <label className="text-[10px] font-black uppercase text-slate-600">Office Location / Area *</label>
                                                             <Input
                                                                 placeholder="e.g. Narhe, Shivaji Nagar, Pune"
                                                                 value={extendedDetails.location}
                                                                 onChange={e => setExtendedDetails({ ...extendedDetails, location: e.target.value })}
                                                                 required
-                                                                className="h-11 rounded-xl font-bold bg-white/5 border-white/10 text-white placeholder:text-slate-500 text-xs"
+                                                                className="h-11 rounded-xl font-bold bg-white border-slate-300 text-slate-900 placeholder:text-slate-400 text-xs focus:ring-2 focus:ring-[#0284c7]"
                                                             />
                                                         </div>
                                                     </div>
 
                                                     <div>
-                                                        <label className="text-[10px] font-black uppercase text-slate-400">Complete Registered Address Proof Details *</label>
+                                                        <label className="text-[10px] font-black uppercase text-slate-600">Complete Registered Address Proof Details *</label>
                                                         <Input
                                                             placeholder="Full office or residence address"
                                                             value={extendedDetails.fullAddress}
                                                             onChange={e => setExtendedDetails({ ...extendedDetails, fullAddress: e.target.value })}
                                                             required
-                                                            className="h-11 rounded-xl font-bold bg-white/5 border-white/10 text-white placeholder:text-slate-500 text-xs"
+                                                            className="h-11 rounded-xl font-bold bg-white border-slate-300 text-slate-900 placeholder:text-slate-400 text-xs focus:ring-2 focus:ring-[#0284c7]"
                                                         />
                                                     </div>
                                                 </div>
@@ -804,11 +804,11 @@ export default function PartnerProgramPage() {
                                                 {/* Document Upload Points */}
                                                 <div className="space-y-3">
                                                     <div className="flex items-center justify-between">
-                                                        <span className="text-xs font-black text-white uppercase tracking-wider flex items-center gap-1.5">
-                                                            <ShieldCheck className="h-4 w-4 text-[#00c985]" />
+                                                        <span className="text-xs font-black text-slate-900 uppercase tracking-wider flex items-center gap-1.5">
+                                                            <ShieldCheck className="h-4 w-4 text-[#0284c7]" />
                                                             Upload Verification Documents (Admin Approval)
                                                         </span>
-                                                        <span className="text-[11px] font-bold text-emerald-400 bg-emerald-950/50 px-2 py-0.5 rounded-full border border-emerald-800">
+                                                        <span className="text-[11px] font-bold text-sky-800 bg-sky-100 px-2 py-0.5 rounded-full border border-sky-300">
                                                             {Object.keys(uploadedDocs).length} / {requiredPartnerDocs.length} Attached
                                                         </span>
                                                     </div>
@@ -824,22 +824,22 @@ export default function PartnerProgramPage() {
                                                                     key={doc.key}
                                                                     className={`p-3 rounded-xl border flex items-center justify-between gap-2 transition-all ${
                                                                         isUploaded
-                                                                            ? "bg-emerald-950/40 border-emerald-500/50"
-                                                                            : "bg-slate-900/60 border-slate-800 hover:border-slate-700"
+                                                                            ? "bg-sky-50 border-sky-300"
+                                                                            : "bg-white border-slate-200 hover:border-slate-300"
                                                                     }`}
                                                                 >
                                                                     <div className="space-y-0.5 flex-1 min-w-0">
-                                                                        <p className="text-xs font-bold text-white truncate">
+                                                                        <p className="text-xs font-bold text-slate-900 truncate">
                                                                             {doc.label}
                                                                         </p>
                                                                         {isUploaded && docInfo ? (
-                                                                            <div className="flex items-center gap-1.5 text-[10px] text-emerald-300 font-bold">
-                                                                                <CheckCircle2 className="h-3 w-3 text-emerald-400 shrink-0" />
+                                                                            <div className="flex items-center gap-1.5 text-[10px] text-sky-700 font-bold">
+                                                                                <CheckCircle2 className="h-3 w-3 text-[#0284c7] shrink-0" />
                                                                                 <span className="truncate">{docInfo.fileName}</span>
-                                                                                <span className="text-slate-400 font-normal">({docInfo.fileSize})</span>
+                                                                                <span className="text-slate-500 font-normal">({docInfo.fileSize})</span>
                                                                             </div>
                                                                         ) : (
-                                                                            <p className="text-[10px] text-slate-400 font-medium">{doc.desc}</p>
+                                                                            <p className="text-[10px] text-slate-500 font-medium">{doc.desc}</p>
                                                                         )}
                                                                     </div>
 
@@ -855,7 +855,7 @@ export default function PartnerProgramPage() {
                                                                         <button
                                                                             type="button"
                                                                             onClick={() => handleRemoveDoc(doc.key)}
-                                                                            className="p-1.5 rounded-lg text-rose-400 hover:text-rose-300 hover:bg-rose-950/50 cursor-pointer"
+                                                                            className="p-1.5 rounded-lg text-rose-600 hover:text-rose-700 hover:bg-rose-50 cursor-pointer"
                                                                             title="Remove file"
                                                                         >
                                                                             <Trash2 className="h-4 w-4" />
@@ -866,10 +866,10 @@ export default function PartnerProgramPage() {
                                                                             variant="outline"
                                                                             disabled={isCurrentlyUploading}
                                                                             onClick={() => fileInputRefs.current[doc.key]?.click()}
-                                                                            className="h-8 px-3 text-[11px] font-bold rounded-lg border-emerald-500/40 text-emerald-300 bg-emerald-500/10 hover:bg-[#00c985] hover:text-slate-950 cursor-pointer transition-all shrink-0"
+                                                                            className="h-8 px-3 text-[11px] font-bold rounded-lg border-sky-300 text-sky-800 bg-sky-50 hover:bg-[#0284c7] hover:text-white cursor-pointer transition-all shrink-0"
                                                                         >
                                                                             {isCurrentlyUploading ? (
-                                                                                <div className="h-3 w-3 border-2 border-emerald-400 border-t-transparent rounded-full animate-spin" />
+                                                                                <div className="h-3 w-3 border-2 border-[#0284c7] border-t-transparent rounded-full animate-spin" />
                                                                             ) : (
                                                                                 <>
                                                                                     <Upload className="h-3 w-3 mr-1" /> Upload
@@ -889,7 +889,7 @@ export default function PartnerProgramPage() {
                                                         type="button"
                                                         variant="outline"
                                                         onClick={() => setStep(1)}
-                                                        className="h-12 px-5 rounded-xl border-slate-700 bg-slate-800 hover:bg-slate-700 text-white font-bold text-xs cursor-pointer"
+                                                        className="h-12 px-5 rounded-xl border-slate-300 bg-white hover:bg-slate-100 text-slate-800 font-bold text-xs cursor-pointer"
                                                     >
                                                         <ArrowLeft className="h-4 w-4 mr-1" /> Back
                                                     </Button>
@@ -897,11 +897,11 @@ export default function PartnerProgramPage() {
                                                     <Button
                                                         type="submit"
                                                         disabled={isSubmitting}
-                                                        className="flex-1 bg-[#00c985] hover:bg-[#00b074] text-slate-950 font-black h-12 rounded-xl uppercase tracking-wider text-xs sm:text-sm shadow-xl shadow-emerald-500/20 cursor-pointer flex items-center justify-center gap-2"
+                                                        className="flex-1 bg-[#0284c7] hover:bg-[#0369a1] text-white font-black h-12 rounded-xl uppercase tracking-wider text-xs sm:text-sm shadow-md cursor-pointer flex items-center justify-center gap-2"
                                                     >
                                                         {isSubmitting ? (
                                                             <div className="flex items-center gap-2">
-                                                                <div className="h-4 w-4 border-2 border-slate-950 border-t-transparent rounded-full animate-spin" />
+                                                                <div className="h-4 w-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
                                                                 <span>Sending for Admin Approval...</span>
                                                             </div>
                                                         ) : (
@@ -923,36 +923,36 @@ export default function PartnerProgramPage() {
             </section>
 
             {/* Benefits Grid */}
-            <section className="py-20 container px-4 md:px-6 mx-auto relative z-10 space-y-12">
+            <section className="py-20 container px-4 md:px-6 mx-auto relative z-10 space-y-12 bg-white">
                 <div className="text-center max-w-2xl mx-auto space-y-3">
-                    <h2 className="text-3xl md:text-5xl font-black text-white">Why Join Shree Finance Partner Portal?</h2>
-                    <p className="text-slate-400 text-sm">Everything you need to build a high-earning loan distribution business.</p>
+                    <h2 className="text-3xl md:text-5xl font-black text-[#0f172a]">Why Join Shree Finance Partner Portal?</h2>
+                    <p className="text-slate-600 text-sm">Everything you need to build a high-earning loan distribution business.</p>
                 </div>
 
                 <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
                     {benefits.map((b, idx) => (
-                        <div key={idx} className="bg-slate-900/60 border border-sky-800/40 p-6 rounded-3xl space-y-4 backdrop-blur-md">
-                            <div className="h-12 w-12 rounded-2xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center font-black">
+                        <div key={idx} className="bg-white border border-slate-100 p-6 rounded-3xl space-y-4 shadow-sm hover:shadow-lg transition-all">
+                            <div className="h-12 w-12 rounded-2xl bg-[#0f172a] text-white flex items-center justify-center font-black">
                                 <b.icon className="h-6 w-6" />
                             </div>
-                            <h3 className="text-xl font-extrabold text-white">{b.title}</h3>
-                            <p className="text-xs text-slate-300 leading-relaxed">{b.desc}</p>
+                            <h3 className="text-xl font-extrabold text-[#0f172a]">{b.title}</h3>
+                            <p className="text-xs text-slate-500 leading-relaxed">{b.desc}</p>
                         </div>
                     ))}
                 </div>
             </section>
 
             {/* Partner Tiers */}
-            <section className="py-16 container px-4 md:px-6 mx-auto relative z-10">
-                <div className="bg-slate-900/80 border border-sky-800/50 rounded-[2.5rem] p-8 space-y-8">
-                    <h2 className="text-2xl font-bold text-center text-white">Partner Payout Structure & Tiers</h2>
+            <section className="py-16 container px-4 md:px-6 mx-auto relative z-10 bg-[#f8fafc]">
+                <div className="border border-slate-200 rounded-[2.5rem] p-8 space-y-8 shadow-sm bg-white">
+                    <h2 className="text-2xl font-bold text-center text-[#0f172a]">Partner Payout Structure & Tiers</h2>
                     <div className="grid md:grid-cols-3 gap-6">
                         {partnerTiers.map((t, idx) => (
-                            <div key={idx} className="bg-black/40 p-6 rounded-3xl border border-white/10 space-y-3 text-center">
-                                <h3 className="text-lg font-black text-emerald-400">{t.name}</h3>
-                                <p className="text-xs text-slate-400 font-bold uppercase">{t.volume}</p>
-                                <p className="text-3xl font-black text-white py-2">{t.payout}</p>
-                                <p className="text-[11px] text-slate-300 font-medium">{t.perks}</p>
+                            <div key={idx} className="bg-[#f8fafc] p-6 rounded-3xl border border-slate-100 shadow-sm space-y-3 text-center">
+                                <h3 className="text-lg font-black text-[#0f172a]">{t.name}</h3>
+                                <p className="text-xs text-slate-500 font-bold uppercase">{t.volume}</p>
+                                <p className="text-3xl font-black text-[#0284c7] py-2">{t.payout}</p>
+                                <p className="text-[11px] text-slate-600 font-medium">{t.perks}</p>
                             </div>
                         ))}
                     </div>

@@ -78,7 +78,7 @@ export function PersonalLoanInnerForm({ data, onChange }: Props) {
                     value={data.city}
                     onChange={(e) => onChange({ city: e.target.value })}
                     required
-                    className="w-full h-11 bg-white border border-sky-200 rounded-md px-3 text-xs font-bold text-slate-800 focus:ring-2 focus:ring-[#00c985]"
+                    className="w-full h-11 bg-white border border-sky-200 rounded-md px-3 text-xs font-bold text-slate-800 focus:ring-2 focus:ring-[#0284c7]"
                 >
                     <option value="">Please Select</option>
                     <option value="Mumbai">Mumbai</option>
@@ -102,7 +102,7 @@ export function PersonalLoanInnerForm({ data, onChange }: Props) {
                     value={data.loanPurpose}
                     onChange={(e) => onChange({ loanPurpose: e.target.value })}
                     required
-                    className="w-full h-11 bg-white border border-sky-200 rounded-md px-3 text-xs font-bold text-slate-800 focus:ring-2 focus:ring-[#00c985]"
+                    className="w-full h-11 bg-white border border-sky-200 rounded-md px-3 text-xs font-bold text-slate-800 focus:ring-2 focus:ring-[#0284c7]"
                 >
                     <option value="Marriage / Wedding Expenses">Marriage / Family Wedding Expenses</option>
                     <option value="Medical Emergency / Hospitalization">Medical Emergency / Hospitalization</option>

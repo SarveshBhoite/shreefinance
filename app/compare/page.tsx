@@ -6,22 +6,18 @@ import { Sparkles, ShieldCheck, CheckCircle2, TrendingDown, Building2 } from "lu
 
 export default function ComparePage() {
     return (
-        <div className="pb-20 bg-[#181a1d] text-white font-sans mx-auto min-h-screen relative overflow-hidden">
-            {/* Background Beams */}
-            <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#00c985]/10 rounded-full blur-[120px] pointer-events-none" />
-            <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-amber-400/5 rounded-full blur-[100px] pointer-events-none" />
-
+        <div className="pb-20 bg-white dark:bg-[#f8fafc] text-slate-900 dark:text-white font-sans mx-auto min-h-screen relative overflow-hidden transition-colors duration-300">
             {/* Hero Header */}
-            <section className="pt-16 pb-12 border-b border-slate-800 relative z-10">
+            <section className="pt-16 pb-12 border-b border-slate-200 dark:border-slate-200 bg-[#f8fafc] dark:bg-[#f8fafc] relative z-10">
                 <div className="container px-4 md:px-6 mx-auto text-center space-y-4 max-w-3xl">
-                    <div className="inline-flex items-center gap-2 rounded-full border border-emerald-500/40 bg-emerald-500/10 px-4 py-1.5 text-xs font-black text-[#00e699] uppercase tracking-widest">
-                        <Sparkles className="h-3.5 w-3.5" />
+                    <div className="inline-flex items-center gap-2 rounded-full border border-sky-500/30 bg-sky-50 dark:bg-sky-500/15 px-3.5 py-1 text-xs font-black text-sky-800 dark:text-[#0284c7] uppercase tracking-wider">
+                        <Sparkles className="h-3.5 w-3.5 text-[#0284c7]" />
                         Multi-Bank Comparison Engine (2026)
                     </div>
-                    <h1 className="text-4xl md:text-6xl font-black text-white tracking-tight">
+                    <h1 className="text-3xl md:text-5xl font-black text-slate-900 dark:text-white tracking-tight">
                         Compare Online Loans in India
                     </h1>
-                    <p className="text-slate-300 text-base md:text-lg leading-relaxed font-medium">
+                    <p className="text-slate-600 dark:text-slate-600 text-sm md:text-base leading-relaxed font-normal">
                         Compare live interest rates, processing fees, and EMI structures across top nationalized, government, and private banks in one place.
                     </p>
                 </div>
@@ -38,22 +34,22 @@ export default function ComparePage() {
             </section>
 
             {/* Trust Badges */}
-            <section className="container px-4 mx-auto py-12 border-t border-slate-800 text-center">
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto text-xs font-black text-slate-300 uppercase tracking-widest">
-                    <div className="p-5 bg-[#24272c] rounded-2xl border border-slate-800 flex flex-col items-center">
-                        <ShieldCheck className="h-6 w-6 text-[#00c985] mb-2" />
+            <section className="container px-4 mx-auto py-12 border-t border-slate-200 dark:border-slate-200 text-center">
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto text-xs font-bold text-slate-700 dark:text-slate-600 uppercase tracking-wider">
+                    <div className="p-5 bg-[#f8fafc] dark:bg-white rounded-2xl border border-slate-200 dark:border-slate-200 flex flex-col items-center shadow-xs">
+                        <ShieldCheck className="h-6 w-6 text-[#0284c7] mb-2" />
                         <span>100% Free & Transparent</span>
                     </div>
-                    <div className="p-5 bg-[#24272c] rounded-2xl border border-slate-800 flex flex-col items-center">
-                        <Building2 className="h-6 w-6 text-white mb-2" />
+                    <div className="p-5 bg-[#f8fafc] dark:bg-white rounded-2xl border border-slate-200 dark:border-slate-200 flex flex-col items-center shadow-xs">
+                        <Building2 className="h-6 w-6 text-slate-900 dark:text-white mb-2" />
                         <span>40+ Partner Lenders</span>
                     </div>
-                    <div className="p-5 bg-[#24272c] rounded-2xl border border-slate-800 flex flex-col items-center">
-                        <CheckCircle2 className="h-6 w-6 text-amber-400 mb-2" />
+                    <div className="p-5 bg-[#f8fafc] dark:bg-white rounded-2xl border border-slate-200 dark:border-slate-200 flex flex-col items-center shadow-xs">
+                        <CheckCircle2 className="h-6 w-6 text-amber-500 mb-2" />
                         <span>Zero Hidden Charges</span>
                     </div>
-                    <div className="p-5 bg-[#24272c] rounded-2xl border border-slate-800 flex flex-col items-center">
-                        <TrendingDown className="h-6 w-6 text-[#00e699] mb-2" />
+                    <div className="p-5 bg-[#f8fafc] dark:bg-white rounded-2xl border border-slate-200 dark:border-slate-200 flex flex-col items-center shadow-xs">
+                        <TrendingDown className="h-6 w-6 text-[#0284c7] mb-2" />
                         <span>Real-time Rate Updates</span>
                     </div>
                 </div>

@@ -80,7 +80,7 @@ export function LoanDocumentsUploadSection({
                 <div>
                     <h3 className="text-lg font-black text-slate-900 flex items-center gap-2">
                         <span>📁 Upload Required Documents</span>
-                        <span className="text-xs font-bold text-emerald-800 bg-emerald-50 border border-emerald-300 px-2.5 py-0.5 rounded-full">
+                        <span className="text-xs font-bold text-sky-800 bg-sky-50 border border-sky-300 px-2.5 py-0.5 rounded-full">
                             {uploadedCount} / {totalDocs} Attached
                         </span>
                     </h3>
@@ -90,7 +90,7 @@ export function LoanDocumentsUploadSection({
                 </div>
 
                 <div className="flex items-center gap-1.5 text-[11px] font-bold text-slate-500 bg-sky-50 px-3 py-1.5 rounded-xl border border-sky-200 shrink-0">
-                    <ShieldCheck className="h-4 w-4 text-[#00c985]" />
+                    <ShieldCheck className="h-4 w-4 text-[#0284c7]" />
                     <span>256-bit Encrypted & Confidential</span>
                 </div>
             </div>
@@ -107,7 +107,7 @@ export function LoanDocumentsUploadSection({
                             key={docTitle}
                             className={`p-4 rounded-2xl border transition-all duration-200 flex flex-col justify-between ${
                                 isUploaded
-                                    ? "bg-emerald-50/60 border-emerald-300 shadow-sm"
+                                    ? "bg-sky-50/60 border-sky-300 shadow-sm"
                                     : "bg-white border-sky-200 hover:border-[#0284c7] shadow-xs"
                             }`}
                         >
@@ -116,7 +116,7 @@ export function LoanDocumentsUploadSection({
                                     <div className="flex items-center gap-2">
                                         <div className={`p-2 rounded-xl shrink-0 ${
                                             isUploaded
-                                                ? "bg-[#00c985] text-slate-950"
+                                                ? "bg-[#0284c7] text-slate-950"
                                                 : "bg-sky-100 text-sky-800"
                                         }`}>
                                             {isUploaded ? <CheckCircle2 className="h-4 w-4" /> : <FileText className="h-4 w-4" />}
@@ -133,9 +133,9 @@ export function LoanDocumentsUploadSection({
 
                                     {/* Uploaded File Chip */}
                                     {isUploaded && docInfo && (
-                                        <div className="mt-2 flex items-center justify-between bg-white px-3 py-1.5 rounded-xl border border-emerald-200 text-xs font-bold text-slate-800">
+                                        <div className="mt-2 flex items-center justify-between bg-white px-3 py-1.5 rounded-xl border border-sky-200 text-xs font-bold text-slate-800">
                                             <div className="truncate max-w-[200px] flex items-center gap-1.5 text-[11px] text-emerald-950 font-bold">
-                                                <FileText className="h-3.5 w-3.5 text-emerald-600 shrink-0" />
+                                                <FileText className="h-3.5 w-3.5 text-sky-600 shrink-0" />
                                                 <span className="truncate">{docInfo.fileName}</span>
                                                 <span className="text-[10px] text-slate-500 font-normal">({docInfo.fileSize})</span>
                                             </div>

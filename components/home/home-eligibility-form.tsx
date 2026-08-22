@@ -35,16 +35,17 @@ export function HomeEligibilityForm({ className = "", defaultLoanType = "Persona
     };
 
     return (
-        <div className={`w-full max-w-4xl mx-auto bg-white dark:bg-[#181a1d] text-slate-900 dark:text-white rounded-3xl border border-slate-200 dark:border-slate-800 shadow-xl p-6 sm:p-10 font-sans relative overflow-hidden transition-colors duration-300 ${className}`}>
+        <div className={`w-full max-w-4xl mx-auto bg-white dark:bg-white text-slate-900 dark:text-white rounded-3xl border border-slate-200 dark:border-slate-800 shadow-xl p-6 sm:p-10 font-sans relative overflow-hidden transition-colors duration-300 ${className}`}>
             {/* Ambient Background Accents */}
-            <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-[#00c985]/10 rounded-full blur-[100px] pointer-events-none" />
-            <div className="absolute bottom-0 left-0 w-[350px] h-[350px] bg-emerald-500/5 rounded-full blur-[90px] pointer-events-none" />
+            <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-[#0284c7]/10 rounded-full blur-[100px] pointer-events-none" />
+            <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-[#0284c7]/10 rounded-full blur-[100px] pointer-events-none" />
+            <div className="absolute bottom-0 left-0 w-[350px] h-[350px] bg-sky-500/5 rounded-full blur-[90px] pointer-events-none" />
 
             {/* Header */}
             <div className="border-b border-slate-100 dark:border-slate-800 pb-6 mb-8 relative z-10">
                 <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-3">
                     <div>
-                        <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-50 dark:bg-emerald-500/15 text-[#00a86b] dark:text-[#00e699] text-xs font-black uppercase tracking-wider mb-2 border border-emerald-200 dark:border-emerald-500/30">
+                        <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-sky-50 dark:bg-sky-500/15 text-[#0284c7] text-xs font-black uppercase tracking-wider mb-2 border border-sky-200 dark:border-sky-500/30">
                             <Sparkles className="h-3.5 w-3.5" /> Direct Bank Facility Pre-Approval
                         </div>
                         <h2 className="text-2xl sm:text-3xl font-black text-slate-900 dark:text-white tracking-tight">
@@ -63,9 +64,9 @@ export function HomeEligibilityForm({ className = "", defaultLoanType = "Persona
                     <motion.div
                         initial={{ opacity: 0, scale: 0.96 }}
                         animate={{ opacity: 1, scale: 1 }}
-                        className="bg-slate-900/90 border border-emerald-500/30 rounded-2xl p-6 sm:p-8 space-y-6 text-center shadow-lg"
+                        className="bg-slate-900/90 border border-sky-500/30 rounded-2xl p-6 sm:p-8 space-y-6 text-center shadow-lg"
                     >
-                        <div className="h-16 w-16 bg-[#00c985]/20 text-[#00c985] rounded-full flex items-center justify-center mx-auto border border-[#00c985]/40 animate-in zoom-in">
+                        <div className="h-16 w-16 bg-sky-500/20 text-[#0284c7] rounded-full flex items-center justify-center mx-auto border border-sky-500/40 animate-in zoom-in">
                             <CheckCircle2 className="h-9 w-9" />
                         </div>
 
@@ -77,7 +78,7 @@ export function HomeEligibilityForm({ className = "", defaultLoanType = "Persona
                                 Congratulations, {formData.name || "Applicant"}!
                             </h3>
                             <p className="text-slate-300 text-xs sm:text-sm max-w-lg mx-auto leading-relaxed">
-                                We have verified your preliminary profile and sent your <strong>Eligibility Confirmation & Direct Application Link</strong> to <strong className="text-[#00e699]">{formData.email}</strong>.
+                                We have verified your preliminary profile and sent your <strong>Eligibility Confirmation & Direct Application Link</strong> to <strong className="text-sky-300">{formData.email}</strong>.
                             </p>
                         </div>
 
@@ -89,7 +90,7 @@ export function HomeEligibilityForm({ className = "", defaultLoanType = "Persona
                             </div>
                             <div className="flex justify-between">
                                 <span className="text-slate-400">Selected Facility:</span>
-                                <span className="text-[#00e699] font-bold">{formData.loanType}</span>
+                                <span className="text-sky-400 font-bold">{formData.loanType}</span>
                             </div>
                             <div className="flex justify-between">
                                 <span className="text-slate-400">Contact Number:</span>
@@ -105,7 +106,7 @@ export function HomeEligibilityForm({ className = "", defaultLoanType = "Persona
                         <div className="pt-2 flex flex-col sm:flex-row justify-center gap-3">
                             <Link
                                 href="/apply"
-                                className="inline-flex items-center justify-center gap-2 bg-[#00c985] hover:bg-[#00b074] text-slate-950 font-black text-xs uppercase px-8 h-12 rounded-xl shadow-lg transition-transform active:scale-95"
+                                className="inline-flex items-center justify-center gap-2 bg-[#0284c7] hover:bg-[#0369a1] text-white font-black text-xs uppercase px-8 h-12 rounded-xl shadow-lg transition-transform active:scale-95"
                             >
                                 <span>Complete Full Application Now</span>
                                 <ArrowRight className="h-4 w-4" />
@@ -121,7 +122,7 @@ export function HomeEligibilityForm({ className = "", defaultLoanType = "Persona
                             </Button>
                         </div>
 
-                        <div className="p-3 bg-emerald-500/10 border border-emerald-500/20 rounded-xl flex items-center justify-center gap-2 text-xs text-[#00e699] font-semibold">
+                        <div className="p-3 bg-sky-500/10 border border-sky-500/20 rounded-xl flex items-center justify-center gap-2 text-xs text-sky-400 font-semibold">
                             <ShieldCheck className="h-4 w-4 shrink-0" />
                             <span>Our senior loan officer will also call you shortly to assist with document collection.</span>
                         </div>
@@ -137,46 +138,49 @@ export function HomeEligibilityForm({ className = "", defaultLoanType = "Persona
                                 value={formData.loanType}
                                 onChange={(e) => setFormData({ ...formData, loanType: e.target.value })}
                                 required
-                                className="w-full h-12 rounded-xl border border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-[#121417] text-slate-900 dark:text-white px-4 font-bold text-xs focus:ring-2 focus:ring-[#00c985] focus:outline-none focus:border-emerald-500"
+                                className="w-full h-12 rounded-xl border border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-[#121417] text-slate-900 dark:text-white px-4 font-bold text-xs focus:ring-2 focus:ring-[#0284c7] focus:outline-none focus:border-sky-500"
                             >
-                                <option value="Personal Loan">💼 Personal Loan (Instant Disbursal from 10.25% p.a.)</option>
-                                <option value="Home Loan">🏠 Home Loan (Housing Finance from 8.35% p.a.)</option>
-                                <option value="Car Loan">🚗 Car Loan (100% On-Road Funding from 8.75% p.a.)</option>
-                                <option value="Business Loan">🏢 Business Loan (Working Capital from 13.99% p.a.)</option>
-                                <option value="Loan Against Property">🏬 Loan Against Property (LAP from 9.25% p.a.)</option>
-                                <option value="Education Loan">🎓 Higher Education Loan (from 9.50% p.a.)</option>
+                                <option value="Personal Loan">💰 Instant Personal Loan (Low APR • 24hr Disbursal)</option>
+                                <option value="Home Loan">🏠 Home Loan (Starting 8.35% • Multi-Bank Comparison)</option>
+                                <option value="Car / Vehicle Loan">🚗 New / Used Car Loan (100% On-Road Funding)</option>
+                                <option value="Business Loan">🏢 Collateral-Free Business Loan (Up to ₹75 Lakhs)</option>
+                                <option value="Loan Against Property">🏗️ Loan Against Property (LAP • High Ticket Capital)</option>
+                                <option value="Education Loan">🎓 Higher Education Loan (Global Studies • Zero Margin)</option>
+                                <option value="Credit Card Referral">💳 Lifetime Free Premium Credit Cards</option>
                             </select>
                         </div>
 
-                        {/* 4 Core Input Fields */}
-                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        {/* 4 Input Fields Grid */}
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                             <div className="space-y-2">
                                 <label className="text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300">
-                                    Full Name <span className="text-rose-500">*</span>
+                                    Full Name (As per PAN) <span className="text-rose-500">*</span>
                                 </label>
                                 <Input
                                     required
-                                    placeholder="Enter your name as per Aadhaar / PAN"
+                                    placeholder="Enter your full name"
                                     value={formData.name}
                                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                                    className="bg-slate-50 dark:bg-[#121417] border-slate-300 dark:border-slate-700 text-slate-900 dark:text-white h-12 rounded-xl text-xs font-medium focus:bg-white dark:focus:bg-[#15171a] focus:border-emerald-500"
+                                    className="bg-slate-50 dark:bg-[#121417] border-slate-300 dark:border-slate-700 text-slate-900 dark:text-white h-12 rounded-xl text-xs font-medium focus:bg-white dark:focus:bg-[#15171a] focus:border-sky-500"
                                 />
                             </div>
 
                             <div className="space-y-2">
                                 <label className="text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300">
-                                    Mobile Number <span className="text-rose-500">*</span>
+                                    10-Digit Mobile Number <span className="text-rose-500">*</span>
                                 </label>
-                                <div className="relative">
-                                    <span className="absolute left-3.5 top-3 text-xs font-bold text-slate-500 dark:text-slate-400">+91</span>
+                                <div className="flex gap-2">
+                                    <span className="inline-flex items-center px-3.5 rounded-xl border border-slate-300 dark:border-slate-700 bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 text-xs font-bold">
+                                        +91
+                                    </span>
                                     <Input
                                         required
                                         type="tel"
                                         maxLength={10}
-                                        placeholder="10-digit number"
+                                        placeholder="Mobile number"
                                         value={formData.mobile}
                                         onChange={(e) => setFormData({ ...formData, mobile: e.target.value.replace(/\D/g, "") })}
-                                        className="pl-12 bg-slate-50 dark:bg-[#121417] border-slate-300 dark:border-slate-700 text-slate-900 dark:text-white h-12 rounded-xl text-xs font-medium focus:bg-white dark:focus:bg-[#15171a] focus:border-emerald-500"
+                                        className="bg-slate-50 dark:bg-[#121417] border-slate-300 dark:border-slate-700 text-slate-900 dark:text-white h-12 rounded-xl text-xs font-medium focus:bg-white dark:focus:bg-[#15171a] focus:border-sky-500"
                                     />
                                 </div>
                             </div>
@@ -191,7 +195,7 @@ export function HomeEligibilityForm({ className = "", defaultLoanType = "Persona
                                     placeholder="yourname@gmail.com"
                                     value={formData.email}
                                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                                    className="bg-slate-50 dark:bg-[#121417] border-slate-300 dark:border-slate-700 text-slate-900 dark:text-white h-12 rounded-xl text-xs font-medium focus:bg-white dark:focus:bg-[#15171a] focus:border-emerald-500"
+                                    className="bg-slate-50 dark:bg-[#121417] border-slate-300 dark:border-slate-700 text-slate-900 dark:text-white h-12 rounded-xl text-xs font-medium focus:bg-white dark:focus:bg-[#15171a] focus:border-sky-500"
                                 />
                             </div>
 
@@ -204,7 +208,7 @@ export function HomeEligibilityForm({ className = "", defaultLoanType = "Persona
                                     placeholder="e.g. Pune, Mumbai, Delhi, Bengaluru"
                                     value={formData.city}
                                     onChange={(e) => setFormData({ ...formData, city: e.target.value })}
-                                    className="bg-slate-50 dark:bg-[#121417] border-slate-300 dark:border-slate-700 text-slate-900 dark:text-white h-12 rounded-xl text-xs font-medium focus:bg-white dark:focus:bg-[#15171a] focus:border-emerald-500"
+                                    className="bg-slate-50 dark:bg-[#121417] border-slate-300 dark:border-slate-700 text-slate-900 dark:text-white h-12 rounded-xl text-xs font-medium focus:bg-white dark:focus:bg-[#15171a] focus:border-sky-500"
                                 />
                             </div>
                         </div>
@@ -220,16 +224,16 @@ export function HomeEligibilityForm({ className = "", defaultLoanType = "Persona
                             <Button
                                 type="submit"
                                 disabled={isSubmitting}
-                                className="w-full h-14 text-sm sm:text-base font-black bg-[#00c985] hover:bg-[#00b074] text-slate-950 uppercase tracking-wider rounded-2xl shadow-xl transition-all cursor-pointer hover:scale-[1.01]"
+                                className="w-full h-14 text-sm sm:text-base font-black bg-[#0284c7] hover:bg-[#0369a1] text-white uppercase tracking-wider rounded-2xl shadow-xl transition-all cursor-pointer hover:scale-[1.01]"
                             >
                                 {isSubmitting ? (
                                     <div className="flex items-center gap-2">
-                                        <div className="h-5 w-5 border-2 border-slate-950 border-t-transparent rounded-full animate-spin" />
+                                        <div className="h-5 w-5 border-2 border-white border-t-transparent rounded-full animate-spin" />
                                         <span>Checking Eligibility Across 40+ Banks...</span>
                                     </div>
                                 ) : (
                                     <div className="flex items-center justify-center gap-2">
-                                        <Sparkles className="h-5 w-5 fill-slate-950" />
+                                        <Sparkles className="h-5 w-5 fill-white" />
                                         <span>Check Eligibility & Get Loan Link 🚀</span>
                                     </div>
                                 )}
@@ -239,7 +243,7 @@ export function HomeEligibilityForm({ className = "", defaultLoanType = "Persona
                         {/* Trust Badges */}
                         <div className="flex flex-wrap items-center justify-between gap-3 pt-3 border-t border-slate-800 text-[11px] text-slate-400">
                             <div className="flex items-center gap-1.5">
-                                <ShieldCheck className="h-4 w-4 text-[#00c985]" />
+                                <ShieldCheck className="h-4 w-4 text-[#0284c7]" />
                                 <span>100% Confidential • Zero Credit Score Impact</span>
                             </div>
                             <div className="flex items-center gap-1.5">

@@ -31,11 +31,11 @@ export function ContentSection({
                 >
                     {/* Text Content */}
                     <div className={cn("space-y-6", reverse ? "lg:col-start-2" : "")}>
-                        <h2 className="text-3xl md:text-5xl font-black tracking-tight text-white leading-tight">
+                        <h2 className="text-3xl md:text-5xl font-black tracking-tight text-slate-900 dark:text-white leading-tight">
                             {title}
                         </h2>
-                        <div className="w-20 h-1.5 bg-[#00c985] rounded-full" />
-                        <p className="text-sm md:text-base text-slate-300 leading-relaxed font-medium">
+                        <div className="w-20 h-1.5 bg-[#0284c7] rounded-full" />
+                        <p className="text-sm md:text-base text-slate-600 dark:text-slate-300 leading-relaxed font-normal">
                             {description}
                         </p>
                         {children && <div className="pt-4">{children}</div>}
@@ -44,12 +44,10 @@ export function ContentSection({
                     {/* Image Content */}
                     <div className={cn("relative group", reverse ? "lg:col-start-1" : "")}>
                         {/* Abstract Background Element */}
-                        <div className="absolute inset-0 bg-[#00c985]/10 rounded-[2rem] transform rotate-3 scale-105 blur-2xl opacity-60 group-hover:opacity-80 transition-opacity" />
+                        <div className="absolute inset-0 bg-[#0284c7]/10 rounded-[2rem] transform rotate-3 scale-105 blur-2xl opacity-60 group-hover:opacity-80 transition-opacity" />
 
-                        <div className="relative rounded-[2rem] overflow-hidden shadow-2xl border border-slate-800 bg-[#24272c]">
+                        <div className="relative rounded-[2rem] overflow-hidden shadow-md border border-slate-200 dark:border-slate-800 bg-white dark:bg-white">
                             <div className="aspect-[4/3] w-full relative">
-                                {/* Use a placeholder if imageSrc is external and not configured, but ideally real images */}
-                                {/* For now, using standard img tag if next/image errors might occur with domains, but trying next/image first */}
                                 <img
                                     src={imageSrc}
                                     alt={imageAlt}

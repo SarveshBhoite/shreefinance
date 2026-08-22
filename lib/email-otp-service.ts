@@ -77,14 +77,14 @@ export async function sendEmailOTP({ email, name, otp }: SendEmailOTPParams): Pr
     const htmlContent = `
     <div style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; max-width: 580px; margin: 0 auto; border: 1px solid #e2e8f0; border-radius: 16px; overflow: hidden; background-color: #ffffff;">
         <div style="background-color: #0f172a; padding: 24px; text-align: center;">
-            <h1 style="color: #00c985; margin: 0; font-size: 24px; font-weight: 800; letter-spacing: 1px;">SHREE FINANCE</h1>
+            <h1 style="color: #0284c7; margin: 0; font-size: 24px; font-weight: 800; letter-spacing: 1px;">SHREE FINANCE</h1>
             <p style="color: #94a3b8; margin: 4px 0 0 0; font-size: 12px; text-transform: uppercase; font-weight: 600;">Official Bank Verification Code</p>
         </div>
         <div style="padding: 32px 24px; text-align: center;">
             <p style="color: #334155; font-size: 15px; margin-top: 0; line-height: 1.5;">Hello <strong>${recipientName}</strong>,</p>
             <p style="color: #64748b; font-size: 14px; margin-bottom: 24px;">Please use the following 6-digit One-Time Password (OTP) code to complete your loan application verification:</p>
             
-            <div style="background-color: #f0fdf4; border: 2px dashed #00c985; padding: 20px; border-radius: 12px; display: inline-block; margin: 0 auto 24px auto;">
+            <div style="background-color: #f0fdf4; border: 2px dashed #0284c7; padding: 20px; border-radius: 12px; display: inline-block; margin: 0 auto 24px auto;">
                 <span style="font-size: 36px; font-weight: 900; letter-spacing: 8px; color: #0f172a; font-family: monospace;">${otp}</span>
             </div>
 

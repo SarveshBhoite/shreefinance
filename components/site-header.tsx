@@ -9,7 +9,6 @@ import { megaMenuData } from "@/config/navigation";
 import { useState } from "react";
 import { LeadFormModal } from "@/components/dialogs/lead-form-modal";
 import { cn } from "@/lib/utils";
-import { ThemeToggle } from "@/components/ui/theme-toggle";
 
 export function SiteHeader() {
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -27,7 +26,7 @@ export function SiteHeader() {
             {/* Contact Us Phone Reveal Modal */}
             {isContactModalOpen && (
                 <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-slate-950/70 backdrop-blur-sm animate-in fade-in duration-200">
-                    <div className="bg-[#1a1d21] text-white border border-slate-800 rounded-3xl p-6 sm:p-8 max-w-sm w-full shadow-2xl space-y-5 text-center relative">
+                    <div className="bg-white text-white border border-slate-800 rounded-3xl p-6 sm:p-8 max-w-sm w-full shadow-2xl space-y-5 text-center relative">
                         <button
                             onClick={() => setIsContactModalOpen(false)}
                             className="absolute top-4 right-4 h-8 w-8 rounded-full bg-slate-800 hover:bg-slate-700 text-slate-400 hover:text-white flex items-center justify-center transition-colors cursor-pointer"
@@ -35,7 +34,7 @@ export function SiteHeader() {
                             <X className="h-4 w-4" />
                         </button>
 
-                        <div className="h-14 w-14 rounded-2xl bg-emerald-500/20 text-[#00c985] flex items-center justify-center mx-auto border border-emerald-500/40">
+                        <div className="h-14 w-14 rounded-2xl bg-sky-500/20 text-[#0284c7] flex items-center justify-center mx-auto border border-sky-500/40">
                             <Phone className="h-7 w-7" />
                         </div>
 
@@ -46,13 +45,13 @@ export function SiteHeader() {
 
                         <div className="p-4 bg-slate-900/90 rounded-2xl border border-slate-800 space-y-1">
                             <span className="text-[10px] uppercase font-bold text-slate-400 tracking-wider">Direct Calling Number</span>
-                            <p className="text-2xl font-black text-[#00e699] tracking-wider">+91 77099 36965</p>
+                            <p className="text-2xl font-black text-[#38bdf8] tracking-wider">+91 77099 36965</p>
                         </div>
 
                         <div className="flex gap-2.5 pt-1">
                             <a
                                 href="tel:+917709936965"
-                                className="flex-1 bg-[#00c985] hover:bg-[#00b074] text-slate-950 font-black h-11 rounded-xl text-xs uppercase tracking-wider flex items-center justify-center gap-1.5 shadow-lg cursor-pointer"
+                                className="flex-1 bg-[#0284c7] hover:bg-[#0369a1] text-slate-950 font-black h-11 rounded-xl text-xs uppercase tracking-wider flex items-center justify-center gap-1.5 shadow-lg cursor-pointer"
                             >
                                 <Phone className="h-4 w-4" /> Call Now
                             </a>
@@ -70,7 +69,7 @@ export function SiteHeader() {
             <div className="bg-gradient-to-r from-slate-900 via-sky-950 to-slate-900 text-white text-[11px] font-extrabold py-2 px-4 border-b border-sky-800/40 hidden md:block">
                 <div className="container mx-auto flex justify-between items-center px-4">
                     <div className="flex items-center gap-3">
-                        <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 uppercase tracking-widest text-[9px]">
+                        <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-sky-500/20 text-sky-300 border border-sky-500/40 uppercase tracking-widest text-[9px]">
                             <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse" /> Live 2026 Rates
                         </span>
                         <span className="text-slate-300">Home Loans Starting <strong>8.35% p.a.</strong> | Instant Pre-Approval Across 40+ Partner Banks</span>
@@ -79,7 +78,7 @@ export function SiteHeader() {
                         <Link href="/partner" className="hover:text-sky-300 transition-colors flex items-center gap-1">
                             <Sparkles className="h-3 w-3 text-amber-400" /> Become a Partner (DSA)
                         </Link>
-                        <Link href="/partner?auth=login" className="hover:text-[#00e699] transition-colors flex items-center gap-1 font-bold text-emerald-400">
+                        <Link href="/partner?auth=login" className="hover:text-[#38bdf8] transition-colors flex items-center gap-1 font-bold text-sky-400">
                             <span className="h-2 w-2 rounded-full bg-emerald-400 animate-pulse" /> Partner Portal Login
                         </Link>
                         <Link href="/track-status" className="hover:text-sky-300 transition-colors flex items-center gap-1">
@@ -113,30 +112,27 @@ export function SiteHeader() {
 
                         {/* Right Action Buttons (Far Right) */}
                         <div className="flex items-center gap-2.5 shrink-0">
-                            {/* Theme Toggle Button */}
-                            <ThemeToggle />
-
                             <button
                                 onClick={() => setIsContactModalOpen(true)}
-                                className="hidden xl:flex items-center gap-1.5 text-xs font-black text-slate-800 hover:text-[#00c985] transition-all p-2 rounded-xl hover:bg-slate-100 whitespace-nowrap cursor-pointer"
+                                className="hidden xl:flex items-center gap-1.5 text-xs font-black text-slate-800 hover:text-[#0284c7] transition-all p-2 rounded-xl hover:bg-slate-100 whitespace-nowrap cursor-pointer"
                                 title="Click to view Contact Number"
                             >
-                                <div className="p-1.5 rounded-full bg-[#00c985]/15 text-[#00c985]">
+                                <div className="p-1.5 rounded-full bg-sky-50 text-[#0284c7]">
                                     <Phone className="h-3.5 w-3.5" />
                                 </div>
                                 <span>Contact</span>
                             </button>
 
                             <Button
-                                className="hidden md:inline-flex bg-amber-400 hover:bg-amber-500 text-slate-950 font-black rounded-full px-4 h-10 text-xs tracking-wider uppercase transition-all shadow-md active:scale-95 border-0 whitespace-nowrap cursor-pointer"
+                                className="hidden md:inline-flex bg-sky-50 hover:bg-sky-100 text-[#0284c7] border border-sky-300 font-black rounded-full px-4 h-10 text-xs tracking-wider uppercase transition-all shadow-xs active:scale-95 whitespace-nowrap cursor-pointer"
                                 onClick={() => setIsCibilModalOpen(true)}
                             >
-                                <Zap className="h-3.5 w-3.5 mr-1 fill-slate-950" />
+                                <Zap className="h-3.5 w-3.5 mr-1 fill-[#0284c7] text-[#0284c7]" />
                                 Free CIBIL
                             </Button>
 
                             <Button
-                                className="hidden sm:inline-flex bg-[#00c985] hover:bg-[#00b074] text-slate-950 font-black rounded-full px-5 h-10 text-xs tracking-wider uppercase transition-all shadow-md active:scale-95 whitespace-nowrap cursor-pointer"
+                                className="hidden sm:inline-flex bg-[#0284c7] hover:bg-[#0369a1] text-white font-bold rounded-full px-5 h-10 text-xs tracking-wider uppercase transition-all shadow-md active:scale-95 whitespace-nowrap cursor-pointer"
                                 onClick={() => setIsGeneralModalOpen(true)}
                             >
                                 Apply Now <ArrowRight className="h-3.5 w-3.5 ml-1" />
@@ -211,10 +207,10 @@ export function SiteHeader() {
                                             setIsContactModalOpen(true);
                                             setIsMobileMenuOpen(false);
                                         }}
-                                        className="flex items-center justify-between w-full p-4 rounded-2xl bg-emerald-50 dark:bg-emerald-950/50 font-black text-emerald-600 dark:text-emerald-400 text-sm cursor-pointer"
+                                        className="flex items-center justify-between w-full p-4 rounded-2xl bg-sky-50 dark:bg-emerald-950/50 font-black text-sky-600 dark:text-sky-400 text-sm cursor-pointer"
                                     >
                                         <span className="flex items-center gap-2">
-                                            <Phone className="h-4 w-4 text-emerald-500" />
+                                            <Phone className="h-4 w-4 text-[#0284c7]" />
                                             Contact
                                         </span>
                                     </button>
@@ -231,10 +227,10 @@ export function SiteHeader() {
                                     <Link
                                         href="/become-a-partner"
                                         onClick={() => setIsMobileMenuOpen(false)}
-                                        className="flex items-center justify-between p-4 rounded-2xl bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-500/40 font-black text-emerald-700 dark:text-[#00e699] text-sm"
+                                        className="flex items-center justify-between p-4 rounded-2xl bg-sky-50 dark:bg-sky-50 border border-sky-500/40 font-black text-sky-700 dark:text-[#38bdf8] text-sm"
                                     >
                                         <span className="flex items-center gap-2">
-                                            <Sparkles className="h-4 w-4 text-emerald-500" />
+                                            <Sparkles className="h-4 w-4 text-[#0284c7]" />
                                             Become a Partner (DSA Registration)
                                         </span>
                                         <ArrowRight className="h-4 w-4" />
@@ -245,20 +241,20 @@ export function SiteHeader() {
                                         className="flex items-center justify-between p-4 rounded-2xl bg-slate-900 border border-slate-800 font-black text-slate-200 text-sm"
                                     >
                                         <span className="flex items-center gap-2">
-                                            <Building2 className="h-4 w-4 text-[#00c985]" />
+                                            <Building2 className="h-4 w-4 text-[#0284c7]" />
                                             Partner Portal Login & Dashboard
                                         </span>
-                                        <span className="text-xs text-[#00c985]">➔</span>
+                                        <span className="text-xs text-[#0284c7]">➔</span>
                                     </Link>
                                 </div>
                             </nav>
                             
                             <div className="pt-4 space-y-3">
                                 <Button 
-                                    className="w-full bg-amber-400 hover:bg-amber-500 text-slate-950 font-black rounded-2xl h-14 text-base shadow-xl transition-all active:scale-95 uppercase tracking-wider" 
+                                    className="w-full bg-sky-50 hover:bg-sky-100 text-[#0284c7] border border-sky-300 font-black rounded-2xl h-14 text-base shadow-sm transition-all active:scale-95 uppercase tracking-wider" 
                                     onClick={() => { setIsCibilModalOpen(true); setIsMobileMenuOpen(false); }}
                                 >
-                                    <Zap className="h-5 w-5 mr-2 fill-slate-950" />
+                                    <Zap className="h-5 w-5 mr-2 fill-[#0284c7] text-[#0284c7]" />
                                     Free CIBIL Score Check
                                 </Button>
                                 <Button 

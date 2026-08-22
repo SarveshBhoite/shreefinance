@@ -21,14 +21,14 @@ export function GlobalEligibilityButton() {
                     className="relative group"
                 >
                     {/* Glowing Aura Ring */}
-                    <div className="absolute -inset-1 bg-gradient-to-r from-[#00c985] to-emerald-400 rounded-full blur-sm opacity-70 group-hover:opacity-100 transition duration-300 animate-pulse pointer-events-none" />
+                    <div className="absolute -inset-1 bg-gradient-to-r from-[#0284c7] to-emerald-400 rounded-full blur-sm opacity-70 group-hover:opacity-100 transition duration-300 animate-pulse pointer-events-none" />
 
                     <Button
                         onClick={() => {
                             setLoanType("car");
                             setIsOpen(true);
                         }}
-                        className="relative bg-[#00c985] hover:bg-[#00b074] text-slate-950 font-black text-xs h-10 px-3.5 sm:px-4 rounded-full shadow-xl uppercase tracking-wider flex items-center gap-1.5 border border-emerald-300/40 transition-transform active:scale-95 cursor-pointer"
+                        className="relative bg-[#0284c7] hover:bg-[#0369a1] text-slate-950 font-black text-xs h-10 px-3.5 sm:px-4 rounded-full shadow-xl uppercase tracking-wider flex items-center gap-1.5 border border-sky-300/40 transition-transform active:scale-95 cursor-pointer"
                         title="Check Eligibility & Compare Offers"
                     >
                         <span className="relative flex h-2 w-2">

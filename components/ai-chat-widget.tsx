@@ -91,7 +91,7 @@ export function AIChatWidget() {
                             whileTap={{ scale: 0.92 }}
                             onClick={() => setIsOpen(true)}
                             title="Chat with Shree AI Finance Advisor"
-                            className="group relative flex items-center justify-center h-12 w-12 rounded-full bg-gradient-to-r from-[#00c985] to-teal-500 text-slate-950 shadow-2xl transition-all duration-300 ring-4 ring-emerald-500/25 cursor-pointer"
+                            className="group relative flex items-center justify-center h-12 w-12 rounded-full bg-gradient-to-r from-[#0284c7] to-teal-500 text-slate-950 shadow-2xl transition-all duration-300 ring-4 ring-sky-500/25 cursor-pointer"
                         >
                             <div className="relative flex items-center justify-center">
                                 <Bot className="h-6 w-6 text-slate-950 group-hover:rotate-12 transition-transform duration-300" />
@@ -111,7 +111,7 @@ export function AIChatWidget() {
                             initial={{ opacity: 0, y: 30, scale: 0.92 }}
                             animate={{ opacity: 1, y: 0, scale: 1 }}
                             exit={{ opacity: 0, y: 30, scale: 0.92 }}
-                            className="w-[92vw] sm:w-[400px] h-[540px] max-h-[85vh] bg-[#181a1d] border border-slate-700/80 backdrop-blur-2xl rounded-3xl shadow-2xl flex flex-col overflow-hidden text-white font-sans"
+                            className="w-[92vw] sm:w-[400px] h-[540px] max-h-[85vh] bg-white border border-slate-700/80 backdrop-blur-2xl rounded-3xl shadow-2xl flex flex-col overflow-hidden text-white font-sans"
                         >
                             {/* Chat Header */}
                             <div className="bg-gradient-to-r from-primary to-sky-700 p-4 flex items-center justify-between shadow-md">
@@ -121,7 +121,7 @@ export function AIChatWidget() {
                                     </div>
                                     <div>
                                         <h4 className="font-extrabold text-sm text-white">Shree AI Financial Assistant</h4>
-                                        <div className="flex items-center gap-1.5 text-[10px] text-emerald-300 font-bold uppercase tracking-wider">
+                                        <div className="flex items-center gap-1.5 text-[10px] text-sky-300 font-bold uppercase tracking-wider">
                                             <span className="h-2 w-2 rounded-full bg-emerald-400 animate-pulse" /> Live Support 24/7
                                         </div>
                                     </div>
