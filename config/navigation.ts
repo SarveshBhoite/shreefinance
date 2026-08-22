@@ -70,46 +70,6 @@ export const megaMenuData = {
             },
         ]
     },
-    tools: {
-        title: "Compare & Partner",
-        items: [
-            {
-                title: "Compare All Loans",
-                href: "/compare",
-                icon: ArrowLeftRight,
-                rate: "Live Rate Matrix",
-                desc: "Compare 40+ top Indian banks"
-            },
-            {
-                title: "Become a Partner (DSA)",
-                href: "/partner",
-                icon: Users,
-                rate: "Earn 2.5% Payout",
-                desc: "Join channel partner network"
-            },
-            {
-                title: "Payout Structure",
-                href: "/payout-structure",
-                icon: Percent,
-                rate: "Up to 2.5% Commission",
-                desc: "DSA slab payouts & bonuses"
-            },
-            {
-                title: "Required Documents",
-                href: "/documents-required",
-                icon: FileText,
-                rate: "Check Checklist",
-                desc: "KYC, Income & Bank proofs"
-            },
-            {
-                title: "All Calculators",
-                href: "/calculators",
-                icon: Calculator,
-                rate: "Instant EMI Tools",
-                desc: "EMI, HLBT & Tax calculators"
-            },
-        ]
-    },
     cards: {
         title: "Cards",
         items: [
@@ -171,6 +131,53 @@ export const megaMenuData = {
                 icon: TrendingUp,
                 rate: "Zero Brokerage",
                 desc: "Invest in top companies"
+            },
+        ]
+    },
+    tools: {
+        title: "Compare & Partner",
+        items: [
+            {
+                title: "Compare All Loans",
+                href: "/compare",
+                icon: ArrowLeftRight,
+                rate: "Live Rate Matrix",
+                desc: "Compare 40+ top Indian banks"
+            },
+            {
+                title: "Become a Partner (DSA)",
+                href: "/become-a-partner",
+                icon: Users,
+                rate: "Earn 2.5% Payout",
+                desc: "Join channel partner network"
+            },
+            {
+                title: "Partner Program",
+                href: "/partner",
+                icon: Users,
+                rate: "DSA Portal",
+                desc: "Partner benefits & registration"
+            },
+            {
+                title: "Payout Structure",
+                href: "/payout-structure",
+                icon: Percent,
+                rate: "Up to 2.5% Commission",
+                desc: "DSA slab payouts & bonuses"
+            },
+            {
+                title: "Required Documents",
+                href: "/documents-required",
+                icon: FileText,
+                rate: "Check Checklist",
+                desc: "KYC, Income & Bank proofs"
+            },
+            {
+                title: "All Calculators",
+                href: "/calculators",
+                icon: Calculator,
+                rate: "Instant EMI Tools",
+                desc: "EMI, HLBT & Tax calculators"
             },
         ]
     }

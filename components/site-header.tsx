@@ -4,7 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { MainNav } from "@/components/main-nav";
 import { Button } from "@/components/ui/button";
-import { Menu, Phone, Zap, ChevronDown, X, Search, Sparkles, ShieldCheck, ArrowRight } from "lucide-react";
+import { Menu, Phone, Zap, ChevronDown, X, Search, Sparkles, ShieldCheck, ArrowRight, Building2 } from "lucide-react";
 import { megaMenuData } from "@/config/navigation";
 import { useState } from "react";
 import { LeadFormModal } from "@/components/dialogs/lead-form-modal";
@@ -78,6 +78,9 @@ export function SiteHeader() {
                     <div className="flex items-center gap-6 text-slate-300">
                         <Link href="/partner" className="hover:text-sky-300 transition-colors flex items-center gap-1">
                             <Sparkles className="h-3 w-3 text-amber-400" /> Become a Partner (DSA)
+                        </Link>
+                        <Link href="/partner?auth=login" className="hover:text-[#00e699] transition-colors flex items-center gap-1 font-bold text-emerald-400">
+                            <span className="h-2 w-2 rounded-full bg-emerald-400 animate-pulse" /> Partner Portal Login
                         </Link>
                         <Link href="/track-status" className="hover:text-sky-300 transition-colors flex items-center gap-1">
                             <Search className="h-3 w-3 text-sky-400" /> Track Loan Status
@@ -233,6 +236,16 @@ export function SiteHeader() {
                                         <span className="flex items-center gap-2">
                                             <Sparkles className="h-4 w-4 text-amber-500" />
                                             Become a Partner (DSA)
+                                        </span>
+                                    </Link>
+                                    <Link
+                                        href="/partner?auth=login"
+                                        onClick={() => setIsMobileMenuOpen(false)}
+                                        className="flex items-center justify-between p-4 rounded-2xl bg-emerald-950/40 border border-emerald-500/30 font-black text-[#00e699] text-sm"
+                                    >
+                                        <span className="flex items-center gap-2">
+                                            <Building2 className="h-4 w-4 text-emerald-400" />
+                                            Partner Portal & Dashboard Login
                                         </span>
                                     </Link>
                                 </div>

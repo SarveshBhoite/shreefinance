@@ -1,5 +1,8 @@
 import { NextResponse } from "next/server";
 import nodemailer from "nodemailer";
+import { connectDB } from "@/lib/db";
+import PartnerApplication from "@/models/PartnerApplication";
+import { sendAdminPartnerNotification } from "@/lib/mail";
 
 export async function POST(req: Request) {
     try {
@@ -13,6 +16,77 @@ export async function POST(req: Request) {
         const senderName = process.env.SENDER_NAME || "Shree Finance";
         const senderEmail = process.env.SENDER_EMAIL || adminEmail;
 
+        const isPartnerSubmission =
+            data.type === "Partner Program Registration (DSA Approval Request)" ||
+            (data.source && data.source.toLowerCase().includes("partner")) ||
+            data.type?.toLowerCase().includes("partner") ||
+            data.applicationHeader?.toLowerCase().includes("partner") ||
+            data.applicationHeader?.toLowerCase().includes("dsa");
+
+        const refNo = data.referenceNo || `${isPartnerSubmission ? "SHREE-PTR" : "SHREE-LEAD"}-${Math.floor(1000 + Math.random() * 9000)}`;
+        const timestamp = new Date().toLocaleString("en-IN", { timeZone: "Asia/Kolkata" });
+        const formTitle = data.title || data.type || (isPartnerSubmission ? "DSA Partner Onboarding Application" : "New Website Inquiry / Application");
+        const applicantName = data.name || data.applicantName || "Website Visitor";
+        const applicantPhone = data.mobile || data.phone || "Not provided";
+        const applicantEmail = data.email || "Not provided";
+        const applicantCity = data.city || "Not provided";
+
+        // If this is a Partner Application, persist to database with status PENDING & isActive false
+        if (isPartnerSubmission) {
+            try {
+                await connectDB();
+
+                const partnerData = {
+                    name: applicantName,
+                    email: applicantEmail,
+                    mobile: applicantPhone,
+                    city: applicantCity,
+                    profession: data.profession || "Loan Agent / DSA",
+                    companyName: data.companyName || "Individual DSA",
+                    location: data.location || applicantCity,
+                    addressProofType: data.addressProofType,
+                    fullAddress: data.fullAddress,
+                    experienceYears: data.experienceYears,
+                    bankAccountType: data.bankAccountType,
+                    uploadedDocuments: data.uploadedDocuments,
+                    status: "PENDING",
+                    isActive: false,
+                    referenceNo: refNo
+                };
+
+                const createdPartner = await PartnerApplication.findOneAndUpdate(
+                    { email: applicantEmail, status: "PENDING" },
+                    partnerData,
+                    { upsert: true, new: true, setDefaultsOnInsert: true }
+                );
+
+                console.log(`[DB SAVED] Partner Application created for ${applicantName} (${applicantEmail}) with status PENDING. ID: ${createdPartner._id}`);
+
+                // Send Admin Partner Notification Email
+                try {
+                    await sendAdminPartnerNotification({
+                        ...partnerData,
+                        createdAt: createdPartner.createdAt
+                    });
+                    console.log(`[ADMIN NOTIFIED] Partner application email sent for ${applicantName}`);
+                } catch (mailErr) {
+                    console.error("[ADMIN EMAIL ERROR] Failed to send partner email to admin:", mailErr);
+                }
+
+                return NextResponse.json({
+                    success: true,
+                    isPartner: true,
+                    status: "PENDING",
+                    message: "Thank you for applying! Your partner application has been submitted and is currently pending admin review. You will receive an email once approved.",
+                    referenceNo: refNo
+                });
+            } catch (dbErr) {
+                console.error("[DB ERROR] Error saving partner application:", dbErr);
+                // Fallback will still try to send notification if DB fails
+            }
+        }
+
+        // Standard lead / loan inquiries mail handling
         const transporter = nodemailer.createTransport({
             host: smtpHost,
             port: smtpPort,
@@ -23,14 +97,6 @@ export async function POST(req: Request) {
             }
         });
 
-        const refNo = data.referenceNo || `SHREE-LEAD-${Math.floor(1000 + Math.random() * 9000)}`;
-        const timestamp = new Date().toLocaleString("en-IN", { timeZone: "Asia/Kolkata" });
-        const formTitle = data.title || data.type || "New Website Inquiry / Application";
-        const applicantName = data.name || data.applicantName || "Website Visitor";
-        const applicantPhone = data.mobile || data.phone || "Not provided";
-        const applicantEmail = data.email || "Not provided";
-        const applicantCity = data.city || "Not provided";
-
         // Build key-value table for all additional submitted fields
         const excludedKeys = new Set([
             "title", "type", "name", "applicantName", "mobile", "phone", "email", "city", "referenceNo"
@@ -39,7 +105,6 @@ export async function POST(req: Request) {
         const additionalRows = Object.entries(data)
             .filter(([k, v]) => !excludedKeys.has(k) && v !== undefined && v !== null && v !== "")
             .map(([k, v], index) => {
-                // Humanize key: e.g. "loanCategory" -> "Loan Category"
                 const label = k.replace(/([A-Z])/g, ' $1').replace(/^./, str => str.toUpperCase());
                 const bg = index % 2 === 0 ? "#f8fafc" : "#ffffff";
                 return `
@@ -268,9 +333,9 @@ export async function POST(req: Request) {
             referenceNo: refNo
         });
     } catch (error) {
-        console.error("Error sending form submission email via Brevo SMTP:", error);
+        console.error("Error processing form submission:", error);
         return NextResponse.json(
-            { success: false, message: "Failed to send email notification." },
+            { success: false, message: "Failed to process form application." },
             { status: 500 }
         );
     }

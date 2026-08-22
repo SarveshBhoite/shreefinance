@@ -5,9 +5,11 @@ import { useState } from "react";
 export function useEmailForm() {
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [isSuccess, setIsSuccess] = useState(false);
+    const [responseMessage, setResponseMessage] = useState<string | null>(null);
+    const [referenceNo, setReferenceNo] = useState<string | null>(null);
     const [error, setError] = useState<string | null>(null);
 
-    const sendEmail = async (data: Record<string, any>) => {
+    const sendEmail = async (data: Record<string, unknown>) => {
         setIsSubmitting(true);
         setError(null);
 
@@ -21,10 +23,12 @@ export function useEmailForm() {
             const result = await res.json();
             if (res.ok && result.success) {
                 setIsSuccess(true);
+                setResponseMessage(result.message || "Application submitted successfully!");
+                setReferenceNo(result.referenceNo || null);
             } else {
                 setError(result.message || "Failed to submit form.");
             }
-        } catch (err: any) {
+        } catch (err: unknown) {
             console.error("Form submission error:", err);
             setError("Failed to send application. Please try again.");
         } finally {
@@ -34,8 +38,10 @@ export function useEmailForm() {
 
     const resetForm = () => {
         setIsSuccess(false);
+        setResponseMessage(null);
+        setReferenceNo(null);
         setError(null);
     };
 
-    return { sendEmail, isSubmitting, isSuccess, error, resetForm };
+    return { sendEmail, isSubmitting, isSuccess, responseMessage, referenceNo, error, resetForm };
 }

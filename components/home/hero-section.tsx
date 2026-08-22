@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import {
     Percent,
     Car,
@@ -13,7 +14,8 @@ import {
     Coins,
     ArrowRight,
     TrendingUp,
-    CheckCircle2
+    CheckCircle2,
+    Users
 } from "lucide-react";
 import { LeadFormModal } from "@/components/dialogs/lead-form-modal";
 import { motion } from "framer-motion";
@@ -143,7 +145,7 @@ export function HeroSection() {
                         </div>
 
                         {/* Feature Badges Grid */}
-                        <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-1">
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1">
                             <div className="p-3 rounded-xl bg-white dark:bg-[#1e2126] border border-slate-200/80 dark:border-slate-800 shadow-sm flex items-center gap-2.5">
                                 <div className="h-8 w-8 rounded-lg bg-emerald-500/15 text-[#00a86b] dark:text-[#00c985] flex items-center justify-center shrink-0">
                                     <Zap className="h-4 w-4" />
@@ -163,20 +165,10 @@ export function HeroSection() {
                                     <p className="text-[9px] text-slate-500 dark:text-slate-400 font-bold">Starting 8.35% p.a.</p>
                                 </div>
                             </div>
-
-                            <div className="p-3 rounded-xl bg-white dark:bg-[#1e2126] border border-slate-200/80 dark:border-slate-800 shadow-sm flex items-center gap-2.5">
-                                <div className="h-8 w-8 rounded-lg bg-emerald-500/15 text-[#00a86b] dark:text-[#00c985] flex items-center justify-center shrink-0">
-                                    <ShieldCheck className="h-4 w-4" />
-                                </div>
-                                <div>
-                                    <p className="text-[11px] font-black text-slate-900 dark:text-white">Zero CIBIL Impact</p>
-                                    <p className="text-[9px] text-slate-500 dark:text-slate-400 font-bold">Free Monthly Check</p>
-                                </div>
-                            </div>
                         </div>
 
                         {/* Action CTA Buttons */}
-                        <div className="flex flex-wrap gap-3 pt-1">
+                        <div className="flex flex-wrap items-center gap-3 pt-1">
                             <Button
                                 size="lg"
                                 onClick={() => openModal("general")}
@@ -193,6 +185,16 @@ export function HeroSection() {
                             >
                                 <Zap className="h-3.5 w-3.5 mr-1.5 fill-emerald-600 text-emerald-600 dark:fill-emerald-400 dark:text-emerald-400" /> Free CIBIL Check
                             </Button>
+
+                            <Link href="/become-a-partner">
+                                <Button
+                                    size="lg"
+                                    className="h-12 px-6 text-xs sm:text-sm font-black rounded-full bg-[#00c985] hover:bg-[#00b074] text-slate-950 uppercase tracking-wider transition-all hover:scale-105 shadow-xl cursor-pointer flex items-center gap-1.5"
+                                >
+                                    <Users className="h-4 w-4" />
+                                    <span>Become a Partner</span>
+                                </Button>
+                            </Link>
                         </div>
                     </div>
 
