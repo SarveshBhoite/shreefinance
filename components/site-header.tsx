@@ -229,24 +229,26 @@ export function SiteHeader() {
                                         </span>
                                     </Link>
                                     <Link
-                                        href="/partner"
+                                        href="/become-a-partner"
                                         onClick={() => setIsMobileMenuOpen(false)}
-                                        className="flex items-center justify-between p-4 rounded-2xl bg-slate-100 dark:bg-slate-900 font-black text-slate-800 dark:text-slate-200 text-sm"
+                                        className="flex items-center justify-between p-4 rounded-2xl bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-500/40 font-black text-emerald-700 dark:text-[#00e699] text-sm"
                                     >
                                         <span className="flex items-center gap-2">
-                                            <Sparkles className="h-4 w-4 text-amber-500" />
-                                            Become a Partner (DSA)
+                                            <Sparkles className="h-4 w-4 text-emerald-500" />
+                                            Become a Partner (DSA Registration)
                                         </span>
+                                        <ArrowRight className="h-4 w-4" />
                                     </Link>
                                     <Link
-                                        href="/partner?auth=login"
+                                        href="/partner/login"
                                         onClick={() => setIsMobileMenuOpen(false)}
-                                        className="flex items-center justify-between p-4 rounded-2xl bg-emerald-950/40 border border-emerald-500/30 font-black text-[#00e699] text-sm"
+                                        className="flex items-center justify-between p-4 rounded-2xl bg-slate-900 border border-slate-800 font-black text-slate-200 text-sm"
                                     >
                                         <span className="flex items-center gap-2">
-                                            <Building2 className="h-4 w-4 text-emerald-400" />
-                                            Partner Portal & Dashboard Login
+                                            <Building2 className="h-4 w-4 text-[#00c985]" />
+                                            Partner Portal Login & Dashboard
                                         </span>
+                                        <span className="text-xs text-[#00c985]">➔</span>
                                     </Link>
                                 </div>
                             </nav>

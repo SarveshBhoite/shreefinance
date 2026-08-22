@@ -73,14 +73,10 @@ export default function PartnerProgramPage() {
         const authParam = searchParams.get("auth");
         if (authParam === "login") {
             setMode("login");
+        } else {
+            setMode("register");
         }
-        // Auto-check if partner is already logged in
-        fetch("/api/partner/me")
-            .then(res => {
-                if (res.ok) router.push("/partner/dashboard");
-            })
-            .catch(() => {});
-    }, [searchParams, router]);
+    }, [searchParams]);
 
     const requiredPartnerDocs = [
         { key: "panCard", label: "PAN Card (Mandatory)", desc: "Clear front photo or PDF" },
