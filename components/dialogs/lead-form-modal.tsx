@@ -49,15 +49,15 @@ export function LeadFormModal({ isOpen, onClose, type }: LeadFormModalProps) {
             isOpen={isOpen}
             onClose={handleClose}
             title=""
-            className="max-w-md bg-white text-white border-slate-800 p-0 overflow-hidden"
+            className="max-w-md bg-white text-slate-900 border-slate-200 p-0 overflow-hidden shadow-2xl rounded-3xl"
         >
             {/* Header */}
-            <div className="bg-slate-950 p-4 border-b border-slate-800 flex items-center gap-3">
-                <div className="h-9 w-9 rounded-xl bg-[#0284c7] text-slate-950 flex items-center justify-center font-black shrink-0">
+            <div className="bg-gradient-to-r from-sky-700 via-sky-600 to-sky-800 p-4 text-white flex items-center gap-3">
+                <div className="h-9 w-9 rounded-xl bg-white text-[#0284c7] flex items-center justify-center font-black shrink-0 shadow-sm">
                     <Building2 className="h-5 w-5" />
                 </div>
                 <div>
-                    <span className="text-[9px] font-black uppercase tracking-widest text-[#38bdf8] flex items-center gap-1">
+                    <span className="text-[9px] font-black uppercase tracking-widest text-sky-100 flex items-center gap-1">
                         <Sparkles className="h-2.5 w-2.5" /> 40+ Member Bank Partners
                     </span>
                     <h3 className="text-sm font-black text-white uppercase tracking-tight">
@@ -66,23 +66,23 @@ export function LeadFormModal({ isOpen, onClose, type }: LeadFormModalProps) {
                 </div>
             </div>
 
-            <div className="p-6">
+            <div className="p-6 bg-white">
             {isSuccess ? (
                 <div className="text-center py-6 space-y-4">
-                    <div className="h-16 w-16 bg-[#0284c7]/20 text-[#0284c7] rounded-full flex items-center justify-center mx-auto border border-[#0284c7]/40 animate-in zoom-in spin-in-12">
+                    <div className="h-16 w-16 bg-sky-50 text-[#0284c7] rounded-full flex items-center justify-center mx-auto border border-sky-300 animate-in zoom-in spin-in-12">
                         <CheckCircle2 className="h-8 w-8" />
                     </div>
                     <div>
-                        <h3 className="text-2xl font-bold text-white">
+                        <h3 className="text-2xl font-black text-slate-900">
                             {isCibil ? "Report Generated!" : "Bank Facility Application Received!"}
                         </h3>
-                        <p className="text-slate-300 text-xs mt-2">
+                        <p className="text-slate-600 text-xs mt-2">
                             {isCibil
                                 ? "We have sent your detailed credit report to your email."
                                 : "Our expert bank underwriting officer will call you within 15 minutes with pre-approved sanctions."}
                         </p>
                     </div>
-                    <Button onClick={handleClose} className="w-full mt-4 bg-[#0284c7] hover:bg-[#0369a1] text-slate-950 font-black" size="lg">
+                    <Button onClick={handleClose} className="w-full mt-4 bg-[#0284c7] hover:bg-[#0369a1] text-white font-black" size="lg">
                         Done
                     </Button>
                 </div>
@@ -90,20 +90,20 @@ export function LeadFormModal({ isOpen, onClose, type }: LeadFormModalProps) {
                 <div className="space-y-5">
                     {/* Visual Header */}
                     <div className={cn(
-                        "rounded-xl p-3.5 flex items-center gap-3 border",
-                        isCibil ? "bg-amber-500/10 border-amber-500/30 text-amber-300" : "bg-[#0284c7]/10 border-[#0284c7]/30 text-[#38bdf8]"
+                        "rounded-2xl p-3.5 flex items-center gap-3 border",
+                        isCibil ? "bg-sky-50 border-sky-200 text-[#0284c7]" : "bg-sky-50 border-sky-200 text-[#0284c7]"
                     )}>
                         <div className={cn(
-                            "h-9 w-9 rounded-full flex items-center justify-center shrink-0",
-                            isCibil ? "bg-amber-500/20 text-amber-400" : "bg-[#0284c7]/20 text-[#0284c7]"
+                            "h-9 w-9 rounded-xl flex items-center justify-center shrink-0 shadow-xs",
+                            isCibil ? "bg-white text-[#0284c7]" : "bg-white text-[#0284c7]"
                         )}>
                             {isCibil ? <PieChart className="h-4 w-4" /> : <CreditCard className="h-4 w-4" />}
                         </div>
                         <div>
-                            <p className="font-black text-xs text-white">
+                            <p className="font-black text-xs text-slate-900">
                                 {isCibil ? "Free Credit Health & Bureau Report" : "Instant Multi-Bank Sanction Check"}
                             </p>
-                            <p className="text-[11px] text-slate-400 font-medium">
+                            <p className="text-[11px] text-slate-500 font-medium">
                                 {isCibil ? "Zero impact on credit score • RBI compliant" : "Compare live lowest offers from 40+ top banks"}
                             </p>
                         </div>
@@ -113,9 +113,9 @@ export function LeadFormModal({ isOpen, onClose, type }: LeadFormModalProps) {
                         {/* Loan Category Selection if not CIBIL */}
                         {!isCibil && (
                             <div className="space-y-1.5">
-                                <label className="text-[10px] font-black uppercase tracking-wider text-slate-400">Select Loan Facility</label>
+                                <label className="text-[10px] font-black uppercase tracking-wider text-slate-600">Select Loan Facility</label>
                                 <select
-                                    className="w-full h-11 rounded-xl border border-slate-700 bg-slate-900 text-white px-3 font-bold text-xs focus:ring-2 focus:ring-[#0284c7]"
+                                    className="w-full h-11 rounded-xl border border-slate-300 bg-white text-slate-900 px-3 font-bold text-xs focus:ring-2 focus:ring-[#0284c7]"
                                     value={formData.loanType}
                                     onChange={(e) => setFormData({ ...formData, loanType: e.target.value })}
                                 >
@@ -128,58 +128,62 @@ export function LeadFormModal({ isOpen, onClose, type }: LeadFormModalProps) {
                             </div>
                         )}
 
-                        <div className="space-y-2">
-                            <label className="text-xs font-bold uppercase tracking-wider text-slate-500">Full Name</label>
+                        <div className="space-y-1.5">
+                            <label className="text-xs font-bold uppercase tracking-wider text-slate-600">Full Name</label>
                             <Input
                                 required
                                 placeholder="As per Identity Proof"
+                                className="bg-white border-slate-300 text-slate-900 focus:ring-2 focus:ring-[#0284c7]"
                                 value={formData.name}
                                 onChange={e => setFormData({ ...formData, name: e.target.value })}
                             />
                         </div>
 
-                        <div className="space-y-2">
-                            <label className="text-xs font-bold uppercase tracking-wider text-slate-500">Mobile Number</label>
+                        <div className="space-y-1.5">
+                            <label className="text-xs font-bold uppercase tracking-wider text-slate-600">Mobile Number</label>
                             <Input
                                 required
                                 type="tel"
                                 placeholder="10-digit mobile number"
                                 pattern="[0-9]{10}"
                                 maxLength={10}
+                                className="bg-white border-slate-300 text-slate-900 focus:ring-2 focus:ring-[#0284c7]"
                                 value={formData.mobile}
                                 onChange={e => setFormData({ ...formData, mobile: e.target.value.replace(/\D/g, '').slice(0, 10) })}
                             />
                         </div>
 
-                        <div className="space-y-2">
-                            <label className="text-xs font-bold uppercase tracking-wider text-slate-500">Mail ID (Email Address)</label>
+                        <div className="space-y-1.5">
+                            <label className="text-xs font-bold uppercase tracking-wider text-slate-600">Mail ID (Email Address)</label>
                             <Input
                                 required
                                 type="email"
                                 placeholder="name@example.com"
+                                className="bg-white border-slate-300 text-slate-900 focus:ring-2 focus:ring-[#0284c7]"
                                 value={formData.email}
                                 onChange={e => setFormData({ ...formData, email: e.target.value })}
                             />
                         </div>
 
-                        <div className="space-y-2">
-                            <label className="text-xs font-bold uppercase tracking-wider text-slate-500">City / Location</label>
+                        <div className="space-y-1.5">
+                            <label className="text-xs font-bold uppercase tracking-wider text-slate-600">City / Location</label>
                             <Input
                                 required
                                 placeholder="e.g. Pune, Mumbai, Bangalore"
+                                className="bg-white border-slate-300 text-slate-900 focus:ring-2 focus:ring-[#0284c7]"
                                 value={formData.city}
                                 onChange={e => setFormData({ ...formData, city: e.target.value })}
                             />
                         </div>
 
                         {isCibil && (
-                            <div className="space-y-2">
-                                <label className="text-xs font-bold uppercase tracking-wider text-slate-500">PAN Card Number</label>
+                            <div className="space-y-1.5">
+                                <label className="text-xs font-bold uppercase tracking-wider text-slate-600">PAN Card Number</label>
                                 <Input
                                     required
                                     placeholder="ABCDE1234F"
                                     maxLength={10}
-                                    className="uppercase tracking-widest font-mono"
+                                    className="uppercase tracking-widest font-mono bg-white border-slate-300 text-slate-900 focus:ring-2 focus:ring-[#0284c7]"
                                     value={formData.pan}
                                     onChange={e => setFormData({ ...formData, pan: e.target.value.toUpperCase() })}
                                 />
@@ -187,7 +191,7 @@ export function LeadFormModal({ isOpen, onClose, type }: LeadFormModalProps) {
                         )}
 
                         {error && (
-                            <p className="text-xs text-rose-500 font-semibold bg-rose-50 dark:bg-rose-950/50 p-2.5 rounded-lg border border-rose-200 dark:border-rose-900">
+                            <p className="text-xs text-rose-600 font-semibold bg-rose-50 p-2.5 rounded-xl border border-rose-200">
                                 {error}
                             </p>
                         )}
@@ -196,16 +200,11 @@ export function LeadFormModal({ isOpen, onClose, type }: LeadFormModalProps) {
                             <Button
                                 type="submit"
                                 disabled={isSubmitting}
-                                className={cn(
-                                    "w-full h-12 text-base font-bold shadow-lg transition-all cursor-pointer",
-                                    isCibil
-                                        ? "bg-amber-500 hover:bg-amber-600 text-slate-950"
-                                        : "bg-[#0284c7] hover:bg-[#0369a1] text-slate-950"
-                                )}
+                                className="w-full h-12 text-sm font-black shadow-md transition-all cursor-pointer bg-[#0284c7] hover:bg-[#0369a1] text-white uppercase tracking-wider rounded-xl"
                             >
                                 {isSubmitting ? (
                                     <div className="flex items-center gap-2">
-                                        <div className="h-4 w-4 border-2 border-slate-950 border-t-transparent rounded-full animate-spin" />
+                                        <div className="h-4 w-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
                                         <span>Processing Request...</span>
                                     </div>
                                 ) : (
@@ -215,7 +214,7 @@ export function LeadFormModal({ isOpen, onClose, type }: LeadFormModalProps) {
                         </div>
                     </form>
 
-                    <div className="flex items-center justify-center gap-2 text-xs text-muted-foreground pt-2 border-t border-slate-200 dark:border-slate-800">
+                    <div className="flex items-center justify-center gap-2 text-xs text-slate-500 pt-2 border-t border-slate-200">
                         <ShieldCheck className="h-4 w-4 text-[#0284c7]" />
                         <span>256-bit SSL Encrypted • 100% Data Protection</span>
                     </div>

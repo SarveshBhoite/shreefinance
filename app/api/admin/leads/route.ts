@@ -48,23 +48,34 @@ export async function GET(req: Request) {
             ];
         }
 
-        const leads = await PartnerLead.find(query).sort({ createdAt: -1 });
+        const rawQueryLeads = await PartnerLead.find(query).sort({ createdAt: -1 });
+        const leads = rawQueryLeads.map(lead => {
+            const l = lead.toObject ? lead.toObject() : lead;
+            const exactCommission = Number(((Number(l.applicationAmount) || 0) * ((Number(l.commissionRate) || 2.0) / 100)).toFixed(2));
+            return { ...l, commissionAmount: exactCommission };
+        });
 
         // Overall Global Aggregate Metrics (All Partners)
-        const allLeads = await PartnerLead.find({});
+        const rawAllLeads = await PartnerLead.find({});
+        const allLeads = rawAllLeads.map(lead => {
+            const l = lead.toObject ? lead.toObject() : lead;
+            const exactCommission = Number(((Number(l.applicationAmount) || 0) * ((Number(l.commissionRate) || 2.0) / 100)).toFixed(2));
+            return { ...l, commissionAmount: exactCommission };
+        });
+
         const globalTotalCount = allLeads.length;
         const globalInProcessCount = allLeads.filter(l => ["IN_PROCESS", "DOCS_SUBMITTED", "BANK_LOGIN", "SANCTIONED"].includes(l.leadStatus)).length;
         const globalDisbursedCount = allLeads.filter(l => l.leadStatus === "DISBURSED").length;
         const globalTotalFiledVolume = allLeads.reduce((sum, l) => sum + (l.applicationAmount || 0), 0);
         const globalTotalDisbursedVolume = allLeads.filter(l => l.leadStatus === "DISBURSED").reduce((sum, l) => sum + (l.applicationAmount || 0), 0);
-        const globalTotalCommissions = allLeads.filter(l => l.leadStatus === "DISBURSED").reduce((sum, l) => sum + (l.commissionAmount || 0), 0);
-        const globalPendingPayoutCommissions = allLeads
+        const globalTotalCommissions = Number(allLeads.filter(l => l.leadStatus === "DISBURSED").reduce((sum, l) => sum + (l.commissionAmount || 0), 0).toFixed(2));
+        const globalPendingPayoutCommissions = Number(allLeads
             .filter(l => l.leadStatus === "DISBURSED" && l.payoutStatus !== "PAID")
-            .reduce((sum, l) => sum + (l.commissionAmount || 0), 0);
+            .reduce((sum, l) => sum + (l.commissionAmount || 0), 0).toFixed(2));
 
         // Filtered / Selected Partner Specific Metrics
         const targetLeads = (partnerId && partnerId !== "ALL") || (partnerRef && partnerRef !== "ALL")
-            ? allLeads.filter(l => (partnerId && partnerId !== "ALL" ? l.partnerId === partnerId : l.partnerReferenceNo === partnerRef))
+            ? allLeads.filter(l => (partnerId && partnerId !== "ALL" ? String(l.partnerId) === String(partnerId) || l.partnerReferenceNo === partnerId : l.partnerReferenceNo === partnerRef))
             : allLeads;
 
         const totalCount = targetLeads.length;
@@ -72,10 +83,10 @@ export async function GET(req: Request) {
         const disbursedCount = targetLeads.filter(l => l.leadStatus === "DISBURSED").length;
         const totalFiledVolume = targetLeads.reduce((sum, l) => sum + (l.applicationAmount || 0), 0);
         const totalDisbursedVolume = targetLeads.filter(l => l.leadStatus === "DISBURSED").reduce((sum, l) => sum + (l.applicationAmount || 0), 0);
-        const totalCommissions = targetLeads.filter(l => l.leadStatus === "DISBURSED").reduce((sum, l) => sum + (l.commissionAmount || 0), 0);
-        const pendingPayoutCommissions = targetLeads
+        const totalCommissions = Number(targetLeads.filter(l => l.leadStatus === "DISBURSED").reduce((sum, l) => sum + (l.commissionAmount || 0), 0).toFixed(2));
+        const pendingPayoutCommissions = Number(targetLeads
             .filter(l => l.leadStatus === "DISBURSED" && l.payoutStatus !== "PAID")
-            .reduce((sum, l) => sum + (l.commissionAmount || 0), 0);
+            .reduce((sum, l) => sum + (l.commissionAmount || 0), 0).toFixed(2));
 
         return NextResponse.json({
             success: true,

@@ -252,16 +252,16 @@ export function Deal4LoansApplicationModal({
             isOpen={isOpen}
             onClose={handleClose}
             title=""
-            className="max-w-2xl bg-[#1a1c20] text-white border-slate-800 p-0 overflow-hidden"
+            className="max-w-2xl bg-white text-slate-900 border-slate-200 p-0 overflow-hidden shadow-2xl rounded-3xl"
         >
             {/* 1. Official Header Bar */}
-            <div className="bg-gradient-to-r from-slate-950 via-slate-900 to-slate-950 p-5 border-b border-slate-800 relative">
+            <div className="bg-gradient-to-r from-sky-700 via-sky-600 to-sky-800 p-5 text-white relative">
                 <div className="flex items-center gap-3">
-                    <div className="h-10 w-10 rounded-xl bg-[#0284c7] text-slate-950 flex items-center justify-center font-black shrink-0 shadow-md">
+                    <div className="h-10 w-10 rounded-xl bg-white text-[#0284c7] flex items-center justify-center font-black shrink-0 shadow-sm">
                         <Building2 className="h-6 w-6" />
                     </div>
                     <div>
-                        <span className="text-[10px] font-black uppercase tracking-widest text-[#38bdf8] flex items-center gap-1.5">
+                        <span className="text-[10px] font-black uppercase tracking-widest text-sky-100 flex items-center gap-1.5">
                             <Sparkles className="h-3 w-3" /> Official Partner Network • 40+ Banks
                         </span>
                         <h2 className="text-base sm:text-lg font-black text-white uppercase tracking-tight">
@@ -271,69 +271,69 @@ export function Deal4LoansApplicationModal({
                 </div>
             </div>
 
-            <div className="p-5 sm:p-7 max-h-[80vh] overflow-y-auto">
+            <div className="p-5 sm:p-7 max-h-[80vh] overflow-y-auto bg-white">
                 {isSuccess ? (
                     <div className="text-center py-6 space-y-5">
-                        <div className="h-20 w-20 bg-[#0284c7]/20 text-[#0284c7] rounded-full flex items-center justify-center mx-auto border-2 border-[#0284c7]/40 animate-in zoom-in">
+                        <div className="h-20 w-20 bg-sky-50 text-[#0284c7] rounded-full flex items-center justify-center mx-auto border-2 border-sky-300 animate-in zoom-in">
                             <CheckCircle2 className="h-10 w-10" />
                         </div>
                         <div className="space-y-2">
-                            <span className="text-xs font-black uppercase text-amber-400 bg-amber-400/10 px-3 py-1 rounded-full border border-amber-400/20">
+                            <span className="text-xs font-black uppercase text-[#0284c7] bg-sky-50 px-3 py-1 rounded-full border border-sky-200">
                                 Application ID: #SHREE-BANK-2026-{Math.floor(1000 + Math.random() * 9000)}
                             </span>
-                            <h3 className="text-2xl font-black text-white pt-1">
+                            <h3 className="text-2xl font-black text-slate-900 pt-1">
                                 Bank Facility Pre-Sanction Registered!
                             </h3>
-                            <p className="text-slate-300 text-xs sm:text-sm max-w-md mx-auto font-medium">
-                                Thank you, <strong className="text-white">{formData.name || "Applicant"}</strong>. Your application for <strong className="text-[#38bdf8]">{activeConfig.category}</strong> of <strong className="text-[#38bdf8]">{formatCurrency(loanAmount)}</strong> is directly assigned to our Bank Underwriting Team.
+                            <p className="text-slate-600 text-xs sm:text-sm max-w-md mx-auto font-medium">
+                                Thank you, <strong className="text-slate-900">{formData.name || "Applicant"}</strong>. Your application for <strong className="text-[#0284c7]">{activeConfig.category}</strong> of <strong className="text-[#0284c7]">{formatCurrency(loanAmount)}</strong> is directly assigned to our Bank Underwriting Team.
                             </p>
                         </div>
 
                         {/* Summary Acknowledgement Box */}
-                        <div className="p-4 bg-slate-900/90 rounded-2xl border border-slate-800 text-left space-y-2.5 text-xs">
-                            <div className="flex justify-between text-slate-400">
+                        <div className="p-4 bg-[#f8fafc] rounded-2xl border border-slate-200 text-left space-y-2.5 text-xs">
+                            <div className="flex justify-between text-slate-500">
                                 <span>Selected Loan Facility:</span>
-                                <span className="text-white font-black">{activeConfig.category}</span>
+                                <span className="text-slate-900 font-black">{activeConfig.category}</span>
                             </div>
-                            <div className="flex justify-between text-slate-400">
+                            <div className="flex justify-between text-slate-500">
                                 <span>Facility End-Use Purpose:</span>
-                                <span className="text-slate-200 font-bold">{loanPurpose}</span>
+                                <span className="text-slate-800 font-bold">{loanPurpose}</span>
                             </div>
-                            <div className="flex justify-between text-slate-400">
+                            <div className="flex justify-between text-slate-500">
                                 <span>Applicable Benchmark Rate:</span>
-                                <span className="text-[#38bdf8] font-black">{activeConfig.rate} p.a.</span>
+                                <span className="text-[#0284c7] font-black">{activeConfig.rate} p.a.</span>
                             </div>
-                            <div className="flex justify-between text-slate-400">
+                            <div className="flex justify-between text-slate-500">
                                 <span>Estimated Monthly EMI:</span>
-                                <span className="text-amber-300 font-black">₹{calculatedEMI.toLocaleString('en-IN')}/mo</span>
+                                <span className="text-slate-900 font-black">₹{calculatedEMI.toLocaleString('en-IN')}/mo</span>
                             </div>
-                            <div className="flex justify-between text-slate-400">
+                            <div className="flex justify-between text-slate-500">
                                 <span>Processing Fee Scheme:</span>
-                                <span className="text-[#38bdf8] font-bold">0% Direct Bank Portal Concession</span>
+                                <span className="text-[#0284c7] font-bold">0% Direct Bank Portal Concession</span>
                             </div>
                         </div>
 
-                        <div className="p-3 bg-sky-500/10 border border-sky-500/30 rounded-xl flex items-center justify-center gap-2 text-xs font-bold text-[#38bdf8]">
+                        <div className="p-3 bg-sky-50 border border-sky-200 rounded-xl flex items-center justify-center gap-2 text-xs font-bold text-[#0284c7]">
                             <ShieldCheck className="h-4 w-4 shrink-0" />
                             <span>A dedicated Senior Loan Underwriter will contact you within 15-30 minutes.</span>
                         </div>
 
                         <Button
                             onClick={handleClose}
-                            className="w-full bg-[#0284c7] hover:bg-[#0369a1] text-slate-950 font-black h-12 rounded-xl text-xs uppercase tracking-wider cursor-pointer"
+                            className="w-full bg-[#0284c7] hover:bg-[#0369a1] text-white font-black h-12 rounded-xl text-xs uppercase tracking-wider cursor-pointer"
                         >
                             Done / Download Acknowledgement
                         </Button>
                     </div>
                 ) : (
                     <div className="space-y-6">
-                        {/* 2. Loan Category Quick Switcher Tabs (Deal4Loans Style) */}
+                        {/* 2. Loan Category Quick Switcher Tabs */}
                         <div className="space-y-1.5">
-                            <div className="flex justify-between items-center text-[11px] font-bold text-slate-400 uppercase">
+                            <div className="flex justify-between items-center text-[11px] font-bold text-slate-500 uppercase">
                                 <span>Select Loan Facility</span>
-                                <span className="text-[#38bdf8] font-black">{activeConfig.rate} p.a. starting</span>
+                                <span className="text-[#0284c7] font-black">{activeConfig.rate} p.a. starting</span>
                             </div>
-                            <div className="grid grid-cols-3 sm:grid-cols-5 gap-1.5 p-1 bg-slate-900/90 rounded-2xl border border-slate-800">
+                            <div className="grid grid-cols-3 sm:grid-cols-5 gap-1.5 p-1 bg-[#f8fafc] rounded-2xl border border-slate-200">
                                 {(Object.keys(DEAL4LOANS_CONFIG) as Deal4LoanType[]).map((key) => {
                                     const cfg = DEAL4LOANS_CONFIG[key];
                                     const Icon = cfg.icon;
@@ -345,8 +345,8 @@ export function Deal4LoansApplicationModal({
                                             onClick={() => handleTypeChange(key)}
                                             className={`p-2 rounded-xl text-xs font-black transition-all flex flex-col items-center gap-1 cursor-pointer ${
                                                 isSelected
-                                                    ? "bg-[#0284c7] text-slate-950 shadow-md scale-102"
-                                                    : "text-slate-300 hover:bg-slate-800 hover:text-white"
+                                                    ? "bg-[#0284c7] text-white shadow-sm scale-102"
+                                                    : "text-slate-600 hover:bg-slate-200 hover:text-slate-900"
                                             }`}
                                         >
                                             <Icon className="h-4 w-4 shrink-0" />
@@ -358,37 +358,37 @@ export function Deal4LoansApplicationModal({
                         </div>
 
                         {/* 3. Live Benchmark Indicator */}
-                        <div className="rounded-2xl p-4 bg-gradient-to-r from-slate-900 to-[#1e2228] border border-slate-800 flex items-center justify-between">
+                        <div className="rounded-2xl p-4 bg-[#f8fafc] border border-slate-200 flex items-center justify-between">
                             <div className="space-y-0.5">
-                                <span className="text-[10px] font-black uppercase tracking-wider text-slate-400">
+                                <span className="text-[10px] font-black uppercase tracking-wider text-slate-500">
                                     Direct Rate Benchmark
                                 </span>
-                                <p className="text-xl font-black text-[#38bdf8]">
-                                    {activeConfig.rate} <span className="text-xs text-slate-400 font-bold">p.a. onwards</span>
+                                <p className="text-xl font-black text-[#0284c7]">
+                                    {activeConfig.rate} <span className="text-xs text-slate-500 font-bold">p.a. onwards</span>
                                 </p>
                             </div>
                             <div className="text-right space-y-0.5">
-                                <span className="text-[10px] font-black uppercase tracking-wider text-slate-400">
+                                <span className="text-[10px] font-black uppercase tracking-wider text-slate-500">
                                     Calculated Monthly EMI
                                 </span>
-                                <p className="text-xl font-black text-amber-300">
-                                    ₹{calculatedEMI.toLocaleString('en-IN')}<span className="text-xs text-slate-400 font-bold">/mo</span>
+                                <p className="text-xl font-black text-black">
+                                    ₹{calculatedEMI.toLocaleString('en-IN')}<span className="text-xs text-slate-500 font-bold">/mo</span>
                                 </p>
                             </div>
                         </div>
 
                         <form onSubmit={handleSubmit} className="space-y-4">
                             {/* SECTION 1: LOAN PARAMETERS & PURPOSE */}
-                            <div className="space-y-3.5 bg-slate-900/50 p-4 rounded-2xl border border-slate-800">
+                            <div className="space-y-3.5 bg-white p-4 rounded-2xl border border-slate-200 shadow-xs">
                                 {/* Purpose Selector */}
                                 <div className="space-y-1">
-                                    <label className="text-[11px] font-black uppercase tracking-wider text-slate-400 flex items-center gap-1">
+                                    <label className="text-[11px] font-black uppercase tracking-wider text-slate-700 flex items-center gap-1">
                                         <Target className="h-3.5 w-3.5 text-[#0284c7]" /> Loan Purpose / Specific End-Use
                                     </label>
                                     <select
                                         value={loanPurpose}
                                         onChange={(e) => setLoanPurpose(e.target.value)}
-                                        className="w-full h-11 bg-slate-950 border border-slate-700 rounded-xl font-bold text-white px-3 text-xs focus:ring-2 focus:ring-[#0284c7]"
+                                        className="w-full h-11 bg-white border border-slate-300 rounded-xl font-bold text-slate-900 px-3 text-xs focus:ring-2 focus:ring-[#0284c7]"
                                     >
                                         {activeConfig.purposes.map((p, idx) => (
                                             <option key={idx} value={p}>
@@ -401,14 +401,14 @@ export function Deal4LoansApplicationModal({
                                 {/* Loan Amount with Quick Chips */}
                                 <div className="space-y-1.5">
                                     <div className="flex justify-between items-center text-xs">
-                                        <span className="font-bold text-slate-400 uppercase">Required Loan Amount</span>
-                                        <span className="text-sm font-black text-[#38bdf8]">{formatCurrency(loanAmount)}</span>
+                                        <span className="font-bold text-slate-600 uppercase">Required Loan Amount</span>
+                                        <span className="text-sm font-black text-[#0284c7]">{formatCurrency(loanAmount)}</span>
                                     </div>
                                     <Input
                                         type="number"
                                         value={loanAmount}
                                         onChange={(e) => setLoanAmount(Number(e.target.value))}
-                                        className="bg-slate-950 border-slate-700 text-white font-bold h-11 text-xs"
+                                        className="bg-white border-slate-300 text-slate-900 font-bold h-11 text-xs focus:ring-2 focus:ring-[#0284c7]"
                                         min={50000}
                                         step={10000}
                                         required
@@ -421,8 +421,8 @@ export function Deal4LoansApplicationModal({
                                                 onClick={() => setLoanAmount(amt)}
                                                 className={`py-1 rounded-lg text-[10px] font-black transition-all cursor-pointer ${
                                                     loanAmount === amt
-                                                        ? "bg-[#ffcd00] text-slate-950"
-                                                        : "bg-slate-800 text-slate-300 hover:bg-slate-700"
+                                                        ? "bg-[#0284c7] text-white shadow-xs"
+                                                        : "bg-slate-100 text-slate-700 hover:bg-slate-200"
                                                 }`}
                                             >
                                                 {amt >= 10000000 ? `${(amt / 10000000).toFixed(1)} Cr` : `${amt / 100000} Lakhs`}
@@ -434,13 +434,13 @@ export function Deal4LoansApplicationModal({
                                 {/* Repayment Tenure Picker */}
                                 <div className="space-y-1">
                                     <div className="flex justify-between items-center text-xs">
-                                        <span className="font-bold text-slate-400 uppercase">Repayment Tenure</span>
-                                        <span className="text-xs font-black text-white">{tenureYears} Years ({tenureYears * 12} Months)</span>
+                                        <span className="font-bold text-slate-600 uppercase">Repayment Tenure</span>
+                                        <span className="text-xs font-black text-slate-900">{tenureYears} Years ({tenureYears * 12} Months)</span>
                                     </div>
                                     <select
                                         value={tenureYears}
                                         onChange={(e) => setTenureYears(Number(e.target.value))}
-                                        className="w-full h-11 bg-slate-950 border border-slate-700 rounded-xl font-bold text-white px-3 text-xs focus:ring-2 focus:ring-[#0284c7]"
+                                        className="w-full h-11 bg-white border border-slate-300 rounded-xl font-bold text-slate-900 px-3 text-xs focus:ring-2 focus:ring-[#0284c7]"
                                     >
                                         <option value={1}>1 Year (12 Months)</option>
                                         <option value={2}>2 Years (24 Months)</option>
@@ -457,18 +457,18 @@ export function Deal4LoansApplicationModal({
                             </div>
 
                             {/* SECTION 2: APPLICANT DEMOGRAPHICS & INCOME */}
-                            <div className="space-y-3.5 bg-slate-900/50 p-4 rounded-2xl border border-slate-800">
+                            <div className="space-y-3.5 bg-white p-4 rounded-2xl border border-slate-200 shadow-xs">
                                 {/* Employment Switch */}
                                 <div className="space-y-1">
-                                    <label className="text-[11px] font-bold text-slate-400 uppercase">Employment Status</label>
+                                    <label className="text-[11px] font-bold text-slate-600 uppercase">Employment Status</label>
                                     <div className="grid grid-cols-2 gap-2">
                                         <button
                                             type="button"
                                             onClick={() => setEmploymentType("Salaried")}
                                             className={`py-2 rounded-xl text-xs font-black transition-all cursor-pointer ${
                                                 employmentType === "Salaried"
-                                                    ? "bg-[#0284c7] text-slate-950 shadow-md"
-                                                    : "bg-slate-800 text-slate-300 hover:bg-slate-700"
+                                                    ? "bg-[#0284c7] text-white shadow-xs"
+                                                    : "bg-slate-100 text-slate-700 hover:bg-slate-200"
                                             }`}
                                         >
                                             Salaried Professional
@@ -478,8 +478,8 @@ export function Deal4LoansApplicationModal({
                                             onClick={() => setEmploymentType("Self-Employed")}
                                             className={`py-2 rounded-xl text-xs font-black transition-all cursor-pointer ${
                                                 employmentType === "Self-Employed"
-                                                    ? "bg-[#0284c7] text-slate-950 shadow-md"
-                                                    : "bg-slate-800 text-slate-300 hover:bg-slate-700"
+                                                    ? "bg-[#0284c7] text-white shadow-xs"
+                                                    : "bg-slate-100 text-slate-700 hover:bg-slate-200"
                                             }`}
                                         >
                                             Self-Employed / Business
@@ -489,25 +489,25 @@ export function Deal4LoansApplicationModal({
 
                                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                                     <div className="space-y-1">
-                                        <label className="text-[11px] font-bold text-slate-400 uppercase">Applicant Full Name</label>
+                                        <label className="text-[11px] font-bold text-slate-600 uppercase">Applicant Full Name</label>
                                         <Input
                                             required
                                             placeholder="e.g. Rahul Sharma"
-                                            className="bg-slate-950 border-slate-700 text-white h-11 text-xs"
+                                            className="bg-white border-slate-300 text-slate-900 h-11 text-xs focus:ring-2 focus:ring-[#0284c7]"
                                             value={formData.name}
                                             onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                                         />
                                     </div>
 
                                     <div className="space-y-1">
-                                        <label className="text-[11px] font-bold text-slate-400 uppercase">Mobile Number</label>
+                                        <label className="text-[11px] font-bold text-slate-600 uppercase">Mobile Number</label>
                                         <Input
                                             required
                                             type="tel"
                                             placeholder="10-digit mobile number"
                                             pattern="[0-9]{10}"
                                             maxLength={10}
-                                            className="bg-slate-950 border-slate-700 text-white h-11 text-xs"
+                                            className="bg-white border-slate-300 text-slate-900 h-11 text-xs focus:ring-2 focus:ring-[#0284c7]"
                                             value={formData.mobile}
                                             onChange={(e) => setFormData({ ...formData, mobile: e.target.value.replace(/\D/g, '').slice(0, 10) })}
                                         />
@@ -516,23 +516,23 @@ export function Deal4LoansApplicationModal({
 
                                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                                     <div className="space-y-1">
-                                        <label className="text-[11px] font-bold text-slate-400 uppercase">Email Address</label>
+                                        <label className="text-[11px] font-bold text-slate-600 uppercase">Email Address</label>
                                         <Input
                                             required
                                             type="email"
                                             placeholder="rahul@example.com"
-                                            className="bg-slate-950 border-slate-700 text-white h-11 text-xs"
+                                            className="bg-white border-slate-300 text-slate-900 h-11 text-xs focus:ring-2 focus:ring-[#0284c7]"
                                             value={formData.email}
                                             onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                                         />
                                     </div>
 
                                     <div className="space-y-1">
-                                        <label className="text-[11px] font-bold text-slate-400 uppercase">City / Location</label>
+                                        <label className="text-[11px] font-bold text-slate-600 uppercase">City / Location</label>
                                         <Input
                                             required
                                             placeholder="e.g. Pune, Mumbai, Delhi"
-                                            className="bg-slate-950 border-slate-700 text-white h-11 text-xs"
+                                            className="bg-white border-slate-300 text-slate-900 h-11 text-xs focus:ring-2 focus:ring-[#0284c7]"
                                             value={formData.city}
                                             onChange={(e) => setFormData({ ...formData, city: e.target.value })}
                                         />
@@ -541,21 +541,21 @@ export function Deal4LoansApplicationModal({
 
                                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                                     <div className="space-y-1">
-                                        <label className="text-[11px] font-bold text-slate-400 uppercase">Net Monthly Income / Salary</label>
+                                        <label className="text-[11px] font-bold text-slate-600 uppercase">Net Monthly Income / Salary</label>
                                         <Input
                                             required
                                             placeholder="₹50,000"
-                                            className="bg-slate-950 border-slate-700 text-white h-11 text-xs"
+                                            className="bg-white border-slate-300 text-slate-900 h-11 text-xs focus:ring-2 focus:ring-[#0284c7]"
                                             value={formData.monthlyIncome}
                                             onChange={(e) => setFormData({ ...formData, monthlyIncome: e.target.value })}
                                         />
                                     </div>
 
                                     <div className="space-y-1">
-                                        <label className="text-[11px] font-bold text-slate-400 uppercase">Company / Business Name</label>
+                                        <label className="text-[11px] font-bold text-slate-600 uppercase">Company / Business Name</label>
                                         <Input
                                             placeholder="e.g. TCS, Infosys, Self Business"
-                                            className="bg-slate-950 border-slate-700 text-white h-11 text-xs"
+                                            className="bg-white border-slate-300 text-slate-900 h-11 text-xs focus:ring-2 focus:ring-[#0284c7]"
                                             value={formData.companyName}
                                             onChange={(e) => setFormData({ ...formData, companyName: e.target.value })}
                                         />
@@ -567,11 +567,11 @@ export function Deal4LoansApplicationModal({
                             <Button
                                 type="submit"
                                 disabled={isSubmitting}
-                                className="w-full bg-[#ffcd00] hover:bg-[#eab308] text-slate-950 font-black h-13 rounded-2xl uppercase tracking-wider text-xs sm:text-sm shadow-xl flex items-center justify-center gap-2 mt-3 cursor-pointer"
+                                className="w-full bg-[#0284c7] hover:bg-[#0369a1] text-white font-black h-13 rounded-2xl uppercase tracking-wider text-xs sm:text-sm shadow-md flex items-center justify-center gap-2 mt-3 cursor-pointer"
                             >
                                 {isSubmitting ? (
                                     <div className="flex items-center gap-2">
-                                        <div className="h-4 w-4 border-2 border-slate-950 border-t-transparent rounded-full animate-spin" />
+                                        <div className="h-4 w-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
                                         <span>Forwarding to Direct Bank Underwriting...</span>
                                     </div>
                                 ) : (
@@ -582,13 +582,13 @@ export function Deal4LoansApplicationModal({
                                 )}
                             </Button>
 
-                            <div className="flex items-center justify-center gap-2 text-[11px] text-slate-400 pt-1">
+                            <div className="flex items-center justify-center gap-2 text-[11px] text-slate-500 pt-1">
                                 <ShieldCheck className="h-4 w-4 text-[#0284c7]" />
                                 <span>256-bit SSL Encrypted • Zero Impact on CIBIL Score • RBI Compliant</span>
                             </div>
 
                             {error && (
-                                <p className="text-xs text-rose-400 text-center bg-rose-950/40 p-2.5 rounded-xl border border-rose-800">
+                                <p className="text-xs text-rose-600 text-center bg-rose-50 p-2.5 rounded-xl border border-rose-200">
                                     {error}
                                 </p>
                             )}

@@ -46,18 +46,18 @@ export function Modal({ isOpen, onClose, children, className, title }: ModalProp
                             animate={{ opacity: 1, scale: 1, y: 0 }}
                             exit={{ opacity: 0, scale: 0.95, y: 20 }}
                             className={cn(
-                                "relative w-full max-w-lg overflow-hidden rounded-3xl bg-white text-white border border-slate-800 shadow-2xl px-2",
+                                "relative w-full max-w-lg overflow-hidden rounded-3xl bg-white text-slate-900 border border-slate-200 shadow-2xl px-2",
                                 className
                             )}
                         >
                             {/* Header */}
                             <div className="flex items-center justify-between p-6 pb-2">
-                                {title && <h2 className="text-xl font-bold tracking-tight text-white">{title}</h2>}
+                                {title && <h2 className="text-xl font-bold tracking-tight text-slate-900">{title}</h2>}
                                 <button
                                     onClick={onClose}
-                                    className="rounded-full p-2 bg-slate-800 hover:bg-slate-700 transition-colors"
+                                    className="rounded-full p-2 bg-slate-100 hover:bg-slate-200 transition-colors cursor-pointer"
                                 >
-                                    <X className="h-4 w-4 text-slate-400" />
+                                    <X className="h-4 w-4 text-slate-700" />
                                     <span className="sr-only">Close</span>
                                 </button>
                             </div>

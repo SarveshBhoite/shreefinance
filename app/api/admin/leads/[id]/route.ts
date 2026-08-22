@@ -43,7 +43,7 @@ export async function PATCH(
         }
 
         // Recalculate commission amount
-        lead.commissionAmount = Math.round(lead.applicationAmount * (lead.commissionRate / 100));
+        lead.commissionAmount = Number((lead.applicationAmount * (lead.commissionRate / 100)).toFixed(2));
 
         if (leadNotes !== undefined) {
             lead.leadNotes = leadNotes;

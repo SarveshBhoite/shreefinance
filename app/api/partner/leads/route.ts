@@ -16,16 +16,26 @@ export async function GET() {
 
         await connectDB();
 
-        const leads = await PartnerLead.find({ partnerId: partnerPayload.partnerId }).sort({ createdAt: -1 });
+        const rawLeads = await PartnerLead.find({ partnerId: partnerPayload.partnerId }).sort({ createdAt: -1 });
+
+        // Ensure each lead has the exact computed commissionAmount (applicationAmount * commissionRate / 100)
+        const leads = rawLeads.map(lead => {
+            const l = lead.toObject ? lead.toObject() : lead;
+            const exactCommission = Number(((Number(l.applicationAmount) || 0) * ((Number(l.commissionRate) || 2.0) / 100)).toFixed(2));
+            return {
+                ...l,
+                commissionAmount: exactCommission
+            };
+        });
 
         // Calculate partner metrics
         const totalLeads = leads.length;
         const totalDisbursed = leads
             .filter(l => l.leadStatus === "DISBURSED")
             .reduce((sum, l) => sum + (l.applicationAmount || 0), 0);
-        const totalCommissionsEarned = leads
+        const totalCommissionsEarned = Number(leads
             .filter(l => l.leadStatus === "DISBURSED")
-            .reduce((sum, l) => sum + (l.commissionAmount || 0), 0);
+            .reduce((sum, l) => sum + (l.commissionAmount || 0), 0).toFixed(2));
         const inProcessCount = leads
             .filter(l => ["IN_PROCESS", "DOCS_SUBMITTED", "BANK_LOGIN", "SANCTIONED"].includes(l.leadStatus)).length;
 
@@ -99,7 +109,7 @@ export async function POST(req: Request) {
         }
 
         const amountNum = Number(applicationAmount);
-        const calculatedCommission = Math.round(amountNum * (applicableRate / 100));
+        const calculatedCommission = Number((amountNum * (applicableRate / 100)).toFixed(2));
         const refNo = `SHREE-FIL-${Math.floor(100000 + Math.random() * 900000)}`;
 
         const newLead = await PartnerLead.create({
