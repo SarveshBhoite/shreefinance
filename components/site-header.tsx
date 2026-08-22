@@ -203,50 +203,50 @@ export function SiteHeader() {
 
                                 <div className="pt-2 space-y-2">
                                     <button
-                                        onClick={() => {
-                                            setIsContactModalOpen(true);
-                                            setIsMobileMenuOpen(false);
-                                        }}
-                                        className="flex items-center justify-between w-full p-4 rounded-2xl bg-sky-50 dark:bg-emerald-950/50 font-black text-sky-600 dark:text-sky-400 text-sm cursor-pointer"
-                                    >
-                                        <span className="flex items-center gap-2">
-                                            <Phone className="h-4 w-4 text-[#0284c7]" />
-                                            Contact
-                                        </span>
-                                    </button>
-                                    <Link
-                                        href="/track-status"
-                                        onClick={() => setIsMobileMenuOpen(false)}
-                                        className="flex items-center justify-between p-4 rounded-2xl bg-sky-50 dark:bg-sky-950 font-black text-primary text-sm"
-                                    >
-                                        <span className="flex items-center gap-2">
-                                            <Search className="h-4 w-4" />
-                                            Track Application Status
-                                        </span>
-                                    </Link>
-                                    <Link
-                                        href="/become-a-partner"
-                                        onClick={() => setIsMobileMenuOpen(false)}
-                                        className="flex items-center justify-between p-4 rounded-2xl bg-sky-50 dark:bg-sky-50 border border-sky-500/40 font-black text-sky-700 dark:text-[#38bdf8] text-sm"
-                                    >
-                                        <span className="flex items-center gap-2">
-                                            <Sparkles className="h-4 w-4 text-[#0284c7]" />
-                                            Become a Partner (DSA Registration)
-                                        </span>
-                                        <ArrowRight className="h-4 w-4" />
-                                    </Link>
-                                    <Link
-                                        href="/partner/login"
-                                        onClick={() => setIsMobileMenuOpen(false)}
-                                        className="flex items-center justify-between p-4 rounded-2xl bg-slate-900 border border-slate-800 font-black text-slate-200 text-sm"
-                                    >
-                                        <span className="flex items-center gap-2">
-                                            <Building2 className="h-4 w-4 text-[#0284c7]" />
-                                            Partner Portal Login & Dashboard
-                                        </span>
-                                        <span className="text-xs text-[#0284c7]">➔</span>
-                                    </Link>
-                                </div>
+                                         onClick={() => {
+                                             setIsContactModalOpen(true);
+                                             setIsMobileMenuOpen(false);
+                                         }}
+                                         className="flex items-center justify-between w-full p-4 rounded-2xl bg-sky-50 font-black text-[#0284c7] text-sm cursor-pointer border border-sky-200"
+                                     >
+                                         <span className="flex items-center gap-2">
+                                             <Phone className="h-4 w-4 text-[#0284c7]" />
+                                             Contact
+                                         </span>
+                                     </button>
+                                     <Link
+                                         href="/track-status"
+                                         onClick={() => setIsMobileMenuOpen(false)}
+                                         className="flex items-center justify-between p-4 rounded-2xl bg-sky-50 font-black text-[#0284c7] text-sm border border-sky-200"
+                                     >
+                                         <span className="flex items-center gap-2">
+                                             <Search className="h-4 w-4" />
+                                             Track Application Status
+                                         </span>
+                                     </Link>
+                                     <Link
+                                         href="/become-a-partner"
+                                         onClick={() => setIsMobileMenuOpen(false)}
+                                         className="flex items-center justify-between p-4 rounded-2xl bg-sky-50 border border-sky-300 font-black text-[#0284c7] text-sm"
+                                     >
+                                         <span className="flex items-center gap-2">
+                                             <Sparkles className="h-4 w-4 text-[#0284c7]" />
+                                             Become a Partner (DSA Registration)
+                                         </span>
+                                         <ArrowRight className="h-4 w-4" />
+                                     </Link>
+                                     <Link
+                                         href="/partner/login"
+                                         onClick={() => setIsMobileMenuOpen(false)}
+                                         className="flex items-center justify-between p-4 rounded-2xl bg-white border border-slate-200 font-black text-slate-900 text-sm shadow-xs"
+                                     >
+                                         <span className="flex items-center gap-2">
+                                             <Building2 className="h-4 w-4 text-[#0284c7]" />
+                                             Partner Portal Login & Dashboard
+                                         </span>
+                                         <span className="text-xs text-[#0284c7]">➔</span>
+                                     </Link>
+                                 </div>
                             </nav>
                             
                             <div className="pt-4 space-y-3">
