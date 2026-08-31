@@ -130,7 +130,7 @@ export default function AdminDashboardPage() {
     const searchParams = useSearchParams();
     const fileInputRef = useRef<HTMLInputElement>(null);
 
-    const [activeTab, setActiveTab] = useState<"partners" | "files" | "rates" | "banners">("partners");
+    const [activeTab, setActiveTab] = useState<"partners" | "files" | "rates" | "banners">("files");
     const [toast, setToast] = useState<{ type: "success" | "error"; message: string } | null>(null);
 
     // =========================================================================
@@ -582,6 +582,18 @@ export default function AdminDashboardPage() {
                         {/* Tab Switchers */}
                         <div className="hidden lg:flex items-center bg-[#f8fafc]/80 p-1 rounded-xl border border-slate-200">
                             <button
+                                onClick={() => setActiveTab("files")}
+                                className={`px-4 py-2 rounded-lg text-xs font-black transition-all cursor-pointer flex items-center gap-1.5 ${
+                                    activeTab === "files"
+                                        ? "bg-[#0284c7] text-white shadow-md"
+                                        : "text-slate-500 hover:text-slate-900"
+                                }`}
+                            >
+                                <Briefcase className="h-3.5 w-3.5" />
+                                <span>User Loan Applications ({filesMetrics.totalCount})</span>
+                            </button>
+
+                            <button
                                 onClick={() => setActiveTab("partners")}
                                 className={`px-4 py-2 rounded-lg text-xs font-black transition-all cursor-pointer flex items-center gap-1.5 ${
                                     activeTab === "partners"
@@ -596,18 +608,6 @@ export default function AdminDashboardPage() {
                                         {partnerCounts.pending}
                                     </span>
                                 )}
-                            </button>
-
-                            <button
-                                onClick={() => setActiveTab("files")}
-                                className={`px-4 py-2 rounded-lg text-xs font-black transition-all cursor-pointer flex items-center gap-1.5 ${
-                                    activeTab === "files"
-                                        ? "bg-[#0284c7] text-white shadow-md"
-                                        : "text-slate-500 hover:text-slate-900"
-                                }`}
-                            >
-                                <Briefcase className="h-3.5 w-3.5" />
-                                <span>Submitted Files & Pipeline</span>
                             </button>
 
                             <button
@@ -1143,6 +1143,12 @@ export default function AdminDashboardPage() {
 
                                                         <td className="py-4 px-5 align-top">
                                                             <p className="font-bold text-slate-900 text-sm">{file.customerName}</p>
+                                                            {file.customerEmail && (
+                                                                <p className="text-slate-500 text-xs flex items-center gap-1 mt-0.5">
+                                                                    <Mail className="h-3 w-3 text-slate-500" />
+                                                                    {file.customerEmail}
+                                                                </p>
+                                                            )}
                                                             <p className="text-slate-500 text-xs flex items-center gap-1 mt-0.5">
                                                                 <Phone className="h-3 w-3 text-[#0284c7]" />
                                                                 +91 {file.customerMobile}
