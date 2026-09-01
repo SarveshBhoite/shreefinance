@@ -98,7 +98,7 @@ export function SiteHeader() {
 
                     {/* 3. Facebook */}
                     <a
-                        href="https://facebook.com"
+                        href="https://www.facebook.com/profile.php?id=61585560397130#"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="flex items-center gap-1.5 text-white hover:text-[#38bdf8] transition-colors whitespace-nowrap group"

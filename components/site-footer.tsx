@@ -39,7 +39,9 @@ export function SiteFooter() {
                         </p>
                         <div className="flex gap-2.5 pt-2 flex-wrap">
                             <a
-                                href="#"
+                                href="https://www.facebook.com/profile.php?id=61585560397130#"
+                                target="_blank"
+                                rel="noopener noreferrer"
                                 aria-label="Facebook"
                                 className="h-10 w-10 rounded-xl bg-slate-100 dark:bg-white/5 border border-slate-200 dark:border-white/10 flex items-center justify-center text-slate-600 dark:text-slate-400 hover:bg-[#0284c7] hover:text-white hover:-translate-y-1 hover:shadow-lg transition-all duration-200"
                             >
