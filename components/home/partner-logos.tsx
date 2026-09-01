@@ -7,29 +7,21 @@ import { LeadFormModal } from "@/components/dialogs/lead-form-modal";
 import Image from "next/image";
 
 const banks = [
+    { name: "SBI Bank", logo: "/bank logo/clipart2057950.png" },
     { name: "HDFC Bank", logo: "/bank logo/hd6833h547-hdfc-bank-logo-hdfc-bank-logo-and-symbol-meaning-history-png.png" },
-    { name: "SBI", logo: "/bank logo/pngegg.png" },
-    { name: "ICICI Bank", logo: "/bank logo/627cc5351b2e263b45696a89.png" },
-    { name: "Axis Bank", logo: "/bank logo/axis-bank-logo-02.png" },
-    { name: "Kotak", logo: "/bank logo/KOTAKBANK.NS.png" },
-    { name: "Bajaj Finserv", logo: "/bank logo/clipart2057950.png" },
-    { name: "Bank of Baroda" },
-    { name: "PNB" },
-    { name: "TATA Capital" },
-    { name: "prefr" },
-    { name: "Union Bank of India", logo: "/bank logo/union-bank-of-india-logo-01.png" },
-    { name: "IDFC First Bank" },
-    { name: "Indusind Bank" },
-    { name: "DCB Bank" },
-    { name: "YES Bank" },
-    { name: "CITI" },
-    { name: "LIC HFL" },
-    { name: "DHFL" },
-    { name: "UGRO" },
-    { name: "Canera Bank", logo: "/bank logo/Canara-Bank-Logo.png" },
-    { name: "RBL Bank" },
+    { name: "ICICI Bank", logo: "/bank logo/pngegg.png" },
+    { name: "Axis Bank", logo: "/bank logo/axis-bank-full.png" },
+    { name: "Kotak Mahindra", logo: "/bank logo/KOTAKBANK.NS.png" },
+    { name: "Bank of Baroda", logo: "/bank logo/627cc5351b2e263b45696a89.png" },
+    { name: "Bajaj Finserv", logo: "/bank logo/bajaj-finserv-logo.png" },
+    { name: "Union Bank", logo: "/bank logo/union-bank-of-india-logo-01.png" },
+    { name: "Canara Bank", logo: "/bank logo/Canara-Bank-Logo.png" },
     { name: "Bank of India", logo: "/bank logo/Bank_of_India_logo_PNG1.png" },
     { name: "Saraswat Bank", logo: "/bank logo/sarawast-bank-logo-01.png" },
+    { name: "Punjab National Bank", logo: "/bank logo/pnb-logo.jpg" },
+    { name: "YES Bank", logo: "/bank logo/yes-bank-logo.jpg" },
+    { name: "Tata Capital", logo: "/bank logo/tata-capital-logo.png" },
+    { name: "Federal Bank", logo: "/bank logo/federal-bank-logo.jpg" },
 ];
 
 export function PartnerLogos() {
@@ -92,21 +84,21 @@ export function PartnerLogos() {
                     </Button>
                 </div>
 
-                {/* Bank Tiles Grid */}
-                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3">
+                {/* Bank Tiles Grid: 3 rows of 5 cards */}
+                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4">
                     {banks.map((bank, index) => (
                         <div
                             key={index}
                             onClick={() => setIsModalOpen(true)}
-                            className="bg-slate-50 dark:bg-white hover:bg-sky-50/60 dark:hover:bg-[#252a32] border border-slate-200 dark:border-slate-800 hover:border-[#0284c7] rounded-xl p-4 flex flex-col items-center justify-center min-h-[90px] text-center transition-all duration-200 shadow-sm hover:shadow-md group cursor-pointer"
+                            className="bg-slate-50 dark:bg-white hover:bg-sky-50/60 dark:hover:bg-[#252a32] border border-slate-200 dark:border-slate-800 hover:border-[#0284c7] rounded-xl p-3.5 flex flex-col items-center justify-center min-h-[96px] text-center transition-all duration-200 shadow-sm hover:shadow-md group cursor-pointer"
                         >
                             {bank.logo ? (
-                                <div className="relative w-full h-10 mb-1 flex items-center justify-center">
+                                <div className="relative w-full h-12 mb-1 flex items-center justify-center">
                                     <Image
                                         src={bank.logo}
                                         alt={bank.name}
                                         fill
-                                        className="object-contain filter dark:brightness-110 group-hover:scale-105 transition-transform"
+                                        className="object-contain filter dark:brightness-110 group-hover:scale-110 transition-transform"
                                     />
                                 </div>
                             ) : (
