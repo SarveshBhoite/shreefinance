@@ -1,4 +1,5 @@
 import nodemailer from "nodemailer";
+import { sendEmailViaBrevoApi } from "@/lib/brevo";
 
 export function getMailTransporter() {
     const smtpHost = process.env.SMTP_HOST || "smtp-relay.brevo.com";
@@ -136,10 +137,151 @@ export async function sendAdminPartnerNotification(application: PartnerNotificat
     </div>
     `;
 
+    const brevoRes = await sendEmailViaBrevoApi({
+        to: adminEmail,
+        subject: `New Partner Application Received: ${businessName}`,
+        htmlContent: htmlContent,
+        senderName: senderName,
+        senderEmail: senderEmail
+    });
+
+    if (brevoRes.success) {
+        return brevoRes;
+    }
+
     return transporter.sendMail({
         from: `"${senderName}" <${senderEmail}>`,
         to: adminEmail,
         subject: `New Partner Application Received: ${businessName}`,
+        html: htmlContent
+    });
+}
+
+export async function sendPartnerReceivedUserEmail(application: PartnerNotificationData) {
+    const { senderName, senderEmail, baseUrl } = getMailConfig();
+    const transporter = getMailTransporter();
+
+    const formattedDate = application.createdAt
+        ? new Date(application.createdAt).toLocaleString("en-IN", { timeZone: "Asia/Kolkata" })
+        : new Date().toLocaleString("en-IN", { timeZone: "Asia/Kolkata" });
+
+    const htmlContent = `
+    <div style="font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, Helvetica, Arial, sans-serif; max-width: 620px; margin: 0 auto; border: 1px solid #cbd5e1; border-radius: 16px; overflow: hidden; background-color: #ffffff; box-shadow: 0 10px 30px rgba(0,0,0,0.06);">
+        <!-- BRAND HEADER -->
+        <div style="background-color: #0f172a; padding: 24px 30px; border-bottom: 4px solid #0284c7;">
+            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                    <td>
+                        <h1 style="color: #0284c7; margin: 0; font-size: 22px; font-weight: 900; letter-spacing: 1px;">SHREE FINANCE</h1>
+                        <p style="color: #94a3b8; margin: 4px 0 0 0; font-size: 11px; text-transform: uppercase; font-weight: 700;">Partner & Channel Network</p>
+                    </td>
+                    <td align="right">
+                        <span style="background-color: #0284c7; color: #0f172a; padding: 6px 14px; border-radius: 20px; font-size: 11px; font-weight: 900; text-transform: uppercase;">
+                            #${application.referenceNo}
+                        </span>
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+        <!-- HERO ACKNOWLEDGEMENT BANNER -->
+        <div style="padding: 28px 30px; background: linear-gradient(135deg, #f0fdf4 0%, #e0f2fe 100%); border-bottom: 1px solid #e2e8f0; text-align: center;">
+            <div style="display: inline-block; background-color: #0284c7; color: #ffffff; padding: 6px 18px; border-radius: 20px; font-size: 12px; font-weight: 800; text-transform: uppercase; margin-bottom: 12px;">
+                ⏳ Application Under Review
+            </div>
+            <h2 style="color: #0f172a; font-size: 22px; font-weight: 900; margin: 0 0 8px 0;">
+                Partner Application Received!
+            </h2>
+            <p style="color: #0369a1; font-size: 15px; font-weight: 700; margin: 0 0 10px 0;">
+                Hello ${application.name}, thank you for registering with Shree Finance!
+            </p>
+            <p style="color: #475569; font-size: 13px; margin: 0 auto; line-height: 1.6; max-width: 500px;">
+                We have received your partner onboarding application. Our team is reviewing your profile and credentials. Once approved, your partner portal login credentials will be emailed to you.
+            </p>
+        </div>
+
+        <!-- SUBMITTED DETAILS SUMMARY -->
+        <div style="padding: 24px 30px;">
+            <h3 style="color: #0f172a; font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px; margin: 0 0 12px 0; padding-bottom: 6px; border-bottom: 2px solid #0284c7;">
+                📋 Summary of Your Application Details
+            </h3>
+
+            <table width="100%" border="0" cellspacing="0" cellpadding="0" style="font-size: 13px; margin-bottom: 20px; border: 1px solid #e2e8f0; border-radius: 8px; overflow: hidden;">
+                <tr style="background-color: #f8fafc;">
+                    <td width="40%" style="font-weight: 700; color: #475569; padding: 10px 12px; border-bottom: 1px solid #f1f5f9;">Reference ID:</td>
+                    <td width="60%" style="font-weight: 900; color: #0284c7; padding: 10px 12px; border-bottom: 1px solid #f1f5f9;">#${application.referenceNo}</td>
+                </tr>
+                <tr>
+                    <td style="font-weight: 700; color: #475569; padding: 10px 12px; border-bottom: 1px solid #f1f5f9;">Applicant Name:</td>
+                    <td style="font-weight: 800; color: #0f172a; padding: 10px 12px; border-bottom: 1px solid #f1f5f9;">${application.name}</td>
+                </tr>
+                <tr style="background-color: #f8fafc;">
+                    <td style="font-weight: 700; color: #475569; padding: 10px 12px; border-bottom: 1px solid #f1f5f9;">Registered Email:</td>
+                    <td style="font-weight: 800; color: #0f172a; padding: 10px 12px; border-bottom: 1px solid #f1f5f9;">${application.email}</td>
+                </tr>
+                <tr>
+                    <td style="font-weight: 700; color: #475569; padding: 10px 12px; border-bottom: 1px solid #f1f5f9;">Mobile Number:</td>
+                    <td style="font-weight: 800; color: #0f172a; padding: 10px 12px; border-bottom: 1px solid #f1f5f9;">+91 ${application.mobile}</td>
+                </tr>
+                <tr style="background-color: #f8fafc;">
+                    <td style="font-weight: 700; color: #475569; padding: 10px 12px; border-bottom: 1px solid #f1f5f9;">Company / Firm:</td>
+                    <td style="font-weight: 800; color: #0f172a; padding: 10px 12px; border-bottom: 1px solid #f1f5f9;">${application.companyName || "Individual DSA / Consultant"}</td>
+                </tr>
+                <tr>
+                    <td style="font-weight: 700; color: #475569; padding: 10px 12px; border-bottom: 1px solid #f1f5f9;">City / Location:</td>
+                    <td style="font-weight: 800; color: #0f172a; padding: 10px 12px; border-bottom: 1px solid #f1f5f9;">📍 ${application.city}</td>
+                </tr>
+                <tr style="background-color: #f8fafc;">
+                    <td style="font-weight: 700; color: #475569; padding: 10px 12px;">Submitted On:</td>
+                    <td style="font-weight: 800; color: #0f172a; padding: 10px 12px;">📅 ${formattedDate} (IST)</td>
+                </tr>
+            </table>
+
+            <!-- NEXT STEPS -->
+            <div style="background-color: #f8fafc; border: 1px solid #e2e8f0; border-radius: 10px; padding: 16px; margin-bottom: 18px;">
+                <h4 style="margin: 0 0 8px 0; font-size: 13px; color: #0f172a;">⏩ What Happens Next?</h4>
+                <ol style="margin: 0; padding-left: 18px; color: #475569; font-size: 12px; line-height: 1.7;">
+                    <li>Our Onboarding Verification Desk will verify your submitted profile details (typically within 24 hours).</li>
+                    <li>Upon approval, you will receive an official approval email with your <strong>Partner Portal login credentials</strong>.</li>
+                    <li>You will get immediate access to live rate cards, multi-bank loan submission desk, and payout tracking!</li>
+                </ol>
+            </div>
+
+            <!-- SUPPORT INFO -->
+            <div style="background-color: #ecfdf5; border: 1px dashed #0284c7; border-radius: 8px; padding: 14px; text-align: center;">
+                <p style="color: #065f46; font-size: 12px; margin: 0 0 4px 0; font-weight: 700;">
+                    Have questions regarding your partner onboarding?
+                </p>
+                <p style="color: #0369a1; font-size: 13px; margin: 0; font-weight: 800;">
+                    📞 Partner Desk: <a href="tel:+918830434945" style="color: #0284c7; text-decoration: none;">+91 88304 34945</a> | ✉️ <a href="mailto:shreefinancec@gmail.com" style="color: #0284c7; text-decoration: none;">shreefinancec@gmail.com</a>
+                </p>
+            </div>
+        </div>
+
+        <!-- FOOTER -->
+        <div style="background-color: #0f172a; padding: 16px 30px; text-align: center; color: #94a3b8; font-size: 11px;">
+            <p style="margin: 0 0 4px 0;">© ${new Date().getFullYear()} Shree Finance Advisory Services Pvt. Ltd. All rights reserved.</p>
+            <p style="margin: 0; font-size: 10px; color: #64748b;">Office No. D/201, Siddhivinayak Angan Society, Near Navale Bridge, Narhe, Pune - 411041</p>
+        </div>
+    </div>
+    `;
+
+    const brevoRes = await sendEmailViaBrevoApi({
+        to: application.email,
+        subject: `✅ [Shree Finance] Partner Application Received - Reference #${application.referenceNo}`,
+        htmlContent: htmlContent,
+        senderName: `${senderName} - Shree Finance`,
+        senderEmail: "shreefinancec@gmail.com"
+    });
+
+    if (brevoRes.success) {
+        return brevoRes;
+    }
+
+    return transporter.sendMail({
+        from: `"${senderName} - Shree Finance" <${senderEmail}>`,
+        to: application.email,
+        subject: `✅ [Shree Finance] Partner Application Received - Reference #${application.referenceNo}`,
         html: htmlContent
     });
 }
@@ -263,6 +405,18 @@ export async function sendPartnerApprovalEmail(application: {
     </div>
     `;
 
+    const brevoRes = await sendEmailViaBrevoApi({
+        to: application.email,
+        subject: "Your Partner Application is Approved!",
+        htmlContent: htmlContent,
+        senderName: senderName,
+        senderEmail: senderEmail
+    });
+
+    if (brevoRes.success) {
+        return brevoRes;
+    }
+
     return transporter.sendMail({
         from: `"${senderName}" <${senderEmail}>`,
         to: application.email,
@@ -317,6 +471,18 @@ export async function sendPartnerRejectionEmail(application: {
         </div>
     </div>
     `;
+
+    const brevoRes = await sendEmailViaBrevoApi({
+        to: application.email,
+        subject: "Partner Application Status Update - Shree Finance",
+        htmlContent: htmlContent,
+        senderName: senderName,
+        senderEmail: senderEmail
+    });
+
+    if (brevoRes.success) {
+        return brevoRes;
+    }
 
     return transporter.sendMail({
         from: `"${senderName}" <${senderEmail}>`,

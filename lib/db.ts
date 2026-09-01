@@ -22,9 +22,20 @@ if (!global.mongooseCache) {
 export async function connectDB() {
     if (cached.conn) return cached.conn;
 
-    const uri = process.env.MONGODB_URI || MONGODB_URI;
-    if (!uri) {
-        throw new Error("Please define the MONGODB_URI environment variable in .env.local");
+    let uri = process.env.MONGODB_URI || MONGODB_URI || "";
+    uri = uri.trim();
+    if (uri.startsWith("MONGO_URI=")) {
+        uri = uri.replace("MONGO_URI=", "").trim();
+    }
+    if (uri.startsWith('"') && uri.endsWith('"')) {
+        uri = uri.slice(1, -1);
+    }
+    if (uri.startsWith("'") && uri.endsWith("'")) {
+        uri = uri.slice(1, -1);
+    }
+
+    if (!uri || (!uri.startsWith("mongodb://") && !uri.startsWith("mongodb+srv://"))) {
+        throw new Error("Please define a valid MONGODB_URI (starting with mongodb:// or mongodb+srv://) in .env.local");
     }
 
     if (!cached.promise) {

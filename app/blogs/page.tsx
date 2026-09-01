@@ -50,6 +50,110 @@ const CATEGORIES = [
     { name: "Credit Score", label: "CIBIL & Credit Score", icon: DollarSign },
 ];
 
+const DEFAULT_LOAN_BLOGS: BlogItem[] = [
+    {
+        _id: "default-1",
+        title: "How to Get the Lowest Home Loan Interest Rate in 2026",
+        slug: "how-to-get-lowest-home-loan-interest-rate",
+        excerpt: "Master the insider tactics used by top financial advisors to negotiate 8.35% p.a. home loan rates and save up to ₹8 Lakhs in interest across 40+ banks.",
+        content: `Getting the lowest home loan interest rate is not just about having a decent income — it requires a strategic approach across your credit profile, loan-to-value ratio, and multi-bank comparison.
+
+### 1. Maintain a CIBIL Score of 750+
+Banks reserve their benchmark interest rates (starting 8.35% p.a.) strictly for borrowers with a CIBIL score of 750 or above. Even a 0.50% reduction in your interest rate on a ₹50 Lakh loan for 20 years saves you over ₹4.5 Lakhs in interest payments.
+
+### 2. Compare Across Nationalized and Private Banks
+Never settle for your primary salary bank without comparing. While PSU banks like SBI and Bank of Baroda offer rock-bottom floating rates, private lenders like HDFC and ICICI often provide faster turnaround and discounted processing fees.
+
+### 3. Opt for Home Loan Balance Transfer
+If your existing loan interest rate is above 9.25%, switching to a new lender offering 8.35% with zero processing fees can significantly lower your monthly EMI burden immediately.`,
+        category: "Loans",
+        coverImage: "/banners/theme-home-loan.jpg",
+        author: "Shree Finance Advisory Desk",
+        authorRole: "Senior Financial Research Team",
+        readTime: "5 min read",
+        tags: ["Home Loan", "Interest Rates", "CIBIL", "Savings"],
+        views: 342,
+        createdAt: "2026-03-01T10:00:00.000Z"
+    },
+    {
+        _id: "default-2",
+        title: "Personal Loan vs. Loan Against Property: Which Capital Option is Right for You?",
+        slug: "personal-loan-vs-loan-against-property",
+        excerpt: "Compare interest rates, tenure flexibility, and disbursal speeds to choose the most cost-effective funding source for your business or personal needs.",
+        content: `When you need instant liquidity of ₹10 Lakhs to ₹1 Crore, deciding between an unsecured Personal Loan and a secured Loan Against Property (LAP) is crucial to keeping borrowing costs low.
+
+### Personal Loans (Unsecured)
+- **Speed:** Instant approval & disbursal in 24 hours.
+- **Collateral:** 100% collateral-free.
+- **Rates:** 10.25% to 14.5% p.a.
+- **Tenure:** Up to 5 years.
+- **Best For:** Medical emergencies, urgent weddings, quick working capital.
+
+### Loan Against Property (Secured)
+- **Speed:** 5 to 7 days for legal & technical checks.
+- **Collateral:** Residential, commercial, or industrial property.
+- **Rates:** 9.25% to 11.5% p.a.
+- **Tenure:** Up to 15-20 years.
+- **Best For:** Business expansion, machinery purchase, major debt consolidation.`,
+        category: "Loans",
+        coverImage: "/banners/theme-personal-loan.jpg",
+        author: "Shree Finance Advisory Desk",
+        authorRole: "Credit Analysis Desk",
+        readTime: "4 min read",
+        tags: ["Personal Loan", "LAP", "Business Growth"],
+        views: 218,
+        createdAt: "2026-02-24T08:30:00.000Z"
+    },
+    {
+        _id: "default-3",
+        title: "5 Proven Strategies to Boost Your CIBIL Score Above 750 in 60 Days",
+        slug: "boost-cibil-score-above-750",
+        excerpt: "Simple, actionable credit repair habits that eliminate score drag, fix reporting errors, and open instant pre-approved loans from top NBFCs.",
+        content: `Your CIBIL score is the digital passport to securing fast loan sanctions with zero hassle. Here are the 5 proven habits to elevate your score quickly:
+
+1. **Keep Credit Utilization Under 30%:** If your credit limit is ₹2,00,000, never cross ₹60,000 in monthly statement billing.
+2. **Never Miss EMI Deadlines:** Set up auto-debit on NACH mandates to avoid late payment penalties and credit score drops.
+3. **Avoid Multiple Hard Inquiries:** Apply through an integrated aggregator like Shree Finance rather than submitting applications simultaneously to 10 banks.
+4. **Mix Secured and Unsecured Debt:** A healthy mix of auto/home loans alongside a credit card creates a balanced credit profile.
+5. **Rectify DPD (Days Past Due) Errors:** Regularly check your free credit report and dispute inaccurate settled/written-off remarks.`,
+        category: "Credit Score",
+        coverImage: "/banners/theme-business-loan.jpg",
+        author: "Shree Finance Advisory Desk",
+        authorRole: "Risk & Underwriting Specialist",
+        readTime: "6 min read",
+        tags: ["CIBIL", "Credit Score", "Financial Health"],
+        views: 520,
+        createdAt: "2026-02-18T14:15:00.000Z"
+    },
+    {
+        _id: "default-4",
+        title: "Unsecured Business Loans for SMEs: Complete Eligibility & Document Checklist",
+        slug: "sme-business-loan-eligibility-guide",
+        excerpt: "Everything small and medium business owners in Maharashtra need to know to secure up to ₹75 Lakhs collateral-free business loans in 48 hours.",
+        content: `Expanding your business operations, purchasing seasonal inventory, or upgrading technology requires quick capital without mortgaging family property.
+
+### Key Eligibility Criteria:
+- **Vintage:** Minimum 2 years of active business operations.
+- **Annual Turnover:** ₹40 Lakhs or higher with regular GST filings.
+- **Banking Conduct:** 12 months primary current account statement with no cheque bounces.
+- **Profitability:** Positive Net Profit (PAT) in the latest 2 years ITR.
+
+### Documents Required:
+1. PAN & Aadhaar of all Directors/Partners.
+2. GST Registration & 12-Month 3B Returns.
+3. 2 Years Audited Balance Sheet & P&L.
+4. 12 Months Current Account Bank Statements.`,
+        category: "Loans",
+        coverImage: "/banners/theme-partner-program.jpg",
+        author: "Shree Finance Advisory Desk",
+        authorRole: "Commercial Banking Specialist",
+        readTime: "4 min read",
+        tags: ["Business Loan", "SME", "GST", "Working Capital"],
+        views: 189,
+        createdAt: "2026-02-10T11:00:00.000Z"
+    }
+];
+
 export default function BlogsPage() {
     const [blogs, setBlogs] = useState<BlogItem[]>([]);
     const [loading, setLoading] = useState(true);
@@ -68,10 +172,26 @@ export default function BlogsPage() {
                 const res = await fetch(`/api/blogs?${params.toString()}`);
                 if (res.ok) {
                     const data = await res.json();
-                    setBlogs(data.blogs || []);
+                    if (data.blogs && data.blogs.length > 0) {
+                        setBlogs(data.blogs);
+                    } else {
+                        // If DB is empty, filter and present curated loan knowledge guides
+                        let filtered = DEFAULT_LOAN_BLOGS;
+                        if (selectedCategory !== "ALL") {
+                            filtered = filtered.filter(b => b.category.toLowerCase() === selectedCategory.toLowerCase());
+                        }
+                        if (searchQuery.trim()) {
+                            const q = searchQuery.toLowerCase();
+                            filtered = filtered.filter(b => b.title.toLowerCase().includes(q) || b.excerpt.toLowerCase().includes(q) || b.category.toLowerCase().includes(q));
+                        }
+                        setBlogs(filtered);
+                    }
+                } else {
+                    setBlogs(DEFAULT_LOAN_BLOGS);
                 }
             } catch (err) {
                 console.error("Failed to load blogs:", err);
+                setBlogs(DEFAULT_LOAN_BLOGS);
             } finally {
                 setLoading(false);
             }

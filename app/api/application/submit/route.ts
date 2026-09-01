@@ -2,7 +2,8 @@ import { NextResponse } from "next/server";
 import nodemailer from "nodemailer";
 import { connectDB } from "@/lib/db";
 import PartnerApplication from "@/models/PartnerApplication";
-import { sendAdminPartnerNotification } from "@/lib/mail";
+import { sendAdminPartnerNotification, sendPartnerReceivedUserEmail } from "@/lib/mail";
+import { sendEmailViaBrevoApi } from "@/lib/brevo";
 
 export async function POST(req: Request) {
     try {
@@ -62,15 +63,28 @@ export async function POST(req: Request) {
 
                 console.log(`[DB SAVED] Partner Application created for ${applicantName} (${applicantEmail}) with status PENDING. ID: ${createdPartner._id}`);
 
-                // Send Admin Partner Notification Email
+                // 1. Send Admin Partner Notification Email
                 try {
                     await sendAdminPartnerNotification({
                         ...partnerData,
                         createdAt: createdPartner.createdAt
                     });
-                    console.log(`[ADMIN NOTIFIED] Partner application email sent for ${applicantName}`);
+                    console.log(`[ADMIN NOTIFIED] Partner application email sent to admin for ${applicantName}`);
                 } catch (mailErr) {
                     console.error("[ADMIN EMAIL ERROR] Failed to send partner email to admin:", mailErr);
+                }
+
+                // 2. Send Applicant Partner Confirmation Email
+                if (applicantEmail && applicantEmail.includes("@") && !applicantEmail.includes("example.com")) {
+                    try {
+                        await sendPartnerReceivedUserEmail({
+                            ...partnerData,
+                            createdAt: createdPartner.createdAt
+                        });
+                        console.log(`[USER NOTIFIED] Partner application receipt email sent to user (${applicantEmail})`);
+                    } catch (userMailErr) {
+                        console.error("[USER EMAIL ERROR] Failed to send partner receipt email to user:", userMailErr);
+                    }
                 }
 
                 return NextResponse.json({
@@ -199,15 +213,44 @@ export async function POST(req: Request) {
         </div>
         `;
 
-        // 1. Send Admin Notification Email
-        const info = await transporter.sendMail({
-            from: `"${senderName}" <${senderEmail}>`,
-            to: adminEmail,
-            subject: `🚨 [Loan Application Received] ${formTitle} - ${applicantName} (${applicantCity}) #${refNo}`,
-            html: htmlTemplate
-        });
+        // 1. Send Admin Notification Email via Brevo API / SMTP
+        try {
+            const brevoRes = await sendEmailViaBrevoApi({
+                to: adminEmail,
+                subject: `🚨 [Loan Application Received] ${formTitle} - ${applicantName} (${applicantCity}) #${refNo}`,
+                htmlContent: htmlTemplate,
+                senderName: senderName,
+                senderEmail: "shreefinancec@gmail.com"
+            });
 
-        console.log(`[BREVO SMTP DELIVERED] Form submission #${refNo} delivered to Admin (${adminEmail}):`, info.messageId);
+            if (!brevoRes.success) {
+                // Fallback to SMTP if API key is not configured
+                const transporter = nodemailer.createTransport({
+                    host: smtpHost,
+                    port: smtpPort,
+                    secure: smtpPort === 465,
+                    auth: {
+                        user: smtpUser,
+                        pass: smtpPass
+                    },
+                    tls: {
+                        rejectUnauthorized: false
+                    }
+                });
+
+                const info = await transporter.sendMail({
+                    from: `"${senderName}" <${smtpUser || senderEmail}>`,
+                    to: adminEmail,
+                    subject: `🚨 [Loan Application Received] ${formTitle} - ${applicantName} (${applicantCity}) #${refNo}`,
+                    html: htmlTemplate
+                });
+                console.log(`[SMTP DELIVERED] Form submission #${refNo} delivered to Admin (${adminEmail}):`, info.messageId);
+            } else {
+                console.log(`[BREVO API DELIVERED] Form submission #${refNo} delivered to Admin (${adminEmail}):`, brevoRes.messageId);
+            }
+        } catch (mailErr) {
+            console.error("[MAIL NOTICE] Could not send admin notification email:", mailErr);
+        }
 
         // 2. Send Customer "You Are Eligible for Loan" Email directly to the Applicant's email address
         if (applicantEmail && applicantEmail.includes("@") && !applicantEmail.includes("example.com")) {
@@ -315,13 +358,39 @@ export async function POST(req: Request) {
             `;
 
             try {
-                const customerMailRes = await transporter.sendMail({
-                    from: `"${senderName} - Shree Finance" <${senderEmail}>`,
+                const brevoCustomerRes = await sendEmailViaBrevoApi({
                     to: applicantEmail,
                     subject: `✅ [Shree Finance] Your Loan Application Has Been Received - #${refNo}`,
-                    html: customerHtmlTemplate
+                    htmlContent: customerHtmlTemplate,
+                    senderName: `${senderName} - Shree Finance`,
+                    senderEmail: "shreefinancec@gmail.com"
                 });
-                console.log(`[CUSTOMER CONFIRMATION DELIVERED] Confirmation email sent to ${applicantEmail}:`, customerMailRes.messageId);
+
+                if (brevoCustomerRes.success) {
+                    console.log(`[CUSTOMER CONFIRMATION DELIVERED via BREVO API] Confirmation email sent to ${applicantEmail}:`, brevoCustomerRes.messageId);
+                } else {
+                    // Fallback to Nodemailer SMTP
+                    const transporter = nodemailer.createTransport({
+                        host: smtpHost,
+                        port: smtpPort,
+                        secure: smtpPort === 465,
+                        auth: {
+                            user: smtpUser,
+                            pass: smtpPass
+                        },
+                        tls: {
+                            rejectUnauthorized: false
+                        }
+                    });
+
+                    const customerMailRes = await transporter.sendMail({
+                        from: `"${senderName} - Shree Finance" <${smtpUser || senderEmail}>`,
+                        to: applicantEmail,
+                        subject: `✅ [Shree Finance] Your Loan Application Has Been Received - #${refNo}`,
+                        html: customerHtmlTemplate
+                    });
+                    console.log(`[CUSTOMER CONFIRMATION DELIVERED via SMTP] Confirmation email sent to ${applicantEmail}:`, customerMailRes.messageId);
+                }
             } catch (custErr) {
                 console.error(`[CUSTOMER EMAIL ERROR] Could not send email to ${applicantEmail}:`, custErr);
             }
