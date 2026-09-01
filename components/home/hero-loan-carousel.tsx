@@ -57,34 +57,45 @@ interface HeroLoanCarouselProps {
     onSelectLoan: (loan: LoanSlideData) => void;
 }
 
+import { ChevronLeft, ChevronRight } from "lucide-react";
+
 export function HeroLoanCarousel({ onSelectLoan }: HeroLoanCarouselProps) {
     const [currentIndex, setCurrentIndex] = useState(0);
-    const [isHovered, setIsHovered] = useState(false);
 
-    // Smooth auto-slide every 3.5 seconds
+    // Smooth auto-slide every 4 seconds
     useEffect(() => {
         const timer = setInterval(() => {
             setCurrentIndex((prev) => (prev + 1) % LOAN_SLIDER_ITEMS.length);
-        }, 3500);
+        }, 4000);
         return () => clearInterval(timer);
     }, []);
+
+    const nextSlide = (e: React.MouseEvent) => {
+        e.stopPropagation();
+        setCurrentIndex((prev) => (prev + 1) % LOAN_SLIDER_ITEMS.length);
+    };
+
+    const prevSlide = (e: React.MouseEvent) => {
+        e.stopPropagation();
+        setCurrentIndex((prev) => (prev - 1 + LOAN_SLIDER_ITEMS.length) % LOAN_SLIDER_ITEMS.length);
+    };
 
     const currentSlide = LOAN_SLIDER_ITEMS[currentIndex];
 
     return (
-        <div className="w-full flex flex-col items-center select-none">
-            {/* 1. Main Unified Banner Card (Navy Blue & Crisp White Theme) */}
+        <div className="w-full relative flex flex-col items-center select-none group">
+            {/* 1. Main Unified Banner Card */}
             <div 
                 onClick={() => onSelectLoan(currentSlide)}
-                className="relative w-full aspect-[16/9] rounded-[1.5rem] sm:rounded-[1.75rem] md:rounded-[2rem] overflow-hidden shadow-xl border border-slate-200/80 bg-white cursor-pointer group transition-all duration-300 hover:scale-[1.01] hover:shadow-sky-500/20"
+                className="relative w-full aspect-[16/9] rounded-2xl md:rounded-3xl overflow-hidden shadow-lg hover:shadow-xl border border-slate-200 bg-white cursor-pointer transition-all duration-300"
             >
                 <AnimatePresence mode="wait">
                     <motion.div
                         key={currentSlide.id}
-                        initial={{ opacity: 0, x: 20 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        exit={{ opacity: 0, x: -20 }}
-                        transition={{ duration: 0.4, ease: "easeInOut" }}
+                        initial={{ opacity: 0, scale: 0.98 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        exit={{ opacity: 0, scale: 0.98 }}
+                        transition={{ duration: 0.35, ease: "easeInOut" }}
                         className="relative w-full h-full bg-white"
                     >
                         <Image
@@ -97,9 +108,29 @@ export function HeroLoanCarousel({ onSelectLoan }: HeroLoanCarouselProps) {
                         />
                     </motion.div>
                 </AnimatePresence>
+
+                {/* Left Arrow Button */}
+                <button
+                    type="button"
+                    onClick={prevSlide}
+                    aria-label="Previous slide"
+                    className="absolute left-3 top-1/2 -translate-y-1/2 h-8 w-8 rounded-full bg-slate-900/60 hover:bg-slate-900 text-white backdrop-blur-sm flex items-center justify-center transition-all opacity-0 group-hover:opacity-100 cursor-pointer shadow-md"
+                >
+                    <ChevronLeft className="h-4 w-4" />
+                </button>
+
+                {/* Right Arrow Button */}
+                <button
+                    type="button"
+                    onClick={nextSlide}
+                    aria-label="Next slide"
+                    className="absolute right-3 top-1/2 -translate-y-1/2 h-8 w-8 rounded-full bg-slate-900/60 hover:bg-slate-900 text-white backdrop-blur-sm flex items-center justify-center transition-all opacity-0 group-hover:opacity-100 cursor-pointer shadow-md"
+                >
+                    <ChevronRight className="h-4 w-4" />
+                </button>
             </div>
 
-            {/* 2. Pagination Dots (Centered below card: grey dots with active green dot matching reference) */}
+            {/* 2. Pagination Dots & Category Pills */}
             <div className="flex items-center justify-center gap-2 mt-4">
                 {LOAN_SLIDER_ITEMS.map((item, idx) => {
                     const isActive = idx === currentIndex;
@@ -112,10 +143,10 @@ export function HeroLoanCarousel({ onSelectLoan }: HeroLoanCarouselProps) {
                                 setCurrentIndex(idx);
                             }}
                             aria-label={`Go to slide ${idx + 1} - ${item.category}`}
-                            className={`rounded-full transition-all duration-200 cursor-pointer ${
+                            className={`transition-all duration-200 cursor-pointer rounded-full ${
                                 isActive
-                                    ? "w-2.5 h-2.5 bg-[#0284c7] shadow-[0_0_8px_#0284c7] scale-125"
-                                    : "w-2 h-2 bg-slate-500/60 hover:bg-slate-400"
+                                    ? "w-7 h-2 bg-[#0284c7] shadow-xs"
+                                    : "w-2 h-2 bg-slate-300 hover:bg-slate-400"
                             }`}
                         />
                     );

@@ -91,13 +91,13 @@ export function AIChatWidget() {
                             whileTap={{ scale: 0.92 }}
                             onClick={() => setIsOpen(true)}
                             title="Chat with Shree AI Finance Advisor"
-                            className="group relative flex items-center justify-center h-12 w-12 rounded-full bg-gradient-to-r from-[#0284c7] to-teal-500 text-slate-950 shadow-2xl transition-all duration-300 ring-4 ring-sky-500/25 cursor-pointer"
+                            className="group relative flex items-center justify-center h-10 w-10 rounded-full bg-[#0b1329] hover:bg-[#1e293b] text-[#38bdf8] shadow-2xl transition-all duration-300 border border-sky-500/40 cursor-pointer"
                         >
                             <div className="relative flex items-center justify-center">
-                                <Bot className="h-6 w-6 text-slate-950 group-hover:rotate-12 transition-transform duration-300" />
-                                <span className="absolute -top-1 -right-1 flex h-2.5 w-2.5">
-                                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-300 opacity-80" />
-                                    <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-400" />
+                                <Bot className="h-5 w-5 text-[#38bdf8] group-hover:rotate-12 transition-transform duration-300" />
+                                <span className="absolute -top-0.5 -right-0.5 flex h-2 w-2">
+                                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-80" />
+                                    <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-400" />
                                 </span>
                             </div>
                         </motion.button>

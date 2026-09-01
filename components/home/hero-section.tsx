@@ -168,44 +168,42 @@ export function HeroSection() {
                         </div>
 
                         {/* Action CTA Buttons */}
-                        <div className="flex flex-wrap items-center gap-3 pt-1">
+                        <div className="flex flex-wrap items-center gap-2.5 pt-1">
                             <Button
-                                size="lg"
                                 onClick={() => openModal("general")}
-                                className="h-12 px-6 text-xs sm:text-sm font-black rounded-full bg-[#0284c7] hover:bg-[#0369a1] text-white uppercase tracking-wider transition-all hover:scale-105 shadow-md cursor-pointer"
+                                className="h-10 px-5 text-xs font-black rounded-full bg-[#0b1329] hover:bg-[#1e293b] text-white uppercase tracking-wider transition-all hover:scale-105 shadow-md cursor-pointer flex items-center gap-1.5 border border-slate-800"
                             >
-                                Get Instant Loan Sanction <ArrowRight className="h-4 w-4 ml-2" />
+                                <span>Get Instant Loan Sanction</span>
+                                <ArrowRight className="h-3.5 w-3.5" />
                             </Button>
 
                             <Button
-                                size="lg"
                                 variant="outline"
                                 onClick={() => openModal("cibil")}
-                                className="h-12 px-6 text-xs sm:text-sm font-black rounded-full border-sky-300 bg-sky-50 text-[#0284c7] hover:bg-sky-100 uppercase tracking-wider transition-all cursor-pointer shadow-xs"
+                                className="h-10 px-4 text-xs font-black rounded-full border-sky-300 bg-sky-50 text-[#0284c7] hover:bg-sky-100 uppercase tracking-wider transition-all cursor-pointer shadow-xs"
                             >
-                                <Zap className="h-3.5 w-3.5 mr-1.5 fill-[#0284c7] text-[#0284c7]" /> Free CIBIL Check
+                                <Zap className="h-3 w-3 mr-1 fill-[#0284c7] text-[#0284c7]" /> Free CIBIL Check
                             </Button>
 
                             <Link href="/become-a-partner">
                                 <Button
-                                    size="lg"
-                                    className="h-12 px-6 text-xs sm:text-sm font-black rounded-full bg-[#0284c7] hover:bg-[#0369a1] text-white uppercase tracking-wider transition-all hover:scale-105 shadow-md cursor-pointer flex items-center gap-1.5"
+                                    className="h-10 px-4 text-xs font-black rounded-full bg-[#0284c7] hover:bg-[#0369a1] text-white uppercase tracking-wider transition-all hover:scale-105 shadow-md cursor-pointer flex items-center gap-1.5"
                                 >
-                                    <Users className="h-4 w-4" />
+                                    <Users className="h-3.5 w-3.5" />
                                     <span>Become a Partner</span>
                                 </Button>
                             </Link>
                         </div>
                     </div>
 
-                    {/* Right Column: Hero Loan Card Carousel (Urban Money Style) */}
-                    <div className="lg:col-span-6 lg:-translate-y-8 xl:-translate-y-12 flex flex-col justify-center transition-transform">
+                    {/* Right Column: Hero Loan Card Carousel (Aligned with Left Column) */}
+                    <div className="lg:col-span-6 flex flex-col justify-center items-center w-full">
                         <HeroLoanCarousel onSelectLoan={handleSelectLoan} />
                     </div>
                 </div>
 
                 {/* 2. Bottom Row: 4 Loan Product Cards */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 pt-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 pt-2">
                     {loanProducts.map((prod) => (
                         <div
                             key={prod.id}
