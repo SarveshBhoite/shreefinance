@@ -22,8 +22,8 @@ async function seedData() {
         if (!defaultPartner) {
             const newPartner = {
                 name: 'Direct Web Application Desk',
-                email: 'care@shreefinance.com',
-                mobile: '7709936965',
+                email: 'shreefinancec@gmail.com',
+                mobile: '8830434945',
                 city: 'Pune',
                 profession: 'Admin / Web Lead Desk',
                 companyName: 'Shree Finance Direct',

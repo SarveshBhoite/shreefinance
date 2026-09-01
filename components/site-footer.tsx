@@ -1,6 +1,6 @@
 import Link from "next/link"
 import Image from "next/image"
-import { Facebook, Twitter, Instagram, Linkedin, Mail, Phone, MapPin, ChevronRight, Zap } from "lucide-react"
+import { Facebook, Twitter, Instagram, Linkedin, Youtube, Mail, Phone, MapPin, ChevronRight, Zap } from "lucide-react"
 
 export function SiteFooter() {
     return (
@@ -37,12 +37,48 @@ export function SiteFooter() {
                         <p className="text-sm text-slate-600 dark:text-slate-400 font-medium leading-[1.7]">
                             Leading the digital revolution in finance with transparent, hyper-secure, and instant solutions for every Indian.
                         </p>
-                        <div className="flex gap-3 pt-2">
-                            {[Facebook, Twitter, Instagram, Linkedin].map((Icon, i) => (
-                                <Link key={i} href="#" className="h-10 w-10 rounded-xl bg-slate-100 dark:bg-white/5 border border-slate-200 dark:border-white/10 flex items-center justify-center text-slate-600 dark:text-slate-400 hover:bg-[#0284c7] hover:text-slate-950 hover:-translate-y-1 hover:shadow-lg transition-all duration-200">
-                                    <Icon className="h-4 w-4" />
-                                </Link>
-                            ))}
+                        <div className="flex gap-2.5 pt-2 flex-wrap">
+                            <a
+                                href="#"
+                                aria-label="Facebook"
+                                className="h-10 w-10 rounded-xl bg-slate-100 dark:bg-white/5 border border-slate-200 dark:border-white/10 flex items-center justify-center text-slate-600 dark:text-slate-400 hover:bg-[#0284c7] hover:text-white hover:-translate-y-1 hover:shadow-lg transition-all duration-200"
+                            >
+                                <Facebook className="h-4 w-4" />
+                            </a>
+                            <a
+                                href="https://twitter.com/shreefinance153"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                aria-label="Twitter @shreefinance153"
+                                className="h-10 w-10 rounded-xl bg-slate-100 dark:bg-white/5 border border-slate-200 dark:border-white/10 flex items-center justify-center text-slate-600 dark:text-slate-400 hover:bg-[#0284c7] hover:text-white hover:-translate-y-1 hover:shadow-lg transition-all duration-200"
+                            >
+                                <Twitter className="h-4 w-4" />
+                            </a>
+                            <a
+                                href="https://www.youtube.com/@Shree-Finance"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                aria-label="YouTube @Shree-Finance"
+                                className="h-10 w-10 rounded-xl bg-slate-100 dark:bg-white/5 border border-slate-200 dark:border-white/10 flex items-center justify-center text-slate-600 dark:text-slate-400 hover:bg-[#dc2626] hover:text-white hover:-translate-y-1 hover:shadow-lg transition-all duration-200"
+                            >
+                                <Youtube className="h-4 w-4" />
+                            </a>
+                            <a
+                                href="https://www.instagram.com/shreefinancec?igsi=ZzVsNXo0MThqZ2E0"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                aria-label="Instagram @shreefinancec"
+                                className="h-10 w-10 rounded-xl bg-slate-100 dark:bg-white/5 border border-slate-200 dark:border-white/10 flex items-center justify-center text-slate-600 dark:text-slate-400 hover:bg-[#e1306c] hover:text-white hover:-translate-y-1 hover:shadow-lg transition-all duration-200"
+                            >
+                                <Instagram className="h-4 w-4" />
+                            </a>
+                            <a
+                                href="#"
+                                aria-label="LinkedIn"
+                                className="h-10 w-10 rounded-xl bg-slate-100 dark:bg-white/5 border border-slate-200 dark:border-white/10 flex items-center justify-center text-slate-600 dark:text-slate-400 hover:bg-[#0284c7] hover:text-white hover:-translate-y-1 hover:shadow-lg transition-all duration-200"
+                            >
+                                <Linkedin className="h-4 w-4" />
+                            </a>
                         </div>
                     </div>
 
@@ -83,6 +119,7 @@ export function SiteFooter() {
                                 { name: "DSA Partner Program", href: "/partner" },
                                 { name: "Documents Required", href: "/documents-required" },
                                 { name: "Rewards & Cashback", href: "/rewards-and-offers" },
+                                { name: "Financial Blogs & Guides", href: "/blogs" },
                             ].map((item, i) => (
                                 <li key={i}>
                                     <Link href={item.href} className="text-slate-600 font-semibold hover:text-[#0284c7] hover:translate-x-1.5 transition-all inline-flex items-center gap-2 group text-sm">
@@ -118,18 +155,18 @@ export function SiteFooter() {
                             </li>
                             <li>
                                 <a
-                                    href="tel:+917709936965"
+                                    href="tel:+918830434945"
                                     className="flex items-center gap-4 group hover:opacity-90 transition-all cursor-pointer p-3 rounded-2xl bg-slate-50 border border-slate-200"
                                 >
                                     <div className="h-9 w-9 rounded-xl bg-sky-50 border border-sky-200 flex items-center justify-center shrink-0 text-[#0284c7] group-hover:bg-[#0284c7] group-hover:text-slate-950 transition-all">
                                         <Phone className="h-4 w-4" />
                                     </div>
-                                    <span className="text-slate-900 font-black text-base group-hover:text-[#0284c7] transition-colors">+91 77099 36965</span>
+                                    <span className="text-slate-900 font-black text-base group-hover:text-[#0284c7] transition-colors">+91 88304 34945</span>
                                 </a>
                             </li>
                             <li>
                                 <a
-                                    href="https://mail.google.com/mail/?view=cm&fs=1&to=care@shreefinance.com"
+                                    href="https://mail.google.com/mail/?view=cm&fs=1&to=shreefinancec@gmail.com"
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     className="flex items-center gap-4 group hover:opacity-90 transition-all cursor-pointer p-3 rounded-2xl bg-slate-50 border border-slate-200"
@@ -137,7 +174,7 @@ export function SiteFooter() {
                                     <div className="h-9 w-9 rounded-xl bg-sky-50 border border-sky-200 flex items-center justify-center shrink-0 text-[#0284c7] group-hover:bg-[#0284c7] group-hover:text-slate-950 transition-all">
                                         <Mail className="h-4 w-4" />
                                     </div>
-                                    <span className="text-slate-700 font-bold text-xs group-hover:text-[#0284c7] transition-colors">care@shreefinance.com</span>
+                                    <span className="text-slate-700 font-bold text-xs group-hover:text-[#0284c7] transition-colors">shreefinancec@gmail.com</span>
                                 </a>
                             </li>
                         </ul>

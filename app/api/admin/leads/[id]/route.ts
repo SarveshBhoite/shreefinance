@@ -15,7 +15,7 @@ export async function PATCH(
 
         const { id } = await params;
         const body = await req.json();
-        const { leadStatus, payoutStatus, commissionRate, applicationAmount, leadNotes } = body;
+        const { leadStatus, payoutStatus, commissionRate, applicationAmount, disbursedAmount, leadNotes } = body;
 
         await connectDB();
         const lead = await PartnerLead.findById(id);
@@ -38,12 +38,17 @@ export async function PATCH(
             lead.applicationAmount = Number(applicationAmount);
         }
 
+        if (disbursedAmount !== undefined && !isNaN(Number(disbursedAmount))) {
+            lead.disbursedAmount = Number(disbursedAmount);
+        }
+
         if (commissionRate !== undefined && !isNaN(Number(commissionRate))) {
             lead.commissionRate = Number(commissionRate);
         }
 
         // Recalculate commission amount
-        lead.commissionAmount = Number((lead.applicationAmount * (lead.commissionRate / 100)).toFixed(2));
+        const baseAmount = lead.disbursedAmount || lead.applicationAmount;
+        lead.commissionAmount = Number((baseAmount * (lead.commissionRate / 100)).toFixed(2));
 
         if (leadNotes !== undefined) {
             lead.leadNotes = leadNotes;

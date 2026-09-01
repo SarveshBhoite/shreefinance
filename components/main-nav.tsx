@@ -147,6 +147,14 @@ export function MainNav() {
                     </div>
                 );
             })}
+
+            {/* Direct Blogs Link */}
+            <Link
+                href="/blogs"
+                className="text-sm font-extrabold text-slate-800 hover:text-[#0284c7] py-2 transition-colors whitespace-nowrap"
+            >
+                Blogs
+            </Link>
         </nav>
     );
 }

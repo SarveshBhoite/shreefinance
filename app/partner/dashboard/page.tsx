@@ -26,7 +26,8 @@ import {
     Shield,
     PieChart,
     Banknote,
-    Edit3
+    Edit3,
+    Calendar
 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -54,7 +55,9 @@ interface PartnerFileItem {
     customerEmail?: string;
     customerCity: string;
     bankName: string;
+    rmName?: string;
     applicationAmount: number;
+    disbursedAmount?: number;
     bankReferenceNo?: string;
     commissionRate: number;
     commissionAmount: number;
@@ -727,10 +730,14 @@ export default function PartnerDashboardPage() {
                                     <thead>
                                         <tr className="border-b border-slate-200 bg-[#f8fafc]/60 text-slate-500 uppercase font-black tracking-wider text-[10px]">
                                             <th className="py-4 px-5">File Ref / Date</th>
-                                            <th className="py-4 px-5">Client Acquire Details</th>
-                                            <th className="py-4 px-5">Type & Bank Submitted To</th>
+                                            <th className="py-4 px-5">Customer</th>
+                                            <th className="py-4 px-5">Category / Product</th>
+                                            <th className="py-4 px-5">Bank</th>
+                                            <th className="py-4 px-5">RM Name</th>
                                             <th className="py-4 px-5">Filed Amount</th>
-                                            <th className="py-4 px-5">Commission Rate & Amount</th>
+                                            <th className="py-4 px-5">Disbursed Amount</th>
+                                            <th className="py-4 px-5">Commission Amount</th>
+                                            <th className="py-4 px-5">Disbursed Date</th>
                                             <th className="py-4 px-5">Status</th>
                                             <th className="py-4 px-5 text-right">Actions</th>
                                         </tr>
@@ -772,7 +779,10 @@ export default function PartnerDashboardPage() {
                                                             {catConfig.title}
                                                         </span>
                                                         <p className="font-bold text-slate-700">{file.subProduct}</p>
-                                                        <p className="text-[#0284c7] text-[11px] font-medium mt-0.5">
+                                                    </td>
+
+                                                    <td className="py-4 px-5 align-top">
+                                                        <p className="text-[#0284c7] text-[11px] font-bold mt-0.5">
                                                             🏦 {file.bankName}
                                                         </p>
                                                         {file.bankReferenceNo && (
@@ -780,6 +790,12 @@ export default function PartnerDashboardPage() {
                                                                 LAN: {file.bankReferenceNo}
                                                             </p>
                                                         )}
+                                                    </td>
+
+                                                    <td className="py-4 px-5 align-top">
+                                                        <span className="text-slate-900 font-bold text-xs flex items-center gap-1">
+                                                            👤 {file.rmName || "Sarvesh Bhoite"}
+                                                        </span>
                                                     </td>
 
                                                     <td className="py-4 px-5 align-top">
@@ -792,12 +808,38 @@ export default function PartnerDashboardPage() {
                                                     </td>
 
                                                     <td className="py-4 px-5 align-top">
+                                                        {isDisbursed || file.disbursedAmount ? (
+                                                            <span className="font-black text-sm text-[#0284c7] block">
+                                                                ₹{(file.disbursedAmount || file.applicationAmount).toLocaleString("en-IN")}
+                                                            </span>
+                                                        ) : (
+                                                            <span className="text-slate-500 text-[11px] font-medium">—</span>
+                                                        )}
+                                                    </td>
+
+                                                    <td className="py-4 px-5 align-top">
                                                         <span className="font-black text-[#0284c7] text-sm block">
                                                             ₹{Number(file.commissionAmount || (file.applicationAmount * (file.commissionRate / 100))).toLocaleString("en-IN", { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
                                                         </span>
-                                                        <span className="text-[10px] text-slate-500 font-medium">
-                                                            ({file.commissionRate}%={Number(file.commissionAmount || (file.applicationAmount * (file.commissionRate / 100))).toLocaleString("en-IN", { minimumFractionDigits: 2, maximumFractionDigits: 2 })})
-                                                        </span>
+                                                    </td>
+
+                                                    <td className="py-4 px-5 align-top">
+                                                        {file.disbursedAt || isDisbursed ? (
+                                                            <span className="text-slate-900 font-bold text-xs flex items-center gap-1">
+                                                                <Calendar className="h-3.5 w-3.5 text-[#0284c7]" />
+                                                                {file.disbursedAt ? new Date(file.disbursedAt).toLocaleDateString("en-IN", {
+                                                                    day: "numeric",
+                                                                    month: "short",
+                                                                    year: "numeric"
+                                                                }) : new Date(file.createdAt).toLocaleDateString("en-IN", {
+                                                                    day: "numeric",
+                                                                    month: "short",
+                                                                    year: "numeric"
+                                                                })}
+                                                            </span>
+                                                        ) : (
+                                                            <span className="text-slate-500 text-[11px] font-medium">—</span>
+                                                        )}
                                                     </td>
 
                                                     <td className="py-4 px-5 align-top">
@@ -850,6 +892,33 @@ export default function PartnerDashboardPage() {
                                             );
                                         })}
                                     </tbody>
+                                    {/* Table Footer with Summary Calculations */}
+                                    {filteredFiles.length > 0 && (
+                                        <tfoot className="border-t-2 border-slate-300 bg-sky-50/70 font-black text-xs">
+                                            <tr>
+                                                <td colSpan={6} className="py-4 px-5 text-slate-900 font-extrabold text-right uppercase tracking-wider text-[11px]">
+                                                    Total Summary:
+                                                </td>
+                                                <td className="py-4 px-5 bg-sky-100/90 align-top">
+                                                    <span className="text-[10px] text-slate-500 font-bold uppercase block mb-0.5">Total Disbursed</span>
+                                                    <span className="font-black text-sm text-[#0284c7] block">
+                                                        ₹{filteredFiles.reduce((sum, f) => {
+                                                            const isDisb = f.leadStatus === "DISBURSED";
+                                                            const amt = isDisb || f.disbursedAmount ? (Number(f.disbursedAmount) || Number(f.applicationAmount) || 0) : 0;
+                                                            return sum + amt;
+                                                        }, 0).toLocaleString("en-IN")}
+                                                    </span>
+                                                </td>
+                                                <td className="py-4 px-5 bg-sky-100/90 align-top">
+                                                    <span className="text-[10px] text-slate-500 font-bold uppercase block mb-0.5">Total Commission</span>
+                                                    <span className="font-black text-sm text-[#0284c7] block">
+                                                        ₹{filteredFiles.reduce((sum, f) => sum + (Number(f.commissionAmount) || (Number(f.disbursedAmount || f.applicationAmount) * ((Number(f.commissionRate) || 2.0) / 100))), 0).toLocaleString("en-IN", { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
+                                                    </span>
+                                                </td>
+                                                <td colSpan={3} className="py-4 px-5"></td>
+                                            </tr>
+                                        </tfoot>
+                                    )}
                                 </table>
                             </div>
                         )}

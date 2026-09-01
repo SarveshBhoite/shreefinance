@@ -4,7 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { MainNav } from "@/components/main-nav";
 import { Button } from "@/components/ui/button";
-import { Menu, Phone, Zap, ChevronDown, X, Search, Sparkles, ShieldCheck, ArrowRight, Building2 } from "lucide-react";
+import { Menu, Phone, Mail, Zap, ChevronDown, X, Search, Sparkles, ShieldCheck, ArrowRight, Building2 } from "lucide-react";
 import { megaMenuData } from "@/config/navigation";
 import { useState } from "react";
 import { LeadFormModal } from "@/components/dialogs/lead-form-modal";
@@ -45,12 +45,12 @@ export function SiteHeader() {
 
                         <div className="p-4 bg-slate-900/90 rounded-2xl border border-slate-800 space-y-1">
                             <span className="text-[10px] uppercase font-bold text-slate-400 tracking-wider">Direct Calling Number</span>
-                            <p className="text-2xl font-black text-[#38bdf8] tracking-wider">+91 77099 36965</p>
+                            <p className="text-2xl font-black text-[#38bdf8] tracking-wider">+91 88304 34945</p>
                         </div>
 
                         <div className="flex gap-2.5 pt-1">
                             <a
-                                href="tel:+917709936965"
+                                href="tel:+918830434945"
                                 className="flex-1 bg-[#0284c7] hover:bg-[#0369a1] text-slate-950 font-black h-11 rounded-xl text-xs uppercase tracking-wider flex items-center justify-center gap-1.5 shadow-lg cursor-pointer"
                             >
                                 <Phone className="h-4 w-4" /> Call Now
@@ -65,26 +65,92 @@ export function SiteHeader() {
                     </div>
                 </div>
             )}
-            {/* Top Micro-Bar (Urban Money Style) */}
-            <div className="bg-gradient-to-r from-slate-900 via-sky-950 to-slate-900 text-white text-[11px] font-extrabold py-2 px-4 border-b border-sky-800/40 hidden md:block">
-                <div className="container mx-auto flex justify-between items-center px-4">
-                    <div className="flex items-center gap-3">
-                        <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-sky-500/20 text-sky-300 border border-sky-500/40 uppercase tracking-widest text-[9px]">
-                            <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse" /> Live 2026 Rates
-                        </span>
-                        <span className="text-slate-300">Home Loans Starting <strong>8.35% p.a.</strong> | Instant Pre-Approval Across 40+ Partner Banks</span>
-                    </div>
-                    <div className="flex items-center gap-6 text-slate-300">
-                        <Link href="/partner" className="hover:text-sky-300 transition-colors flex items-center gap-1">
-                            <Sparkles className="h-3 w-3 text-amber-400" /> Become a Partner (DSA)
-                        </Link>
-                        <Link href="/partner?auth=login" className="hover:text-[#38bdf8] transition-colors flex items-center gap-1 font-bold text-sky-400">
-                            <span className="h-2 w-2 rounded-full bg-emerald-400 animate-pulse" /> Partner Portal Login
-                        </Link>
-                        <Link href="/track-status" className="hover:text-sky-300 transition-colors flex items-center gap-1">
-                            <Search className="h-3 w-3 text-sky-400" /> Track Loan Status
-                        </Link>
-                    </div>
+            {/* Top Contact & Social Channels Header Bar */}
+            <div className="bg-[#0b1329] text-white text-xs font-bold border-b border-slate-800/80 hidden md:block py-2.5 px-4">
+                <div className="container mx-auto flex items-center justify-center gap-5 px-4 flex-wrap">
+                    {/* 1. Phone Number */}
+                    <a
+                        href="tel:+918830434945"
+                        className="flex items-center gap-2 text-white hover:text-[#38bdf8] transition-colors whitespace-nowrap group"
+                    >
+                        <div className="h-5 w-5 rounded-full bg-sky-500/20 border border-sky-500/30 flex items-center justify-center text-[#38bdf8] group-hover:bg-[#0284c7] group-hover:text-white transition-colors">
+                            <Phone className="h-3 w-3 fill-[#38bdf8]/30" />
+                        </div>
+                        <span className="font-extrabold text-xs tracking-wide text-white group-hover:text-[#38bdf8] transition-colors">+91 88304 34945</span>
+                    </a>
+
+                    <div className="h-3.5 w-[1px] bg-slate-700/80" />
+
+                    {/* 2. Email ID */}
+                    <a
+                        href="https://mail.google.com/mail/?view=cm&fs=1&to=shreefinancec@gmail.com"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center gap-2 text-white hover:text-[#38bdf8] transition-colors whitespace-nowrap group"
+                    >
+                        <div className="h-5 w-5 rounded-full bg-sky-500/20 border border-sky-500/30 flex items-center justify-center text-[#38bdf8] group-hover:bg-[#0284c7] group-hover:text-white transition-colors">
+                            <Mail className="h-3 w-3" />
+                        </div>
+                        <span className="font-extrabold text-xs text-white group-hover:text-[#38bdf8] transition-colors">shreefinancec@gmail.com</span>
+                    </a>
+
+                    <div className="h-3.5 w-[1px] bg-slate-700/80" />
+
+                    {/* 3. Facebook */}
+                    <a
+                        href="https://facebook.com"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center gap-1.5 text-white hover:text-[#38bdf8] transition-colors whitespace-nowrap group"
+                    >
+                        <span className="h-4 w-4 rounded bg-sky-500/20 text-[#38bdf8] font-black text-xs flex items-center justify-center border border-sky-500/30 group-hover:bg-[#0284c7] group-hover:text-white transition-colors">f</span>
+                        <span className="font-extrabold text-xs text-white group-hover:text-[#38bdf8] transition-colors">Facebook</span>
+                    </a>
+
+                    <div className="h-3.5 w-[1px] bg-slate-700/80" />
+
+                    {/* 4. Instagram */}
+                    <a
+                        href="https://www.instagram.com/shreefinancec?igsi=ZzVsNXo0MThqZ2E0"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center gap-1.5 text-white hover:text-[#38bdf8] transition-colors whitespace-nowrap group"
+                    >
+                        <svg className="h-3.5 w-3.5 text-[#38bdf8] group-hover:scale-110 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                            <rect width="20" height="20" x="2" y="2" rx="5" ry="5" />
+                            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+                            <line x1="17.5" x2="17.51" y1="6.5" y2="6.5" />
+                        </svg>
+                        <span className="font-extrabold text-xs text-white group-hover:text-[#38bdf8] transition-colors">Instagram</span>
+                    </a>
+
+                    <div className="h-3.5 w-[1px] bg-slate-700/80" />
+
+                    {/* 5. Twitter */}
+                    <a
+                        href="https://twitter.com/shreefinance153"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center gap-1.5 text-white hover:text-[#38bdf8] transition-colors whitespace-nowrap group"
+                    >
+                        <span className="font-extrabold text-xs text-white group-hover:text-[#38bdf8] transition-colors">Twitter</span>
+                    </a>
+
+                    <div className="h-3.5 w-[1px] bg-slate-700/80" />
+
+                    {/* 6. YouTube */}
+                    <a
+                        href="https://www.youtube.com/@Shree-Finance"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center gap-1.5 text-white hover:text-red-400 transition-colors whitespace-nowrap group"
+                    >
+                        <svg className="h-3.5 w-3.5 text-[#38bdf8] group-hover:text-red-500 group-hover:scale-110 transition-all" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19.1c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.43z" />
+                            <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02" fill="#0b1329" />
+                        </svg>
+                        <span className="font-extrabold text-xs text-white group-hover:text-red-400 transition-colors">YouTube</span>
+                    </a>
                 </div>
             </div>
 

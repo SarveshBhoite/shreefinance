@@ -13,11 +13,13 @@ export interface IPartnerLead extends Document {
     customerCity: string;
     bankName: string; // e.g. HDFC Bank, SBI, ICICI, Star Health, etc.
     applicationAmount: number; // e.g. 2500000 (25 Lakhs)
+    disbursedAmount?: number; // e.g. 2500000
     bankReferenceNo?: string; // Bank Application Number / LAN
     commissionRate: number; // e.g. 2.0 (%)
     commissionAmount: number; // e.g. 25000 (Calculated: applicationAmount * (commissionRate / 100))
     leadStatus: "IN_PROCESS" | "DOCS_SUBMITTED" | "BANK_LOGIN" | "SANCTIONED" | "DISBURSED" | "REJECTED";
     payoutStatus: "PENDING" | "PROCESSED" | "PAID";
+    rmName?: string; // Relationship Manager Name
     leadNotes?: string;
     disbursedAt?: Date;
     referenceNo: string;
@@ -43,7 +45,9 @@ const PartnerLeadSchema = new Schema<IPartnerLead>(
         customerEmail: { type: String, trim: true, lowercase: true },
         customerCity: { type: String, required: true },
         bankName: { type: String, required: true, default: "HDFC Bank" },
+        rmName: { type: String, trim: true, default: "Sarvesh Bhoite" },
         applicationAmount: { type: Number, required: true },
+        disbursedAmount: { type: Number },
         bankReferenceNo: { type: String, trim: true },
         commissionRate: { type: Number, default: 2.0 },
         commissionAmount: { type: Number, default: 0 },

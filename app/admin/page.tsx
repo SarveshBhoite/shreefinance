@@ -37,8 +37,29 @@ import {
     Banknote,
     Edit3,
     Sparkles,
-    Save
+    Save,
+    BookOpen,
+    Newspaper,
+    Plus,
+    Eye
 } from "lucide-react";
+
+interface AdminBlog {
+    _id: string;
+    title: string;
+    slug: string;
+    excerpt: string;
+    content: string;
+    category: string;
+    coverImage?: string;
+    author: string;
+    authorRole?: string;
+    readTime?: string;
+    tags: string[];
+    published: boolean;
+    views: number;
+    createdAt: string;
+}
 
 interface Banner {
     _id: string;
@@ -87,7 +108,9 @@ interface PartnerSubmittedFile {
     customerEmail?: string;
     customerCity: string;
     bankName: string;
+    rmName?: string;
     applicationAmount: number;
+    disbursedAmount?: number;
     bankReferenceNo?: string;
     commissionRate: number;
     commissionAmount: number;
@@ -130,7 +153,7 @@ export default function AdminDashboardPage() {
     const searchParams = useSearchParams();
     const fileInputRef = useRef<HTMLInputElement>(null);
 
-    const [activeTab, setActiveTab] = useState<"partners" | "files" | "rates" | "banners">("files");
+    const [activeTab, setActiveTab] = useState<"partners" | "files" | "rates" | "banners" | "blogs">("files");
     const [toast, setToast] = useState<{ type: "success" | "error"; message: string } | null>(null);
 
     // =========================================================================
@@ -171,12 +194,15 @@ export default function AdminDashboardPage() {
     const [selectedPartnerFilterId, setSelectedPartnerFilterId] = useState<string>("ALL");
     const [fileCategoryFilter, setFileCategoryFilter] = useState("ALL");
     const [fileStatusFilter, setFileStatusFilter] = useState("ALL");
+    const [fileStateFilter, setFileStateFilter] = useState("ALL");
+    const [fileDistrictFilter, setFileDistrictFilter] = useState("ALL");
     const [fileSearch, setFileSearch] = useState("");
     const [selectedFileItem, setSelectedFileItem] = useState<PartnerSubmittedFile | null>(null);
     const [fileUpdateModalOpen, setFileUpdateModalOpen] = useState(false);
     const [updateFileStatus, setUpdateFileStatus] = useState<string>("IN_PROCESS");
     const [updatePayoutStatus, setUpdatePayoutStatus] = useState<string>("PENDING");
     const [updateCommissionRate, setUpdateCommissionRate] = useState<number>(2.0);
+    const [updateDisbursedAmount, setUpdateDisbursedAmount] = useState<number>(0);
 
     // =========================================================================
     // 3. COMMISSION RATES & SETTINGS STATE
@@ -203,6 +229,28 @@ export default function AdminDashboardPage() {
     const [preview, setPreview] = useState<string | null>(null);
     const [selectedFile, setSelectedFile] = useState<File | null>(null);
 
+    // =========================================================================
+    // 5. BLOGS MANAGEMENT STATE
+    // =========================================================================
+    const [blogsList, setBlogsList] = useState<AdminBlog[]>([]);
+    const [blogsLoading, setBlogsLoading] = useState(false);
+    const [blogModalOpen, setBlogModalOpen] = useState(false);
+    const [editingBlogId, setEditingBlogId] = useState<string | null>(null);
+    const [blogTitle, setBlogTitle] = useState("");
+    const [blogExcerpt, setBlogExcerpt] = useState("");
+    const [blogContent, setBlogContent] = useState("");
+    const [blogCategory, setBlogCategory] = useState("Loans");
+    const [blogAuthor, setBlogAuthor] = useState("Shree Finance Advisory Desk");
+    const [blogAuthorRole, setBlogAuthorRole] = useState("Senior Financial Research Team");
+    const [blogReadTime, setBlogReadTime] = useState("4 min read");
+    const [blogTags, setBlogTags] = useState("Loans, Finance, Pune");
+    const [blogPublished, setBlogPublished] = useState(true);
+    const [blogImageFile, setBlogImageFile] = useState<File | null>(null);
+    const [blogImagePreview, setBlogImagePreview] = useState<string | null>(null);
+    const [blogCoverImageUrl, setBlogCoverImageUrl] = useState("");
+    const [blogSaving, setBlogSaving] = useState(false);
+    const [blogDeletingId, setBlogDeletingId] = useState<string | null>(null);
+
     const showToast = (type: "success" | "error", message: string) => {
         setToast({ type, message });
         setTimeout(() => setToast(null), 4000);
@@ -224,12 +272,35 @@ export default function AdminDashboardPage() {
         const tabParam = searchParams.get("tab");
         const refParam = searchParams.get("ref");
         if (tabParam === "banners") setActiveTab("banners");
+        else if (tabParam === "blogs") setActiveTab("blogs");
         else if (tabParam === "partners") setActiveTab("partners");
         else if (tabParam === "files") setActiveTab("files");
         else if (tabParam === "rates") setActiveTab("rates");
 
         if (refParam) setPartnerSearch(refParam);
     }, [searchParams]);
+
+    // Fetch Blogs for Admin
+    const fetchBlogs = useCallback(async () => {
+        setBlogsLoading(true);
+        try {
+            const res = await fetch("/api/blogs?admin=true");
+            if (res.ok) {
+                const data = await res.json();
+                setBlogsList(data.blogs || []);
+            }
+        } catch {
+            showToast("error", "Failed to fetch blogs");
+        } finally {
+            setBlogsLoading(false);
+        }
+    }, []);
+
+    useEffect(() => {
+        if (activeTab === "blogs") {
+            fetchBlogs();
+        }
+    }, [activeTab, fetchBlogs]);
 
     // Fetch Partners
     const fetchPartners = useCallback(async () => {
@@ -260,6 +331,7 @@ export default function AdminDashboardPage() {
             if (selectedPartnerFilterId !== "ALL") queryParams.append("partnerId", selectedPartnerFilterId);
             if (fileCategoryFilter !== "ALL") queryParams.append("category", fileCategoryFilter);
             if (fileStatusFilter !== "ALL") queryParams.append("status", fileStatusFilter);
+            if (fileDistrictFilter !== "ALL") queryParams.append("district", fileDistrictFilter);
             if (fileSearch.trim()) queryParams.append("search", fileSearch.trim());
 
             const res = await fetch(`/api/admin/leads?${queryParams.toString()}`);
@@ -273,7 +345,7 @@ export default function AdminDashboardPage() {
         } finally {
             setFilesLoading(false);
         }
-    }, [selectedPartnerFilterId, fileCategoryFilter, fileStatusFilter, fileSearch]);
+    }, [selectedPartnerFilterId, fileCategoryFilter, fileStatusFilter, fileDistrictFilter, fileSearch]);
 
     // Fetch Commission Rates
     const fetchCommissionRates = async () => {
@@ -407,7 +479,9 @@ export default function AdminDashboardPage() {
                 body: JSON.stringify({
                     leadStatus: updateFileStatus,
                     payoutStatus: updatePayoutStatus,
-                    commissionRate: updateCommissionRate
+                    commissionRate: updateCommissionRate,
+                    disbursedAmount: updateDisbursedAmount || selectedFileItem.applicationAmount,
+                    applicationAmount: updateDisbursedAmount || selectedFileItem.applicationAmount
                 })
             });
 
@@ -530,6 +604,131 @@ export default function AdminDashboardPage() {
         }
     };
 
+    // =========================================================================
+    // BLOG CRUD HANDLERS (ADMIN)
+    // =========================================================================
+    const handleOpenCreateBlog = () => {
+        setEditingBlogId(null);
+        setBlogTitle("");
+        setBlogExcerpt("");
+        setBlogContent("");
+        setBlogCategory("Loans");
+        setBlogAuthor("Shree Finance Advisory Desk");
+        setBlogAuthorRole("Senior Financial Research Team");
+        setBlogReadTime("4 min read");
+        setBlogTags("Loans, Finance, Pune");
+        setBlogPublished(true);
+        setBlogImageFile(null);
+        setBlogImagePreview(null);
+        setBlogCoverImageUrl("");
+        setBlogModalOpen(true);
+    };
+
+    const handleOpenEditBlog = (blog: AdminBlog) => {
+        setEditingBlogId(blog._id);
+        setBlogTitle(blog.title);
+        setBlogExcerpt(blog.excerpt);
+        setBlogContent(blog.content);
+        setBlogCategory(blog.category || "Loans");
+        setBlogAuthor(blog.author || "Shree Finance Advisory Desk");
+        setBlogAuthorRole(blog.authorRole || "Senior Financial Research Team");
+        setBlogReadTime(blog.readTime || "4 min read");
+        setBlogTags(blog.tags ? blog.tags.join(", ") : "");
+        setBlogPublished(blog.published);
+        setBlogImageFile(null);
+        setBlogImagePreview(null);
+        setBlogCoverImageUrl(blog.coverImage || "");
+        setBlogModalOpen(true);
+    };
+
+    const handleSaveBlog = async (e: React.FormEvent) => {
+        e.preventDefault();
+        if (!blogTitle.trim() || !blogExcerpt.trim() || !blogContent.trim()) {
+            showToast("error", "Title, Excerpt, and Article Content are required.");
+            return;
+        }
+
+        setBlogSaving(true);
+        try {
+            const formData = new FormData();
+            formData.append("title", blogTitle.trim());
+            formData.append("excerpt", blogExcerpt.trim());
+            formData.append("content", blogContent.trim());
+            formData.append("category", blogCategory);
+            formData.append("author", blogAuthor.trim());
+            formData.append("authorRole", blogAuthorRole.trim());
+            formData.append("readTime", blogReadTime.trim());
+            formData.append("tags", blogTags.trim());
+            formData.append("published", String(blogPublished));
+            formData.append("coverImageUrl", blogCoverImageUrl);
+
+            if (blogImageFile) {
+                formData.append("image", blogImageFile);
+            }
+
+            const url = editingBlogId ? `/api/blogs/${editingBlogId}` : "/api/blogs";
+            const method = editingBlogId ? "PATCH" : "POST";
+
+            const res = await fetch(url, {
+                method,
+                body: formData
+            });
+
+            const data = await res.json();
+            if (res.ok) {
+                showToast("success", editingBlogId ? "Blog article updated!" : "Blog published successfully!");
+                setBlogModalOpen(false);
+                fetchBlogs();
+            } else {
+                showToast("error", data.error || "Failed to save blog post.");
+            }
+        } catch {
+            showToast("error", "Error processing blog request.");
+        } finally {
+            setBlogSaving(false);
+        }
+    };
+
+    const handleDeleteBlog = async (id: string) => {
+        if (!confirm("Are you sure you want to permanently delete this blog article?")) return;
+
+        setBlogDeletingId(id);
+        try {
+            const res = await fetch(`/api/blogs/${id}`, { method: "DELETE" });
+            if (res.ok) {
+                showToast("success", "Blog article deleted successfully.");
+                fetchBlogs();
+            } else {
+                showToast("error", "Failed to delete blog post.");
+            }
+        } catch {
+            showToast("error", "Error deleting blog post.");
+        } finally {
+            setBlogDeletingId(null);
+        }
+    };
+
+    const handleToggleBlogPublish = async (blog: AdminBlog) => {
+        try {
+            const formData = new FormData();
+            formData.append("published", String(!blog.published));
+
+            const res = await fetch(`/api/blogs/${blog._id}`, {
+                method: "PATCH",
+                body: formData
+            });
+
+            if (res.ok) {
+                showToast("success", blog.published ? "Blog moved to Drafts." : "Blog published live!");
+                fetchBlogs();
+            } else {
+                showToast("error", "Failed to toggle status.");
+            }
+        } catch {
+            showToast("error", "Error updating publish status.");
+        }
+    };
+
     // Logout
     const handleLogout = async () => {
         await fetch("/api/admin/logout", { method: "POST" });
@@ -633,6 +832,18 @@ export default function AdminDashboardPage() {
                                 <ImagePlus className="h-3.5 w-3.5" />
                                 <span>Banners</span>
                             </button>
+
+                            <button
+                                onClick={() => setActiveTab("blogs")}
+                                className={`px-4 py-2 rounded-lg text-xs font-black transition-all cursor-pointer flex items-center gap-1.5 ${
+                                    activeTab === "blogs"
+                                        ? "bg-[#0284c7] text-white shadow-md"
+                                        : "text-slate-500 hover:text-slate-900"
+                                }`}
+                            >
+                                <BookOpen className="h-3.5 w-3.5" />
+                                <span>Blogs & Articles ({blogsList.length})</span>
+                            </button>
                         </div>
 
                         <button
@@ -678,6 +889,14 @@ export default function AdminDashboardPage() {
                         }`}
                     >
                         Banners
+                    </button>
+                    <button
+                        onClick={() => setActiveTab("blogs")}
+                        className={`px-3 py-1.5 rounded-lg text-xs font-bold whitespace-nowrap ${
+                            activeTab === "blogs" ? "bg-[#0284c7] text-white" : "text-slate-500"
+                        }`}
+                    >
+                        Blogs ({blogsList.length})
                     </button>
                 </div>
             </header>
@@ -1064,11 +1283,48 @@ export default function AdminDashboardPage() {
                                     ))}
                                 </div>
 
-                                <div className="flex items-center gap-3 w-full lg:w-auto">
+                                <div className="flex flex-wrap items-center gap-3 w-full lg:w-auto">
+                                    {/* State Filter */}
+                                    <select
+                                        value={fileStateFilter}
+                                        onChange={e => {
+                                            const stateVal = e.target.value;
+                                            setFileStateFilter(stateVal);
+                                            if (stateVal === "ALL") {
+                                                setFileDistrictFilter("ALL");
+                                            }
+                                        }}
+                                        className="h-10 px-3 bg-white border border-slate-200 rounded-xl text-xs font-bold text-slate-900 focus:ring-2 focus:ring-[#0284c7] cursor-pointer"
+                                    >
+                                        <option value="ALL">📍 All States</option>
+                                        <option value="Maharashtra">Maharashtra</option>
+                                        <option value="Gujarat">Gujarat</option>
+                                        <option value="Karnataka">Karnataka</option>
+                                        <option value="Delhi">Delhi NCR</option>
+                                    </select>
+
+                                    {/* District Filter (e.g. Pune, Mumbai, Thane, etc.) */}
+                                    <select
+                                        value={fileDistrictFilter}
+                                        onChange={e => setFileDistrictFilter(e.target.value)}
+                                        className="h-10 px-3 bg-white border border-slate-200 rounded-xl text-xs font-bold text-slate-900 focus:ring-2 focus:ring-[#0284c7] cursor-pointer"
+                                    >
+                                        <option value="ALL">🏛️ All Districts</option>
+                                        <option value="Pune">📍 Pune District</option>
+                                        <option value="Mumbai">📍 Mumbai City</option>
+                                        <option value="Thane">📍 Thane</option>
+                                        <option value="Nagpur">📍 Nagpur</option>
+                                        <option value="Nashik">📍 Nashik</option>
+                                        <option value="Satara">📍 Satara</option>
+                                        <option value="Kolhapur">📍 Kolhapur</option>
+                                        <option value="Solapur">📍 Solapur</option>
+                                        <option value="Ahmednagar">📍 Ahmednagar</option>
+                                    </select>
+
                                     <select
                                         value={fileStatusFilter}
                                         onChange={e => setFileStatusFilter(e.target.value)}
-                                        className="h-10 px-3 bg-white border border-slate-200 rounded-xl text-xs font-bold text-slate-900 focus:ring-2 focus:ring-[#0284c7]"
+                                        className="h-10 px-3 bg-white border border-slate-200 rounded-xl text-xs font-bold text-slate-900 focus:ring-2 focus:ring-[#0284c7] cursor-pointer"
                                     >
                                         <option value="ALL">All File Statuses</option>
                                         <option value="IN_PROCESS">In Process</option>
@@ -1079,7 +1335,7 @@ export default function AdminDashboardPage() {
                                         <option value="REJECTED">Declined</option>
                                     </select>
 
-                                    <div className="relative flex-1 sm:w-64">
+                                    <div className="relative flex-1 sm:w-56">
                                         <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-3.5 w-3.5 text-slate-500" />
                                         <input
                                             type="text"
@@ -1119,10 +1375,13 @@ export default function AdminDashboardPage() {
                                         <thead>
                                             <tr className="border-b border-slate-200 bg-[#f8fafc]/60 text-slate-500 uppercase font-black tracking-wider text-[10px]">
                                                 <th className="py-4 px-5">File Ref / Partner</th>
-                                                <th className="py-4 px-5">Client Acquire Details</th>
-                                                <th className="py-4 px-5">Category & Bank</th>
-                                                <th className="py-4 px-5">Filed Amount</th>
-                                                <th className="py-4 px-5">Commission Rate & Amount</th>
+                                                <th className="py-4 px-5">Customer</th>
+                                                <th className="py-4 px-5">Category / Product</th>
+                                                <th className="py-4 px-5">Bank</th>
+                                                <th className="py-4 px-5">RM Name</th>
+                                                <th className="py-4 px-5">Disbursed Amount</th>
+                                                <th className="py-4 px-5">Commission Amount</th>
+                                                <th className="py-4 px-5">Disbursed Date</th>
                                                 <th className="py-4 px-5">Status</th>
                                                 <th className="py-4 px-5 text-right">Actions</th>
                                             </tr>
@@ -1161,23 +1420,53 @@ export default function AdminDashboardPage() {
                                                                 {file.category}
                                                             </span>
                                                             <p className="font-bold text-slate-700">{file.subProduct}</p>
-                                                            <p className="text-[#0284c7] text-[11px] mt-0.5 font-medium">🏦 {file.bankName}</p>
                                                         </td>
 
                                                         <td className="py-4 px-5 align-top">
-                                                            <span className="font-black text-sm text-slate-900 block">
-                                                                ₹{file.applicationAmount.toLocaleString("en-IN")}
+                                                            <span className="text-slate-900 font-bold text-xs flex items-center gap-1">
+                                                                🏦 {file.bankName}
                                                             </span>
-                                                            <span className="text-[10px] text-slate-500">Filed to Bank</span>
+                                                        </td>
+
+                                                        <td className="py-4 px-5 align-top">
+                                                            <span className="text-slate-900 font-bold text-xs flex items-center gap-1">
+                                                                👤 {file.rmName || "Sarvesh Bhoite"}
+                                                            </span>
+                                                        </td>
+
+                                                        <td className="py-4 px-5 align-top">
+                                                            {isDisbursed || file.disbursedAmount ? (
+                                                                <span className="font-black text-sm text-[#0284c7] block">
+                                                                    ₹{(file.disbursedAmount || file.applicationAmount).toLocaleString("en-IN")}
+                                                                </span>
+                                                            ) : (
+                                                                <span className="text-slate-500 text-[11px] font-medium">—</span>
+                                                            )}
                                                         </td>
 
                                                         <td className="py-4 px-5 align-top">
                                                             <span className="font-black text-[#0284c7] text-sm block">
                                                                 ₹{Number(file.commissionAmount || (file.applicationAmount * (file.commissionRate / 100))).toLocaleString("en-IN", { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
                                                             </span>
-                                                            <span className="text-[10px] text-slate-500 font-medium">
-                                                                ({file.commissionRate}%={Number(file.commissionAmount || (file.applicationAmount * (file.commissionRate / 100))).toLocaleString("en-IN", { minimumFractionDigits: 2, maximumFractionDigits: 2 })})
-                                                            </span>
+                                                        </td>
+
+                                                        <td className="py-4 px-5 align-top">
+                                                            {file.disbursedAt || isDisbursed ? (
+                                                                <span className="text-slate-900 font-bold text-xs flex items-center gap-1">
+                                                                    <Calendar className="h-3.5 w-3.5 text-[#0284c7]" />
+                                                                    {file.disbursedAt ? new Date(file.disbursedAt).toLocaleDateString("en-IN", {
+                                                                        day: "numeric",
+                                                                        month: "short",
+                                                                        year: "numeric"
+                                                                    }) : new Date(file.createdAt).toLocaleDateString("en-IN", {
+                                                                        day: "numeric",
+                                                                        month: "short",
+                                                                        year: "numeric"
+                                                                    })}
+                                                                </span>
+                                                            ) : (
+                                                                <span className="text-slate-500 text-[11px] font-medium">—</span>
+                                                            )}
                                                         </td>
 
                                                         <td className="py-4 px-5 align-top">
@@ -1222,6 +1511,7 @@ export default function AdminDashboardPage() {
                                                                     setUpdateFileStatus(file.leadStatus);
                                                                     setUpdatePayoutStatus(file.payoutStatus || "PENDING");
                                                                     setUpdateCommissionRate(file.commissionRate || 2.0);
+                                                                    setUpdateDisbursedAmount(file.disbursedAmount || file.applicationAmount || 0);
                                                                     setFileUpdateModalOpen(true);
                                                                 }}
                                                                 className="h-8 px-2.5 rounded-lg border-slate-300 bg-slate-100 text-slate-600 hover:text-slate-900 text-xs cursor-pointer"
@@ -1242,6 +1532,33 @@ export default function AdminDashboardPage() {
                                                 );
                                             })}
                                         </tbody>
+                                        {/* Table Footer with Summary Calculations */}
+                                        {partnerFiles.length > 0 && (
+                                            <tfoot className="border-t-2 border-slate-300 bg-sky-50/70 font-black text-xs">
+                                                <tr>
+                                                    <td colSpan={5} className="py-4 px-5 text-slate-900 font-extrabold text-right uppercase tracking-wider text-[11px]">
+                                                        Total Summary:
+                                                    </td>
+                                                    <td className="py-4 px-5 bg-sky-100/90 align-top">
+                                                        <span className="text-[10px] text-slate-500 font-bold uppercase block mb-0.5">Total Disbursed</span>
+                                                        <span className="font-black text-sm text-[#0284c7] block">
+                                                            ₹{partnerFiles.reduce((sum, f) => {
+                                                                const isDisb = f.leadStatus === "DISBURSED";
+                                                                const amt = isDisb || f.disbursedAmount ? (Number(f.disbursedAmount) || Number(f.applicationAmount) || 0) : 0;
+                                                                return sum + amt;
+                                                            }, 0).toLocaleString("en-IN")}
+                                                        </span>
+                                                    </td>
+                                                    <td className="py-4 px-5 bg-sky-100/90 align-top">
+                                                        <span className="text-[10px] text-slate-500 font-bold uppercase block mb-0.5">Total Commission</span>
+                                                        <span className="font-black text-sm text-[#0284c7] block">
+                                                            ₹{partnerFiles.reduce((sum, f) => sum + (Number(f.commissionAmount) || (Number(f.disbursedAmount || f.applicationAmount) * ((Number(f.commissionRate) || 2.0) / 100))), 0).toLocaleString("en-IN", { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
+                                                        </span>
+                                                    </td>
+                                                    <td colSpan={3} className="py-4 px-5"></td>
+                                                </tr>
+                                            </tfoot>
+                                        )}
                                     </table>
                                 </div>
                             )}
@@ -1518,6 +1835,175 @@ export default function AdminDashboardPage() {
                         </div>
                     </div>
                 )}
+
+                {/* ========================================================================= */}
+                {/* TAB 5: BLOGS & ARTICLES MANAGEMENT */}
+                {/* ========================================================================= */}
+                {activeTab === "blogs" && (
+                    <div className="space-y-6">
+                        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 bg-white border border-slate-200 p-6 rounded-3xl shadow-sm">
+                            <div>
+                                <h2 className="text-xl font-black text-slate-900 flex items-center gap-2">
+                                    <BookOpen className="h-5 w-5 text-[#0284c7]" />
+                                    Financial Blogs & Guides Desk
+                                </h2>
+                                <p className="text-xs text-slate-500 font-medium mt-1">
+                                    Publish loan guides, CIBIL insights, banking updates, and financial advice for Shree Finance readers.
+                                </p>
+                            </div>
+
+                            <div className="flex items-center gap-3">
+                                <Button
+                                    size="sm"
+                                    variant="outline"
+                                    onClick={fetchBlogs}
+                                    className="h-11 px-3 bg-white border-slate-200 text-slate-600 hover:text-slate-900 rounded-xl cursor-pointer"
+                                >
+                                    <RefreshCw className={`h-4 w-4 ${blogsLoading ? "animate-spin" : ""}`} />
+                                </Button>
+
+                                <Button
+                                    onClick={handleOpenCreateBlog}
+                                    className="h-11 px-5 rounded-xl bg-[#0284c7] hover:bg-[#0369a1] text-white font-black text-xs uppercase tracking-wider cursor-pointer shadow-md flex items-center gap-2"
+                                >
+                                    <Plus className="h-4 w-4" />
+                                    Create New Article
+                                </Button>
+                            </div>
+                        </div>
+
+                        {blogsLoading ? (
+                            <div className="py-20 text-center space-y-3 bg-white border border-slate-200 rounded-3xl p-12">
+                                <Loader2 className="h-8 w-8 text-[#0284c7] animate-spin mx-auto" />
+                                <p className="text-xs font-bold text-slate-500">Loading blog articles...</p>
+                            </div>
+                        ) : blogsList.length === 0 ? (
+                            <div className="text-center py-20 bg-white border border-slate-200 rounded-3xl p-12 space-y-4">
+                                <BookOpen className="h-12 w-12 text-slate-300 mx-auto" />
+                                <h3 className="text-base font-black text-slate-900">No Articles Created Yet</h3>
+                                <p className="text-xs text-slate-500 max-w-md mx-auto">
+                                    Start building your brand authority by creating helpful financial guides and tips for loan applicants.
+                                </p>
+                                <Button
+                                    onClick={handleOpenCreateBlog}
+                                    className="bg-[#0284c7] hover:bg-[#0369a1] text-white font-bold text-xs rounded-xl"
+                                >
+                                    Create First Article
+                                </Button>
+                            </div>
+                        ) : (
+                            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                                {blogsList.map((blog) => (
+                                    <div
+                                        key={blog._id}
+                                        className="bg-white border border-slate-200 rounded-3xl overflow-hidden shadow-sm hover:shadow-md transition-all flex flex-col justify-between"
+                                    >
+                                        <div>
+                                            {/* Blog Thumbnail */}
+                                            <div className="relative aspect-[16/9] w-full bg-slate-900 overflow-hidden">
+                                                {blog.coverImage ? (
+                                                    <Image
+                                                        src={blog.coverImage}
+                                                        alt={blog.title}
+                                                        fill
+                                                        className="object-cover"
+                                                    />
+                                                ) : (
+                                                    <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-sky-900 to-slate-900 text-sky-400">
+                                                        <BookOpen className="h-10 w-10 opacity-50" />
+                                                    </div>
+                                                )}
+                                                <span className="absolute top-3 left-3 bg-white/95 text-slate-900 text-[10px] font-black uppercase px-2.5 py-0.5 rounded-full shadow-xs">
+                                                    {blog.category}
+                                                </span>
+                                                <span className={`absolute top-3 right-3 text-[10px] font-black uppercase px-2.5 py-0.5 rounded-full shadow-xs ${
+                                                    blog.published ? "bg-emerald-500 text-white" : "bg-amber-400 text-slate-950"
+                                                }`}>
+                                                    {blog.published ? "LIVE" : "DRAFT"}
+                                                </span>
+                                            </div>
+
+                                            <div className="p-6 space-y-3">
+                                                <div className="flex items-center gap-2 text-[10px] font-bold text-slate-400">
+                                                    <Calendar className="h-3 w-3 text-[#0284c7]" />
+                                                    <span>{new Date(blog.createdAt).toLocaleDateString("en-IN")}</span>
+                                                    <span>•</span>
+                                                    <Clock className="h-3 w-3 text-slate-400" />
+                                                    <span>{blog.readTime || "4 min read"}</span>
+                                                    <span>•</span>
+                                                    <span>{blog.views || 0} views</span>
+                                                </div>
+
+                                                <h3 className="text-base font-black text-slate-900 line-clamp-2">
+                                                    {blog.title}
+                                                </h3>
+
+                                                <p className="text-xs text-slate-600 line-clamp-2 leading-relaxed">
+                                                    {blog.excerpt}
+                                                </p>
+
+                                                {blog.tags && blog.tags.length > 0 && (
+                                                    <div className="flex flex-wrap gap-1 pt-1">
+                                                        {blog.tags.slice(0, 3).map((t, idx) => (
+                                                            <span key={idx} className="text-[10px] bg-slate-100 text-slate-600 font-semibold px-2 py-0.5 rounded-md">
+                                                                #{t}
+                                                            </span>
+                                                        ))}
+                                                    </div>
+                                                )}
+                                            </div>
+                                        </div>
+
+                                        {/* Action Bar */}
+                                        <div className="p-4 border-t border-slate-100 bg-[#f8fafc]/50 flex items-center justify-between gap-2">
+                                            <a
+                                                href={`/blogs/${blog.slug}`}
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                className="p-2 rounded-xl bg-white border border-slate-200 text-slate-600 hover:text-[#0284c7] hover:border-sky-300 transition-colors"
+                                                title="Preview Live Page"
+                                            >
+                                                <Eye className="h-4 w-4" />
+                                            </a>
+
+                                            <button
+                                                onClick={() => handleToggleBlogPublish(blog)}
+                                                className={`px-3 py-1.5 rounded-xl text-xs font-black uppercase transition-all cursor-pointer ${
+                                                    blog.published
+                                                        ? "bg-amber-50 border border-amber-200 text-amber-700 hover:bg-amber-100"
+                                                        : "bg-emerald-50 border border-emerald-200 text-emerald-700 hover:bg-emerald-100"
+                                                }`}
+                                            >
+                                                {blog.published ? "Unpublish" : "Publish"}
+                                            </button>
+
+                                            <div className="flex items-center gap-1.5 ml-auto">
+                                                <Button
+                                                    size="sm"
+                                                    variant="outline"
+                                                    onClick={() => handleOpenEditBlog(blog)}
+                                                    className="h-8 px-3 rounded-xl border-slate-200 bg-white hover:bg-slate-100 text-slate-700 text-xs font-bold cursor-pointer"
+                                                >
+                                                    <Edit3 className="h-3.5 w-3.5 mr-1 text-[#0284c7]" />
+                                                    Edit
+                                                </Button>
+
+                                                <button
+                                                    onClick={() => handleDeleteBlog(blog._id)}
+                                                    disabled={blogDeletingId === blog._id}
+                                                    className="p-2 rounded-xl bg-rose-50 border border-rose-200 text-rose-600 hover:bg-rose-600 hover:text-white transition-colors cursor-pointer"
+                                                    title="Delete Article"
+                                                >
+                                                    <Trash2 className="h-3.5 w-3.5" />
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
+                        )}
+                    </div>
+                )}
             </main>
 
             {/* ========================================================================= */}
@@ -1647,7 +2133,7 @@ export default function AdminDashboardPage() {
                                 <div className="flex justify-between border-t border-slate-200 pt-2">
                                     <span className="text-[#0284c7] font-bold">Calculated Commission:</span>
                                     <span className="text-[#0284c7] font-black">
-                                        ₹{Number((selectedFileItem.applicationAmount * (updateCommissionRate / 100)).toFixed(2)).toLocaleString("en-IN", { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
+                                        ₹{Number(((updateDisbursedAmount || selectedFileItem.applicationAmount) * (updateCommissionRate / 100)).toFixed(2)).toLocaleString("en-IN", { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
                                     </span>
                                 </div>
                             </div>
@@ -1671,29 +2157,40 @@ export default function AdminDashboardPage() {
 
                                 <div className="grid grid-cols-2 gap-3">
                                     <div>
-                                        <label className="text-[11px] font-black uppercase text-slate-700 tracking-wider">Commission Rate (%) *</label>
-                                        <input
-                                            type="number"
-                                            step="0.05"
-                                            value={updateCommissionRate}
-                                            onChange={e => setUpdateCommissionRate(parseFloat(e.target.value) || 0)}
-                                            className="w-full h-11 bg-white border border-slate-300 rounded-xl px-3 text-xs font-bold text-slate-900 focus:ring-2 focus:ring-[#0284c7] focus:outline-none"
-                                        />
-                                    </div>
+                                         <label className="text-[11px] font-black uppercase text-slate-700 tracking-wider">Disbursed Amount (₹)</label>
+                                         <input
+                                             type="number"
+                                             value={updateDisbursedAmount}
+                                             onChange={e => setUpdateDisbursedAmount(parseFloat(e.target.value) || 0)}
+                                             className="w-full h-11 bg-white border border-slate-300 rounded-xl px-3 text-xs font-bold text-slate-900 focus:ring-2 focus:ring-[#0284c7] focus:outline-none"
+                                             placeholder="e.g. 337240"
+                                         />
+                                     </div>
 
-                                    <div>
-                                        <label className="text-[11px] font-black uppercase text-slate-700 tracking-wider">Partner Payout Status *</label>
-                                        <select
-                                            value={updatePayoutStatus}
-                                            onChange={e => setUpdatePayoutStatus(e.target.value)}
-                                            className="w-full h-11 bg-white border border-slate-300 rounded-xl px-3 text-xs font-bold text-slate-900 focus:ring-2 focus:ring-[#0284c7] focus:outline-none cursor-pointer"
-                                        >
-                                            <option value="PENDING">Pending Settlement</option>
-                                            <option value="PROCESSED">Processed / In Queue</option>
-                                            <option value="PAID">✅ Paid to Partner</option>
-                                        </select>
-                                    </div>
-                                </div>
+                                     <div>
+                                         <label className="text-[11px] font-black uppercase text-slate-700 tracking-wider">Commission Rate (%) *</label>
+                                         <input
+                                             type="number"
+                                             step="0.05"
+                                             value={updateCommissionRate}
+                                             onChange={e => setUpdateCommissionRate(parseFloat(e.target.value) || 0)}
+                                             className="w-full h-11 bg-white border border-slate-300 rounded-xl px-3 text-xs font-bold text-slate-900 focus:ring-2 focus:ring-[#0284c7] focus:outline-none"
+                                         />
+                                     </div>
+                                 </div>
+
+                                 <div>
+                                     <label className="text-[11px] font-black uppercase text-slate-700 tracking-wider">Partner Payout Status *</label>
+                                     <select
+                                         value={updatePayoutStatus}
+                                         onChange={e => setUpdatePayoutStatus(e.target.value)}
+                                         className="w-full h-11 bg-white border border-slate-300 rounded-xl px-3 text-xs font-bold text-slate-900 focus:ring-2 focus:ring-[#0284c7] focus:outline-none cursor-pointer"
+                                     >
+                                         <option value="PENDING">Pending Settlement</option>
+                                         <option value="PROCESSED">Processed / In Queue</option>
+                                         <option value="PAID">✅ Paid to Partner</option>
+                                     </select>
+                                 </div>
                             </div>
 
                             <div className="flex items-center justify-end gap-3 pt-2">
@@ -1754,6 +2251,259 @@ export default function AdminDashboardPage() {
                                     Confirm Decline
                                 </Button>
                             </div>
+                        </motion.div>
+                    </div>
+                )}
+            </AnimatePresence>
+
+            {/* ========================================================================= */}
+            {/* BLOG ARTICLE CREATE & EDIT MODAL */}
+            {/* ========================================================================= */}
+            <AnimatePresence>
+                {blogModalOpen && (
+                    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm overflow-y-auto">
+                        <motion.div
+                            initial={{ opacity: 0, scale: 0.95 }}
+                            animate={{ opacity: 1, scale: 1 }}
+                            exit={{ opacity: 0, scale: 0.95 }}
+                            className="bg-white text-slate-900 border border-slate-200 rounded-3xl p-6 sm:p-8 max-w-3xl w-full shadow-2xl space-y-6 max-h-[92vh] overflow-y-auto"
+                        >
+                            <div className="flex items-center justify-between pb-4 border-b border-slate-200">
+                                <div className="flex items-center gap-3">
+                                    <div className="h-10 w-10 rounded-xl bg-sky-50 text-[#0284c7] flex items-center justify-center">
+                                        <BookOpen className="h-5 w-5" />
+                                    </div>
+                                    <div>
+                                        <h3 className="text-lg font-black text-slate-900">
+                                            {editingBlogId ? "Edit Blog Article" : "Create New Financial Article"}
+                                        </h3>
+                                        <p className="text-xs text-slate-500 font-medium">
+                                            Fill in article details. Content supports formatted paragraphs and bullet points.
+                                        </p>
+                                    </div>
+                                </div>
+                                <button
+                                    onClick={() => setBlogModalOpen(false)}
+                                    className="p-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-600 cursor-pointer"
+                                >
+                                    <X className="h-5 w-5" />
+                                </button>
+                            </div>
+
+                            <form onSubmit={handleSaveBlog} className="space-y-5">
+                                {/* Title */}
+                                <div>
+                                    <label className="text-[11px] font-black uppercase text-slate-700 tracking-wider">
+                                        Article Title *
+                                    </label>
+                                    <input
+                                        type="text"
+                                        required
+                                        placeholder="e.g. Complete Guide to Securing Lowest Home Loan Rates in Pune 2026"
+                                        value={blogTitle}
+                                        onChange={(e) => setBlogTitle(e.target.value)}
+                                        className="w-full h-11 bg-white border border-slate-300 rounded-xl px-3.5 text-xs font-bold text-slate-900 placeholder:text-slate-400 focus:ring-2 focus:ring-[#0284c7] focus:outline-none mt-1"
+                                    />
+                                </div>
+
+                                {/* Category, ReadTime, Published Status */}
+                                <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                                    <div>
+                                        <label className="text-[11px] font-black uppercase text-slate-700 tracking-wider">
+                                            Category *
+                                        </label>
+                                        <select
+                                            value={blogCategory}
+                                            onChange={(e) => setBlogCategory(e.target.value)}
+                                            className="w-full h-11 bg-white border border-slate-300 rounded-xl px-3 text-xs font-bold text-slate-900 focus:ring-2 focus:ring-[#0284c7] focus:outline-none mt-1 cursor-pointer"
+                                        >
+                                            <option value="Loans">Loans & Mortgages</option>
+                                            <option value="Cards">Credit Cards</option>
+                                            <option value="Insurance">Insurance & Safety</option>
+                                            <option value="Investments">Investments & Wealth</option>
+                                            <option value="Credit Score">CIBIL & Credit Score</option>
+                                            <option value="Financial Planning">Financial Planning</option>
+                                            <option value="General">General News</option>
+                                        </select>
+                                    </div>
+
+                                    <div>
+                                        <label className="text-[11px] font-black uppercase text-slate-700 tracking-wider">
+                                            Estimated Read Time
+                                        </label>
+                                        <input
+                                            type="text"
+                                            placeholder="4 min read"
+                                            value={blogReadTime}
+                                            onChange={(e) => setBlogReadTime(e.target.value)}
+                                            className="w-full h-11 bg-white border border-slate-300 rounded-xl px-3.5 text-xs font-bold text-slate-900 placeholder:text-slate-400 focus:ring-2 focus:ring-[#0284c7] focus:outline-none mt-1"
+                                        />
+                                    </div>
+
+                                    <div>
+                                        <label className="text-[11px] font-black uppercase text-slate-700 tracking-wider">
+                                            Publish Status
+                                        </label>
+                                        <select
+                                            value={String(blogPublished)}
+                                            onChange={(e) => setBlogPublished(e.target.value === "true")}
+                                            className="w-full h-11 bg-white border border-slate-300 rounded-xl px-3 text-xs font-bold text-slate-900 focus:ring-2 focus:ring-[#0284c7] focus:outline-none mt-1 cursor-pointer"
+                                        >
+                                            <option value="true">✅ Live (Public)</option>
+                                            <option value="false">Draft (Hidden)</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                {/* Author details */}
+                                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                    <div>
+                                        <label className="text-[11px] font-black uppercase text-slate-700 tracking-wider">
+                                            Author Name
+                                        </label>
+                                        <input
+                                            type="text"
+                                            placeholder="Shree Finance Advisory Desk"
+                                            value={blogAuthor}
+                                            onChange={(e) => setBlogAuthor(e.target.value)}
+                                            className="w-full h-11 bg-white border border-slate-300 rounded-xl px-3.5 text-xs font-bold text-slate-900 placeholder:text-slate-400 focus:ring-2 focus:ring-[#0284c7] focus:outline-none mt-1"
+                                        />
+                                    </div>
+
+                                    <div>
+                                        <label className="text-[11px] font-black uppercase text-slate-700 tracking-wider">
+                                            Author Role / Designation
+                                        </label>
+                                        <input
+                                            type="text"
+                                            placeholder="Senior Financial Research Team"
+                                            value={blogAuthorRole}
+                                            onChange={(e) => setBlogAuthorRole(e.target.value)}
+                                            className="w-full h-11 bg-white border border-slate-300 rounded-xl px-3.5 text-xs font-bold text-slate-900 placeholder:text-slate-400 focus:ring-2 focus:ring-[#0284c7] focus:outline-none mt-1"
+                                        />
+                                    </div>
+                                </div>
+
+                                {/* Excerpt */}
+                                <div>
+                                    <label className="text-[11px] font-black uppercase text-slate-700 tracking-wider">
+                                        Short Excerpt / Summary *
+                                    </label>
+                                    <textarea
+                                        rows={2}
+                                        required
+                                        placeholder="A concise 2-line preview shown on the blog cards and Google search snippet..."
+                                        value={blogExcerpt}
+                                        onChange={(e) => setBlogExcerpt(e.target.value)}
+                                        className="w-full bg-white border border-slate-300 rounded-xl p-3 text-xs font-medium text-slate-900 placeholder:text-slate-400 focus:ring-2 focus:ring-[#0284c7] focus:outline-none mt-1"
+                                    />
+                                </div>
+
+                                {/* Full Article Content */}
+                                <div>
+                                    <label className="text-[11px] font-black uppercase text-slate-700 tracking-wider">
+                                        Full Article Body Content *
+                                    </label>
+                                    <textarea
+                                        rows={8}
+                                        required
+                                        placeholder="Write your in-depth financial guide, bank comparisons, eligibility rules, and advice here..."
+                                        value={blogContent}
+                                        onChange={(e) => setBlogContent(e.target.value)}
+                                        className="w-full bg-white border border-slate-300 rounded-xl p-3.5 text-xs font-medium text-slate-900 placeholder:text-slate-400 focus:ring-2 focus:ring-[#0284c7] focus:outline-none mt-1 font-sans leading-relaxed"
+                                    />
+                                </div>
+
+                                {/* Tags */}
+                                <div>
+                                    <label className="text-[11px] font-black uppercase text-slate-700 tracking-wider">
+                                        Tags (comma-separated)
+                                    </label>
+                                    <input
+                                        type="text"
+                                        placeholder="Home Loan, Interest Rates, Pune, CIBIL"
+                                        value={blogTags}
+                                        onChange={(e) => setBlogTags(e.target.value)}
+                                        className="w-full h-11 bg-white border border-slate-300 rounded-xl px-3.5 text-xs font-bold text-slate-900 placeholder:text-slate-400 focus:ring-2 focus:ring-[#0284c7] focus:outline-none mt-1"
+                                    />
+                                </div>
+
+                                {/* Cover Image Upload or URL */}
+                                <div className="space-y-2">
+                                    <label className="text-[11px] font-black uppercase text-slate-700 tracking-wider">
+                                        Cover Image (Upload File or Enter Image URL)
+                                    </label>
+                                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                        <div>
+                                            <input
+                                                type="file"
+                                                accept="image/*"
+                                                onChange={(e) => {
+                                                    const file = e.target.files?.[0];
+                                                    if (file) {
+                                                        setBlogImageFile(file);
+                                                        setBlogImagePreview(URL.createObjectURL(file));
+                                                    }
+                                                }}
+                                                className="w-full text-xs text-slate-500 file:mr-3 file:py-2 file:px-4 file:rounded-xl file:border-0 file:text-xs file:font-black file:bg-sky-50 file:text-[#0284c7] hover:file:bg-sky-100 cursor-pointer"
+                                            />
+                                        </div>
+                                        <div>
+                                            <input
+                                                type="text"
+                                                placeholder="Or paste external image URL..."
+                                                value={blogCoverImageUrl}
+                                                onChange={(e) => {
+                                                    setBlogCoverImageUrl(e.target.value);
+                                                    if (e.target.value) setBlogImagePreview(e.target.value);
+                                                }}
+                                                className="w-full h-10 bg-white border border-slate-300 rounded-xl px-3 text-xs font-medium text-slate-900 placeholder:text-slate-400 focus:ring-2 focus:ring-[#0284c7] focus:outline-none"
+                                            />
+                                        </div>
+                                    </div>
+
+                                    {(blogImagePreview || blogCoverImageUrl) && (
+                                        <div className="relative aspect-[16/8] max-h-40 rounded-xl overflow-hidden border border-slate-200 mt-2 bg-slate-900">
+                                            <Image
+                                                src={blogImagePreview || blogCoverImageUrl}
+                                                alt="Preview"
+                                                fill
+                                                className="object-cover"
+                                            />
+                                        </div>
+                                    )}
+                                </div>
+
+                                {/* Submit button */}
+                                <div className="flex items-center justify-end gap-3 pt-4 border-t border-slate-200">
+                                    <Button
+                                        type="button"
+                                        variant="outline"
+                                        onClick={() => setBlogModalOpen(false)}
+                                        className="h-11 px-5 rounded-xl border-slate-300 bg-white hover:bg-slate-100 text-slate-700 text-xs font-bold cursor-pointer"
+                                    >
+                                        Cancel
+                                    </Button>
+
+                                    <Button
+                                        type="submit"
+                                        disabled={blogSaving}
+                                        className="h-11 px-6 rounded-xl bg-[#0284c7] hover:bg-[#0369a1] text-white font-black text-xs uppercase tracking-wider cursor-pointer shadow-md flex items-center gap-2"
+                                    >
+                                        {blogSaving ? (
+                                            <>
+                                                <Loader2 className="h-4 w-4 animate-spin" />
+                                                Saving Article...
+                                            </>
+                                        ) : (
+                                            <>
+                                                <Save className="h-4 w-4" />
+                                                {editingBlogId ? "Update Article" : "Publish Article"}
+                                            </>
+                                        )}
+                                    </Button>
+                                </div>
+                            </form>
                         </motion.div>
                     </div>
                 )}

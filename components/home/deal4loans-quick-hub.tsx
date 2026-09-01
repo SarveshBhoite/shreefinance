@@ -14,7 +14,7 @@ export function Deal4LoansQuickHub() {
                         Financial Resource Hub
                     </div>
                     <h2 className="text-3xl md:text-4xl font-extrabold text-slate-900 tracking-tight">
-                        Explore Rates, Tools & Guides
+                        Finances News
                     </h2>
                     <p className="text-slate-600 text-sm md:text-base">
                         Get instant access to loan calculators, live bank rate charts, card offers, and financial guides.

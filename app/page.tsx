@@ -1,13 +1,11 @@
 import { HeroSection } from "@/components/home/hero-section";
 import { RateComparisonTable } from "@/components/home/rate-comparison-table";
-import { ServicesSnapshot } from "@/components/home/services-snapshot";
 import { PartnerLogos } from "@/components/home/partner-logos";
 import { UniversalCalculator } from "@/components/home/universal-calculator";
 import { WhyChooseUs } from "@/components/home/why-choose-us";
 import { FloatingCTA } from "@/components/home/floating-cta";
 import { HomeEligibilityForm } from "@/components/home/home-eligibility-form";
 import { Deal4LoansQuickHub } from "@/components/home/deal4loans-quick-hub";
-import { TrustSecuritySection } from "@/components/home/trust-security-section";
 
 export default function Home() {
   return (
@@ -16,12 +14,10 @@ export default function Home() {
       <section className="py-12 container px-4 mx-auto scroll-mt-24" id="eligibility-check">
         <HomeEligibilityForm />
       </section>
-      <TrustSecuritySection />
       <UniversalCalculator />
       <Deal4LoansQuickHub />
-      <WhyChooseUs />
       <RateComparisonTable />
-      <ServicesSnapshot />
+      <WhyChooseUs />
       <PartnerLogos />
       <FloatingCTA />
     </>

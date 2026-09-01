@@ -301,7 +301,7 @@ export async function POST(req: Request) {
                             Have questions or need instant disbursal?
                         </p>
                         <p style="color: #0f172a; font-size: 13px; margin: 0; font-weight: 800;">
-                            📞 Helpline: <a href="tel:+917709936965" style="color: #0284c7; text-decoration: none;">+91 77099 36965</a> | ✉️ <a href="mailto:care@shreefinance.com" style="color: #0284c7; text-decoration: none;">care@shreefinance.com</a>
+                            📞 Helpline: <a href="tel:+918830434945" style="color: #0284c7; text-decoration: none;">+91 88304 34945</a> | ✉️ <a href="mailto:shreefinancec@gmail.com" style="color: #0284c7; text-decoration: none;">shreefinancec@gmail.com</a>
                         </p>
                     </div>
                 </div>

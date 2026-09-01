@@ -18,6 +18,7 @@ export async function GET(req: Request) {
         const search = searchParams.get("search");
         const partnerId = searchParams.get("partnerId");
         const partnerRef = searchParams.get("partnerRef");
+        const district = searchParams.get("district") || searchParams.get("city");
 
         const query: Record<string, unknown> = {};
 
@@ -33,6 +34,10 @@ export async function GET(req: Request) {
 
         if (category && category !== "ALL") {
             query.category = category;
+        }
+
+        if (district && district !== "ALL") {
+            query.customerCity = { $regex: new RegExp(`^${district.trim()}$`, "i") };
         }
 
         if (search && search.trim()) {

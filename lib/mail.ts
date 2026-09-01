@@ -250,7 +250,7 @@ export async function sendPartnerApprovalEmail(application: {
                     Need help getting started or submitting your first loan case?
                 </p>
                 <p style="color: #0369a1; font-size: 13px; margin: 0; font-weight: 800;">
-                    📞 Partner Desk: <a href="tel:+917709936965" style="color: #0284c7; text-decoration: none;">+91 77099 36965</a> | ✉️ <a href="mailto:care@shreefinance.com" style="color: #0284c7; text-decoration: none;">care@shreefinance.com</a>
+                    📞 Partner Desk: <a href="tel:+918830434945" style="color: #0284c7; text-decoration: none;">+91 88304 34945</a> | ✉️ <a href="mailto:shreefinancec@gmail.com" style="color: #0284c7; text-decoration: none;">shreefinancec@gmail.com</a>
                 </p>
             </div>
         </div>
@@ -308,7 +308,7 @@ export async function sendPartnerRejectionEmail(application: {
                 <p style="color: #881337; font-size: 13px; margin: 0;">${reason}</p>
             </div>` : ""}
             <p style="color: #64748b; font-size: 12px; line-height: 1.5; margin-top: 16px;">
-                If you believe this is in error or would like to provide updated documentation, please contact our partner support team at <a href="mailto:care@shreefinance.com" style="color: #0284c7;">care@shreefinance.com</a>.
+                If you believe this is in error or would like to provide updated documentation, please contact our partner support team at <a href="mailto:shreefinancec@gmail.com" style="color: #0284c7;">shreefinancec@gmail.com</a>.
             </p>
         </div>
 
